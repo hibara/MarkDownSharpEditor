@@ -1,0 +1,23 @@
+# Debug directory
+Debug/
+
+# Debug directory
+Debug/
+
+# history directory
+_histroy/
+
+# private temporary directory and files
+_*/
+_*
+
+# C++Builder temporary file
+*.cbproj.local
+*.tds
+*.map
+*.ilc
+*.ild
+*.ilf
+*.ils
+
+
