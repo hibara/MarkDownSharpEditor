@@ -261,7 +261,7 @@
 			this.cmdAssociateFiles.Name = "cmdAssociateFiles";
 			this.cmdAssociateFiles.Size = new System.Drawing.Size(360, 23);
 			this.cmdAssociateFiles.TabIndex = 0;
-			this.cmdAssociateFiles.Text = ".mdファイルをMarkDown#Editorに関連付け設定する(&A)";
+			this.cmdAssociateFiles.Text = ".mdファイルをMarkDown#Editorに関連付け設定する(&D)";
 			this.cmdAssociateFiles.UseVisualStyleBackColor = true;
 			this.cmdAssociateFiles.Click += new System.EventHandler(this.cmdAssociateFiles_Click);
 			// 
@@ -397,9 +397,9 @@
 			this.checkBoxShowHtmlSaveDialog.AutoSize = true;
 			this.checkBoxShowHtmlSaveDialog.Location = new System.Drawing.Point(15, 29);
 			this.checkBoxShowHtmlSaveDialog.Name = "checkBoxShowHtmlSaveDialog";
-			this.checkBoxShowHtmlSaveDialog.Size = new System.Drawing.Size(276, 16);
+			this.checkBoxShowHtmlSaveDialog.Size = new System.Drawing.Size(275, 16);
 			this.checkBoxShowHtmlSaveDialog.TabIndex = 3;
-			this.checkBoxShowHtmlSaveDialog.Text = "HTMLファイル出力のとき保存ダイアログを表示する(&H)";
+			this.checkBoxShowHtmlSaveDialog.Text = "HTMLファイル出力のとき保存ダイアログを表示する(&T)";
 			this.checkBoxShowHtmlSaveDialog.UseVisualStyleBackColor = true;
 			// 
 			// checkBoxOpenEditFileBefore
@@ -1099,7 +1099,7 @@
 			this.tabPageCSS.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPageCSS.Size = new System.Drawing.Size(432, 401);
 			this.tabPageCSS.TabIndex = 1;
-			this.tabPageCSS.Text = "CSSファイルの指定(&C)";
+			this.tabPageCSS.Text = "CSSファイルの指定(&S)";
 			this.tabPageCSS.UseVisualStyleBackColor = true;
 			// 
 			// cmdDownItem
@@ -1109,7 +1109,7 @@
 			this.cmdDownItem.Name = "cmdDownItem";
 			this.cmdDownItem.Size = new System.Drawing.Size(24, 24);
 			this.cmdDownItem.TabIndex = 16;
-			this.toolTip1.SetToolTip(this.cmdDownItem, "CSSファイルパスを追加します。");
+			this.toolTip1.SetToolTip(this.cmdDownItem, "選択されたCSSファイルの優先度を下げます。");
 			this.cmdDownItem.UseVisualStyleBackColor = true;
 			this.cmdDownItem.Click += new System.EventHandler(this.cmdDownItem_Click);
 			// 
@@ -1120,7 +1120,7 @@
 			this.cmdUpItem.Name = "cmdUpItem";
 			this.cmdUpItem.Size = new System.Drawing.Size(24, 24);
 			this.cmdUpItem.TabIndex = 15;
-			this.toolTip1.SetToolTip(this.cmdUpItem, "CSSファイルパスを追加します。");
+			this.toolTip1.SetToolTip(this.cmdUpItem, "選択されたCSSファイルの優先度を上げます。");
 			this.cmdUpItem.UseVisualStyleBackColor = true;
 			this.cmdUpItem.Click += new System.EventHandler(this.cmdUpItem_Click);
 			// 
@@ -1303,7 +1303,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(354, 37);
 			this.label1.TabIndex = 3;
-			this.label1.Text = "※「出力するHtMLファイルにヘッダを挿入する」\r\n　　にチェックが入っている場合、<META>タグでも挿入されます。";
+			this.label1.Text = "※「出力するHTMLファイルにヘッダを挿入する」\r\n　　にチェックが入っている場合、<META>タグでも挿入されます。";
 			// 
 			// comboBoxSelectEncoding
 			// 
@@ -1322,7 +1322,7 @@
 			this.radioButtonChangeEncoding.Size = new System.Drawing.Size(162, 16);
 			this.radioButtonChangeEncoding.TabIndex = 1;
 			this.radioButtonChangeEncoding.TabStop = true;
-			this.radioButtonChangeEncoding.Text = "エンコーディングを指定する(&C)";
+			this.radioButtonChangeEncoding.Text = "エンコーディングを指定する(&N)";
 			this.radioButtonChangeEncoding.UseVisualStyleBackColor = true;
 			this.radioButtonChangeEncoding.CheckedChanged += new System.EventHandler(this.radioButtonChangeEncoding_CheckedChanged);
 			// 
