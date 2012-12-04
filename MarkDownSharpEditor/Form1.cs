@@ -2267,11 +2267,13 @@ namespace MarkDownSharpEditor
 			//ダイアログを表示する
 			if (fontDialog1.ShowDialog() == DialogResult.OK)
 			{
+				this.richTextBox1.TextChanged -= new System.EventHandler(this.richTextBox1_TextChanged);
 				richTextBox1.Font = fontDialog1.Font;
 				richTextBox1.ForeColor = fontDialog1.Color;
 				//ステータスバーに表示
 				toolStripStatusLabelFontInfo.Text =
 					fontDialog1.Font.Name + "," + fontDialog1.Font.Size.ToString() + "pt";
+				this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
 			}
 
 			//シンタックスハイライターを全体に反映

@@ -499,6 +499,24 @@ namespace MarkDownSharpEditor
 			this.Close();
 		}
 
+		//===================================
+		#region tabControlのアクセスキー処理
+		//===================================
+
+		protected override bool ProcessMnemonic(char charCode)
+		{
+			foreach (TabPage tp in tabControl1.TabPages)
+			{
+				if (IsMnemonic(charCode, tp.Text))
+				{
+					tabControl1.SelectedTab = tp;
+					return true;
+				}
+			}
+			return base.ProcessMnemonic(charCode);
+		}
+
+		#endregion
 
 		//===================================
 		#region 「全般設定」タブ
