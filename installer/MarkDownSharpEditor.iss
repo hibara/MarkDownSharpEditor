@@ -12,6 +12,7 @@ UsePreviousAppDir=yes
 AppendDefaultDirName=yes 
 OutputDir=.\
 TouchTime=00:00
+InfoBeforeFile=change_log.txt
 
 ;-----------------------------------
 ;インストーラプログラム

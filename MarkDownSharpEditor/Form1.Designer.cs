@@ -102,6 +102,7 @@
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonBrowserPreview = new System.Windows.Forms.ToolStripButton();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.richTextBox1 = new RichTextBoxEx();
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -109,8 +110,6 @@
 			this.contextMenu1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.timer2 = new System.Windows.Forms.Timer(this.components);
-			this.richTextBox1 = new RichTextBoxEx();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -775,6 +774,29 @@
 			this.splitContainer1.SplitterWidth = 6;
 			this.splitContainer1.TabIndex = 3;
 			// 
+			// richTextBox1
+			// 
+			this.richTextBox1.AcceptsTab = true;
+			this.richTextBox1.DetectUrls = false;
+			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.richTextBox1.HorizontalPosition = 0;
+			this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+			this.richTextBox1.Size = new System.Drawing.Size(260, 366);
+			this.richTextBox1.TabIndex = 0;
+			this.richTextBox1.Text = "";
+			this.richTextBox1.VerticalPosition = 0;
+			this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
+			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
+			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
+			this.richTextBox1.ModifiedChanged += new System.EventHandler(this.richTextBox1_ModifiedChanged);
+			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
+			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
+			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
+			this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
+			// 
 			// webBrowser1
 			// 
 			this.webBrowser1.AllowWebBrowserDrop = false;
@@ -789,7 +811,6 @@
 			// 
 			// openFileDialog1
 			// 
-			this.openFileDialog1.FileName = "openFileDialog1";
 			this.openFileDialog1.Filter = "Markdown形式(*md)|*md|テキストファイル形式(*txt)|*txt|すべてのファイル(**)|**";
 			this.openFileDialog1.Title = "Markdown形式ファイル（テキストファイル）を開く";
 			// 
@@ -817,31 +838,8 @@
 			// 
 			// timer1
 			// 
-			this.timer1.Interval = 1000;
+			this.timer1.Interval = 10;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// timer2
-			// 
-			this.timer2.Interval = 1000;
-			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-			// 
-			// richTextBox1
-			// 
-			this.richTextBox1.AcceptsTab = true;
-			this.richTextBox1.DetectUrls = false;
-			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-			this.richTextBox1.Size = new System.Drawing.Size(260, 366);
-			this.richTextBox1.TabIndex = 0;
-			this.richTextBox1.Text = "";
-			this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
-			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
-			this.richTextBox1.ModifiedChanged += new System.EventHandler(this.richTextBox1_ModifiedChanged);
-			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
-			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
 			// 
 			// Form1
 			// 
@@ -959,7 +957,6 @@
 		private System.Windows.Forms.ToolStripButton toolStripButtonBrowserPreview;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
 		private System.Windows.Forms.ToolStripMenuItem menuViewAssociateBrowser;
-		private System.Windows.Forms.Timer timer2;
 
     }
 }

@@ -10,6 +10,8 @@ using System.IO;
 using System.Collections;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 using anrControls;
 using mshtml;
@@ -20,14 +22,17 @@ namespace MarkDownSharpEditor
 
 	public partial class Form1 : Form
 	{
-
+		
+		bool fSyntaxHightlighter = false;
+		bool fScrollConstraint = false;                       //スクロール抑制フラグ
+		private int richEditBoxInternalHeight;                //richTextBox1の内部的な高さ
+		private int WebBrowserInternalHeight;                 //webBrowser1の内部的な高さ（body）
+		
 		private bool fNoTitle = true;                         //無題のまま編集中かどうか
 		private string MarkDownTextFilePath = "";             //編集中のMDファイルパス
 		private string TemporaryHtmlFilePath = "";            //プレビュー用のテンポラリHTMLファイルパス
 		private string SelectedCssFilePath = "";              //選択中のCSSファイルパス
 		private Encoding EditingFileEncoding = Encoding.UTF8; //編集中MDファイルの文字エンコーディング
-
-		private int BrowserCurrentPos = 0;                    //現在表示中のブラウザープレビューの表示位置
 
 		// MarkdownSyntaxKeywordクラスを格納する配列
 		private ArrayList MarkdownSyntaxKeywordAarray = new ArrayList();
@@ -271,22 +276,39 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------------------------
-		// RichEditBoxの内容が変更されたとき
+		// HACK: RichEditBoxの内容が変更されたとき
 		//----------------------------------------------------------------------
 		private void richTextBox1_ModifiedChanged(object sender, EventArgs e)
 		{
-			FormTextChange();
-			
-			//PreviewToBrowser();
-			if (timer1.Enabled == true)
+
+			if (fSyntaxHightlighter == true)
 			{
 				return;
 			}
-			else
-			{
-				timer1.Enabled = true;
-			}
 
+			FormTextChange();
+
+			timer1.Enabled = true;
+
+			fScrollConstraint = true;	//スクロール抑制
+
+			richTextBox1.BeginUpdate();
+
+			//現在のカーソル位置を取得
+			int CurrentPos = richTextBox1.SelectionStart;
+			Point CurrentOffset = richTextBox1.AutoScrollOffset;
+
+			richTextBox1.SelectionStart = richTextBox1.Text.Length;
+			richTextBox1.ScrollToCaret();
+			//richTextBox1の全高を取得する
+			richEditBoxInternalHeight = richTextBox1.VerticalPosition;
+
+			//カーソル位置を戻す
+			richTextBox1.SelectionStart = CurrentPos;
+			richTextBox1.AutoScrollOffset = CurrentOffset;
+			richTextBox1.EndUpdate();
+
+			fScrollConstraint = false;
 
 		}
 
@@ -295,13 +317,24 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void richTextBox1_SelectionChanged(object sender, EventArgs e)
 		{
+			/*
+			
+			// パフォーマンス調整のため、一時的にコメントアウトしてみます。
+			// 今後調整予定・・・
 			
 			if (fConstraintChange == true)
 			{
 				return;
 			}
-			//ブラウザーも随従してスクロール
-			timer2.Enabled = true;
+
+			SyntaxHightlighterWidthRegex();
+
+			//ブラウザープレビュー
+			if (MarkDownSharpEditor.AppSettings.Instance.fAutoBrowserPreview == true)
+			{
+				PreviewToBrowser();
+			}
+			*/
 
 		}
 
@@ -324,7 +357,8 @@ namespace MarkDownSharpEditor
 			}
 			SyntaxHightlighterWidthRegex();
 
-			//ブラウザープレビュー
+
+			//HACK: ブラウザープレビュー（リアルタイムにする必要はない？）
 			if (MarkDownSharpEditor.AppSettings.Instance.fAutoBrowserPreview == true)
 			{
 				timer1.Enabled = true;
@@ -337,6 +371,7 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
 		{
+			// Undoバッファに追加
 			undoCount++;
 			UndoBuffer.Add(richTextBox1.Text.ToString());
 
@@ -349,65 +384,41 @@ namespace MarkDownSharpEditor
 		{
 			//連続入力のときは反映回数を抑制する
 			timer1.Enabled = false;
-			timer2.Enabled = false;
-
 		}
 
 		//----------------------------------------------------------------------
-		// RichTextBoxのフォントが変更されたとき（マウススクロールなど）
+		// RichTextBox Key Up
 		//----------------------------------------------------------------------
-		private void richTextBox1_MouseWheel(object sender, EventArgs e)
+		private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
 		{
-
+			timer1.Enabled = true;
 		}
 
 		//----------------------------------------------------------------------
-		// RichTextBoxのスクロールバーイベント（webBrowserスクロール同期）
+		// RichTextBox スクロールイベント
 		//----------------------------------------------------------------------
 		private void richTextBox1_VScroll(object sender, EventArgs e)
 		{
-
-			if (fConstraintChange == true)
+			if (fConstraintChange == false && fScrollConstraint == false)
 			{
-				return;
+				WebBrowserMoveCursor();
 			}
+		}
 
-			if (webBrowser1.Document != null)
-			{
-				//RichTextBoxの現在の左上座標の文字インデックスを取得して、
-			　//その位置までのパラグラフ数（物理行数）を取得する
-				int CharNum = richTextBox1.GetCharIndexFromPosition(new Point(0, 0));
-				int LinesNum = GetParagraphCount(CharNum);
+		//----------------------------------------------------------------------
+		// RichTextBox エンター
+		//----------------------------------------------------------------------
+		private void richTextBox1_Enter(object sender, EventArgs e)
+		{
+		}
 
-				int i = 0;
-				foreach (HtmlElement elm in  webBrowser1.Document.Body.Children)
-				{
-					i++;
-					if (elm.TagName == "ul")
-					{
-						foreach (HtmlElement elmLi in elm.Children)
-						{
-							i++;
-							if (i == LinesNum)
-							{
-								break;
-							}
-						}
-					}
+		//----------------------------------------------------------------------
+		// RichTextBox マウスクリック
+		//----------------------------------------------------------------------
+		private void richTextBox1_MouseClick(object sender, MouseEventArgs e)
+		{
+			timer1.Enabled = true;
 
-					if (i == LinesNum)
-					{
-						BrowserCurrentPos = elm.OffsetRectangle.Top;
-						if (BrowserCurrentPos < 0)
-						{
-							BrowserCurrentPos = 0;
-						}
-						webBrowser1.Document.Window.ScrollTo(new Point(0, BrowserCurrentPos));
-						break;
-					}
-				}
-			}
-		
 		}
 
 		//----------------------------------------------------------------------
@@ -431,7 +442,6 @@ namespace MarkDownSharpEditor
 						e.Cancel = true;
 						return;
 					}
-
 				}
 				else if (ret == DialogResult.Cancel)
 				{
@@ -669,6 +679,11 @@ namespace MarkDownSharpEditor
 			else
 			{
 				//オープンダイアログ表示
+				if (File.Exists(MarkDownTextFilePath) == true)
+				{	//編集中のファイルがあればそのディレクトリを初期フォルダーに
+					openFileDialog1.InitialDirectory = Path.GetDirectoryName(MarkDownTextFilePath);
+				}
+				openFileDialog1.FileName = "";
 				if (openFileDialog1.ShowDialog() == DialogResult.OK)
 				{
 					FilePath = openFileDialog1.FileName;
@@ -746,6 +761,19 @@ namespace MarkDownSharpEditor
 	
 			//テキストファイルの読み込み
 			richTextBox1.Text = File.ReadAllText(FilePath, EditingFileEncoding);
+
+			//-----------------------------------
+			richTextBox1.BeginUpdate();
+			richTextBox1.SelectionStart = richTextBox1.Text.Length;
+			richTextBox1.ScrollToCaret();
+			//richTextBox1の全高さを求める
+			richEditBoxInternalHeight = richTextBox1.VerticalPosition;
+			//カーソル位置を戻す
+			richTextBox1.SelectionStart = 0;
+			richTextBox1.EndUpdate();
+			//-----------------------------------
+
+			//変更フラグOFF
 			richTextBox1.Modified = false;
 
 			//Undoバッファに追加
@@ -758,12 +786,8 @@ namespace MarkDownSharpEditor
 
 			//シンタックスハイライター
 			SyntaxHightlighterWidthRegex();
-
-			//PreviewToBrowser();
-			if (timer1.Enabled == false)
-			{
-				timer1.Enabled = true;
-			}
+			//プレビュー更新
+			PreviewToBrowser();
 
 			return (true);
 
@@ -847,33 +871,40 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			if (MarkDownSharpEditor.AppSettings.Instance.AutoBrowserPreviewInterval < 0)
+
+			timer1.Enabled = false;
+
+			//各種抑制中は更新せず抜ける
+			if (fConstraintChange == true || fScrollConstraint == true || fSyntaxHightlighter == true)
 			{
-				timer1.Enabled = false;
 				return;
 			}
-			PreviewToBrowser();
-			timer1.Enabled = false;
+
+			if (MarkDownSharpEditor.AppSettings.Instance.AutoBrowserPreviewInterval < 0)
+			{
+				//手動更新
+				return;
+			}
+			else
+			{
+				PreviewToBrowser();
+			}
 		}
 
 		//----------------------------------------------------------------------
-		// カーソル移動反映の間隔を調整
-		//----------------------------------------------------------------------
-		private void timer2_Tick(object sender, EventArgs e)
-		{
-			WebBrowserMoveCursor();
-		}
-
-		//----------------------------------------------------------------------
-		// TODO: ブラウザプレビュー（編集中の内容を反映）
+		// HACK: PreviewToBrowser（ブラウザプレビュー）
 		//----------------------------------------------------------------------
 		private void PreviewToBrowser()
 		{
 			//更新抑制中のときはプレビューしない
 			if (fConstraintChange == true)
 			{
+				timer1.Enabled = false;
 				return;
 			}
+
+			string ResultText = "";
+			string MkResultText = "";
 
 			string BackgroundColorString;
 			string EncodingName;
@@ -938,21 +969,67 @@ namespace MarkDownSharpEditor
 			//フッタ
 			string footer = "</body>\n</html>";
 
+			int NextLineNum, ParagraphStart, ParagraphEnd;
+
+			//編集箇所にマーカーを挿入する
+			if (richTextBox1.SelectionStart > 0)
+			{
+				NextLineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart) + 1;
+				ParagraphStart = richTextBox1.GetFirstCharIndexOfCurrentLine();
+				ParagraphEnd = richTextBox1.GetFirstCharIndexFromLine(NextLineNum) - 1;
+
+				ResultText =
+					richTextBox1.Text.Substring(0, ParagraphStart - 1) + "<!-- edit -->" +
+					richTextBox1.Text.Substring(ParagraphStart);
+			}
+			else
+			{
+				ResultText = richTextBox1.Text;
+			}
+
 			//Markdownパース
 			Markdown mkdwn = new Markdown();
-			string ResultText = mkdwn.Transform(richTextBox1.Text);
+			ResultText = mkdwn.Transform(ResultText);
 			//表示するHTMLデータを作成
 			ResultText = header + ResultText + footer;
+
+			//パースされた内容から編集行を探す
+			string OneLine;
+			StringReader sr = new StringReader(ResultText);
+			StringWriter sw = new StringWriter();
+			while ((OneLine = sr.ReadLine()) != null)
+			{
+				if (OneLine.IndexOf("<!-- edit -->") >= 0)
+				{
+					MkResultText += ("<div class='_mk'>" + OneLine + "</div>\n");
+				}
+				else
+				{
+					MkResultText += (OneLine+"\n");
+				}
+			}
+
 			//エンコーディングしつつbyte値に変換する（richEditBoxは基本的にutf-8 = 65001）
-			byte[] bytesData = Encoding.GetEncoding(CodePageNum).GetBytes(ResultText);
+			byte[] bytesData = Encoding.GetEncoding(CodePageNum).GetBytes(MkResultText);
 
 
+			//-----------------------------------
+			//スクロールバーの位置を退避しておく
+			HtmlDocument doc = webBrowser1.Document;
+			Point scrollpos = new Point(0, 0);
+			if (doc != null)
+			{
+				IHTMLDocument3 doc3 = (IHTMLDocument3)webBrowser1.Document.DomDocument;
+				IHTMLElement2 elm = (IHTMLElement2)doc3.documentElement;
+				scrollpos = new Point(elm.scrollLeft, elm.scrollTop);
+			}
+
+			//-----------------------------------
 			if (fNoTitle == true)
 			{
 				//「無題」ファイルを編集中はナビゲートせずにそのまま書き込む
 				ResultText = Encoding.GetEncoding(CodePageNum).GetString(bytesData);
-				webBrowser1.Document.Write(ResultText);
-
+				webBrowser1.DocumentText = MkResultText;
 				//ツールバーの「関連付けられたブラウザーを起動」を無効に
 				toolStripButtonBrowserPreview.Enabled = false;
 
@@ -980,6 +1057,17 @@ namespace MarkDownSharpEditor
 
 			}
 
+			//-----------------------------------
+			//スクロールバーの位置を復帰する
+			if (doc != null)
+			{
+				while (webBrowser1.ReadyState != WebBrowserReadyState.Complete)
+				{
+					Application.DoEvents();
+				}
+				doc.Window.ScrollTo(scrollpos);
+			}
+
 		}
 
 		//----------------------------------------------------------------------
@@ -992,58 +1080,82 @@ namespace MarkDownSharpEditor
 			{
 				return;
 			}
-
-			//読み込んだページのエンコーディングを表示
-			foreach (EncodingInfo ei in Encoding.GetEncodings())
-			{
-				if (ei.GetEncoding().IsBrowserDisplay == true)
-				{
-					if (ei.GetEncoding().WebName == webBrowser1.Document.Encoding)
-					{
-						toolStripStatusLabelHtmlEncoding.Text = ei.DisplayName;
-						break;
-					}
-				}
-			}
-
-			//すでに移動済みの位置へ（以下のコメントアウト部分の処理を毎回呼ぶと重い）
-			webBrowser1.Document.Window.ScrollTo(new Point(0, BrowserCurrentPos));
-
-			/*
-			HtmlElementCollection elements = webBrowser1.Document.Body.Children;
-			foreach (HtmlElement element in elements)
-			{
-				if (element.GetAttribute("className") == "_mk_edit")
-				{
-					int ElementTop = element.OffsetRectangle.Top;
-					HtmlElement TempElement = element.OffsetParent;
-					while (TempElement != null)
-					{
-						ElementTop = ElementTop + TempElement.OffsetRectangle.Top;
-						TempElement = TempElement.OffsetParent;
-					}
-
-					Point pt = richTextBox1.GetPositionFromCharIndex(richTextBox1.SelectionStart);
-					int pos = ElementTop - pt.Y;
-					if (pos < 0)
-					{
-						pos = 0;
-					}
-					webBrowser1.Document.Window.ScrollTo(new Point(0, pos));
-					break;
-				}
-			}
-			*/
+			//読み込まれた表示領域の高さを取得
+			WebBrowserInternalHeight = webBrowser1.Document.Body.ScrollRectangle.Height;
+			//ブラウザのスクロールイベントハンドラ
+			webBrowser1.Document.Window.AttachEventHandler("onscroll", OnScrollEventHandler);
 
 		}
 
 		//----------------------------------------------------------------------
-		// HACK: RichTextBoxで指定の文字インデックスまでのパラグラフ数（行数）を取得する
-		// 
+		// TODO: ブラウザのスクロールイベント
 		//----------------------------------------------------------------------
-		private int GetParagraphCount(int CharIndex)
+		public void OnScrollEventHandler(object sender, EventArgs e)
 		{
 
+			RichEditBoxMoveCursor();
+
+		}
+
+		//----------------------------------------------------------------------
+		// TODO: WebBrowserMoveCursor() 
+		// RichEditBox → WebBrowserスクロールt追従
+		//----------------------------------------------------------------------
+		private void WebBrowserMoveCursor()
+		{
+
+			if (webBrowser1.Document == null)
+			{
+				return;
+			}
+
+			if (richTextBox1.Focused == true)
+			{
+				//richEditBoxの内部的な高さから現在位置の割合を計算
+				int LineHeight = Math.Abs(richTextBox1.GetPositionFromCharIndex(0).Y);
+				float perHeight = (float)LineHeight / richEditBoxInternalHeight;
+
+				//その割合からwebBrowserのスクロール量を計算
+				WebBrowserInternalHeight = webBrowser1.Document.Body.ScrollRectangle.Height;
+				int y = (int)(WebBrowserInternalHeight * perHeight);
+				Point webScrollPos = new Point(0, y);
+				//ブラウザーのスクロールを追従させる
+				webBrowser1.Document.Window.ScrollTo(webScrollPos);
+
+			}
+
+		}
+
+		//----------------------------------------------------------------------
+		// HACK: RichEditBoxMoveCursor() 
+		// WebBrowser → RichEditBoxスクロールt追従
+		//----------------------------------------------------------------------
+		private void RichEditBoxMoveCursor()
+		{
+
+			//ブラウザでのスクロールバーの位置
+			if (richTextBox1.Focused == false && webBrowser1.Document != null)
+			{
+				IHTMLDocument3 doc3 = (IHTMLDocument3)webBrowser1.Document.DomDocument;
+				IHTMLElement2 elm = (IHTMLElement2)doc3.documentElement;
+				//HACK: 全高さからの割合（位置）
+				float perHeight = (float)elm.scrollTop / WebBrowserInternalHeight;
+
+				int y = (int)(richEditBoxInternalHeight * perHeight);
+				richTextBox1.VerticalPosition = y;
+				
+
+			}
+
+		}
+
+		//-------------------------------------------------------------------------------
+		// RichTextBoxで指定の文字インデックスまでのパラグラフ数（行数）を取得する
+		// 
+		//-------------------------------------------------------------------------------
+		/*
+		private int GetParagraphCount(int CharIndex)
+		{
 			int i, c;
 			int CharNum = 0;
 			int LinesNum = 0;
@@ -1072,7 +1184,7 @@ namespace MarkDownSharpEditor
 			rg[7] = new Regex(@"-->$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 			//カーソルのある物理行番号（＝段落数）を取得する
-			for ( i = 0; i < richTextBox1.Lines.Count(); i++)
+			for (i = 0; i < richTextBox1.Lines.Count(); i++)
 			{
 				//-----------------------------------
 				//空行は行数としてカウントしない
@@ -1129,7 +1241,7 @@ namespace MarkDownSharpEditor
 								fCommentOut = false;
 								break;
 							}
-							
+
 							//行途中にコメントアウトがおわった
 							col = rg[7].Matches(richTextBox1.Lines[i], 0);
 							if (col.Count > 0)
@@ -1191,92 +1303,11 @@ namespace MarkDownSharpEditor
 
 			//デバッグ
 			//this.Text = LinesNum.ToString();
-			
+
 			return (LinesNum);
 
 		}
-
-		//----------------------------------------------------------------------
-		// HACK: WebBrowserMoveCursor() カーソル位置を探索してブラウザーページを自動スクロール
-		//----------------------------------------------------------------------
-		private void WebBrowserMoveCursor()
-		{
-
-			int i;
-			int ElementTop = 0;
-
-			if (webBrowser1.Document == null)
-			{
-				return;
-			}
-
-			//RichTextBoxのカーソル位置にある文字インデックスを取得して
-			//そこまでのパラグラフ数（物理行数）を取得する
-			int CurrentCharNum = richTextBox1.SelectionStart;
-			int LinesNum = GetParagraphCount(CurrentCharNum);
-
-			//前のマーキングを外す
-			foreach (HtmlElement elm in webBrowser1.Document.Body.All)
-			{
-				if (elm.GetAttribute("className") == "_mk")
-				{
-					elm.SetAttribute("className", "");
-					break;
-				}
-			}
-
-			i = 1;
-			foreach (HtmlElement elm in webBrowser1.Document.Body.Children)
-			{
-				if (elm.TagName == "!")           // コメントアウトは無視
-				{
-					continue;
-				}
-				else if (elm.TagName.ToUpper() == "SCRIPT") // スクリプトも無視
-				{
-					continue;
-				}
-				else if (elm.TagName.ToUpper() == "UL")     // 箇条書き（中身 <li> だけカウント）
-				{
-					foreach (HtmlElement elmLi in elm.Children)
-					{
-						if (i > LinesNum - 1)
-						{
-							elmLi.SetAttribute("className", "_mk");	//マーキングするためのクラス名を付加
-							ElementTop = elmLi.OffsetRectangle.Top;
-							break;
-						}
-						else
-						{
-							i++;
-						}
-					}
-					i = i - 1;
-				}
-					
-				if (i > LinesNum - 1)
-				{
-					if (ElementTop == 0)
-					{
-						elm.SetAttribute("className", "_mk");	//マーキングするためのクラス名を付加
-						ElementTop = elm.OffsetRectangle.Top;
-					}
-
-					Point pt = richTextBox1.GetPositionFromCharIndex(richTextBox1.SelectionStart);
-					int pos = ElementTop - pt.Y;
-					if (pos < 0)
-					{
-						pos = 0;
-					}
-					webBrowser1.Document.Window.ScrollTo(new Point(0, pos));
-					return;
-				}
-
-				i++;
-
-			}
-
-		}
+		*/
 
 		//----------------------------------------------------------------------
 		// ブラウザーのナビゲート完了
@@ -1286,7 +1317,6 @@ namespace MarkDownSharpEditor
 			//ブラウザー操作ボタンの有効・無効化
 			toolStripButtonBack.Enabled = webBrowser1.CanGoBack;
 			toolStripButtonForward.Enabled = webBrowser1.CanGoForward;
-
 		}
 
 		//----------------------------------------------------------------------
@@ -1578,13 +1608,13 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------------------------
-		// TODO: シンタックス・ハイライター（Regex）
+		// TODO: SyntaxHightlighterWidthRegex
 		//----------------------------------------------------------------------
 		private void SyntaxHightlighterWidthRegex(int SearchStartIndex = 0)
 		{
+			//今は仮に開始値=0
 
-			// TODO: シンタックス・ハイライター（今は仮に開始値=0）
-			//SearchStartIndex = 0;
+			fSyntaxHightlighter = true;
 
 			var obj = MarkDownSharpEditor.AppSettings.Instance;
 
@@ -1596,8 +1626,10 @@ namespace MarkDownSharpEditor
 			//現在のカーソル位置
 			int selectStart = this.richTextBox1.SelectionStart;
 			int selectEnd = richTextBox1.SelectionLength;
+			Point CurrentOffset = richTextBox1.AutoScrollOffset;
+
 			//現在のスクロール位置
-			Win32.POINT pt = GetScrollPos();
+			int CurrentScrollPos = richTextBox1.VerticalPosition;
 			//描画停止
 			richTextBox1.BeginUpdate();
 
@@ -1629,13 +1661,14 @@ namespace MarkDownSharpEditor
 
 			//カーソル位置を戻す
 			richTextBox1.Select(selectStart, selectEnd);
-			//スクロール位置を戻す
-			SetScrollPos(pt);
+			richTextBox1.AutoScrollOffset = CurrentOffset;			
+			
 			//描画再開
 			richTextBox1.EndUpdate();
 			richTextBox1.Modified = fModify;
 
 			fConstraintChange = false;
+			fSyntaxHightlighter = false;
 
 		}
 		//----------------------------------------------------------------------
@@ -1673,35 +1706,6 @@ namespace MarkDownSharpEditor
 			}
 		}
 		*/
-
-		//----------------------------------------------------------------------
-		#region Scrollbar positions functions
-		//----------------------------------------------------------------------
-		/// <summary>
-		/// Sends a win32 message to get the scrollbars' position.
-		/// </summary>
-		/// <returns>a POINT structore containing horizontal and vertical scrollbar position.</returns>
-		private unsafe Win32.POINT GetScrollPos()
-		{
-			Win32.POINT res = new Win32.POINT();
-			IntPtr ptr = new IntPtr(&res);
-			Win32.SendMessage(richTextBox1.Handle, Win32.EM_GETSCROLLPOS, 0, ptr);
-			return res;
-
-		}
-
-		/// <summary>
-		/// Sends a win32 message to set scrollbars position.
-		/// </summary>
-		/// <param name="point">a POINT conatining H/Vscrollbar scrollpos.</param>
-		private unsafe void SetScrollPos(Win32.POINT point)
-		{
-			IntPtr ptr = new IntPtr(&point);
-			Win32.SendMessage(richTextBox1.Handle, Win32.EM_SETSCROLLPOS, 0, ptr);
-
-		}
-		#endregion
-		//----------------------------------------------------------------------
 
 
 		//======================================================================
@@ -2099,13 +2103,12 @@ namespace MarkDownSharpEditor
 		//-----------------------------------
 		private void menuUndo_Click(object sender, EventArgs e)
 		{
-		  if (UndoBuffer.Count > 0)
-		  {
-				//現在のカーソル位置
+			if (UndoBuffer.Count > 0 && undoCount > 0)
+			{				//現在のカーソル位置
 				int selectStart = this.richTextBox1.SelectionStart;
 				int selectEnd = richTextBox1.SelectionLength;
 				//現在のスクロール位置
-				Win32.POINT pt = GetScrollPos();
+				int CurrentScrollpos = richTextBox1.VerticalPosition;
 				//描画停止
 				richTextBox1.BeginUpdate();
 
@@ -2115,7 +2118,7 @@ namespace MarkDownSharpEditor
 				//カーソル位置を戻す
 				richTextBox1.Select(selectStart, selectEnd);
 				//スクロール位置を戻す
-				SetScrollPos(pt);
+				richTextBox1.VerticalPosition = CurrentScrollpos;
 				//描画再開
 				richTextBox1.EndUpdate();
 
@@ -2147,8 +2150,8 @@ namespace MarkDownSharpEditor
 		{
 		  if (richTextBox1.SelectionLength > 0)
 		  {
-			richTextBox1.Cut();
-			FormTextChange();
+				richTextBox1.Cut();
+				FormTextChange();
 		  }
 		}
 		//-----------------------------------
@@ -2158,7 +2161,7 @@ namespace MarkDownSharpEditor
 		{
 		  if (richTextBox1.SelectionLength > 0)
 		  {
-			richTextBox1.Copy();
+				richTextBox1.Copy();
 		  }
 		}
 		//-----------------------------------
@@ -2267,6 +2270,8 @@ namespace MarkDownSharpEditor
 			//ダイアログを表示する
 			if (fontDialog1.ShowDialog() == DialogResult.OK)
 			{
+				undoCount++;
+				UndoBuffer.Add(richTextBox1.Text.ToString());
 				this.richTextBox1.TextChanged -= new System.EventHandler(this.richTextBox1_TextChanged);
 				richTextBox1.Font = fontDialog1.Font;
 				richTextBox1.ForeColor = fontDialog1.Color;
@@ -2660,14 +2665,9 @@ namespace MarkDownSharpEditor
 		}
 
 		#endregion
+
 		//======================================================================
-		
-
-
-
-
-
-
 
 	}
+
 }
