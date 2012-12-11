@@ -969,18 +969,23 @@ namespace MarkDownSharpEditor
 			//フッタ
 			string footer = "</body>\n</html>";
 
-			int NextLineNum, ParagraphStart, ParagraphEnd;
+			int NextLineNum, ParagraphStart;
 
 			//編集箇所にマーカーを挿入する
 			if (richTextBox1.SelectionStart > 0)
 			{
 				NextLineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart) + 1;
 				ParagraphStart = richTextBox1.GetFirstCharIndexOfCurrentLine();
-				ParagraphEnd = richTextBox1.GetFirstCharIndexFromLine(NextLineNum) - 1;
 
+				if (ParagraphStart == 0)
+				{
+					ParagraphStart = 1;
+				}
+				
 				ResultText =
-					richTextBox1.Text.Substring(0, ParagraphStart - 1) + "<!-- edit -->" +
+					richTextBox1.Text.Substring(0, ParagraphStart) + "<!-- edit -->" +
 					richTextBox1.Text.Substring(ParagraphStart);
+
 			}
 			else
 			{
