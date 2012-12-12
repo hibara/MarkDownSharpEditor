@@ -63,8 +63,9 @@
 			this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuView = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuViewRefresh = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuViewAssociateBrowser = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuShowHeaderListMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuViewToolBar = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuViewStatusBar = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,6 +111,7 @@
 			this.contextMenu1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.contextMenu2 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -390,8 +392,9 @@
 			// 
 			this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuViewRefresh,
-            this.toolStripMenuItem9,
             this.menuViewAssociateBrowser,
+            this.toolStripMenuItem9,
+            this.mnuShowHeaderListMenu,
             this.toolStripMenuItem8,
             this.menuViewToolBar,
             this.menuViewStatusBar,
@@ -404,33 +407,41 @@
 			// 
 			this.menuViewRefresh.Name = "menuViewRefresh";
 			this.menuViewRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-			this.menuViewRefresh.Size = new System.Drawing.Size(274, 22);
+			this.menuViewRefresh.Size = new System.Drawing.Size(331, 22);
 			this.menuViewRefresh.Text = "更新(&R)";
 			this.menuViewRefresh.Click += new System.EventHandler(this.menuViewRefresh_Click);
-			// 
-			// toolStripMenuItem9
-			// 
-			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-			this.toolStripMenuItem9.Size = new System.Drawing.Size(271, 6);
 			// 
 			// menuViewAssociateBrowser
 			// 
 			this.menuViewAssociateBrowser.Name = "menuViewAssociateBrowser";
-			this.menuViewAssociateBrowser.Size = new System.Drawing.Size(274, 22);
+			this.menuViewAssociateBrowser.Size = new System.Drawing.Size(331, 22);
 			this.menuViewAssociateBrowser.Text = "関連付けられたブラウザーを起動(&B)";
 			this.menuViewAssociateBrowser.Click += new System.EventHandler(this.toolStripButtonBrowserPreview_Click);
+			// 
+			// toolStripMenuItem9
+			// 
+			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+			this.toolStripMenuItem9.Size = new System.Drawing.Size(328, 6);
+			// 
+			// mnuShowHeaderListMenu
+			// 
+			this.mnuShowHeaderListMenu.Name = "mnuShowHeaderListMenu";
+			this.mnuShowHeaderListMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+			this.mnuShowHeaderListMenu.Size = new System.Drawing.Size(331, 22);
+			this.mnuShowHeaderListMenu.Text = "見出し記号へのジャンプリスト表示(&L)";
+			this.mnuShowHeaderListMenu.Click += new System.EventHandler(this.mnuShowHeaderListMenu_Click);
 			// 
 			// toolStripMenuItem8
 			// 
 			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-			this.toolStripMenuItem8.Size = new System.Drawing.Size(271, 6);
+			this.toolStripMenuItem8.Size = new System.Drawing.Size(328, 6);
 			// 
 			// menuViewToolBar
 			// 
 			this.menuViewToolBar.Checked = true;
 			this.menuViewToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.menuViewToolBar.Name = "menuViewToolBar";
-			this.menuViewToolBar.Size = new System.Drawing.Size(274, 22);
+			this.menuViewToolBar.Size = new System.Drawing.Size(331, 22);
 			this.menuViewToolBar.Text = "ツールバーの表示(&T)";
 			this.menuViewToolBar.Click += new System.EventHandler(this.menuViewToolBar_Click);
 			// 
@@ -439,14 +450,14 @@
 			this.menuViewStatusBar.Checked = true;
 			this.menuViewStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.menuViewStatusBar.Name = "menuViewStatusBar";
-			this.menuViewStatusBar.Size = new System.Drawing.Size(274, 22);
+			this.menuViewStatusBar.Size = new System.Drawing.Size(331, 22);
 			this.menuViewStatusBar.Text = "ステータスバーの表示(&S)";
 			this.menuViewStatusBar.Click += new System.EventHandler(this.menuViewStatusBar_Click);
 			// 
 			// menuViewWidthEvenly
 			// 
 			this.menuViewWidthEvenly.Name = "menuViewWidthEvenly";
-			this.menuViewWidthEvenly.Size = new System.Drawing.Size(274, 22);
+			this.menuViewWidthEvenly.Size = new System.Drawing.Size(331, 22);
 			this.menuViewWidthEvenly.Text = "ソースとビューを均等幅にする(&Q)";
 			this.menuViewWidthEvenly.Click += new System.EventHandler(this.menuViewWidthEvenly_Click);
 			// 
@@ -841,6 +852,12 @@
 			this.timer1.Interval = 10;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
+			// contextMenu2
+			// 
+			this.contextMenu2.Name = "contextMenu2";
+			this.contextMenu2.Size = new System.Drawing.Size(61, 4);
+			this.contextMenu2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenu2_ItemClicked);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -941,7 +958,6 @@
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ToolStripMenuItem menuViewRefresh;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
 		private System.Windows.Forms.ToolStripMenuItem menuViewSample;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStripMenuItem menuHistoryFiles;
@@ -957,6 +973,9 @@
 		private System.Windows.Forms.ToolStripButton toolStripButtonBrowserPreview;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
 		private System.Windows.Forms.ToolStripMenuItem menuViewAssociateBrowser;
+		private System.Windows.Forms.ContextMenuStrip contextMenu2;
+		private System.Windows.Forms.ToolStripMenuItem mnuShowHeaderListMenu;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
 
     }
 }

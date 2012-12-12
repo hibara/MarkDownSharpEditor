@@ -22,7 +22,7 @@ namespace MarkDownSharpEditor
 
 	public partial class Form1 : Form
 	{
-		
+
 		bool fSyntaxHightlighter = false;
 		bool fScrollConstraint = false;                       //スクロール抑制フラグ
 		private int richEditBoxInternalHeight;                //richTextBox1の内部的な高さ
@@ -276,7 +276,129 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------------------------
-		// HACK: RichEditBoxの内容が変更されたとき
+		// 見出しリストメニューの表示
+		//----------------------------------------------------------------------
+		private void mnuShowHeaderListMenu_Click(object sender, EventArgs e)
+		{
+			ShowHeaderListContextMenu();
+		}
+
+		//----------------------------------------------------------------------
+		// HACK: 見出しリストメニューの表示
+		//----------------------------------------------------------------------
+
+		void ShowHeaderListContextMenu()
+		{
+
+			int retCode;
+
+			//Markdown
+			object[][] mkObject = {
+				new object[2] { 1, @"^#[^#]*?$" },     //見出し１
+				new object[2] { 1, @"^.*\n=+$" },  //見出し１
+				new object[2] { 2, @"^##[^#]*?$" },    //見出し２
+				new object[2] { 2, @"^.+\n-+$" },  //見出し２
+				new object[2] { 3, @"^###[^#]*?$" },   //見出し３
+				new object[2] { 4, @"^####[^#]*?$" },  //見出し４
+				new object[2] { 5, @"^#####[^#]*?$" }, //見出し５
+				new object[2] { 6, @"^######[^#]*?$"}  //見出し６
+			};
+
+
+			//コンテキストメニュー項目を初期化（クリア）
+			contextMenu2.Items.Clear();
+
+			bool fModify = richTextBox1.Modified;
+			fConstraintChange = true;
+
+			//現在のカーソル位置
+			int selectStart = this.richTextBox1.SelectionStart;
+			int selectEnd = richTextBox1.SelectionLength;
+			Point CurrentOffset = richTextBox1.AutoScrollOffset;
+
+			//現在のスクロール位置
+			int CurrentScrollPos = richTextBox1.VerticalPosition;
+			//描画停止
+			richTextBox1.BeginUpdate();
+
+			for ( int i = 0; i < mkObject.Length; i++ ){
+
+				Regex r = new Regex((string)mkObject[i][1], RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+				MatchCollection col = r.Matches(richTextBox1.Text, 0);
+
+				if (col.Count > 0)
+				{
+					foreach (Match m in col)
+					{
+						int IndexNum = m.Groups[0].Index;
+						string title = new String('　', (int)mkObject[i][0]) + richTextBox1.Text.Substring(m.Groups[0].Index, m.Groups[0].Length);
+
+						if ( (retCode = title.LastIndexOf("\n")) > -1 )
+						{
+							title = title.Substring(0, title.LastIndexOf("\n"));				
+						}
+
+						//コンテキストメニューに登録
+						bool fAdd = false;
+						ToolStripMenuItem item = new ToolStripMenuItem();
+						for (int c = 0; c < contextMenu2.Items.Count; c++)
+						{
+							//登録されている項目よりも前の項目のときは挿入する
+							if (IndexNum < (int)contextMenu2.Items[c].Tag)
+							{
+								item.Text = title;
+								item.Tag = IndexNum;
+								contextMenu2.Items.Insert(c, item);
+								fAdd = true;
+								break;
+							}
+						}
+						if (fAdd == false)
+						{
+							item.Text = title;
+							item.Tag = IndexNum;
+							contextMenu2.Items.Add(item);
+						}
+					}
+				}
+			}
+
+			//カーソル位置を戻す
+			richTextBox1.Select(selectStart, selectEnd);
+			richTextBox1.AutoScrollOffset = CurrentOffset;
+
+			//描画再開
+			richTextBox1.EndUpdate();
+			richTextBox1.Modified = fModify;
+
+			fConstraintChange = false;
+
+			//richTextBox1のキャレット位置
+			Point pt = richTextBox1.GetPositionFromCharIndex(richTextBox1.SelectionStart);
+			//スクリーン座標に変換
+			pt = richTextBox1.PointToScreen(pt);
+			//コンテキストメニューを表示
+			contextMenu2.Show(pt);
+
+		}
+
+		//----------------------------------------------------------------------
+		// 見出しメニュークリックイベント
+		//----------------------------------------------------------------------
+		private void contextMenu2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+		{
+
+			if ((int)e.ClickedItem.Tag > 0)
+			{
+				richTextBox1.SelectionStart = (int)e.ClickedItem.Tag;
+				richTextBox1.ScrollToCaret();
+			}
+
+		}
+
+
+		//----------------------------------------------------------------------
+		// HACK: RichEditBox ModifiedChanged イベント
 		//----------------------------------------------------------------------
 		private void richTextBox1_ModifiedChanged(object sender, EventArgs e)
 		{
@@ -343,12 +465,10 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void richTextBox1_TextChanged(object sender, EventArgs e)
 		{
-
 			if (fConstraintChange == true)
 			{
 				return;
 			}
-
 			//一行前からシンタックスハイライターを反映
 			int pos = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart) - 1;
 			if (pos < 0)
@@ -357,13 +477,10 @@ namespace MarkDownSharpEditor
 			}
 			SyntaxHightlighterWidthRegex();
 
-
-			//HACK: ブラウザープレビュー（リアルタイムにする必要はない？）
 			if (MarkDownSharpEditor.AppSettings.Instance.fAutoBrowserPreview == true)
 			{
 				timer1.Enabled = true;
 			}
-
 		}
 
 		//----------------------------------------------------------------------
@@ -374,7 +491,6 @@ namespace MarkDownSharpEditor
 			// Undoバッファに追加
 			undoCount++;
 			UndoBuffer.Add(richTextBox1.Text.ToString());
-
 		}
 
 		//----------------------------------------------------------------------
@@ -549,7 +665,7 @@ namespace MarkDownSharpEditor
 		}
 
 		//-----------------------------------
-		// TODO:ファイルのドラッグ＆ドロップ
+		// ファイルのドラッグ＆ドロップ
 		//-----------------------------------
 		private void richTextBox1_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
 		{
@@ -892,7 +1008,8 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------------------------
-		// HACK: PreviewToBrowser（ブラウザプレビュー）
+		// HACK: PreviewToBrowser [ ブラウザプレビュー ]
+		// 
 		//----------------------------------------------------------------------
 		private void PreviewToBrowser()
 		{
@@ -1093,22 +1210,19 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------------------------
-		// TODO: ブラウザのスクロールイベント
+		// ブラウザのスクロールイベント
 		//----------------------------------------------------------------------
 		public void OnScrollEventHandler(object sender, EventArgs e)
 		{
-
 			RichEditBoxMoveCursor();
-
 		}
 
 		//----------------------------------------------------------------------
-		// TODO: WebBrowserMoveCursor() 
-		// RichEditBox → WebBrowserスクロールt追従
+		// TODO: WebBrowserMoveCursor() [RichEditBox → WebBrowserスクロール追従]
+		// 
 		//----------------------------------------------------------------------
 		private void WebBrowserMoveCursor()
 		{
-
 			if (webBrowser1.Document == null)
 			{
 				return;
@@ -1126,37 +1240,33 @@ namespace MarkDownSharpEditor
 				Point webScrollPos = new Point(0, y);
 				//ブラウザーのスクロールを追従させる
 				webBrowser1.Document.Window.ScrollTo(webScrollPos);
-
 			}
 
 		}
 
 		//----------------------------------------------------------------------
-		// HACK: RichEditBoxMoveCursor() 
-		// WebBrowser → RichEditBoxスクロールt追従
+		// HACK: RichEditBoxMoveCursor [ WebBrowser → RichEditBoxスクロールt追従 ] 
+		// 
 		//----------------------------------------------------------------------
 		private void RichEditBoxMoveCursor()
 		{
-
 			//ブラウザでのスクロールバーの位置
 			if (richTextBox1.Focused == false && webBrowser1.Document != null)
 			{
 				IHTMLDocument3 doc3 = (IHTMLDocument3)webBrowser1.Document.DomDocument;
 				IHTMLElement2 elm = (IHTMLElement2)doc3.documentElement;
-				//HACK: 全高さからの割合（位置）
+				//全高さからの割合（位置）
 				float perHeight = (float)elm.scrollTop / WebBrowserInternalHeight;
 
 				int y = (int)(richEditBoxInternalHeight * perHeight);
 				richTextBox1.VerticalPosition = y;
-				
-
 			}
 
 		}
 
 		//-------------------------------------------------------------------------------
 		// RichTextBoxで指定の文字インデックスまでのパラグラフ数（行数）を取得する
-		// 
+		//※かなり不正確なので廃止。もうちょっとスマートで正確な方法があれば誰か教えてください。
 		//-------------------------------------------------------------------------------
 		/*
 		private int GetParagraphCount(int CharIndex)
@@ -1564,18 +1674,18 @@ namespace MarkDownSharpEditor
 			//強制ブレーク
 			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"  $", Color.FromArgb(obj.ForeColor_LineBreak), Color.FromArgb(obj.BackColor_LineBreak)));
 			//見出し１
-			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^#.*$", Color.FromArgb(obj.ForeColor_Headlines[1]), Color.FromArgb(obj.BackColor_Headlines[1])));
+			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^#[^#]*?$", Color.FromArgb(obj.ForeColor_Headlines[1]), Color.FromArgb(obj.BackColor_Headlines[1])));
 			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^.*\n=+$", Color.FromArgb(obj.ForeColor_Headlines[1]), Color.FromArgb(obj.BackColor_Headlines[1])));
 			//見出し２
-			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^##.*$", Color.FromArgb(obj.ForeColor_Headlines[2]), Color.FromArgb(obj.BackColor_Headlines[2])));
+			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^##[^#]*?$", Color.FromArgb(obj.ForeColor_Headlines[2]), Color.FromArgb(obj.BackColor_Headlines[2])));
 			//見出し３
-			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^###.*$", Color.FromArgb(obj.ForeColor_Headlines[3]), Color.FromArgb(obj.BackColor_Headlines[3])));
+			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^###[^#]*?$", Color.FromArgb(obj.ForeColor_Headlines[3]), Color.FromArgb(obj.BackColor_Headlines[3])));
 			//見出し４
-			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^####.*$", Color.FromArgb(obj.ForeColor_Headlines[4]), Color.FromArgb(obj.BackColor_Headlines[4])));
+			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^####[^#]*?$", Color.FromArgb(obj.ForeColor_Headlines[4]), Color.FromArgb(obj.BackColor_Headlines[4])));
 			//見出し５
-			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^#####.*$", Color.FromArgb(obj.ForeColor_Headlines[5]), Color.FromArgb(obj.BackColor_Headlines[5])));
+			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^#####[^#]*?$", Color.FromArgb(obj.ForeColor_Headlines[5]), Color.FromArgb(obj.BackColor_Headlines[5])));
 			//見出し６
-			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^#####.*$", Color.FromArgb(obj.ForeColor_Headlines[6]), Color.FromArgb(obj.BackColor_Headlines[6])));
+			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^#####[^#]*?$", Color.FromArgb(obj.ForeColor_Headlines[6]), Color.FromArgb(obj.BackColor_Headlines[6])));
 			//引用
 			MarkdownSyntaxKeywordAarray.Add(new MarkdownSyntaxKeyword(@"^>.*$", Color.FromArgb(obj.ForeColor_Blockquotes), Color.FromArgb(obj.BackColor_Blockquotes)));
 			//リスト
@@ -1623,7 +1733,7 @@ namespace MarkDownSharpEditor
 
 			var obj = MarkDownSharpEditor.AppSettings.Instance;
 
-			Font fc = richTextBox1.Font;			//現在のフォント設定
+			Font fc = richTextBox1.Font;          //現在のフォント設定
 			bool fModify = richTextBox1.Modified;	//現在の編集状況
 			
 			fConstraintChange = true;
@@ -1639,9 +1749,7 @@ namespace MarkDownSharpEditor
 			richTextBox1.BeginUpdate();
 
 			// RichTextBoxの書式をクリアする
-			// TODO: これだとテキストボックス内すべての書式がクリアされるので、指定された位置からのクリア処理が必要。
 			string TemporaryText = richTextBox1.Text.ToString();
-			//richTextBox1.Text = richTextBox1.Text.ToString();
 			richTextBox1.Clear();
 			richTextBox1.Text = TemporaryText;
 			richTextBox1.Font = fc;
@@ -2671,7 +2779,15 @@ namespace MarkDownSharpEditor
 
 		#endregion
 
+
+
 		//======================================================================
+
+
+
+
+
+
 
 	}
 
