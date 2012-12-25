@@ -23,11 +23,15 @@ namespace MarkDownSharpEditor
 	public partial class Form1 : Form
 	{
 
-		bool fSyntaxHightlighter = false;
-		bool fScrollConstraint = false;                       //スクロール抑制フラグ
+		private bool fSearchStart = false;                    //検索を開始したか
+		private bool fSyntaxHightlighter = false;
+		private bool fScrollConstraint = false;               //スクロール抑制フラグ
 		private int richEditBoxInternalHeight;                //richTextBox1の内部的な高さ
 		private int WebBrowserInternalHeight;                 //webBrowser1の内部的な高さ（body）
-		
+
+		private Point preFormPos;                             //フォームサイズ変更前の位置を一時保存
+		private Size preFormSize;                             //フォームサイズ変更前のサイズを一時保存
+
 		private bool fNoTitle = true;                         //無題のまま編集中かどうか
 		private string MarkDownTextFilePath = "";             //編集中のMDファイルパス
 		private string TemporaryHtmlFilePath = "";            //プレビュー用のテンポラリHTMLファイルパス
@@ -56,6 +60,8 @@ namespace MarkDownSharpEditor
 			MarkDownSharpEditor.AppSettings.Instance.ReadFromXMLFile();
 			richTextBox1.AllowDrop = true;
 
+			WebBrowserClickSoundOFF();
+
 		}
 
 		//----------------------------------------------------------------------
@@ -69,11 +75,29 @@ namespace MarkDownSharpEditor
 			//-----------------------------------
 			//フォーム位置・サイズ
 			//-----------------------------------
-			this.Left = obj.FormPos.X;
-			this.Top = obj.FormPos.Y;
-			this.Width = obj.FormSize.Width;
-			this.Height = obj.FormSize.Height;
+
+			this.Location = obj.FormPos;
+			this.Size = obj.FormSize;
 			this.richTextBox1.Width = obj.richEditWidth;
+
+			//ウィンドウ位置の調整（へんなところに行かないように戻す）
+			if (this.Left < 0 || this.Left > Screen.PrimaryScreen.Bounds.Width)
+			{
+				this.Left = 0;
+			}
+			if (this.Top < 0 || this.Top > Screen.PrimaryScreen.Bounds.Height)
+			{
+				this.Top = 0;
+			}
+			
+			if (obj.FormState == 1)
+			{	//最小化
+				this.WindowState = FormWindowState.Minimized;
+			}
+			else if (obj.FormState == 2)
+			{	//最大化
+				this.WindowState = FormWindowState.Maximized;
+			}
 
 			//メインメニュー表示
 			this.menuViewToolBar.Checked = obj.fViewToolBar;
@@ -145,6 +169,10 @@ namespace MarkDownSharpEditor
 				Encoding enc = Encoding.GetEncoding(obj.CodePageNumber);
 				toolStripStatusLabelHtmlEncoding.Text = enc.EncodingName; 
 			}
+
+			//-----------------------------------
+			//検索フォーム・オプション
+			chkOptionCase.Checked = obj.fSearchOptionIgnoreCase ? false : true;
 
 		}
 		
@@ -491,6 +519,13 @@ namespace MarkDownSharpEditor
 			// Undoバッファに追加
 			undoCount++;
 			UndoBuffer.Add(richTextBox1.Text.ToString());
+
+			//EnterやEscapeキーでビープ音が鳴らないようにする
+			if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Escape)
+			{
+				e.Handled = true;
+			}
+
 		}
 
 		//----------------------------------------------------------------------
@@ -589,8 +624,27 @@ namespace MarkDownSharpEditor
 			MarkDownSharpEditor.AppSettings.Instance.Version = ver.Major*1000+ver.Minor*100+ver.Build*10+ver.Revision;
 
 			//フォーム位置・サイズ
-			MarkDownSharpEditor.AppSettings.Instance.FormPos = new Point(this.Left, this.Top);
-			MarkDownSharpEditor.AppSettings.Instance.FormSize = new Size(this.Width, this.Height);
+			if (this.WindowState == FormWindowState.Minimized)
+			{	//最小化
+				MarkDownSharpEditor.AppSettings.Instance.FormState = 1;
+				//一時記憶していた位置・サイズを保存
+				MarkDownSharpEditor.AppSettings.Instance.FormPos = new Point(preFormPos.X, preFormPos.Y);
+				MarkDownSharpEditor.AppSettings.Instance.FormSize = new Size(preFormSize.Width, preFormSize.Height);
+			}
+			else if (this.WindowState == FormWindowState.Maximized)
+			{	//最大化
+				MarkDownSharpEditor.AppSettings.Instance.FormState = 2;
+				//一時記憶していた位置・サイズを保存
+				MarkDownSharpEditor.AppSettings.Instance.FormPos = new Point(preFormPos.X, preFormPos.Y);
+				MarkDownSharpEditor.AppSettings.Instance.FormSize = new Size(preFormSize.Width, preFormSize.Height);
+			}
+			else
+			{	//通常
+				MarkDownSharpEditor.AppSettings.Instance.FormState = 0;
+				MarkDownSharpEditor.AppSettings.Instance.FormPos = new Point(this.Left, this.Top);
+				MarkDownSharpEditor.AppSettings.Instance.FormSize = new Size(this.Width, this.Height);
+			}
+
 			MarkDownSharpEditor.AppSettings.Instance.richEditWidth = this.richTextBox1.Width;
 			FontConverter fc = new FontConverter();
 			MarkDownSharpEditor.AppSettings.Instance.FontFormat = fc.ConvertToString(richTextBox1.Font);
@@ -600,6 +654,9 @@ namespace MarkDownSharpEditor
 			MarkDownSharpEditor.AppSettings.Instance.fViewToolBar = this.menuViewToolBar.Checked;
 			MarkDownSharpEditor.AppSettings.Instance.fViewStatusBar = this.menuViewStatusBar.Checked;
 			MarkDownSharpEditor.AppSettings.Instance.fSplitBarWidthEvenly = this.menuViewWidthEvenly.Checked;
+
+			//検索オプション
+			MarkDownSharpEditor.AppSettings.Instance.fSearchOptionIgnoreCase = chkOptionCase.Checked ? false : true;
 
 			if (File.Exists(MarkDownTextFilePath) == true)
 			{
@@ -625,6 +682,8 @@ namespace MarkDownSharpEditor
 			//ブラウザを空白にする
 			webBrowser1.Navigate("about:blank");
 
+			WebBrowserClickSoundON();
+
 		}
 
 		//-----------------------------------
@@ -637,7 +696,19 @@ namespace MarkDownSharpEditor
 		}
 
 		//-----------------------------------
-		//フォームのリサイズ
+		//フォームのリサイズ開始
+		//-----------------------------------
+		private void Form1_ResizeBegin(object sender, EventArgs e)
+		{
+			//リサイズ前の位置・サイズを一時記憶
+			preFormPos.X = this.Left;
+			preFormPos.Y = this.Top;
+			preFormSize.Width = this.Width;
+			preFormSize.Height = this.Height;
+		}
+
+		//-----------------------------------
+		//フォームのリサイズ完了
 		//-----------------------------------
 		private void Form1_ResizeEnd(object sender, EventArgs e)
 		{
@@ -2300,6 +2371,38 @@ namespace MarkDownSharpEditor
 		}
 
 		//-----------------------------------
+		//「検索」メニュー
+		//-----------------------------------
+		private void menuSearch_Click(object sender, EventArgs e)
+		{
+			fSearchStart = false;
+			panelSearch.Visible = true;
+			panelSearch.Height = 34;
+			textBoxSearch.Focus();
+			labelReplace.Visible = false;
+			textBoxReplace.Visible = false;
+			cmdReplaceAll.Visible = false;
+			cmdSearchNext.Text = "次を検索する(&N)";
+			cmdSearchPrev.Text = "前を検索する(&P)";
+
+		}
+		//-----------------------------------
+		//「置換」メニュー
+		//-----------------------------------
+		private void menuReplace_Click(object sender, EventArgs e)
+		{
+			fSearchStart = false;
+			panelSearch.Visible = true;
+			panelSearch.Height = 58;
+			textBoxSearch.Focus();
+			labelReplace.Visible = true;
+			textBoxReplace.Visible = true;
+			cmdReplaceAll.Visible = true;
+			cmdSearchNext.Text = "置換して次へ(&N)";
+			cmdSearchPrev.Text = "置換して前へ(&P)";
+		}
+
+		//-----------------------------------
 		// 表示の更新
 		//-----------------------------------
 		private void menuViewRefresh_Click(object sender, EventArgs e)
@@ -2498,16 +2601,22 @@ namespace MarkDownSharpEditor
 
 			foreach (string FilePath in MarkDownSharpEditor.AppSettings.Instance.ArrayCssFileList)
 			{
-				ToolStripMenuItem item = new ToolStripMenuItem(Path.GetFileName(FilePath));
-				item.Tag = FilePath;
-				if (SelectedCssFilePath == FilePath )
+				if (File.Exists(FilePath) == true)
 				{
-					item.Checked = true;
+					ToolStripMenuItem item = new ToolStripMenuItem(Path.GetFileName(FilePath));
+					item.Tag = FilePath;
+					if (SelectedCssFilePath == FilePath)
+					{
+						item.Checked = true;
+					}
+					contextMenu1.Items.Add(item);
 				}
-				contextMenu1.Items.Add(item);
 			}
-			contextMenu1.Tag = "css";
-			contextMenu1.Show(Control.MousePosition);
+			if (contextMenu1.Items.Count > 0)
+			{
+				contextMenu1.Tag = "css";
+				contextMenu1.Show(Control.MousePosition);
+			}
 
 		}
 
@@ -2560,6 +2669,307 @@ namespace MarkDownSharpEditor
 				//プレビューも更新する
 				PreviewToBrowser();
 			}
+
+		}
+
+		//----------------------------------------------------------------------
+		// 検索パネル
+		//----------------------------------------------------------------------
+		private void imgSearchExit_Click(object sender, EventArgs e)
+		{
+			panelSearch.Visible = false;
+		}
+		//-----------------------------------
+		// 検索パネル「閉じる」ボタンイベント
+		//-----------------------------------
+		private void imgSearchExit_MouseEnter(object sender, EventArgs e)
+		{
+			imgSearchExit.Image = imgSearchExitEnabled.Image;
+		}
+
+		private void imgSearchExit_MouseLeave(object sender, EventArgs e)
+		{
+			imgSearchExit.Image = imgSearchExitUnabled.Image;
+		}
+
+		//-----------------------------------
+		// 検索テキストボックス（TextChanged）
+		//-----------------------------------
+		private void textBoxSearch_TextChanged(object sender, EventArgs e)
+		{
+			//検索をやり直し
+			fSearchStart = false;
+
+			if (textBoxReplace.Visible == true)
+			{
+				if (textBoxSearch.Text == "")
+				{
+					cmdSearchNext.Enabled = false;
+					cmdSearchPrev.Enabled = false;
+					cmdReplaceAll.Enabled = false;
+				}
+				else
+				{
+					cmdSearchNext.Enabled = true;
+					cmdSearchPrev.Enabled = true;
+					cmdReplaceAll.Enabled = true;
+				}
+
+			}
+			else
+			{
+				cmdSearchNext.Enabled = true;
+				cmdSearchPrev.Enabled = true;
+			}
+		}
+
+		//-----------------------------------
+		// 検索テキストボックス（KeyDown）
+		//-----------------------------------
+		private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Shift && e.KeyCode == Keys.Enter)
+			{	// Shitf + Enter で前へ
+				cmdSearchPrev_Click(sender, e);
+			}
+			else if (e.KeyCode == Keys.Enter)
+			{
+				cmdSearchNext_Click(sender, e);
+			}
+			else if (e.KeyCode == Keys.Escape)
+			{
+				panelSearch.Visible = false;
+			}
+		}
+
+		//-----------------------------------
+		// 検索テキストボックス（KeyPress）
+		//-----------------------------------
+		private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			//EnterやEscapeキーでビープ音が鳴らないようにする
+			if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Escape)
+			{
+				e.Handled = true;
+			}
+		}
+
+		//-----------------------------------
+		// 置換テキストボックス（KeyDown）
+		//-----------------------------------
+		private void textBoxReplace_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Shift && e.KeyCode == Keys.Enter)
+			{	// Shitf + Enter で前へ
+				cmdSearchPrev_Click(sender, e);
+			}
+			else if (e.KeyCode == Keys.Enter)
+			{
+				cmdSearchNext_Click(sender, e);
+			}
+			else if (e.KeyCode == Keys.Escape)
+			{
+				panelSearch.Visible = false;
+			}
+		}
+
+		//-----------------------------------
+		// 置換テキストボックス（KeyPress）
+		//-----------------------------------
+		private void textBoxReplace_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			//EnterやEscapeキーでビープ音が鳴らないようにする
+			if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Escape)
+			{
+				e.Handled = true;
+			}
+		}
+
+		//----------------------------------------------------------------------
+		// 次を検索（または、置換して次へ）ボタン
+		//----------------------------------------------------------------------
+		private void cmdSearchNext_Click(object sender, EventArgs e)
+		{
+			int StartPos;
+			StringComparison sc;
+			DialogResult result;
+			string MsgText = "";
+
+			if (textBoxSearch.Text != "")
+			{
+				//置換モードの場合は、置換してから次を検索する
+				if (textBoxReplace.Visible == true && fSearchStart == true)
+				{
+					if ( richTextBox1.SelectionLength > 0 ){
+						richTextBox1.SelectedText = textBoxReplace.Text;
+					}
+				}
+
+				if ( chkOptionCase.Checked == true ){
+					sc = StringComparison.Ordinal;
+				}
+				else{	//大文字と小文字を区別しない
+					sc = StringComparison.OrdinalIgnoreCase;
+				}
+
+				int CurrentPos = richTextBox1.SelectionStart+1;
+
+				//-----------------------------------
+				// 検索ワードが見つからない
+				//-----------------------------------
+				if ((StartPos = richTextBox1.Text.IndexOf(textBoxSearch.Text, CurrentPos, sc)) == -1)
+				{
+					//検索を開始した直後
+					if (fSearchStart == false)
+					{
+						MsgText = "ファイル末尾まで検索しましたが、見つかりませんでした。\n" +
+								  "ファイルの先頭から検索を続けますか？";
+						fSearchStart = true;
+					}
+					else
+					{
+						MsgText = "ファイル末尾までの検索が完了しました。\n" + 
+							      "ファイル先頭に戻って検索を続けますか？";
+					}
+					result = MessageBox.Show(MsgText, "通知", 
+						MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+					
+					if (result == DialogResult.Yes)
+					{
+						richTextBox1.SelectionStart = 0;
+						cmdSearchNext_Click(sender, e);
+					}
+				}
+				//-----------------------------------
+				// 検索ワードが見つかった
+				//-----------------------------------
+				else{
+					//richTextBox1.HideSelection = false;
+					richTextBox1.Select(StartPos, textBoxSearch.Text.Length);
+					richTextBox1.ScrollToCaret();
+					fSearchStart = true; //検索開始
+				}
+			}
+
+		}
+		//----------------------------------------------------------------------
+		// 前を検索（または、置換して前へ）ボタン
+		//----------------------------------------------------------------------
+		private void cmdSearchPrev_Click(object sender, EventArgs e)
+		{
+			int StartPos;
+			StringComparison sc;
+			DialogResult result;
+			string MsgText = "";
+
+			if (textBoxSearch.Text != "")
+			{
+				//置換モードの場合は、置換してから次を検索する
+				if (textBoxReplace.Visible == true && fSearchStart == true)
+				{
+					if (richTextBox1.SelectionLength > 0)
+					{
+						richTextBox1.SelectedText = textBoxReplace.Text;
+					}
+				}
+
+				if (chkOptionCase.Checked == true)
+				{
+					sc = StringComparison.Ordinal;
+				}
+				else
+				{	//大文字と小文字を区別しない
+					sc = StringComparison.OrdinalIgnoreCase;
+				}
+
+				int CurrentPos = richTextBox1.SelectionStart - 1;
+				if (CurrentPos < 0)
+				{
+					CurrentPos = 0;
+				}
+				//-----------------------------------
+				// 検索ワードが見つからない
+				//-----------------------------------
+				if ((StartPos = richTextBox1.Text.LastIndexOf(textBoxSearch.Text, CurrentPos, sc)) == -1)
+				{
+					//検索を開始した直後
+					if (fSearchStart == false)
+					{
+						MsgText = "ファイル先頭まで検索しましたが、見つかりませんでした。\n" +
+								  "ファイルの末尾から検索を続けますか？";
+						fSearchStart = true;
+					}
+					else
+					{
+						MsgText = "ファイル先頭までの検索が完了しました。\n" +
+								  "ファイル末尾から検索を続けますか？";
+					}
+					
+					result = MessageBox.Show(MsgText, "通知",
+						MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+
+					if (result == DialogResult.Yes)
+					{
+						richTextBox1.SelectionStart = richTextBox1.Text.Length - 1;
+						cmdSearchPrev_Click(sender, e);
+					}
+				}
+				//-----------------------------------
+				// 検索ワードが見つかった
+				//-----------------------------------
+				else
+				{
+					//richTextBox1.HideSelection = false;
+					richTextBox1.Select(StartPos, textBoxSearch.Text.Length);
+					richTextBox1.ScrollToCaret();
+					fSearchStart = true; //検索開始
+				}
+			}
+
+		}
+
+		//-----------------------------------
+		// すべてを置換ボタン
+		//-----------------------------------
+		private void cmdReplaceAll_Click(object sender, EventArgs e)
+		{
+			int StartPos;
+			StringComparison sc;
+			string MsgText = "";
+
+			if (chkOptionCase.Checked == true)
+			{
+				sc = StringComparison.Ordinal;
+			}
+			else
+			{	//大文字と小文字を区別しない
+				sc = StringComparison.OrdinalIgnoreCase;
+			}
+
+			int CurrentPos = 0;
+			int ReplaceCount = 0;
+			while ((StartPos = richTextBox1.Text.IndexOf(textBoxSearch.Text, CurrentPos, sc)) > -1 ){
+				richTextBox1.Select(StartPos, textBoxSearch.Text.Length);
+				richTextBox1.ScrollToCaret();
+				if (richTextBox1.SelectionLength > 0)
+				{
+					richTextBox1.SelectedText = textBoxReplace.Text;
+					ReplaceCount++;
+				}
+			}
+
+			if ( ReplaceCount > 0 )
+			{
+				MsgText = "以下のワードを" + ReplaceCount.ToString() + "件置換しました。\n" +
+					        textBoxSearch.Text + " -> " + textBoxReplace.Text;
+			}
+			else
+			{
+				MsgText = "ご指定の検索ワードは見つかりませんでした。";
+			}
+
+			MessageBox.Show(MsgText, "通知", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			fSearchStart = true;
 
 		}
 
@@ -2777,15 +3187,51 @@ namespace MarkDownSharpEditor
 		  return null;
 		}
 
-		#endregion
-
-
-
+		#endregion	
 		//======================================================================
 
 
+		#region WebBrowserコンポーネントのカチカチ音制御
 
+		// 以下のサイトのエントリーを参考にさせていただきました。
+		// http://www.moonmile.net/blog/archives/1465
 
+		private string keyCurrent = @"AppEvents\Schemes\Apps\Explorer\Navigating\.Current";
+		private string keyDefault = @"AppEvents\Schemes\Apps\Explorer\Navigating\.Default";
+
+		// <summary>
+		// クリック音をON
+		// </summary>
+		// <param name="sender"></param>
+		// <param name="e"></param>
+		private void WebBrowserClickSoundON()
+		{
+			// .Defaultの値を読み込んで、.Currentに書き込み
+			Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser;
+			key = key.OpenSubKey(keyDefault);
+			string data = (string)key.GetValue(null);
+			key.Close();
+
+			key = Microsoft.Win32.Registry.CurrentUser;
+			key = key.OpenSubKey(keyCurrent, true);
+			key.SetValue(null, data);
+			key.Close();
+		}
+		// <summary>
+		// クリック音をOFF
+		// </summary>
+		// <param name="sender"></param>
+		// <param name="e"></param>
+		private void WebBrowserClickSoundOFF()
+		{
+			// .Currnetを @"" にする。
+			Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser;
+			key = key.OpenSubKey(keyCurrent, true);
+			key.SetValue(null, "");
+			key.Close();
+		}
+
+		#endregion
 
 
 

@@ -61,6 +61,9 @@
 			this.menuPaste = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
+			this.menuSearch = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuReplace = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuView = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuViewRefresh = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuViewAssociateBrowser = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +106,6 @@
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonBrowserPreview = new System.Windows.Forms.ToolStripButton();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.richTextBox1 = new RichTextBoxEx();
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -112,6 +114,19 @@
 			this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.contextMenu2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.panelSearch = new System.Windows.Forms.Panel();
+			this.cmdReplaceAll = new System.Windows.Forms.Button();
+			this.labelReplace = new System.Windows.Forms.Label();
+			this.textBoxReplace = new System.Windows.Forms.TextBox();
+			this.imgSearchExitUnabled = new System.Windows.Forms.PictureBox();
+			this.imgSearchExitEnabled = new System.Windows.Forms.PictureBox();
+			this.chkOptionCase = new System.Windows.Forms.CheckBox();
+			this.imgSearchExit = new System.Windows.Forms.PictureBox();
+			this.cmdSearchNext = new System.Windows.Forms.Button();
+			this.cmdSearchPrev = new System.Windows.Forms.Button();
+			this.labelSearch = new System.Windows.Forms.Label();
+			this.textBoxSearch = new System.Windows.Forms.TextBox();
+			this.richTextBox1 = new RichTextBoxEx();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -119,6 +134,10 @@
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.panelSearch.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.imgSearchExitUnabled)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgSearchExitEnabled)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgSearchExit)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// statusStrip1
@@ -285,6 +304,7 @@
 			// 
 			// menuOutputHtmlFile
 			// 
+			this.menuOutputHtmlFile.Image = ((System.Drawing.Image)(resources.GetObject("menuOutputHtmlFile.Image")));
 			this.menuOutputHtmlFile.Name = "menuOutputHtmlFile";
 			this.menuOutputHtmlFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
 			this.menuOutputHtmlFile.Size = new System.Drawing.Size(428, 22);
@@ -293,6 +313,7 @@
 			// 
 			// menuOutputHtmlToClipboard
 			// 
+			this.menuOutputHtmlToClipboard.Image = ((System.Drawing.Image)(resources.GetObject("menuOutputHtmlToClipboard.Image")));
 			this.menuOutputHtmlToClipboard.Name = "menuOutputHtmlToClipboard";
 			this.menuOutputHtmlToClipboard.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.H)));
@@ -323,7 +344,10 @@
             this.menuCopy,
             this.menuPaste,
             this.toolStripMenuItem3,
-            this.menuSelectAll});
+            this.menuSelectAll,
+            this.toolStripMenuItem10,
+            this.menuSearch,
+            this.menuReplace});
 			this.menuEdit.Name = "menuEdit";
 			this.menuEdit.Size = new System.Drawing.Size(61, 22);
 			this.menuEdit.Text = "編集(&E)";
@@ -387,6 +411,27 @@
 			this.menuSelectAll.Size = new System.Drawing.Size(201, 22);
 			this.menuSelectAll.Text = "すべて選択(&A)";
 			this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
+			// 
+			// toolStripMenuItem10
+			// 
+			this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+			this.toolStripMenuItem10.Size = new System.Drawing.Size(198, 6);
+			// 
+			// menuSearch
+			// 
+			this.menuSearch.Name = "menuSearch";
+			this.menuSearch.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+			this.menuSearch.Size = new System.Drawing.Size(201, 22);
+			this.menuSearch.Text = "検索(&S)";
+			this.menuSearch.Click += new System.EventHandler(this.menuSearch_Click);
+			// 
+			// menuReplace
+			// 
+			this.menuReplace.Name = "menuReplace";
+			this.menuReplace.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+			this.menuReplace.Size = new System.Drawing.Size(201, 22);
+			this.menuReplace.Text = "置換(&R)";
+			this.menuReplace.Click += new System.EventHandler(this.menuReplace_Click);
 			// 
 			// menuView
 			// 
@@ -785,29 +830,6 @@
 			this.splitContainer1.SplitterWidth = 6;
 			this.splitContainer1.TabIndex = 3;
 			// 
-			// richTextBox1
-			// 
-			this.richTextBox1.AcceptsTab = true;
-			this.richTextBox1.DetectUrls = false;
-			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.richTextBox1.HorizontalPosition = 0;
-			this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-			this.richTextBox1.Size = new System.Drawing.Size(260, 366);
-			this.richTextBox1.TabIndex = 0;
-			this.richTextBox1.Text = "";
-			this.richTextBox1.VerticalPosition = 0;
-			this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
-			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
-			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
-			this.richTextBox1.ModifiedChanged += new System.EventHandler(this.richTextBox1_ModifiedChanged);
-			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
-			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
-			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
-			this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
-			// 
 			// webBrowser1
 			// 
 			this.webBrowser1.AllowWebBrowserDrop = false;
@@ -838,7 +860,7 @@
 			// contextMenu1
 			// 
 			this.contextMenu1.Name = "contextMenuStrip1";
-			this.contextMenu1.Size = new System.Drawing.Size(61, 4);
+			this.contextMenu1.Size = new System.Drawing.Size(153, 26);
 			this.contextMenu1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenu1_ItemClicked);
 			// 
 			// saveFileDialog2
@@ -858,12 +880,183 @@
 			this.contextMenu2.Size = new System.Drawing.Size(61, 4);
 			this.contextMenu2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenu2_ItemClicked);
 			// 
+			// panelSearch
+			// 
+			this.panelSearch.Controls.Add(this.cmdReplaceAll);
+			this.panelSearch.Controls.Add(this.labelReplace);
+			this.panelSearch.Controls.Add(this.textBoxReplace);
+			this.panelSearch.Controls.Add(this.imgSearchExitUnabled);
+			this.panelSearch.Controls.Add(this.imgSearchExitEnabled);
+			this.panelSearch.Controls.Add(this.chkOptionCase);
+			this.panelSearch.Controls.Add(this.imgSearchExit);
+			this.panelSearch.Controls.Add(this.cmdSearchNext);
+			this.panelSearch.Controls.Add(this.cmdSearchPrev);
+			this.panelSearch.Controls.Add(this.labelSearch);
+			this.panelSearch.Controls.Add(this.textBoxSearch);
+			this.panelSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panelSearch.Location = new System.Drawing.Point(0, 359);
+			this.panelSearch.Name = "panelSearch";
+			this.panelSearch.Size = new System.Drawing.Size(559, 58);
+			this.panelSearch.TabIndex = 4;
+			this.panelSearch.Visible = false;
+			// 
+			// cmdReplaceAll
+			// 
+			this.cmdReplaceAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.cmdReplaceAll.Location = new System.Drawing.Point(217, 27);
+			this.cmdReplaceAll.Name = "cmdReplaceAll";
+			this.cmdReplaceAll.Size = new System.Drawing.Size(108, 26);
+			this.cmdReplaceAll.TabIndex = 16;
+			this.cmdReplaceAll.Text = "すべてを置換する";
+			this.cmdReplaceAll.UseVisualStyleBackColor = true;
+			this.cmdReplaceAll.Visible = false;
+			this.cmdReplaceAll.Click += new System.EventHandler(this.cmdReplaceAll_Click);
+			// 
+			// labelReplace
+			// 
+			this.labelReplace.AutoSize = true;
+			this.labelReplace.Location = new System.Drawing.Point(34, 37);
+			this.labelReplace.Name = "labelReplace";
+			this.labelReplace.Size = new System.Drawing.Size(35, 12);
+			this.labelReplace.TabIndex = 13;
+			this.labelReplace.Text = "置換：";
+			this.labelReplace.Visible = false;
+			// 
+			// textBoxReplace
+			// 
+			this.textBoxReplace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBoxReplace.Location = new System.Drawing.Point(69, 34);
+			this.textBoxReplace.Name = "textBoxReplace";
+			this.textBoxReplace.Size = new System.Drawing.Size(97, 19);
+			this.textBoxReplace.TabIndex = 12;
+			this.textBoxReplace.Visible = false;
+			this.textBoxReplace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxReplace_KeyDown);
+			this.textBoxReplace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxReplace_KeyPress);
+			// 
+			// imgSearchExitUnabled
+			// 
+			this.imgSearchExitUnabled.Image = ((System.Drawing.Image)(resources.GetObject("imgSearchExitUnabled.Image")));
+			this.imgSearchExitUnabled.Location = new System.Drawing.Point(91, 8);
+			this.imgSearchExitUnabled.Name = "imgSearchExitUnabled";
+			this.imgSearchExitUnabled.Size = new System.Drawing.Size(16, 16);
+			this.imgSearchExitUnabled.TabIndex = 9;
+			this.imgSearchExitUnabled.TabStop = false;
+			this.imgSearchExitUnabled.Visible = false;
+			// 
+			// imgSearchExitEnabled
+			// 
+			this.imgSearchExitEnabled.Image = ((System.Drawing.Image)(resources.GetObject("imgSearchExitEnabled.Image")));
+			this.imgSearchExitEnabled.Location = new System.Drawing.Point(69, 8);
+			this.imgSearchExitEnabled.Name = "imgSearchExitEnabled";
+			this.imgSearchExitEnabled.Size = new System.Drawing.Size(16, 16);
+			this.imgSearchExitEnabled.TabIndex = 8;
+			this.imgSearchExitEnabled.TabStop = false;
+			this.imgSearchExitEnabled.Visible = false;
+			// 
+			// chkOptionCase
+			// 
+			this.chkOptionCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.chkOptionCase.AutoSize = true;
+			this.chkOptionCase.Location = new System.Drawing.Point(171, 8);
+			this.chkOptionCase.Name = "chkOptionCase";
+			this.chkOptionCase.Size = new System.Drawing.Size(151, 16);
+			this.chkOptionCase.TabIndex = 11;
+			this.chkOptionCase.Text = "大文字/小文字を区別(&C)";
+			this.chkOptionCase.UseVisualStyleBackColor = true;
+			// 
+			// imgSearchExit
+			// 
+			this.imgSearchExit.Image = ((System.Drawing.Image)(resources.GetObject("imgSearchExit.Image")));
+			this.imgSearchExit.Location = new System.Drawing.Point(13, 8);
+			this.imgSearchExit.Name = "imgSearchExit";
+			this.imgSearchExit.Size = new System.Drawing.Size(16, 16);
+			this.imgSearchExit.TabIndex = 7;
+			this.imgSearchExit.TabStop = false;
+			this.imgSearchExit.Click += new System.EventHandler(this.imgSearchExit_Click);
+			this.imgSearchExit.MouseEnter += new System.EventHandler(this.imgSearchExit_MouseEnter);
+			this.imgSearchExit.MouseLeave += new System.EventHandler(this.imgSearchExit_MouseLeave);
+			// 
+			// cmdSearchNext
+			// 
+			this.cmdSearchNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.cmdSearchNext.Image = ((System.Drawing.Image)(resources.GetObject("cmdSearchNext.Image")));
+			this.cmdSearchNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.cmdSearchNext.Location = new System.Drawing.Point(328, 27);
+			this.cmdSearchNext.Name = "cmdSearchNext";
+			this.cmdSearchNext.Size = new System.Drawing.Size(108, 26);
+			this.cmdSearchNext.TabIndex = 6;
+			this.cmdSearchNext.Text = "次を検索する(&N)";
+			this.cmdSearchNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.cmdSearchNext.UseVisualStyleBackColor = true;
+			this.cmdSearchNext.Click += new System.EventHandler(this.cmdSearchNext_Click);
+			// 
+			// cmdSearchPrev
+			// 
+			this.cmdSearchPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.cmdSearchPrev.Image = ((System.Drawing.Image)(resources.GetObject("cmdSearchPrev.Image")));
+			this.cmdSearchPrev.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.cmdSearchPrev.Location = new System.Drawing.Point(439, 27);
+			this.cmdSearchPrev.Name = "cmdSearchPrev";
+			this.cmdSearchPrev.Size = new System.Drawing.Size(108, 26);
+			this.cmdSearchPrev.TabIndex = 5;
+			this.cmdSearchPrev.Text = "前を検索する(&P)";
+			this.cmdSearchPrev.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.cmdSearchPrev.UseVisualStyleBackColor = true;
+			this.cmdSearchPrev.Click += new System.EventHandler(this.cmdSearchPrev_Click);
+			// 
+			// labelSearch
+			// 
+			this.labelSearch.AutoSize = true;
+			this.labelSearch.Location = new System.Drawing.Point(34, 10);
+			this.labelSearch.Name = "labelSearch";
+			this.labelSearch.Size = new System.Drawing.Size(35, 12);
+			this.labelSearch.TabIndex = 4;
+			this.labelSearch.Text = "検索：";
+			// 
+			// textBoxSearch
+			// 
+			this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBoxSearch.Location = new System.Drawing.Point(69, 7);
+			this.textBoxSearch.Name = "textBoxSearch";
+			this.textBoxSearch.Size = new System.Drawing.Size(97, 19);
+			this.textBoxSearch.TabIndex = 2;
+			this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+			this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyDown);
+			this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
+			// 
+			// richTextBox1
+			// 
+			this.richTextBox1.AcceptsTab = true;
+			this.richTextBox1.DetectUrls = false;
+			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.richTextBox1.HideSelection = false;
+			this.richTextBox1.HorizontalPosition = 0;
+			this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+			this.richTextBox1.Size = new System.Drawing.Size(260, 366);
+			this.richTextBox1.TabIndex = 0;
+			this.richTextBox1.Text = "";
+			this.richTextBox1.VerticalPosition = 0;
+			this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
+			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
+			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
+			this.richTextBox1.ModifiedChanged += new System.EventHandler(this.richTextBox1_ModifiedChanged);
+			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
+			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
+			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
+			this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(559, 440);
 			this.ContextMenuStrip = this.contextMenu1;
+			this.Controls.Add(this.panelSearch);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.statusStrip1);
@@ -876,6 +1069,7 @@
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.Shown += new System.EventHandler(this.Form1_Shown);
+			this.ResizeBegin += new System.EventHandler(this.Form1_ResizeBegin);
 			this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
 			this.statusStrip1.ResumeLayout(false);
 			this.statusStrip1.PerformLayout();
@@ -887,6 +1081,11 @@
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.panelSearch.ResumeLayout(false);
+			this.panelSearch.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.imgSearchExitUnabled)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgSearchExitEnabled)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgSearchExit)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -976,6 +1175,21 @@
 		private System.Windows.Forms.ContextMenuStrip contextMenu2;
 		private System.Windows.Forms.ToolStripMenuItem mnuShowHeaderListMenu;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
+		private System.Windows.Forms.Panel panelSearch;
+		private System.Windows.Forms.TextBox textBoxSearch;
+		private System.Windows.Forms.Label labelSearch;
+		private System.Windows.Forms.Button cmdSearchNext;
+		private System.Windows.Forms.Button cmdSearchPrev;
+		private System.Windows.Forms.PictureBox imgSearchExit;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
+		private System.Windows.Forms.ToolStripMenuItem menuSearch;
+		private System.Windows.Forms.PictureBox imgSearchExitUnabled;
+		private System.Windows.Forms.PictureBox imgSearchExitEnabled;
+		private System.Windows.Forms.ToolStripMenuItem menuReplace;
+		private System.Windows.Forms.CheckBox chkOptionCase;
+		private System.Windows.Forms.Label labelReplace;
+		private System.Windows.Forms.TextBox textBoxReplace;
+		private System.Windows.Forms.Button cmdReplaceAll;
 
     }
 }

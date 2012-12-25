@@ -19,6 +19,7 @@ namespace MarkDownSharpEditor
 		#region メンバ変数（設定値）
 		//-----------------------------------
 		private int _Version;
+		private int _FormState;
 		private System.Drawing.Point _FormPos;
 		private System.Drawing.Size _FormSize;
 		private int _richEditWidth;
@@ -37,6 +38,7 @@ namespace MarkDownSharpEditor
 		private int _HtmlHighLightColor;
 		private bool _fAutoBrowserPreview;
 		private int _AutoBrowserPreviewInterval;
+		private bool _fSearchOptionIgnoreCase;
 
 		//エディターのSyntaxHighlighter定義
 		private int _ForeColor_MainText;                 //全体
@@ -90,6 +92,11 @@ namespace MarkDownSharpEditor
 		{
 			get { return _Version; }
 			set { _Version = value; }
+		}
+		public int FormState
+		{
+			get { return _FormState; }
+			set { _FormState = value; }
 		}
 		public System.Drawing.Point FormPos
 		{
@@ -194,6 +201,11 @@ namespace MarkDownSharpEditor
 				}
 				_AutoBrowserPreviewInterval = value; 
 			}
+		}
+		public bool fSearchOptionIgnoreCase
+		{
+			get { return _fSearchOptionIgnoreCase; }
+			set { _fSearchOptionIgnoreCase = value; }
 		}
 
 		//-----------------------------------
@@ -395,6 +407,7 @@ namespace MarkDownSharpEditor
 			string CssDirPath = Path.Combine(AppDataPath, "css");
 
 			_Version = 0;	//バージョン
+			_FormState = 0;	//WindowState = Normal;
 			_FormPos.X = defautPosX;
 			_FormPos.Y = defautPosY;
 			_FormSize.Width = 840;
@@ -417,6 +430,8 @@ namespace MarkDownSharpEditor
 			_HtmlHighLightColor = Color.FromArgb(255, 255, 200).ToArgb();
 			_fAutoBrowserPreview = true;
 			_AutoBrowserPreviewInterval = 1000;	//ブラウザープレビューまでの間隔（ミリ秒）
+
+			_fSearchOptionIgnoreCase = true;	//検索オプションで大文字/小文字を区別しない
 
 			//-----------------------------------
 			// エディターのSyntax Highlighter 
