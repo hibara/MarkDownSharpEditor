@@ -134,6 +134,9 @@
 			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.fontDialog1 = new System.Windows.Forms.FontDialog();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.labelMainColor = new System.Windows.Forms.Label();
+			this.labelMainBackColor = new System.Windows.Forms.Label();
+			this.labelMainForeColor = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPageMain.SuspendLayout();
@@ -424,6 +427,9 @@
 			// 
 			// groupBox4
 			// 
+			this.groupBox4.Controls.Add(this.labelMainBackColor);
+			this.groupBox4.Controls.Add(this.labelMainForeColor);
+			this.groupBox4.Controls.Add(this.labelMainColor);
 			this.groupBox4.Controls.Add(this.label6);
 			this.groupBox4.Controls.Add(this.label7);
 			this.groupBox4.Controls.Add(this.label5);
@@ -478,7 +484,7 @@
 			this.groupBox4.Controls.Add(this.labelLineBreakColor);
 			this.groupBox4.Location = new System.Drawing.Point(20, 15);
 			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(393, 344);
+			this.groupBox4.Size = new System.Drawing.Size(393, 369);
 			this.groupBox4.TabIndex = 0;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "カラー設定:";
@@ -491,44 +497,44 @@
 			this.label6.Size = new System.Drawing.Size(29, 12);
 			this.label6.TabIndex = 60;
 			this.label6.Text = "背景";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.label6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(309, 22);
+			this.label7.Location = new System.Drawing.Point(310, 22);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(29, 12);
 			this.label7.TabIndex = 59;
 			this.label7.Text = "文字";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.label7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(150, 22);
+			this.label5.Location = new System.Drawing.Point(153, 22);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(29, 12);
 			this.label5.TabIndex = 58;
 			this.label5.Text = "背景";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(122, 22);
+			this.label4.Location = new System.Drawing.Point(124, 22);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(29, 12);
 			this.label4.TabIndex = 57;
 			this.label4.Text = "文字";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
 			// labelBlockquotesBackColor
 			// 
 			this.labelBlockquotesBackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelBlockquotesBackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelBlockquotesBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelBlockquotesBackColor.Location = new System.Drawing.Point(153, 289);
+			this.labelBlockquotesBackColor.Location = new System.Drawing.Point(156, 325);
 			this.labelBlockquotesBackColor.Name = "labelBlockquotesBackColor";
 			this.labelBlockquotesBackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelBlockquotesBackColor.Size = new System.Drawing.Size(22, 22);
@@ -539,7 +545,7 @@
 			// 
 			this.labelBlockquotesForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelBlockquotesForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelBlockquotesForeColor.Location = new System.Drawing.Point(124, 289);
+			this.labelBlockquotesForeColor.Location = new System.Drawing.Point(127, 325);
 			this.labelBlockquotesForeColor.Name = "labelBlockquotesForeColor";
 			this.labelBlockquotesForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelBlockquotesForeColor.Size = new System.Drawing.Size(22, 22);
@@ -551,7 +557,7 @@
 			this.labelBlockquotesColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelBlockquotesColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelBlockquotesColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelBlockquotesColor.Location = new System.Drawing.Point(18, 289);
+			this.labelBlockquotesColor.Location = new System.Drawing.Point(21, 325);
 			this.labelBlockquotesColor.Name = "labelBlockquotesColor";
 			this.labelBlockquotesColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelBlockquotesColor.Size = new System.Drawing.Size(100, 22);
@@ -759,7 +765,7 @@
 			this.labelHeadLine6BackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine6BackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelHeadLine6BackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine6BackColor.Location = new System.Drawing.Point(153, 253);
+			this.labelHeadLine6BackColor.Location = new System.Drawing.Point(156, 289);
 			this.labelHeadLine6BackColor.Name = "labelHeadLine6BackColor";
 			this.labelHeadLine6BackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine6BackColor.Size = new System.Drawing.Size(22, 22);
@@ -770,7 +776,7 @@
 			// 
 			this.labelHeadLine6ForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine6ForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelHeadLine6ForeColor.Location = new System.Drawing.Point(124, 253);
+			this.labelHeadLine6ForeColor.Location = new System.Drawing.Point(127, 289);
 			this.labelHeadLine6ForeColor.Name = "labelHeadLine6ForeColor";
 			this.labelHeadLine6ForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine6ForeColor.Size = new System.Drawing.Size(22, 22);
@@ -782,7 +788,7 @@
 			this.labelHeadLine5BackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine5BackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelHeadLine5BackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine5BackColor.Location = new System.Drawing.Point(154, 217);
+			this.labelHeadLine5BackColor.Location = new System.Drawing.Point(157, 253);
 			this.labelHeadLine5BackColor.Name = "labelHeadLine5BackColor";
 			this.labelHeadLine5BackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine5BackColor.Size = new System.Drawing.Size(22, 22);
@@ -793,7 +799,7 @@
 			// 
 			this.labelHeadLine5ForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine5ForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelHeadLine5ForeColor.Location = new System.Drawing.Point(125, 217);
+			this.labelHeadLine5ForeColor.Location = new System.Drawing.Point(128, 253);
 			this.labelHeadLine5ForeColor.Name = "labelHeadLine5ForeColor";
 			this.labelHeadLine5ForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine5ForeColor.Size = new System.Drawing.Size(22, 22);
@@ -805,7 +811,7 @@
 			this.labelHeadLine4BackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine4BackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelHeadLine4BackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine4BackColor.Location = new System.Drawing.Point(154, 181);
+			this.labelHeadLine4BackColor.Location = new System.Drawing.Point(157, 217);
 			this.labelHeadLine4BackColor.Name = "labelHeadLine4BackColor";
 			this.labelHeadLine4BackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine4BackColor.Size = new System.Drawing.Size(22, 22);
@@ -816,7 +822,7 @@
 			// 
 			this.labelHeadLine4ForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine4ForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelHeadLine4ForeColor.Location = new System.Drawing.Point(125, 181);
+			this.labelHeadLine4ForeColor.Location = new System.Drawing.Point(128, 217);
 			this.labelHeadLine4ForeColor.Name = "labelHeadLine4ForeColor";
 			this.labelHeadLine4ForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine4ForeColor.Size = new System.Drawing.Size(22, 22);
@@ -828,7 +834,7 @@
 			this.labelHeadLine3BackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine3BackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelHeadLine3BackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine3BackColor.Location = new System.Drawing.Point(154, 145);
+			this.labelHeadLine3BackColor.Location = new System.Drawing.Point(157, 181);
 			this.labelHeadLine3BackColor.Name = "labelHeadLine3BackColor";
 			this.labelHeadLine3BackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine3BackColor.Size = new System.Drawing.Size(22, 22);
@@ -839,7 +845,7 @@
 			// 
 			this.labelHeadLine3ForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine3ForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelHeadLine3ForeColor.Location = new System.Drawing.Point(125, 145);
+			this.labelHeadLine3ForeColor.Location = new System.Drawing.Point(128, 181);
 			this.labelHeadLine3ForeColor.Name = "labelHeadLine3ForeColor";
 			this.labelHeadLine3ForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine3ForeColor.Size = new System.Drawing.Size(22, 22);
@@ -851,7 +857,7 @@
 			this.labelHeadLine2BackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine2BackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelHeadLine2BackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine2BackColor.Location = new System.Drawing.Point(153, 109);
+			this.labelHeadLine2BackColor.Location = new System.Drawing.Point(156, 145);
 			this.labelHeadLine2BackColor.Name = "labelHeadLine2BackColor";
 			this.labelHeadLine2BackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine2BackColor.Size = new System.Drawing.Size(22, 22);
@@ -862,7 +868,7 @@
 			// 
 			this.labelHeadLine2ForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine2ForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelHeadLine2ForeColor.Location = new System.Drawing.Point(124, 109);
+			this.labelHeadLine2ForeColor.Location = new System.Drawing.Point(127, 145);
 			this.labelHeadLine2ForeColor.Name = "labelHeadLine2ForeColor";
 			this.labelHeadLine2ForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine2ForeColor.Size = new System.Drawing.Size(22, 22);
@@ -874,7 +880,7 @@
 			this.labelHeadLine1BackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine1BackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelHeadLine1BackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine1BackColor.Location = new System.Drawing.Point(153, 73);
+			this.labelHeadLine1BackColor.Location = new System.Drawing.Point(156, 109);
 			this.labelHeadLine1BackColor.Name = "labelHeadLine1BackColor";
 			this.labelHeadLine1BackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine1BackColor.Size = new System.Drawing.Size(22, 22);
@@ -885,7 +891,7 @@
 			// 
 			this.labelHeadLine1ForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine1ForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelHeadLine1ForeColor.Location = new System.Drawing.Point(124, 73);
+			this.labelHeadLine1ForeColor.Location = new System.Drawing.Point(127, 109);
 			this.labelHeadLine1ForeColor.Name = "labelHeadLine1ForeColor";
 			this.labelHeadLine1ForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine1ForeColor.Size = new System.Drawing.Size(22, 22);
@@ -897,7 +903,7 @@
 			this.labelLineBreakBackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelLineBreakBackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.labelLineBreakBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelLineBreakBackColor.Location = new System.Drawing.Point(153, 37);
+			this.labelLineBreakBackColor.Location = new System.Drawing.Point(156, 73);
 			this.labelLineBreakBackColor.Name = "labelLineBreakBackColor";
 			this.labelLineBreakBackColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelLineBreakBackColor.Size = new System.Drawing.Size(22, 22);
@@ -908,7 +914,7 @@
 			// 
 			this.labelLineBreakForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelLineBreakForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelLineBreakForeColor.Location = new System.Drawing.Point(124, 37);
+			this.labelLineBreakForeColor.Location = new System.Drawing.Point(127, 73);
 			this.labelLineBreakForeColor.Name = "labelLineBreakForeColor";
 			this.labelLineBreakForeColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelLineBreakForeColor.Size = new System.Drawing.Size(22, 22);
@@ -1004,7 +1010,7 @@
 			this.labelHeadLine6Color.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine6Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelHeadLine6Color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine6Color.Location = new System.Drawing.Point(18, 253);
+			this.labelHeadLine6Color.Location = new System.Drawing.Point(21, 289);
 			this.labelHeadLine6Color.Name = "labelHeadLine6Color";
 			this.labelHeadLine6Color.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine6Color.Size = new System.Drawing.Size(100, 22);
@@ -1016,7 +1022,7 @@
 			this.labelHeadLine5Color.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine5Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelHeadLine5Color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine5Color.Location = new System.Drawing.Point(18, 217);
+			this.labelHeadLine5Color.Location = new System.Drawing.Point(21, 253);
 			this.labelHeadLine5Color.Name = "labelHeadLine5Color";
 			this.labelHeadLine5Color.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine5Color.Size = new System.Drawing.Size(100, 22);
@@ -1028,7 +1034,7 @@
 			this.labelHeadLine4Color.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine4Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelHeadLine4Color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine4Color.Location = new System.Drawing.Point(18, 181);
+			this.labelHeadLine4Color.Location = new System.Drawing.Point(21, 217);
 			this.labelHeadLine4Color.Name = "labelHeadLine4Color";
 			this.labelHeadLine4Color.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine4Color.Size = new System.Drawing.Size(100, 22);
@@ -1040,7 +1046,7 @@
 			this.labelHeadLine3Color.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine3Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelHeadLine3Color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine3Color.Location = new System.Drawing.Point(18, 145);
+			this.labelHeadLine3Color.Location = new System.Drawing.Point(21, 181);
 			this.labelHeadLine3Color.Name = "labelHeadLine3Color";
 			this.labelHeadLine3Color.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine3Color.Size = new System.Drawing.Size(100, 22);
@@ -1052,7 +1058,7 @@
 			this.labelHeadLine2Color.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine2Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelHeadLine2Color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine2Color.Location = new System.Drawing.Point(18, 109);
+			this.labelHeadLine2Color.Location = new System.Drawing.Point(21, 145);
 			this.labelHeadLine2Color.Name = "labelHeadLine2Color";
 			this.labelHeadLine2Color.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine2Color.Size = new System.Drawing.Size(100, 22);
@@ -1064,7 +1070,7 @@
 			this.labelHeadLine1Color.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelHeadLine1Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelHeadLine1Color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelHeadLine1Color.Location = new System.Drawing.Point(18, 73);
+			this.labelHeadLine1Color.Location = new System.Drawing.Point(21, 109);
 			this.labelHeadLine1Color.Name = "labelHeadLine1Color";
 			this.labelHeadLine1Color.Padding = new System.Windows.Forms.Padding(4);
 			this.labelHeadLine1Color.Size = new System.Drawing.Size(100, 22);
@@ -1076,7 +1082,7 @@
 			this.labelLineBreakColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
 			this.labelLineBreakColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelLineBreakColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelLineBreakColor.Location = new System.Drawing.Point(18, 37);
+			this.labelLineBreakColor.Location = new System.Drawing.Point(21, 73);
 			this.labelLineBreakColor.Name = "labelLineBreakColor";
 			this.labelLineBreakColor.Padding = new System.Windows.Forms.Padding(4);
 			this.labelLineBreakColor.Size = new System.Drawing.Size(100, 22);
@@ -1364,6 +1370,41 @@
 			this.colorDialog1.AnyColor = true;
 			this.colorDialog1.FullOpen = true;
 			// 
+			// labelMainColor
+			// 
+			this.labelMainColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+			this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.labelMainColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.labelMainColor.Location = new System.Drawing.Point(21, 37);
+			this.labelMainColor.Name = "labelMainColor";
+			this.labelMainColor.Padding = new System.Windows.Forms.Padding(4);
+			this.labelMainColor.Size = new System.Drawing.Size(100, 22);
+			this.labelMainColor.TabIndex = 61;
+			this.labelMainColor.Text = "全般";
+			// 
+			// labelMainBackColor
+			// 
+			this.labelMainBackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+			this.labelMainBackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.labelMainBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.labelMainBackColor.Location = new System.Drawing.Point(156, 37);
+			this.labelMainBackColor.Name = "labelMainBackColor";
+			this.labelMainBackColor.Padding = new System.Windows.Forms.Padding(4);
+			this.labelMainBackColor.Size = new System.Drawing.Size(22, 22);
+			this.labelMainBackColor.TabIndex = 63;
+			this.labelMainBackColor.Click += new System.EventHandler(this.labelBackColor_Click);
+			// 
+			// labelMainForeColor
+			// 
+			this.labelMainForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+			this.labelMainForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.labelMainForeColor.Location = new System.Drawing.Point(127, 37);
+			this.labelMainForeColor.Name = "labelMainForeColor";
+			this.labelMainForeColor.Padding = new System.Windows.Forms.Padding(4);
+			this.labelMainForeColor.Size = new System.Drawing.Size(22, 22);
+			this.labelMainForeColor.TabIndex = 62;
+			this.labelMainForeColor.Click += new System.EventHandler(this.labelForeColor_Click);
+			// 
 			// Form3
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1512,5 +1553,8 @@
 		private System.Windows.Forms.Label lblPreviewIntervalCaption;
 		private System.Windows.Forms.NumericUpDown numericUpDown1;
 		private System.Windows.Forms.Label lblms;
+		private System.Windows.Forms.Label labelMainColor;
+		private System.Windows.Forms.Label labelMainBackColor;
+		private System.Windows.Forms.Label labelMainForeColor;
     }
 }

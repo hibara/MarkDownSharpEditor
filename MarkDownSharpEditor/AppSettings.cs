@@ -436,13 +436,12 @@ namespace MarkDownSharpEditor
 			//-----------------------------------
 			// エディターのSyntax Highlighter 
 			//-----------------------------------
-			_ForeColor_MainText = Color.Black.ToArgb();   //メイン
-			_BackColor_MainText = Color.White.ToArgb();
+			_ForeColor_MainText     = -16777216;     //メイン
+			_BackColor_MainText     = -1;
 
-			_ForeColor_LineBreak = Color.Black.ToArgb();
-			_BackColor_LineBreak = -19276; 　　           //強制改行
-
-			_ForeColor_Headlines[0] = -16777216;          //見出し
+			_ForeColor_LineBreak    = -16777216;
+			_BackColor_LineBreak    = -19276; 　　   //強制改行
+			_ForeColor_Headlines[0] = -16777216;     //見出し
 			_ForeColor_Headlines[1] = -16777216;
 			_ForeColor_Headlines[2] = -11513776;
 			_ForeColor_Headlines[3] = -10197916;
@@ -458,26 +457,26 @@ namespace MarkDownSharpEditor
 			_BackColor_Headlines[5] = -527382;
 			_BackColor_Headlines[6] = -328976;
 
-			_ForeColor_Blockquotes = -4934476;       //引用
-			_BackColor_Blockquotes = -1;
-			_ForeColor_Lists = -3057141;             //リスト（オレンジ）
-			_BackColor_Lists = -1;
-			_ForeColor_CodeBlocks = -10197916;       //コードブロック
-			_BackColor_CodeBlocks = -986896;
-			_ForeColor_Horizontal = -1;              //罫線（紫色）
-			_BackColor_Horizontal = -6946666;
-			_ForeColor_Links = -16776961;            //リンク
-			_BackColor_Links = -1;
-			_ForeColor_Emphasis = -65536;            //強調
-			_BackColor_Emphasis = -1;
-			_ForeColor_Code = -10197916;             //コード
-			_BackColor_Code = -986896;
-			_ForeColor_Images = -16777216;
-			_BackColor_Images = -12787;              //画像
-			_ForeColor_Comments = -16731136;         //コメント
-			_BackColor_Comments = -1;
+			_ForeColor_Blockquotes  = -4934476;       //引用
+			_BackColor_Blockquotes  = -1;
+			_ForeColor_Lists        = -3057141;       //リスト（オレンジ）
+			_BackColor_Lists        = -1;
+			_ForeColor_CodeBlocks   = -10197916;      //コードブロック
+			_BackColor_CodeBlocks   = -986896;
+			_ForeColor_Horizontal   = -1;             //罫線（紫色）
+			_BackColor_Horizontal   = -6946666;
+			_ForeColor_Links        = -16776961;      //リンク
+			_BackColor_Links        = -1;
+			_ForeColor_Emphasis     = -65536;         //強調
+			_BackColor_Emphasis     = -1;
+			_ForeColor_Code         = -10197916;      //コード
+			_BackColor_Code         = -986896;
+			_ForeColor_Images       = -16777216;
+			_BackColor_Images       = -12787;         //画像
+			_ForeColor_Comments     = -16731136;      //コメント
+			_BackColor_Comments     = -1;
 
-			_ArrayCssFileList.Clear();               //ビルトインCSSファイルリスト
+			_ArrayCssFileList.Clear();                //ビルトインCSSファイルリスト
 
 			_fHtmlOutputHeader = false;
 			_HtmlDocType = "strict";

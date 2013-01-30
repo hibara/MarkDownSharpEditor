@@ -153,6 +153,10 @@ http://ossipedia.ipa.go.jp/legalinfo/gpl-3.0J.html
 
 ただ、「この機能がほしい」「これってバグでは？」といったフィードバックやご報告は大歓迎です。
 
+その場合は、こちらからどうぞ。  
+https://github.com/hibara/MarkDownSharpEditor/issues
+
+ややレスポンスは鈍いかもしれませんが、メールでも受け付けています。  
 その場合は、こちらからどうぞ。
 
 ひばら　みつひろ   
@@ -171,6 +175,13 @@ http://ossipedia.ipa.go.jp/legalinfo/gpl-3.0J.html
 
 
 #改版履歴
+
+##ver.1.1.4.0　　2013/01/30
+
+* ブラウザーウィンドウを更新するときのクリック音を処理するところで強制終了していた不具合に対処（内部的に別のアプローチでクリック音を消去するようにした）。
+
+* ウィンドウ全般の前景と背景色の設定項目を追加した（内部的に設定項目はあったのですが、UIの方を作るのを忘れていました・・・）
+
 
 ##ver.1.1.3.0　　2012/12/25
 
@@ -329,4 +340,4 @@ http://ossipedia.ipa.go.jp/legalinfo/gpl-3.0J.html
 
 
 ---
-Copyright&copy; 2012 M.Hibara, All rights Reserved. 
+Copyright&copy; 2012-2013 M.Hibara, All rights Reserved. 

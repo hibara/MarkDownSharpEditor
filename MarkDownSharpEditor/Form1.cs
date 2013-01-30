@@ -16,13 +16,20 @@ using System.Runtime.InteropServices;
 using anrControls;
 using mshtml;
 
-
 namespace MarkDownSharpEditor
 {
 
 	public partial class Form1 : Form
 	{
+		//WebBrowserコンポーネントプレビューの更新音（クリック音）をOFFにする
+		const int FEATURE_DISABLE_NAVIGATION_SOUNDS = 21;
+		const int SET_FEATURE_ON_PROCESS = 0x00000002;
+		[DllImport("urlmon.dll")]
+		[PreserveSig]
+		[return: MarshalAs(UnmanagedType.Error)]
+		static extern int CoInternetSetFeatureEnabled(int FeatureEntry, [MarshalAs(UnmanagedType.U4)] int dwFlags, bool fEnable);
 
+		//-----------------------------------
 		private bool fSearchStart = false;                    //検索を開始したか
 		private bool fSyntaxHightlighter = false;
 		private bool fScrollConstraint = false;               //スクロール抑制フラグ
@@ -60,7 +67,8 @@ namespace MarkDownSharpEditor
 			MarkDownSharpEditor.AppSettings.Instance.ReadFromXMLFile();
 			richTextBox1.AllowDrop = true;
 
-			WebBrowserClickSoundOFF();
+			//WebBrowserClickSoundOFF();
+			CoInternetSetFeatureEnabled(FEATURE_DISABLE_NAVIGATION_SOUNDS, SET_FEATURE_ON_PROCESS, true);
 
 		}
 
@@ -227,6 +235,7 @@ namespace MarkDownSharpEditor
 							//最初のファイルだけ、このウィンドウだけ開く
 							if (fOpen == false)
 							{
+								richTextBox1.Modified = false;
 								OpenFile(FilePath);
 								fOpen = true;
 							}
@@ -241,6 +250,7 @@ namespace MarkDownSharpEditor
 				}
 				else if ( FileArray.Count == 1 )
 				{
+					richTextBox1.Modified = false;
 					OpenFile((string)FileArray[0]);
 				}
 				else
@@ -255,6 +265,7 @@ namespace MarkDownSharpEditor
 							if (File.Exists(EditedFilePath.md) == true)
 							{
 								TemporaryHtmlFilePath = "";
+								richTextBox1.Modified = false;
 								OpenFile(EditedFilePath.md);
 								return;
 							}
@@ -263,6 +274,7 @@ namespace MarkDownSharpEditor
 					if (MarkDownTextFilePath == "")
 					{
 						//無ければ「無題」ファイル
+						richTextBox1.Modified = false;
 						OpenFile(CreateNoTitleFilePath());
 					}
 				}
@@ -423,7 +435,6 @@ namespace MarkDownSharpEditor
 			}
 
 		}
-
 
 		//----------------------------------------------------------------------
 		// HACK: RichEditBox ModifiedChanged イベント
@@ -680,9 +691,11 @@ namespace MarkDownSharpEditor
 			//MarkDownSharpEditor.AppSettings.Instance.SaveToJsonFile();
 			
 			//ブラウザを空白にする
-			webBrowser1.Navigate("about:blank");
-
-			WebBrowserClickSoundON();
+			//webBrowser1.Navigate("about:blank");
+			//クリック音対策
+			webBrowser1.Document.OpenNew(true);
+			webBrowser1.Document.Write("");
+			//WebBrowserClickSoundON();
 
 		}
 
@@ -1222,7 +1235,15 @@ namespace MarkDownSharpEditor
 			{
 				//「無題」ファイルを編集中はナビゲートせずにそのまま書き込む
 				ResultText = Encoding.GetEncoding(CodePageNum).GetString(bytesData);
-				webBrowser1.DocumentText = MkResultText;
+				
+				//TODO: クリック音対策
+				//webBrowser1.DocumentText = MkResultText;
+				if (webBrowser1.Document != null)
+				{
+					webBrowser1.Document.OpenNew(true);
+				}
+				webBrowser1.Document.Write(MkResultText);
+
 				//ツールバーの「関連付けられたブラウザーを起動」を無効に
 				toolStripButtonBrowserPreview.Enabled = false;
 
@@ -1316,7 +1337,7 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------------------------
-		// HACK: RichEditBoxMoveCursor [ WebBrowser → RichEditBoxスクロールt追従 ] 
+		// HACK: RichEditBoxMoveCursor [ WebBrowser → RichEditBoxスクロール追従 ] 
 		// 
 		//----------------------------------------------------------------------
 		private void RichEditBoxMoveCursor()
@@ -1486,9 +1507,6 @@ namespace MarkDownSharpEditor
 				}
 
 			}// end for;
-
-			//デバッグ
-			//this.Text = LinesNum.ToString();
 
 			return (LinesNum);
 
@@ -2034,7 +2052,14 @@ namespace MarkDownSharpEditor
 			fConstraintChange = true;
 			
 			//ブラウザを空白にする
-			webBrowser1.Navigate("about:blank");
+			//webBrowser1.Navigate("about:blank");
+			//TODO: クリック音対策
+			if (webBrowser1.Document != null)
+			{
+				webBrowser1.Document.OpenNew(true);
+			}
+			webBrowser1.Document.Write("");
+
 			//テンポラリファイルがあれば削除
 			DeleteTemporaryHtmlFilePath();
 			//編集中のファイル情報をクリア
@@ -3193,6 +3218,7 @@ namespace MarkDownSharpEditor
 
 		#region WebBrowserコンポーネントのカチカチ音制御
 
+		/*
 		// 以下のサイトのエントリーを参考にさせていただきました。
 		// http://www.moonmile.net/blog/archives/1465
 
@@ -3206,6 +3232,11 @@ namespace MarkDownSharpEditor
 		// <param name="e"></param>
 		private void WebBrowserClickSoundON()
 		{
+
+			//===================================
+			// HACK: Win8でKeyの取得ができないときがある？
+			//===================================
+
 			// .Defaultの値を読み込んで、.Currentに書き込み
 			Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser;
 			key = key.OpenSubKey(keyDefault);
@@ -3216,6 +3247,7 @@ namespace MarkDownSharpEditor
 			key = key.OpenSubKey(keyCurrent, true);
 			key.SetValue(null, data);
 			key.Close();
+
 		}
 		// <summary>
 		// クリック音をOFF
@@ -3231,6 +3263,7 @@ namespace MarkDownSharpEditor
 			key.Close();
 		}
 
+		*/ 
 		#endregion
 
 

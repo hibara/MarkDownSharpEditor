@@ -41,8 +41,6 @@ namespace MarkDownSharpEditor
 			cmdUnAssociateFiles.FlatStyle = FlatStyle.System;
 			hwnd = new HandleRef(cmdUnAssociateFiles, cmdUnAssociateFiles.Handle);
 			SendMessage(hwnd, BCM_SETSHIELD, new IntPtr(0), new IntPtr(1));
-
-
 		}
 
 		//-----------------------------------
@@ -140,6 +138,12 @@ namespace MarkDownSharpEditor
 			//======================================================================
 			// エディター設定
 			//======================================================================
+
+			//メイン
+			labelMainColor.ForeColor = labelMainForeColor.BackColor = Color.FromArgb(obj.ForeColor_MainText);
+			labelMainColor.BackColor = labelMainBackColor.BackColor = Color.FromArgb(obj.BackColor_MainText);
+			labelMainForeColor.Tag = labelMainColor;
+			labelMainBackColor.Tag = labelMainColor;
 
 			//強制改行
 			labelLineBreakColor.ForeColor = labelLineBreakForeColor.BackColor = Color.FromArgb(obj.ForeColor_LineBreak);
@@ -392,7 +396,8 @@ namespace MarkDownSharpEditor
 			//-----------------------------------
 			// エディター(SyntaxHighlighter)設定
 			//-----------------------------------
-			
+			obj.ForeColor_MainText = labelMainColor.ForeColor.ToArgb();           //全般
+			obj.BackColor_MainText = labelMainColor.BackColor.ToArgb();
 			obj.ForeColor_LineBreak = labelLineBreakColor.ForeColor.ToArgb();     //強制改行
 			obj.BackColor_LineBreak = labelLineBreakColor.BackColor.ToArgb();
 			obj.ForeColor_Headlines[1] = labelHeadLine1Color.ForeColor.ToArgb();  //見出し１
@@ -429,7 +434,6 @@ namespace MarkDownSharpEditor
 			//-----------------------------------
 			// CSSファイル設定
 			//-----------------------------------
-
 			obj.ArrayCssFileList.Clear();
 			for ( int i = 0; i < listViewCssFiles.Items.Count; i++ )
 			{
@@ -683,7 +687,6 @@ namespace MarkDownSharpEditor
 		{
 			Label lbl = sender as Label;
 			colorDialog1.Color = lbl.BackColor;
-
 			if (colorDialog1.ShowDialog() == DialogResult.OK)
 			{
 				Label lblSample = lbl.Tag as Label;
@@ -707,12 +710,6 @@ namespace MarkDownSharpEditor
 			}
 
 		}
-
-
-
-
-
-
 
 		#endregion;
 		//===================================

@@ -36,7 +36,7 @@ All the source code, graphics resources and project files needed to build by Vis
 License
 -----------------------------------
 
-Copyright (C) 2012 M.Hibara, All rights reserved.  
+Copyright (C) 2012-2013 M.Hibara, All rights reserved.  
 [http://hibara.org](http://hibara.org)
 
 This program is free software; you can redistribute it and/or modify

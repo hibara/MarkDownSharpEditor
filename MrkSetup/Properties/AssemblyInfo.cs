@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("hibar.org")]
 [assembly: AssemblyProduct("MrkSetup")]
-[assembly: AssemblyCopyright("Copyright ©  2012 M.Hibara, All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright ©  2012-2013 M.Hibara, All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
