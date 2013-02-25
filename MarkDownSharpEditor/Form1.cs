@@ -2980,6 +2980,7 @@ namespace MarkDownSharpEditor
 				{
 					richTextBox1.SelectedText = textBoxReplace.Text;
 					ReplaceCount++;
+					CurrentPos = StartPos + textBoxReplace.Text.Length;
 				}
 			}
 
