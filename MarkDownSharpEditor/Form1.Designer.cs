@@ -907,7 +907,7 @@
 			this.cmdReplaceAll.Location = new System.Drawing.Point(217, 27);
 			this.cmdReplaceAll.Name = "cmdReplaceAll";
 			this.cmdReplaceAll.Size = new System.Drawing.Size(108, 26);
-			this.cmdReplaceAll.TabIndex = 16;
+			this.cmdReplaceAll.TabIndex = 3;
 			this.cmdReplaceAll.Text = "すべてを置換する";
 			this.cmdReplaceAll.UseVisualStyleBackColor = true;
 			this.cmdReplaceAll.Visible = false;
@@ -930,7 +930,7 @@
 			this.textBoxReplace.Location = new System.Drawing.Point(69, 34);
 			this.textBoxReplace.Name = "textBoxReplace";
 			this.textBoxReplace.Size = new System.Drawing.Size(97, 19);
-			this.textBoxReplace.TabIndex = 12;
+			this.textBoxReplace.TabIndex = 1;
 			this.textBoxReplace.Visible = false;
 			this.textBoxReplace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxReplace_KeyDown);
 			this.textBoxReplace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxReplace_KeyPress);
@@ -962,7 +962,7 @@
 			this.chkOptionCase.Location = new System.Drawing.Point(171, 8);
 			this.chkOptionCase.Name = "chkOptionCase";
 			this.chkOptionCase.Size = new System.Drawing.Size(151, 16);
-			this.chkOptionCase.TabIndex = 11;
+			this.chkOptionCase.TabIndex = 2;
 			this.chkOptionCase.Text = "大文字/小文字を区別(&C)";
 			this.chkOptionCase.UseVisualStyleBackColor = true;
 			// 
@@ -986,7 +986,7 @@
 			this.cmdSearchNext.Location = new System.Drawing.Point(328, 27);
 			this.cmdSearchNext.Name = "cmdSearchNext";
 			this.cmdSearchNext.Size = new System.Drawing.Size(108, 26);
-			this.cmdSearchNext.TabIndex = 6;
+			this.cmdSearchNext.TabIndex = 4;
 			this.cmdSearchNext.Text = "次を検索する(&N)";
 			this.cmdSearchNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.cmdSearchNext.UseVisualStyleBackColor = true;
@@ -1022,7 +1022,7 @@
 			this.textBoxSearch.Location = new System.Drawing.Point(69, 7);
 			this.textBoxSearch.Name = "textBoxSearch";
 			this.textBoxSearch.Size = new System.Drawing.Size(97, 19);
-			this.textBoxSearch.TabIndex = 2;
+			this.textBoxSearch.TabIndex = 0;
 			this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
 			this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyDown);
 			this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
@@ -1044,7 +1044,6 @@
 			this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
 			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
 			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
-			this.richTextBox1.ModifiedChanged += new System.EventHandler(this.richTextBox1_ModifiedChanged);
 			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
 			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
 			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);

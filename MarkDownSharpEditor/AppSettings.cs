@@ -668,7 +668,7 @@ namespace MarkDownSharpEditor
 			if (Instance.ArrayHistoryEditedFiles.Count > ArrayHistoryFilesLimit)
 			{
 				Instance.ArrayHistoryEditedFiles.RemoveRange(
-				ArrayHistoryFilesLimit, Instance.ArrayHistoryEditedFiles.Count - 1);
+				ArrayHistoryFilesLimit, Instance.ArrayHistoryEditedFiles.Count - ArrayHistoryFilesLimit - 1);
 			}
 		}
 

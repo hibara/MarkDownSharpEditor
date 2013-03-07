@@ -44,7 +44,6 @@
 			this.lblms = new System.Windows.Forms.Label();
 			this.comboPreviewInterval = new System.Windows.Forms.ComboBox();
 			this.lblPreviewIntervalCaption = new System.Windows.Forms.Label();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 			this.checkBoxEditingHighlightColor = new System.Windows.Forms.CheckBox();
 			this.labelHtmlColorName = new System.Windows.Forms.Label();
 			this.labelHighLightColor = new System.Windows.Forms.Label();
@@ -53,6 +52,9 @@
 			this.checkBoxOpenEditFileBefore = new System.Windows.Forms.CheckBox();
 			this.tabPageEdit = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.labelMainBackColor = new System.Windows.Forms.Label();
+			this.labelMainForeColor = new System.Windows.Forms.Label();
+			this.labelMainColor = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
@@ -134,15 +136,11 @@
 			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.fontDialog1 = new System.Windows.Forms.FontDialog();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-			this.labelMainColor = new System.Windows.Forms.Label();
-			this.labelMainBackColor = new System.Windows.Forms.Label();
-			this.labelMainForeColor = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPageMain.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.tabPageEdit.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.tabPageCSS.SuspendLayout();
@@ -223,7 +221,7 @@
 			this.tabPageMain.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPageMain.Size = new System.Drawing.Size(432, 401);
 			this.tabPageMain.TabIndex = 0;
-			this.tabPageMain.Text = "全般(&R)";
+			this.tabPageMain.Text = "全般";
 			this.tabPageMain.UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
@@ -273,7 +271,6 @@
 			this.groupBox2.Controls.Add(this.lblms);
 			this.groupBox2.Controls.Add(this.comboPreviewInterval);
 			this.groupBox2.Controls.Add(this.lblPreviewIntervalCaption);
-			this.groupBox2.Controls.Add(this.numericUpDown1);
 			this.groupBox2.Controls.Add(this.checkBoxEditingHighlightColor);
 			this.groupBox2.Controls.Add(this.labelHtmlColorName);
 			this.groupBox2.Controls.Add(this.labelHighLightColor);
@@ -326,31 +323,6 @@
 			this.lblPreviewIntervalCaption.Size = new System.Drawing.Size(154, 12);
 			this.lblPreviewIntervalCaption.TabIndex = 16;
 			this.lblPreviewIntervalCaption.Text = "ブラウザープレビューまでの間隔：";
-			this.lblPreviewIntervalCaption.DoubleClick += new System.EventHandler(this.lblPreviewIntervalCaption_DoubleClick);
-			// 
-			// numericUpDown1
-			// 
-			this.numericUpDown1.DecimalPlaces = 1;
-			this.numericUpDown1.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-			this.numericUpDown1.Location = new System.Drawing.Point(255, 86);
-			this.numericUpDown1.Maximum = new decimal(new int[] {
-            360000,
-            0,
-            0,
-            0});
-			this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(120, 19);
-			this.numericUpDown1.TabIndex = 15;
-			this.numericUpDown1.Visible = false;
 			// 
 			// checkBoxEditingHighlightColor
 			// 
@@ -422,7 +394,7 @@
 			this.tabPageEdit.Name = "tabPageEdit";
 			this.tabPageEdit.Size = new System.Drawing.Size(432, 401);
 			this.tabPageEdit.TabIndex = 3;
-			this.tabPageEdit.Text = "エディター(&E)";
+			this.tabPageEdit.Text = "エディター";
 			this.tabPageEdit.UseVisualStyleBackColor = true;
 			// 
 			// groupBox4
@@ -488,6 +460,41 @@
 			this.groupBox4.TabIndex = 0;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "カラー設定:";
+			// 
+			// labelMainBackColor
+			// 
+			this.labelMainBackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+			this.labelMainBackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.labelMainBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.labelMainBackColor.Location = new System.Drawing.Point(156, 37);
+			this.labelMainBackColor.Name = "labelMainBackColor";
+			this.labelMainBackColor.Padding = new System.Windows.Forms.Padding(4);
+			this.labelMainBackColor.Size = new System.Drawing.Size(22, 22);
+			this.labelMainBackColor.TabIndex = 63;
+			this.labelMainBackColor.Click += new System.EventHandler(this.labelBackColor_Click);
+			// 
+			// labelMainForeColor
+			// 
+			this.labelMainForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+			this.labelMainForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.labelMainForeColor.Location = new System.Drawing.Point(127, 37);
+			this.labelMainForeColor.Name = "labelMainForeColor";
+			this.labelMainForeColor.Padding = new System.Windows.Forms.Padding(4);
+			this.labelMainForeColor.Size = new System.Drawing.Size(22, 22);
+			this.labelMainForeColor.TabIndex = 62;
+			this.labelMainForeColor.Click += new System.EventHandler(this.labelForeColor_Click);
+			// 
+			// labelMainColor
+			// 
+			this.labelMainColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+			this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.labelMainColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.labelMainColor.Location = new System.Drawing.Point(21, 37);
+			this.labelMainColor.Name = "labelMainColor";
+			this.labelMainColor.Padding = new System.Windows.Forms.Padding(4);
+			this.labelMainColor.Size = new System.Drawing.Size(100, 22);
+			this.labelMainColor.TabIndex = 61;
+			this.labelMainColor.Text = "全般";
 			// 
 			// label6
 			// 
@@ -1105,7 +1112,7 @@
 			this.tabPageCSS.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPageCSS.Size = new System.Drawing.Size(432, 401);
 			this.tabPageCSS.TabIndex = 1;
-			this.tabPageCSS.Text = "CSSファイルの指定(&S)";
+			this.tabPageCSS.Text = "CSSファイルの指定";
 			this.tabPageCSS.UseVisualStyleBackColor = true;
 			// 
 			// cmdDownItem
@@ -1218,7 +1225,7 @@
 			this.tabPageHTML.Name = "tabPageHTML";
 			this.tabPageHTML.Size = new System.Drawing.Size(432, 401);
 			this.tabPageHTML.TabIndex = 2;
-			this.tabPageHTML.Text = "HTMLファイル出力時の設定(&H)";
+			this.tabPageHTML.Text = "HTMLファイル出力時の設定";
 			this.tabPageHTML.UseVisualStyleBackColor = true;
 			// 
 			// groupBox3
@@ -1370,41 +1377,6 @@
 			this.colorDialog1.AnyColor = true;
 			this.colorDialog1.FullOpen = true;
 			// 
-			// labelMainColor
-			// 
-			this.labelMainColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-			this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.labelMainColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelMainColor.Location = new System.Drawing.Point(21, 37);
-			this.labelMainColor.Name = "labelMainColor";
-			this.labelMainColor.Padding = new System.Windows.Forms.Padding(4);
-			this.labelMainColor.Size = new System.Drawing.Size(100, 22);
-			this.labelMainColor.TabIndex = 61;
-			this.labelMainColor.Text = "全般";
-			// 
-			// labelMainBackColor
-			// 
-			this.labelMainBackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-			this.labelMainBackColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelMainBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.labelMainBackColor.Location = new System.Drawing.Point(156, 37);
-			this.labelMainBackColor.Name = "labelMainBackColor";
-			this.labelMainBackColor.Padding = new System.Windows.Forms.Padding(4);
-			this.labelMainBackColor.Size = new System.Drawing.Size(22, 22);
-			this.labelMainBackColor.TabIndex = 63;
-			this.labelMainBackColor.Click += new System.EventHandler(this.labelBackColor_Click);
-			// 
-			// labelMainForeColor
-			// 
-			this.labelMainForeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-			this.labelMainForeColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.labelMainForeColor.Location = new System.Drawing.Point(127, 37);
-			this.labelMainForeColor.Name = "labelMainForeColor";
-			this.labelMainForeColor.Padding = new System.Windows.Forms.Padding(4);
-			this.labelMainForeColor.Size = new System.Drawing.Size(22, 22);
-			this.labelMainForeColor.TabIndex = 62;
-			this.labelMainForeColor.Click += new System.EventHandler(this.labelForeColor_Click);
-			// 
 			// Form3
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1430,7 +1402,6 @@
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.tabPageEdit.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox4.PerformLayout();
@@ -1551,7 +1522,6 @@
 		private System.Windows.Forms.Button cmdUpItem;
 		private System.Windows.Forms.ComboBox comboPreviewInterval;
 		private System.Windows.Forms.Label lblPreviewIntervalCaption;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
 		private System.Windows.Forms.Label lblms;
 		private System.Windows.Forms.Label labelMainColor;
 		private System.Windows.Forms.Label labelMainBackColor;

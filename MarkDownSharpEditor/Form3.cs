@@ -26,6 +26,9 @@ namespace MarkDownSharpEditor
 		public string SelectedCssFilePath;
 		public ComboBox.ObjectCollection CombCol;
 
+		//プレビューまでの応答時間（ms）
+		private int PreviewIntervalNum = 0;
+
 		//-----------------------------------
 		// コンストラクタ
 		//-----------------------------------
@@ -83,55 +86,39 @@ namespace MarkDownSharpEditor
 			{
 				case -1:
 					comboPreviewInterval.SelectedIndex = 0;
-					numericUpDown1.Value = -1;
 					break;
 				case 100:
 					comboPreviewInterval.SelectedIndex = 1;
-					numericUpDown1.Value = 0.1m;
 					break;
 				case 500:
 					comboPreviewInterval.SelectedIndex = 2;
-					numericUpDown1.Value = 0.5m;
 					break;
 				case 1000:
 					comboPreviewInterval.SelectedIndex = 3;
-					numericUpDown1.Value = 1;
 					break;
 				case 2000:
 					comboPreviewInterval.SelectedIndex = 4;
-					numericUpDown1.Value = 2;
 					break;
 				case 3000:
 					comboPreviewInterval.SelectedIndex = 5;
-					numericUpDown1.Value = 3;
 					break;
 				case 4000:
 					comboPreviewInterval.SelectedIndex = 6;
-					numericUpDown1.Value = 4;
 					break;
 				case 5000:
 					comboPreviewInterval.SelectedIndex = 7;
-					numericUpDown1.Value = 5;
 					break;
 				case 10000:
 					comboPreviewInterval.SelectedIndex = 8;
-					numericUpDown1.Value = 10;
 					break;
 				case 30000:
 					comboPreviewInterval.SelectedIndex = 9;
-					numericUpDown1.Value = 30;
 					break;
 				case 60000:
 					comboPreviewInterval.SelectedIndex = 10;
-					numericUpDown1.Value = 60;
 					break;
-				default:
-					//カスタム値を表示（隠し機能）
-					numericUpDown1.Value = (decimal)(obj.AutoBrowserPreviewInterval / 1000);
-					comboPreviewInterval.Visible = false;
-					numericUpDown1.Bounds = comboPreviewInterval.Bounds;
-					numericUpDown1.Visible = true;
-					lblms.Visible = true;
+				default:	// 1000ms
+					comboPreviewInterval.SelectedIndex = 3;
 					break;
 			}
 
@@ -391,7 +378,7 @@ namespace MarkDownSharpEditor
 			//編集部分のハイライトカラー
 			obj.HtmlHighLightColor = labelHighLightColor.BackColor.ToArgb();
 			//ブラウザープレビューまでの間隔
-			obj.AutoBrowserPreviewInterval = (int)(numericUpDown1.Value * 1000);
+			obj.AutoBrowserPreviewInterval = PreviewIntervalNum;
 
 			//-----------------------------------
 			// エディター(SyntaxHighlighter)設定
@@ -620,59 +607,47 @@ namespace MarkDownSharpEditor
 		//-----------------------------------------------------------
 		private void comboPreviewInterval_SelectionChangeCommitted(object sender, EventArgs e)
 		{
-
 			switch (comboPreviewInterval.SelectedIndex)
 			{
 				case 0:
-					numericUpDown1.Value = -1;
+					PreviewIntervalNum = -1;
 					break;
 				case 1:
-					numericUpDown1.Value = 100;
+					PreviewIntervalNum = 100;
 					break;
 				case 2:
-					numericUpDown1.Value = 500;
+					PreviewIntervalNum = 500;
 					break;
 				case 3:
-					numericUpDown1.Value = 1000;
+					PreviewIntervalNum = 1000;
 					break;
 				case 4:
-					numericUpDown1.Value = 2000;
+					PreviewIntervalNum = 2000;
 					break;
 				case 5:
-					numericUpDown1.Value = 3000;
+					PreviewIntervalNum = 3000;
 					break;
 				case 6:
-					numericUpDown1.Value = 4000;
+					PreviewIntervalNum = 4000;
 					break;
 				case 7:
-					numericUpDown1.Value = 5000;
+					PreviewIntervalNum = 5000;
 					break;
 				case 8:
-					numericUpDown1.Value = 10000;
+					PreviewIntervalNum = 10000;
 					break;
 				case 9:
-					numericUpDown1.Value = 30000;
+					PreviewIntervalNum = 30000;
 					break;
 				case 10:
-					numericUpDown1.Value = 60000;
+					PreviewIntervalNum = 60000;
 					break;
 				default:
+					PreviewIntervalNum = 1000;
 					break;
 			}
-
+			cmdApply.Enabled = true;
 		}
-
-		//-----------------------------------------------------------
-		// ラベルをダブルクリックでプレビュー間隔のカスタム値入力
-		//-----------------------------------------------------------
-		private void lblPreviewIntervalCaption_DoubleClick(object sender, EventArgs e)
-		{
-			comboPreviewInterval.Visible = false;
-			numericUpDown1.Bounds = comboPreviewInterval.Bounds;
-			numericUpDown1.Visible = true;
-			lblms.Visible = true;
-		}
-
 
 		#endregion
 

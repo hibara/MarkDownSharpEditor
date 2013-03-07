@@ -59,7 +59,7 @@ namespace MrkSetup
 			//関連付ける拡張子
 			string Extension = ".md";
 			//実行するコマンドライン
-			string CommandLine = "\"" + MarkDownSharpEditorPath + "\" %1";
+			string CommandLine = "\"" + MarkDownSharpEditorPath + "\" \"%1\"";
 			//ファイルタイプ名
 			string FileType = "MarkDown#Editor";
 			//ファイルの種類
