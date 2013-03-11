@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Documents;
 
 using anrControls;
-using mshtml;
+using MSHTML;
 
 namespace MarkDownSharpEditor
 {
@@ -1249,7 +1249,11 @@ namespace MarkDownSharpEditor
 				ResultText = Encoding.GetEncoding(CodePageNum).GetString(bytesData);
 				//TODO: クリック音対策
 				//webBrowser1.DocumentText = MkResultText;
-				if (webBrowser1.Document != null)
+                if (webBrowser1.Document == null)
+                {
+                    webBrowser1.Navigate("about:blank");
+                }
+				else if (webBrowser1.Document != null)
 				{
 					webBrowser1.Document.OpenNew(true);
 				}
