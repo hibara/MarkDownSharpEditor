@@ -1,0 +1,855 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>キャンセル(&amp;C)</value>
+  </data>
+  <data name="cmdApply.Text" xml:space="preserve">
+    <value>適用(&amp;A)</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 12</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 427</value>
+  </data>
+  <data name="tabPageMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 401</value>
+  </data>
+  <data name="tabPageMain.Text" xml:space="preserve">
+    <value>全般</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Markdown モード:</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>関連付け設定：</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 12</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>※この設定に関してだけはレジストリへ書き込みます。</value>
+  </data>
+  <data name="cmdUnAssociateFiles.Text" xml:space="preserve">
+    <value>関連付け設定を解除する(&amp;D)</value>
+  </data>
+  <data name="cmdAssociateFiles.Text" xml:space="preserve">
+    <value>.mdファイルをMarkDown#Editorに関連付け設定する(&amp;D)</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>HTMLファイル出力設定：</value>
+  </data>
+  <data name="imgStrike.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJQAAAAYCAYAAAAcTtR3AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAACYSURBVGhD7dKxDYQwEETRLYCIAq6M64MmaIUarlrf
+        yiLBOyA0EP7gSdb3hhOtNeA1MgIuGQGXjIBLRsAlI+CSEXDJCLhkBFwyAq4aIxtw17CfEvbDOf2AC0sq
+        +ymhH0V8+hdwbkv5OO6nhH4UMaUVuPBNZT8l9CPgrmE/JQBPyAi4ZARcMgIuGQGXjIBLRsAlI+CSEfC0
+        +AMA2RY+bgFK+QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="lblPreviewIntervalCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 12</value>
+  </data>
+  <data name="lblPreviewIntervalCaption.Text" xml:space="preserve">
+    <value>ブラウザプレビューまでの時間：</value>
+  </data>
+  <data name="checkBoxEditingHighlightColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 16</value>
+  </data>
+  <data name="checkBoxEditingHighlightColor.Text" xml:space="preserve">
+    <value>編集部分をハイライトカラーで表示する(&amp;V)</value>
+  </data>
+  <data name="labelHighLightColor.Text" xml:space="preserve">
+    <value>編集部分のハイライトカラー</value>
+  </data>
+  <data name="checkBoxShowHtmlToClipboardMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>361, 16</value>
+  </data>
+  <data name="checkBoxShowHtmlToClipboardMessage.Text" xml:space="preserve">
+    <value>HTMLソースをクリップボードへコピーしたとき確認メッセージを表示する(&amp;M)</value>
+  </data>
+  <data name="checkBoxShowHtmlSaveDialog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 16</value>
+  </data>
+  <data name="checkBoxShowHtmlSaveDialog.Text" xml:space="preserve">
+    <value>HTMLファイル出力のとき保存ダイアログを表示する(&amp;T)</value>
+  </data>
+  <data name="checkBoxOpenEditFileBefore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 16</value>
+  </data>
+  <data name="checkBoxOpenEditFileBefore.Text" xml:space="preserve">
+    <value>前に編集していたファイルを起動時に自動的に開く(&amp;O)</value>
+  </data>
+  <data name="tabPageEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 401</value>
+  </data>
+  <data name="tabPageEdit.Text" xml:space="preserve">
+    <value>エディター</value>
+  </data>
+  <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>413, 374</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 348</value>
+  </data>
+  <data name="groupBoxMarkdown.Text" xml:space="preserve">
+    <value>カラー設定：</value>
+  </data>
+  <data name="labelMainBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 38</value>
+  </data>
+  <data name="labelMainColor.Text" xml:space="preserve">
+    <value>全般</value>
+  </data>
+  <data name="labelMainColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 23</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 22</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="labelBlockquotesBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 296</value>
+  </data>
+  <data name="labelBlockquotesForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 296</value>
+  </data>
+  <data name="labelBlockquotesColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 296</value>
+  </data>
+  <data name="labelBlockquotesColor.Text" xml:space="preserve">
+    <value>引用</value>
+  </data>
+  <data name="labelBlockquotesColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelCodeBlockBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 198</value>
+  </data>
+  <data name="labelCodeBlockForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 198</value>
+  </data>
+  <data name="labelCodeBlockColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 198</value>
+  </data>
+  <data name="labelCodeBlockColor.Text" xml:space="preserve">
+    <value>コードブロック</value>
+  </data>
+  <data name="labelCodeBlockColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelCommentsBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 262</value>
+  </data>
+  <data name="labelCommentsForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 262</value>
+  </data>
+  <data name="labelHorizontalBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 230</value>
+  </data>
+  <data name="labelHorizontalForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 230</value>
+  </data>
+  <data name="labelCodeBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 166</value>
+  </data>
+  <data name="labelCodeForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 166</value>
+  </data>
+  <data name="labelListsBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 134</value>
+  </data>
+  <data name="labelListsForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 134</value>
+  </data>
+  <data name="labelEmphasisBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 102</value>
+  </data>
+  <data name="labelEmphasisForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 102</value>
+  </data>
+  <data name="labelLinksBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 70</value>
+  </data>
+  <data name="labelLinksForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 70</value>
+  </data>
+  <data name="labelImagesForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 38</value>
+  </data>
+  <data name="labelHeadLine6BackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 262</value>
+  </data>
+  <data name="labelHeadLine6ForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 262</value>
+  </data>
+  <data name="labelHeadLine5BackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 230</value>
+  </data>
+  <data name="labelHeadLine5ForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 230</value>
+  </data>
+  <data name="labelHeadLine4BackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 198</value>
+  </data>
+  <data name="labelHeadLine4ForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 198</value>
+  </data>
+  <data name="labelHeadLine3BackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 166</value>
+  </data>
+  <data name="labelHeadLine3ForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 166</value>
+  </data>
+  <data name="labelHeadLine2BackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 134</value>
+  </data>
+  <data name="labelHeadLine2ForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 134</value>
+  </data>
+  <data name="labelHeadLine1BackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 102</value>
+  </data>
+  <data name="labelHeadLine1ForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 102</value>
+  </data>
+  <data name="labelLineBreakBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 70</value>
+  </data>
+  <data name="labelLineBreakForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 70</value>
+  </data>
+  <data name="labelCommentsColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 262</value>
+  </data>
+  <data name="labelCommentsColor.Text" xml:space="preserve">
+    <value>コメント</value>
+  </data>
+  <data name="labelCommentsColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelImagesColor.Text" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="labelImagesColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelEmphasisColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 102</value>
+  </data>
+  <data name="labelEmphasisColor.Text" xml:space="preserve">
+    <value>強調</value>
+  </data>
+  <data name="labelEmphasisColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelHorizontalColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 230</value>
+  </data>
+  <data name="labelHorizontalColor.Text" xml:space="preserve">
+    <value>罫線</value>
+  </data>
+  <data name="labelHorizontalColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelLinksColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 70</value>
+  </data>
+  <data name="labelLinksColor.Text" xml:space="preserve">
+    <value>リンク</value>
+  </data>
+  <data name="labelLinksColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelCodeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 166</value>
+  </data>
+  <data name="labelCodeColor.Text" xml:space="preserve">
+    <value>コード</value>
+  </data>
+  <data name="labelCodeColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelListsColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 134</value>
+  </data>
+  <data name="labelListsColor.Text" xml:space="preserve">
+    <value>リスト</value>
+  </data>
+  <data name="labelListsColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelHeadLine6Color.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 262</value>
+  </data>
+  <data name="labelHeadLine6Color.Text" xml:space="preserve">
+    <value>見出し６</value>
+  </data>
+  <data name="labelHeadLine6Color.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelHeadLine5Color.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 230</value>
+  </data>
+  <data name="labelHeadLine5Color.Text" xml:space="preserve">
+    <value>見出し５</value>
+  </data>
+  <data name="labelHeadLine5Color.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelHeadLine4Color.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 198</value>
+  </data>
+  <data name="labelHeadLine4Color.Text" xml:space="preserve">
+    <value>見出し４</value>
+  </data>
+  <data name="labelHeadLine4Color.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelHeadLine3Color.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 166</value>
+  </data>
+  <data name="labelHeadLine3Color.Text" xml:space="preserve">
+    <value>見出し３</value>
+  </data>
+  <data name="labelHeadLine3Color.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelHeadLine2Color.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 134</value>
+  </data>
+  <data name="labelHeadLine2Color.Text" xml:space="preserve">
+    <value>見出し２</value>
+  </data>
+  <data name="labelHeadLine2Color.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelHeadLine1Color.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 102</value>
+  </data>
+  <data name="labelHeadLine1Color.Text" xml:space="preserve">
+    <value>見出し１</value>
+  </data>
+  <data name="labelHeadLine1Color.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelLineBreakColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 70</value>
+  </data>
+  <data name="labelLineBreakColor.Text" xml:space="preserve">
+    <value>強制的な改行</value>
+  </data>
+  <data name="labelLineBreakColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 348</value>
+  </data>
+  <data name="groupBoxMarkdownExtra.Text" xml:space="preserve">
+    <value>カラー設定：</value>
+  </data>
+  <data name="labelMarkdownExtraNotice.Text" xml:space="preserve">
+    <value>※「全般」の「Markdown モード」を「Markdown Extra」に
+    設定することで、ここでのカラー設定が有効になります。</value>
+  </data>
+  <data name="labelBackslashEscapesBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 255</value>
+  </data>
+  <data name="labelBackslashEscapesForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 255</value>
+  </data>
+  <data name="labelAbbreviationsBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 224</value>
+  </data>
+  <data name="labelAbbreviationsForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 224</value>
+  </data>
+  <data name="labelFootnotesBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 193</value>
+  </data>
+  <data name="labelFootnotesForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 193</value>
+  </data>
+  <data name="labelDefinitionListsBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 162</value>
+  </data>
+  <data name="labelDefinitionListsForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 162</value>
+  </data>
+  <data name="labelTablesBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 131</value>
+  </data>
+  <data name="labelTablesForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 131</value>
+  </data>
+  <data name="labelFencedCodeBlocksBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 100</value>
+  </data>
+  <data name="labelFencedCodeBlocksForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 100</value>
+  </data>
+  <data name="labelSpecialAttributesBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 69</value>
+  </data>
+  <data name="labelSpecialAttributesForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 69</value>
+  </data>
+  <data name="labelBackslashEscapesColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelBackslashEscapesColor.Text" xml:space="preserve">
+    <value>バックスラッシュのエスケープ</value>
+  </data>
+  <data name="labelAbbreviationsColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelAbbreviationsColor.Text" xml:space="preserve">
+    <value>省略表記</value>
+  </data>
+  <data name="labelFootnotesColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelFootnotesColor.Text" xml:space="preserve">
+    <value>脚注</value>
+  </data>
+  <data name="labelDefinitionListsColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelDefinitionListsColor.Text" xml:space="preserve">
+    <value>定義リスト</value>
+  </data>
+  <data name="labelTablesColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelTablesColor.Text" xml:space="preserve">
+    <value>表組み</value>
+  </data>
+  <data name="labelFencedCodeBlocksColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelFencedCodeBlocksColor.Text" xml:space="preserve">
+    <value>コードブロック区切り</value>
+  </data>
+  <data name="labelSpecialAttributesColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelSpecialAttributesColor.Text" xml:space="preserve">
+    <value>特殊な属性</value>
+  </data>
+  <data name="labelMarkdownInsideHTMLBlocksBackColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 38</value>
+  </data>
+  <data name="labelMarkdownInsideHTMLBlocksForeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 38</value>
+  </data>
+  <data name="labelMarkdownInsideHTMLBlocksColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="labelMarkdownInsideHTMLBlocksColor.Text" xml:space="preserve">
+    <value>HTMLブロック内のMarkdown</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 23</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 23</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="tabPageCSS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 401</value>
+  </data>
+  <data name="tabPageCSS.Text" xml:space="preserve">
+    <value>CSSファイルの指定</value>
+  </data>
+  <data name="cmdDownItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEQSURBVDhP3VKxioNQEPQ/8g0H+SchcGAhhxaSQgNC
+        RAjGRrxOP8XevxALESwsBLHY24m+xJe8XFJnYGBnd2bBfWpEJFHX9S3z9wm3935JsGFjWRYVRaEkZvCs
+        M/cLvlzX5VINzODh8qMWcAO4XvqNBetX2WlZlkmXLstysT8Cs7U3z3PSDMOgqqoWy/uo65pM07x89zeK
+        pmmW0Wu0bSv+CUMc78e2beq6bnb8A3gcx0HYZnl7BW7sGdT3PXxKYLYccs9yfgVRgDw4eJ5HwzCwlIGe
+        7/sIH1heM9ICkA3HIAhoHEeWM1CHYYjwkaXkl4QgG09RFNE0TRfGcYzwSeV9aAhy4JwkCaVpivBZ5SEi
+        7Q/Y5BQgOFDZOwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="cmdDownItem.ToolTip" xml:space="preserve">
+    <value>選択されたCSSファイルの優先度を下げます。</value>
+  </data>
+  <data name="cmdUpItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAERSURBVDhP3VO9aoRAGNyHufaeIW2qVKlSBRYRwUIO
+        i0ggkmex8lUkYGEhWIggFhaK+AKT+e7UrNwmWGdgYOf7Zj7YPwXASq31RxzHEHL9afMIrUUG3qIowjRN
+        mOcZsmbt3ea9K9Doh2GIYRgobxjHEVJj70K58+8EDToIAnRdR7lH3/eQHi0e5f0ANl5830fTNJR2tG0L
+        8dD7SvkzgIUnz/NQVZX4/kRd1xAvM8+USsIPruuiKIqb4wDKsoRkmH1UjuMgy7KldRx5nkOyKkmS675X
+        2g5whfRMb5qm1/175NdKeTi/YXlUm5e8bLcgZOF8YMCZyy3zDwec5OOYJ21y+VQnM7MbIKRBYJ60Sb33
+        Q30D3pAU18m+4akAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdUpItem.ToolTip" xml:space="preserve">
+    <value>選択されたCSSファイルの優先度を上げます。</value>
+  </data>
+  <data name="cmdAddCssFolder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADZmlUWHRYTUw6Y29tLmFkb2Jl
+        LnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
+        Pz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENv
+        cmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJE
+        RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
+        cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
+        bS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlw
+        ZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1w
+        TU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOkE2Nzg5MjgwQkRFM0UxMTFBMTFFQ0E3NzhFN0Y4
+        NDdGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzQzRFRUVCRUNCRTExRTFBOTU4QjE1Mzg1NTY5
+        QTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzQzRFRUVBRUNCRTExRTFBOTU4QjE1Mzg1NTY5
+        QTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1N
+        OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0Q2ODREODFCQkVDRTExMTk5NTg5
+        RUFFOUFGQzQ3OUQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTY3ODkyODBCREUzRTExMUExMUVD
+        QTc3OEU3Rjg0N0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/
+        eHBhY2tldCBlbmQ9InIiPz5xKgEhAAABE0lEQVQ4T7WTvaqDQBCFrVKlSpUqDxAIBO4jWUgsLAThNqLY
+        5A3EWAi+gZW9YJkqvoDRWriVIBZzz5i4mCV/EDLwye7M2TPrriqqqn6EQkQCJJbgR2Ix1ciIAYRL0zTJ
+        87wbDMOgZybDA4ItOCRJgultBEHABgeJPVihrPDiBXfJsoyqqrqsmkRRFENtSpqmbLpHeTBYWZZ1Ud+J
+        ruuoLEtB3/fUNA0bnFEeDOa6rlMcx3fxfZ/Fx5EwDCmKovd3UNc1i08YsvbM3du25dwf575jkOe5uEbb
+        tlm8Q5q1v47jkOu6nHv8CuMpA/6Q1kiJe8d8A7bj/Ds7mMY7ZzDTNE10lHm5g2thBuSfaOTlGXyAqvwD
+        hV6IiyBrSTAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdAddCssFolder.ToolTip" xml:space="preserve">
+    <value>CSSファイルのあるフォルダーを指定して一括追加します。</value>
+  </data>
+  <data name="lblDefaultCssFileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 12</value>
+  </data>
+  <data name="lblDefaultCssFileName.Text" xml:space="preserve">
+    <value>CSSファイルリスト：</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>場所</value>
+  </data>
+  <data name="cmdOpenCssDir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADaGlUWHRYTUw6Y29tLmFkb2Jl
+        LnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
+        Pz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENv
+        cmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJE
+        RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
+        cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
+        bS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlw
+        ZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1w
+        TU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOkE2Nzg5MjgwQkRFM0UxMTFBMTFFQ0E3NzhFN0Y4
+        NDdGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkVFQzg3MTZBREZENDExRTFBMzc2OEQ4MzFGRDUy
+        N0I4IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkVFQzg3MTY5REZENDExRTFBMzc2OEQ4MzFGRDUy
+        N0I4IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBNYWNpbnRvc2giPiA8eG1w
+        TU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMTgwMTE3NDA3MjA2ODExOEE2
+        REQxNTBEQzg0RTJFRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBNjc4OTI4MEJERTNFMTExQTEx
+        RUNBNzc4RTdGODQ3RiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4g
+        PD94cGFja2V0IGVuZD0iciI/PrsVQS4AAAF2SURBVDhPjZIxa8JAGIYFp0KhUOjUtVOhUBCcCv6MgmtQ
+        iIi4FIRgBZdCpKOBgotDoJJV/AOdWupS6JKhWBy62eAQFIev73vNSTiS0oMnXO7e78mX5AoiorAs6xI8
+        ZFDWmSxYqGG4nsEzKIN0dg8vFfAIIr1oEIDXDDrgiAEWXwO+gllMzkApgzvQYeANXACzkJyAA2NNYwNP
+        T95Bur1PELfbbbFtWzD/BmGyp/kAVxSYHTjdbleWyyU+8u+Yz+dCGfaqqRznvik4brVaslqtZLFYyHA4
+        lMlkIpvNRsIwpOApyeUK6uPxWLbbrX4ih0sJBzvD/TnIFdwEQSBxHDPI31oEVc/zlMB1Xa7zt+cKSv1+
+        X4V932f4q9lsqvYpbTQaXDtMspkC4k2nUyWJokh2u52ar9drcRyHgtsklys4BR7bpWg2m8loNFLfhcKU
+        ZC/gOaCEG7kMBgNT8gLUOfgv91rCM1Kr1SgpZgX/Qkl6vR6L0blV+AF9xOxR1biHiwAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="cmdOpenCssDir.ToolTip" xml:space="preserve">
+    <value>選択したCSSファイルフォルダーをExplorerで開きます。</value>
+  </data>
+  <data name="cmdDeleteCssItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADZmlUWHRYTUw6Y29tLmFkb2Jl
+        LnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
+        Pz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENv
+        cmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJE
+        RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
+        cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
+        bS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlw
+        ZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1w
+        TU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOkE2Nzg5MjgwQkRFM0UxMTFBMTFFQ0E3NzhFN0Y4
+        NDdGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkRDNEMxQTM3RUNCRTExRTE4QjEwODMwMkNDMDcz
+        MzNFIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkRDNEMxQTM2RUNCRTExRTE4QjEwODMwMkNDMDcz
+        MzNFIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1N
+        OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0Q2ODREODFCQkVDRTExMTk5NTg5
+        RUFFOUFGQzQ3OUQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTY3ODkyODBCREUzRTExMUExMUVD
+        QTc3OEU3Rjg0N0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/
+        eHBhY2tldCBlbmQ9InIiPz55AnofAAABMUlEQVQ4T6WTsWqEQBCGD9IGAnmAtIGDvMRVV+UBAgcBEVEs
+        bISAhUQO8gCBLW1sxdLONxAsxEbEN7ARC7vJzmVXdlYtQgZ+3Pmd+dwd1oNhGP/Slnm34e36avLE9WWa
+        JvDnWfFRF+Hbmr8AHrlYnudQVRVYlqVCLq7rQtd1kCQJ+kz4BBBkWQYyFMi7bJYRx/HNF30L4CUMQxjH
+        UZT9QjzPg77vhQMwDAP4vo8APC4BoD51yDzPYkWaP5QeAkCtIBh7zSiScN0Gpm4bo2kaOZNXrZ4AVgNT
+        o65rsG17BZGLo/5l3DZjDKZpEg6BPOiA76IoRBk58zWKIgJJ05TMQgKOSG7bdmtgC6QsSxA3crUD1Jvj
+        OHvTvgZBIJtP6ju1CHXPtVwSTc9cqx+KJH+XcfgBX8D/gVdFZJMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdDeleteCssItem.ToolTip" xml:space="preserve">
+    <value>CSSファイルリストから、またはゴミ箱へ削除します。</value>
+  </data>
+  <data name="cmdAddCssFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADZmlUWHRYTUw6Y29tLmFkb2Jl
+        LnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
+        Pz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENv
+        cmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJE
+        RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
+        cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
+        bS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlw
+        ZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1w
+        TU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOkE2Nzg5MjgwQkRFM0UxMTFBMTFFQ0E3NzhFN0Y4
+        NDdGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjY0MkU1RDNCRUNCRTExRTE5ODhERTVGNDYyQjQy
+        NzhDIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MkU1RDNBRUNCRTExRTE5ODhERTVGNDYyQjQy
+        NzhDIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1N
+        OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0Q2ODREODFCQkVDRTExMTk5NTg5
+        RUFFOUFGQzQ3OUQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTY3ODkyODBCREUzRTExMUExMUVD
+        QTc3OEU3Rjg0N0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/
+        eHBhY2tldCBlbmQ9InIiPz7fdwJtAAAAmElEQVQ4T2P4//8/GCcnJxuTgA1g+pAN+N/U1EQUBqr9gNUA
+        YsC3b9/oaMCnT5/+b9q06f/ChQv/P3r0CCxGkgEgzUDxRiBOA+LbL1++JM2A+vp6kGJdIBMkf/jWrVs0
+        NgAkuXjxYpACZAw3AEkMuwHbtm0DSbbDxHBhoBp+GBtZkHIDKPYCOqB/LODA8ISEJIZpAHn4PwMAo4rY
+        5uL6sSEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdAddCssFile.ToolTip" xml:space="preserve">
+    <value>CSSファイルパスを追加します。</value>
+  </data>
+  <data name="tabPageHTML.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 401</value>
+  </data>
+  <data name="tabPageHTML.Text" xml:space="preserve">
+    <value>HTMLファイル出力時の設定</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>HTMLヘッダー：</value>
+  </data>
+  <data name="groupBoxCssOption.Text" xml:space="preserve">
+    <value>CSSファイルの指定：</value>
+  </data>
+  <data name="radioButtonInsertLinkTag.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 16</value>
+  </data>
+  <data name="radioButtonInsertLinkTag.Text" xml:space="preserve">
+    <value>&lt;LINK&gt;タグとして挿入する(&amp;K)</value>
+  </data>
+  <data name="radioButtonImportCssFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 16</value>
+  </data>
+  <data name="radioButtonImportCssFile.Text" xml:space="preserve">
+    <value>CSSファイルの内容をHTMLファイルに埋め込む(&amp;I)</value>
+  </data>
+  <data name="chkInsertHtmlHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 16</value>
+  </data>
+  <data name="chkInsertHtmlHeader.Text" xml:space="preserve">
+    <value>出力するHTMLファイルにヘッダー（DOCTYPE等）を挿入する(&amp;D)</value>
+  </data>
+  <data name="groupBoxEncoding.Text" xml:space="preserve">
+    <value>エンコーディング：</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>※「出力するHTMLファイルにヘッダー(DOCTYPE等）を挿入する」
+　　チェックが入っていると、&lt;META&gt;タグでも挿入されます。</value>
+  </data>
+  <data name="radioButtonChangeEncoding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 16</value>
+  </data>
+  <data name="radioButtonChangeEncoding.Text" xml:space="preserve">
+    <value>エンコーディングをしてする(&amp;N)</value>
+  </data>
+  <data name="radioButtonDefaultEncoding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 16</value>
+  </data>
+  <data name="radioButtonDefaultEncoding.Text" xml:space="preserve">
+    <value>編集中のエンコーディングを使用する(&amp;E)</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADKyssY2trbMNXV1jHe3t8vs7O0CgAABALe3t8n1dXWMdXV1jHb29wqAAAEAp+foQje3t8v1dXWMdra
+        2zDT09Qd+/v70fPz9Nby8vLW8vLy1v39/c7n5+eC9PT01PHx8dbx8fHW9PT01ejo6IT+/v7N8vLy1vPz
+        89b19fXW+/v70ujn6OSxsbL/pqan/6mpqv/S0tPu7Ozt3K6vsP6ioqT/n5+h/6Wlp//n5+ff0tLS65aW
+        mf+RkZT/pKSn//Pz89ni4uKzw8PD97Sztf+4uLj/vb2//szLzfi7u7z/uLi5/7S0tP+wsLD/v7/B+LKy
+        s/2hoaL/kpKV/66usfny8vKv2NjZZt3d3ujExMb/z8/P/9PT0//U1NT/1dXW/9XV1v/S0tL/zMzM/8jI
+        yP/CwsP/srKz/5uanf/R0dPq39/gZrOztB309PTXxsbI/9jY2P/i4uL/4+Pj/+Li4//Kysv/mJiY/8TE
+        xf+VlZX/zs7O/7KztP+cnJ7/7u7u2r+/wCA5OTwD9vX2vMzLzPvc3Nz/5ubm/+np6f/o6Oj/5ubn/4KC
+        gv/h4eH/gICA/9DQ0P+wsLL/qamq/PLy8r8AAAQCvb2+Ae/v76LU1NT33d3d/+rq6v/s7Oz/7Ozs/7i4
+        uf9ycnL/p6en/3Fxcf+bm5z/oKCg/7a2uPjs7OykAAAAAAAAAADt7e2b1tbX9t/f4P/s7Oz/7+/v/+7u
+        7v/r7Oz/srKy/7Ozs/+wsLD/paWl/6+vsf+7u7326+vrnQAAAAAAAAAA7e3tndbW1/bg4OD/7u7u//Dw
+        8P/v7+//7Ozs/9jY2P+Ojo7/1tbW/4SEhP+vr7H/u7u99urq6p4AAAAAycnJAfHx8anT09T44N/g/+zs
+        7P/v7+//7e3t/+Hh4f+urq7/cXFy/6mpqf9sbGz/jIyM/7Cwsfjt7e2pAAAAAL6+vwH29va4zc3O+9zc
+        3P/n5+f/6Ojo/+Tl5f/i4uP/39/g/pSUlP/CwsL/jo6P/56en/+vrrH78fHyuwAAAACsrK0F/Pz80sbG
+        x/7S0tL/2NjZ/9jY2P/W1tf/3t7f893d3fGpqar/mZmZ/6KipP+Dg4T/pqao//j4+NSAgIIE29vcDvv7
+        +8/U1NXr09PT69PT0+vR0dLr09PU6fr6+s/8/PzO0dHS6sPDxO3Q0NDrwsLC7tjY2ev7+/vQ5OTkEwAA
+        BAHX19gt7OzshOjo6Ibo6OiG6Ojohuvr64DOzs8qy8vMJ+vr633o6OiG6Ojohujo6Ibs7OyE09PULgAA
+        BAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAB//+AAf//gAH//wAB//8AAf//AAD//wAA
+        //8AAP///////w==
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>オプション</value>
+  </data>
+</root>

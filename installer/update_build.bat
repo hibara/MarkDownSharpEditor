@@ -20,8 +20,12 @@ mkdir bin
 
 @rem  必要ファイルをinstallerへコピー
 copy ..\MarkDownSharpEditor\bin\Release\MarkDownSharpEditor.exe bin\MarkDownSharpEditor.exe
+copy ..\MarkDownSharpEditor\bin\Release\MarkdownDeep.dll bin\MarkdownDeep.dll
 copy ..\MrkSetup\bin\Release\MrkSetup.exe bin\MrkSetup.exe
-@rem copy ..\help\readme.txt bin\readme.txt
+mkdir bin\ja-JP
+copy ..\MarkDownSharpEditor\bin\Release\ja-JP\MarkDownSharpEditor.resources.dll bin\ja-JP\MarkDownSharpEditor.resources.dll
+copy ..\MrkSetup\bin\Release\MrkSetup.exe bin\MrkSetup.exe
+copy ..\readme.md bin\readme.txt
 copy ..\css\*.css bin\
 copy ..\*.md bin\
 copy ..\images\main_icon\main_icon_48x48.png bin\
@@ -31,14 +35,16 @@ copy ..\images\main_icon\main_icon_48x48.png bin\
 @echo 時刻だけゼロクリア
 @echo -----------------------------------
 
-
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\github.css
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\hibara.org.css
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\markdown.css
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\main_icon_48x48.png
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\help.md
+..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\help-ja.md
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\sample.md
+..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\readme.txt
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\MarkDownSharpEditor.exe
+..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\ja-JP\MarkDownSharpEditor.resources.dll
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\MrkSetup.exe
 
 @echo. 
@@ -78,7 +84,7 @@ echo %ERRORLEVEL%
 @echo. 一時binディレクトリの削除
 @echo. -----------------------------------
 
-rd /s /q "bin"
+@rem rd /s /q "bin"
 
 :END
 

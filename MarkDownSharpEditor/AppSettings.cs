@@ -8,6 +8,8 @@ using System.IO;
 using System.Collections;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.Threading;
+using System.Globalization;
 
 namespace MarkDownSharpEditor
 {
@@ -16,7 +18,7 @@ namespace MarkDownSharpEditor
   public class AppSettings
   {
 		//-----------------------------------
-		#region メンバ変数（設定値）
+		#region メンバ変数（ Member Variable ）
 		//-----------------------------------
 		private int _Version;
 		private int _FormState;
@@ -25,6 +27,7 @@ namespace MarkDownSharpEditor
 		private int _richEditWidth;
 		private string _FontFormat;
 		private int _richEditForeColor;
+		private string _Lang;
 		private bool _fSplitBarWidthEvenly;
 		private bool _fViewToolBar;
 		private bool _fViewStatusBar;
@@ -39,34 +42,53 @@ namespace MarkDownSharpEditor
 		private bool _fAutoBrowserPreview;
 		private int _AutoBrowserPreviewInterval;
 		private bool _fSearchOptionIgnoreCase;
+    private bool _fMarkdownExtraMode;
 
-		//エディターのSyntaxHighlighter定義
-		private int _ForeColor_MainText;                 //全体
+		//Markdown SyntaxHighlighter
+		private int _ForeColor_MainText;                 //全体 ( General )
 		private int _BackColor_MainText;
-		private int _ForeColor_LineBreak;                //強制改行
+		private int _ForeColor_LineBreak;                //強制改行 ( Line break )
 		private int _BackColor_LineBreak;
 		[XmlArrayItem(typeof(int))]
-		private int[] _ForeColor_Headlines = new int[7]; //見出し
+		private int[] _ForeColor_Headlines = new int[7]; //見出し ( Headers )
 		[XmlArrayItem(typeof(int))]
 		private int[] _BackColor_Headlines = new int[7];
-		private int _ForeColor_Blockquotes;              //引用
+		private int _ForeColor_Blockquotes;              //引用 ( Blockquotes )
 		private int _BackColor_Blockquotes;
-		private int _ForeColor_Lists;                    //リスト
+		private int _ForeColor_Lists;                    //リスト ( Lists )
 		private int _BackColor_Lists;
-		private int _ForeColor_CodeBlocks;               //コードブロック
+		private int _ForeColor_CodeBlocks;               //コードブロック ( Code blocks )
 		private int _BackColor_CodeBlocks;
-		private int _ForeColor_Horizontal;               //罫線
+		private int _ForeColor_Horizontal;               //罫線 ( Horizontal )
 		private int _BackColor_Horizontal;
-		private int _ForeColor_Links;                    //リンク
+		private int _ForeColor_Links;                    //リンク ( Links )
 		private int _BackColor_Links;
-		private int _ForeColor_Emphasis;                 //強調
+		private int _ForeColor_Emphasis;                 //強調 ( Emphasis )
 		private int _BackColor_Emphasis;
-		private int _ForeColor_Code;                     //コード
+		private int _ForeColor_Code;                     //コード ( Code )
 		private int _BackColor_Code;
-		private int _ForeColor_Images;                   //画像
+		private int _ForeColor_Images;                   //画像 ( Images )
 		private int _BackColor_Images;
-		private int _ForeColor_Comments;                 //コメント
+		private int _ForeColor_Comments;                 //コメント ( Comments )
 		private int _BackColor_Comments;
+
+		//Markdown "Extara" SyntaxHighlighter
+    private int _ForeColor_MarkdownInsideHTMLBlocks; //HTMLブロック内のMarkdown ( Markdown Inside HTML Blocks )
+    private int _BackColor_MarkdownInsideHTMLBlocks;
+    private int _ForeColor_SpecialAttributes;        //特殊な属性 ( Special Attributes )
+    private int _BackColor_SpecialAttributes;
+    private int _ForeColor_FencedCodeBlocks;         //コードブロック ( Code blocks )
+    private int _BackColor_FencedCodeBlocks;
+    private int _ForeColor_Tables;                   //表組み ( Tables )
+    private int _BackColor_Tables;
+    private int _ForeColor_DefinitionLists;          //定義リスト ( Definition Lists )
+    private int _BackColor_DefinitionLists;
+    private int _ForeColor_Footnotes;                //脚注 ( Footnotes )
+    private int _BackColor_Footnotes;
+    private int _ForeColor_Abbreviations;            //注釈 ( Abbreviations )
+    private int _BackColor_Abbreviations;
+    private int _ForeColor_BackslashEscapes;         //バックスラッシュエスケープ ( Backslash Escapes )
+    private int _BackColor_BackslashEscapes;
 
 		[XmlArrayItem(typeof(string))]
 		private ArrayList _ArrayCssFileList = new ArrayList();
@@ -86,7 +108,7 @@ namespace MarkDownSharpEditor
 		#endregion
 
 		//-----------------------------------
-		#region プロパティ
+		#region プロパティ ( Property )
 		//-----------------------------------
 		public int Version
 		{
@@ -117,6 +139,11 @@ namespace MarkDownSharpEditor
 				{
 			get { return _richEditForeColor; }
 			set { _richEditForeColor = value; }
+		}
+		public string Lang
+		{
+			get { return _Lang; }
+			set { _Lang = value; }
 		}
 		public int richEditWidth
 		{
@@ -184,13 +211,13 @@ namespace MarkDownSharpEditor
 			{
 				if (_AutoBrowserPreviewInterval > 3600000 || _AutoBrowserPreviewInterval < -1)
 				{
-					_AutoBrowserPreviewInterval = 1000;	//デフォルト値
+					_AutoBrowserPreviewInterval = 1000;	//デフォルト値 ( Default )
 				}
 				return _AutoBrowserPreviewInterval; 
 			}
 			set 
 			{
-				//正当性のチェック
+				//正当性のチェック ( Validation )
 				if (value > 3600000)
 				{
 					value = 3600000;
@@ -207,11 +234,17 @@ namespace MarkDownSharpEditor
 			get { return _fSearchOptionIgnoreCase; }
 			set { _fSearchOptionIgnoreCase = value; }
 		}
+    public bool fMarkdownExtraMode
+    {
+      get { return _fMarkdownExtraMode; }
+      set { _fMarkdownExtraMode = value; }
+    }
 
 		//-----------------------------------
-		// エディタのSyntaxHightlighter設定
+		// SyntaxHightlighter
 		//-----------------------------------
 
+    //Markdown
 		public int ForeColor_MainText
 		{
 			get { return _ForeColor_MainText; }
@@ -333,6 +366,88 @@ namespace MarkDownSharpEditor
 			set { _BackColor_Comments = value; }
 		}
 
+    //Markdown Extra
+    public int ForeColor_MarkdownInsideHTMLBlocks
+    {
+      get { return _ForeColor_MarkdownInsideHTMLBlocks; }
+      set { _ForeColor_MarkdownInsideHTMLBlocks = value; }
+    }
+    public int BackColor_MarkdownInsideHTMLBlocks
+    {
+      get { return _BackColor_MarkdownInsideHTMLBlocks; }
+      set { _BackColor_MarkdownInsideHTMLBlocks = value; }
+    }
+    public int ForeColor_SpecialAttributes
+    {
+      get { return _ForeColor_SpecialAttributes; }
+      set { _ForeColor_SpecialAttributes = value; }
+    }
+    public int BackColor_SpecialAttributes
+    {
+      get { return _BackColor_SpecialAttributes; }
+      set { _BackColor_SpecialAttributes = value; }
+    }
+    public int ForeColor_FencedCodeBlocks
+    {
+      get { return _ForeColor_FencedCodeBlocks; }
+      set { _ForeColor_FencedCodeBlocks = value; }
+    }
+    public int BackColor_FencedCodeBlocks
+    {
+      get { return _BackColor_FencedCodeBlocks; }
+      set { _BackColor_FencedCodeBlocks = value; }
+    }
+    public int ForeColor_Tables
+    {
+      get { return _ForeColor_Tables; }
+      set { _ForeColor_Tables = value; }
+    }
+    public int BackColor_Tables
+    {
+      get { return _BackColor_Tables; }
+      set { _BackColor_Tables = value; }
+    }
+    public int ForeColor_DefinitionLists
+    {
+      get { return _ForeColor_DefinitionLists; }
+      set { _ForeColor_DefinitionLists = value; }
+    }
+    public int BackColor_DefinitionLists
+    {
+      get { return _BackColor_DefinitionLists; }
+      set { _BackColor_DefinitionLists = value; }
+    }
+    public int ForeColor_Footnotes
+    {
+      get { return _ForeColor_Footnotes; }
+      set { _ForeColor_Footnotes = value; }
+    }
+    public int BackColor_Footnotes
+    {
+      get { return _BackColor_Footnotes; }
+      set { _BackColor_Footnotes = value; }
+    }
+    public int ForeColor_Abbreviations
+    {
+      get { return _ForeColor_Abbreviations; }
+      set { _ForeColor_Abbreviations = value; }
+    }
+    public int BackColor_Abbreviations
+    {
+      get { return _BackColor_Abbreviations; }
+      set { _BackColor_Abbreviations = value; }
+    }
+    public int ForeColor_BackslashEscapes
+    {
+      get { return _ForeColor_BackslashEscapes; }
+      set { _ForeColor_BackslashEscapes = value; }
+    }
+    public int BackColor_BackslashEscapes
+    {
+      get { return _BackColor_BackslashEscapes; }
+      set { _BackColor_BackslashEscapes = value; }
+    }
+
 		//-----------------------------------
 		// CSS設定
 		public ArrayList ArrayCssFileList
@@ -393,21 +508,23 @@ namespace MarkDownSharpEditor
 		//-----------------------------------
 
 		//-----------------------------------
-		//コンストラクタ
+		//コンストラクタ ( Constructor )
 		//-----------------------------------
 		public AppSettings()
 		{
 			//初期位置（スクリーン中央）
+			//Default window position ( in screen center )
 			int defautPosX = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 2 - 420;
 			int defautPosY = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height / 2 - 320;
 
 			//AppData
 			AppDataPath = GetAppDataLocalPath();
 			//初期CSSディレクトリ
+			//Initial directory of CSS files
 			string CssDirPath = Path.Combine(AppDataPath, "css");
 
-			_Version = 0;	//バージョン
-			_FormState = 0;	//WindowState = Normal;
+			_Version = 0;                        //バージョン ( Version )
+			_FormState = 0;	                     //WindowState = Normal;
 			_FormPos.X = defautPosX;
 			_FormPos.Y = defautPosY;
 			_FormSize.Width = 840;
@@ -416,6 +533,8 @@ namespace MarkDownSharpEditor
 			_richEditWidth = 320;
 			_FontFormat = "MS UI Gothic, 9pt";
 			_richEditForeColor = 0;
+
+			_Lang = "";                         //Culture lang ( default = "" )
 
 			_fSplitBarWidthEvenly = true;
 			_fViewToolBar = true;
@@ -431,17 +550,19 @@ namespace MarkDownSharpEditor
 			_fAutoBrowserPreview = true;
 			_AutoBrowserPreviewInterval = 1000;	//ブラウザープレビューまでの間隔（ミリ秒）
 
-			_fSearchOptionIgnoreCase = true;	//検索オプションで大文字/小文字を区別しない
+			_fSearchOptionIgnoreCase = true;	  //検索オプションで大文字/小文字を区別しない
+
+      _fMarkdownExtraMode = false;        //Markdown Extra Mode
 
 			//-----------------------------------
-			// エディターのSyntax Highlighter 
+			// Syntax Highlighter ( Markdown )
 			//-----------------------------------
-			_ForeColor_MainText     = -16777216;     //メイン
+			_ForeColor_MainText     = -16777216; //メイン ( General )
 			_BackColor_MainText     = -1;
 
 			_ForeColor_LineBreak    = -16777216;
-			_BackColor_LineBreak    = -19276; 　　   //強制改行
-			_ForeColor_Headlines[0] = -16777216;     //見出し
+			_BackColor_LineBreak    = -19276;    //強制改行 ( Line break )
+			_ForeColor_Headlines[0] = -16777216; //見出し ( Headers )
 			_ForeColor_Headlines[1] = -16777216;
 			_ForeColor_Headlines[2] = -11513776;
 			_ForeColor_Headlines[3] = -10197916;
@@ -457,37 +578,59 @@ namespace MarkDownSharpEditor
 			_BackColor_Headlines[5] = -527382;
 			_BackColor_Headlines[6] = -328976;
 
-			_ForeColor_Blockquotes  = -4934476;       //引用
+			_ForeColor_Blockquotes  = -4934476;  //引用 ( Blockquotes)
 			_BackColor_Blockquotes  = -1;
-			_ForeColor_Lists        = -3057141;       //リスト（オレンジ）
+			_ForeColor_Lists        = -3057141;  //リスト ( Lists )
 			_BackColor_Lists        = -1;
-			_ForeColor_CodeBlocks   = -10197916;      //コードブロック
+			_ForeColor_CodeBlocks   = -10197916; //コードブロック ( Code blocks )
 			_BackColor_CodeBlocks   = -986896;
-			_ForeColor_Horizontal   = -1;             //罫線（紫色）
+			_ForeColor_Horizontal   = -1;        //罫線 ( Horizontal )
 			_BackColor_Horizontal   = -6946666;
-			_ForeColor_Links        = -16776961;      //リンク
+			_ForeColor_Links        = -16776961; //リンク ( Links )
 			_BackColor_Links        = -1;
-			_ForeColor_Emphasis     = -65536;         //強調
+			_ForeColor_Emphasis     = -65536;    //強調 ( Emphasis )
 			_BackColor_Emphasis     = -1;
-			_ForeColor_Code         = -10197916;      //コード
+			_ForeColor_Code         = -10197916; //コード ( Code )
 			_BackColor_Code         = -986896;
 			_ForeColor_Images       = -16777216;
-			_BackColor_Images       = -12787;         //画像
-			_ForeColor_Comments     = -16731136;      //コメント
+			_BackColor_Images       = -12787;    //画像 ( Images )
+			_ForeColor_Comments     = -16731136; //コメント ( Comments )
 			_BackColor_Comments     = -1;
 
-			_ArrayCssFileList.Clear();                //ビルトインCSSファイルリスト
+			//-----------------------------------
+			// Syntax Highlighter ( Markdown Extra )
+			//-----------------------------------
+			_ForeColor_MarkdownInsideHTMLBlocks = -26265;    //HTMLブロック内のMarkdown ( Markdown Inside HTML Blocks )
+			_BackColor_MarkdownInsideHTMLBlocks = -1;
+			_ForeColor_SpecialAttributes        = -10027161; //特殊な属性 ( Special Attributes )
+			_BackColor_SpecialAttributes        = -1;
+			_ForeColor_FencedCodeBlocks         = -10197916; //コードブロック区切り（Fenced Code Blocks）
+			_BackColor_FencedCodeBlocks         = -986896;
+			_ForeColor_Tables                   = -6697779;  //表組み ( Tables )
+			_BackColor_Tables                   = -1;
+			_ForeColor_DefinitionLists          = -3355545;  //定義リスト ( Definition Lists )
+			_BackColor_DefinitionLists          = -1;
+			_ForeColor_Footnotes                = 0;         //脚注 ( Footnotes )
+			_BackColor_Footnotes                = -16777164;
+			_ForeColor_Abbreviations            = -3342540;  //省略表記 ( Abbreviations )
+			_BackColor_Abbreviations            = -1;
+			_ForeColor_BackslashEscapes         = -6710886;  //バックスラッシュエスケープ ( Backslash Escapes )
+			_BackColor_BackslashEscapes         = -1;
+
+			//ビルトインCSSファイルリスト 
+			//List of buit-in CSS files
+			_ArrayCssFileList.Clear();                
 
 			_fHtmlOutputHeader = false;
 			_HtmlDocType = "strict";
 			_HtmlCssFileOption = 0;
 			_HtmlEncodingOption = 0;
-			_CodePageNumber = 65001;                 //utf-8
+			_CodePageNumber = 65001;             //utf-8
 			_HtmlDocTypeSelectedIndex = 0;
 			_fViewAllEncoding = false;
 
 			//-----------------------------------
-			// Form3の設定
+			// Form3
 			//-----------------------------------
 			_ListViewColumnHeader1Width = 128;
 			_ListViewColumnHeader2Width = 512;
@@ -495,7 +638,8 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------
-		// 自分自身のインスタンスからのみこのクラスへアクセス 
+		// 自分自身のインスタンスからのみこのクラスへアクセス
+ 		// This instance itself is able to access this class .
 		//----------------------------------------------------
 		[NonSerialized()]
 		private static AppSettings _instance;
@@ -515,6 +659,7 @@ namespace MarkDownSharpEditor
 
 		//-----------------------------------
 		// 設定をXMLからデシリアライズして読む
+		// Load from XML file of settings.
 		//-----------------------------------
 		public void ReadFromXMLFile()
 		{
@@ -536,33 +681,43 @@ namespace MarkDownSharpEditor
 				catch
 				{
 					//読み込み失敗
-					MessageBox.Show("設定ファイルの読み込みに失敗しました。初期状態で起動します。",
-					"エラー", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					//Fail to read
+					if (Thread.CurrentThread.CurrentCulture.Name.StartsWith("ja") == true)
+					{
+						MessageBox.Show("設定ファイルの読み込みに失敗しました。初期状態で起動します。",
+						"エラー", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					}
+					else
+					{
+						MessageBox.Show("Failed to load the file of settings. Launch with default options.",
+						"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					}
 					// ヒストリーデータの初期化
+					// Initialize history data
 					Instance.InitHistoryData();
 					// CSSファイルリストの初期化
+					// Initialize list of CSS files 
 					Instance.InitCssFileList();
 				}
 			}
 			else
 			{
-				// ヒストリーデータの初期化
 				Instance.InitHistoryData();
-				// CSSファイルリストの初期化
 				Instance.InitCssFileList();
-
 			}
 
 		}
 
 		//-----------------------------------
 		// 設定群をXMLにシリアライズして書き込む
+		// Write to XML file of settings.
 		//-----------------------------------
 		public void SaveToXMLFile()
 		{
 			string FilePath = Path.Combine(GetAppDataLocalPath(), "settings.config");
 
 			//ヒストリーデータを整理してから
+			//
 			OptimizeHistoryData();
 
 			try
@@ -577,24 +732,36 @@ namespace MarkDownSharpEditor
 			catch
 			{
 				//書き込み失敗
-				MessageBox.Show("設定ファイルの保存に失敗しました。\n保存されずにそのまま終了します。",
-				"エラー", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				//Fail to write
+				if (Thread.CurrentThread.CurrentCulture.Name.StartsWith("ja") == true)
+				{
+					MessageBox.Show("設定ファイルの保存に失敗しました。\n保存されずにそのまま終了します。",
+					"エラー", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				}
+				else
+				{
+					MessageBox.Show("Failed writing the file of settings.\nExit without saving options.",
+					"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				}
+
 			}
 
 		}
 
 		//-----------------------------------
 		// ヒストリーデータの初期化
+		// Initialize history data
 		//-----------------------------------
 		private void InitHistoryData()
 		{
 			// ヒストリーデータがない場合のみ初期値をセット
+			// Set default data when history data do no exists
 			if (Instance.ArrayHistoryEditedFiles.Count > 0)
 			{
 				foreach (AppHistory data in Instance.ArrayHistoryEditedFiles)
 				{
-					// どうやらXMLファイルを読んだときに空の要素が１つ作られてしまうため
-					// 最初の１つの要素の内容を精査する。
+					// どうやらXMLファイルを読んだときに空の要素が１つ作られてしまうため、最初の１つの要素の内容を精査する
+					// Inspect first element because blank element is created when XML file is read. 
 					if (File.Exists(data.md) == true)
 					{
 						return;
@@ -603,6 +770,7 @@ namespace MarkDownSharpEditor
 			}
 
 			//初期CSSディレクトリ
+			//Initial directory of CSS files.
 			string CssDirPath = Path.Combine(AppDataPath, "css");
 
 			Instance.ArrayHistoryEditedFiles.Clear();
@@ -620,14 +788,16 @@ namespace MarkDownSharpEditor
 
 		//-----------------------------------
 		// CSSファイルリストの初期化
+		// Initialize the list of CSS files. 
 		//-----------------------------------
 		private void InitCssFileList()
 		{
 			// CSSファイルリストがない場合のみ初期値のセット
+			// Set default data when the list of CSS files do not exist.
 			foreach (string data in Instance.ArrayCssFileList)
 			{
-				// どうやらXMLファイルを読んだときに空の要素が１つ作られてしまうため
-				// 最初の１つの要素の内容を精査する。
+				// どうやらXMLファイルを読んだときに空の要素が１つ作られてしまうため、最初の１つの要素の内容を精査する
+				// Inspect first element because blank element is created when XML file is read. 
 				if (File.Exists(data) == true)
 				{
 					return;
@@ -635,6 +805,7 @@ namespace MarkDownSharpEditor
 			}
 
 			//初期CSSディレクトリ
+			//Initial directory of CSS files
 			string CssDirPath = Path.Combine(AppDataPath, "css");
 			Instance.ArrayCssFileList.Clear();
 			Instance.ArrayCssFileList.Add(Path.Combine(CssDirPath, "github.css"));
@@ -645,13 +816,13 @@ namespace MarkDownSharpEditor
 			
 		//-----------------------------------
 		// ヒストリーデータの整理（重複削除）
+		// Remove history data if there is a duplicate data.
 		//-----------------------------------
 		public void OptimizeHistoryData()
 		{
 
 			int ArrayHistoryFilesLimit = 20;
 
-			//重複データがあれば削除する
 			for (int i = 0; i < Instance.ArrayHistoryEditedFiles.Count; i++)
 			{
 				AppHistory HistoryData = (AppHistory)Instance.ArrayHistoryEditedFiles[i];
@@ -665,6 +836,7 @@ namespace MarkDownSharpEditor
 				}
 			}
 			// 制限数を超えたペアは古いものから削除する
+			// Remove older data when limit of history data is over.
 			if (Instance.ArrayHistoryEditedFiles.Count > ArrayHistoryFilesLimit)
 			{
 				Instance.ArrayHistoryEditedFiles.RemoveRange(
@@ -673,11 +845,12 @@ namespace MarkDownSharpEditor
 		}
 
 		//--------------------------------------------
-		// AppData/Local/MarkDownSharp フォルダの取得
+		// AppData/Local/MarkDownSharp directory
 		//--------------------------------------------
 		public static string GetAppDataLocalPath()
 		{
-			// 「C:\Users\[ユーザ名]\AppData\Roaming」取得する
+			//「C:\Users\[ユーザ名]\AppData\Roaming」取得する
+			// Get "C:\Users\[User name]\AppData\Roaming" path.
 			string DirPath = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 			DirPath = Path.Combine(DirPath, "MarkDownSharpEditor");
 
@@ -689,10 +862,9 @@ namespace MarkDownSharpEditor
 			return (DirPath);
 
 			//実行ファイルのあるディレクトリ
+			//Application ExecutablePath
 			//return (Path.GetDirectoryName(Application.ExecutablePath));
-
 		}
-
 
 	}
 

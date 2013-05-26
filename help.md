@@ -1,360 +1,386 @@
-﻿
-<!--
+﻿<!--
 ************************************************************
-　こちら側は、ヘルプファイルのソースです。
-　目を通す場合は、右側のウィンドウをお読みください。→
+  Here is Help file source.
+  Refer in right web browser preview. =>
 ************************************************************
 -->
-<div id='title'>　</div>    
 
-概要
+
+Introduction
 =====
 
-「MarkDown# Editor（マークダウン・シャープ・エディター）」 は、Windows上の日本語環境で動作する、 Markdown記法に対応した軽量なテキストエディターです。
+"MarkDown#Editor" is lightweight text-editor to work on Windows, in Markdown syntax.
 
-左側にテキストエディター、右側にプレビューするブラウザーを備えた２ペイン式のエディターで、テキストファイルに近い感覚で編集することができ、それを簡単にHTMLファイルを変換することもできます。
+This application is 2 pane editor that have text editor in left side window, and previewing in web browser of right side window. You edit in text file, and  convert to HTML file or data source easily.
 
-すでにCSSファイルがある場合や、シンプルな、装飾の少ない小さなWebページの制作に向いています。たとえば、[GitHub](https://github.com)をはじめとしたWebサービスで採用されるMDファイルの作成や、ブログ記事の執筆などでの使用を想定して設計されています。
+"MarkDown#Editor" is suitable for a simple, or small web page production. Example, you write articles of blog, and you create .MD file that sites such as [GitHub](https://github.com), [reddit](http://www.reddit.com/), [Stack Overflow](http://stackoverflow.com/) and [SourceForge](http://sourceforge.net/) use.
 
-オープンソースによるフリーソフトウェアとして開発・配布され、商用・個人にかかわらずソースコードを含むすべてをご自由にダウンロードしてお使いいただけます。
+This application is open source software. You can download and use for free at all, including the source code for both commercial and personal.
 
-最新バージョン、ソースコードなどの詳細情報は、作者サイトにてご確認ください。
+Check the information for latest version, source codes and so on in my site.
+My site is...
 
 HIBARA.ORG   
 [http://hibara.org](http://hibara.org)
 
-最新ソースコードはGitHubにあります。   
+Latest source code is hosted on GitHub.
 [https://github.com/hibara/MarkDownSharpEditor](https://github.com/hibara/MarkDownSharpEditor)  
-※フォーク、プルリクエスト大歓迎です。
+* Welcom to folk this, and pull request.
 
 
-#動作環境
+#Environment to do
 
-Windows XP/Vista/7/8、32bit/64bitマシンいずれでも動きます。   
-ただし、動作には、.NET Framework 4.0以上が必要です。
+Windows XP/Vista/7/8 32bit or 64bit PC
+Required .NET Framework 4.0 or later.
 
-インストールされていない場合は、以下のMicrosoftの公式サイトから無償でダウンロードが可能です。
+If your PC is not installed, ".NET Framework 4.0" is able to download and installed from Microsoft web page for free.
 
-Microsoft .NET Framework 4 (Web インストーラー)    
+Microsoft .NET Framework 4 ( Web installer )    
 <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=17851" target="_blank">
 http://www.microsoft.com/ja-jp/download/details.aspx?id=17851</a>
 
-※動作には、Microsoft .NET Framework 4 Client Profile ではなく、**「無印」**の.NET Framework 4が必要です。
+**not** Microsoft .NET Framework 4 Client Profile,
+Required normal .NET Framework 4.
 
 
-##設定ファイル・インストールされるもの
+##Items installed
 
-MarkDown#Editorでは、ファイルの関連付けのみレジストリを使っています。そのため、ローカルディレクトリに設定ファイルやサンプルファイル等を作成します。このヘルプファイルなどもインストール時に設置しています。
+"MarkDown#Editor" do not use Windows registory basically, except for associating with .MD file in Windows system.
 
-アンインストーラを使って削除すれば、きれいになりますが、もし手作業などで削除される場合は、以下の辺りにあります。
+Therefore, this application will save congfig file, help file and sample data in local directory when that is installed.
 
-```C:\Users\[ユーザー名]\AppData\Roaming\MarkDownSharpEditor```
+If you want to uninstall these files, you could use attached uninstaller.
+But if you remove manually, There are those files in following directory:
 
-
-
-#Markdown記法って？
-
-Markdown記法について知るには、まず<a href="http://ja.wikipedia.org/wiki/Markdown" target="_blank"  class="external">Wikipedia</a>でしょうか。
-
-さらにMarkdownを策定した人の<a href="http://daringfireball.net/" target="_blank" class="external">サイト</a>（ただし英語）にも詳しく仕様が書いてあります。
-
-また、その仕様ドキュメントを日本語訳されている方のブログ（<a href="http://blog.2310.net/archives/6" target="_blank" class="external">blog::2310</a>）も参考になるかもしれません。
-
-主な用途としては、簡単なWebページを作成したり、ブログ記事などの軽量でシンプルな構造のHTMLソースを書いたりすることに適しています。
-
-最近では、<a href="http://github.com" target="_blank" class="external">GitHub</a> などで採用されていて、ソフトウェア開発上では.md形式のファイルが広まりつつありますが、日本での知名度は今ひとつといった感じでしょうか。
-
-MacではMarkdown記法に対応したエディターがいろいろと見つかるのですが、Windowsとなると意外と見つからなくて、あっても、日本語環境に完全には対応できていないというものでした。
-
-という経緯から、「MarkDown#Editor」を開発してみました。
+```C:\Users\[UserName]\AppData\Roaming\MarkDownSharpEditor```
 
 
-#ざっくりとした使い方
 
-Markdown記法を踏まえた上で、左側のウィンドウエリアにMarkdown記法でテキストを入力します。
+#About Markdown
 
-リアルタイムで右側のウィンドウにプレビューが反映されます。ただ、それだけのシンプルなテキストエディタです。
+First, To know about Markdown, it would be <a href="http://ja.wikipedia.org/wiki/Markdown" target="_blank"  class="external">Wikipedia</a>. :)
 
-とはいえ、HTMLファイルとして出力できるのはもちろんのこと、クリップボードにHTMLソースとして保存することも１クリックでいけます。
+Next, <a href="http://daringfireball.net/" target="_blank" class="external">Daring Fireball: Markdown</a>: that site is Markdown originally creator's site.
 
-また、HTML出力にあたっては、CSS埋め込みから、外部リンキングなど、さまざまな出力オプションを選択できます。
+The detail of a spec marking up is written in this site include syntax examples.
 
-「MarkDown# Editor」 にはあらかじめ登録されたCSSファイルがいくつかありますが、自分で用意したCSSファイルを追加して表示することもできます。
+Markdown is to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).
 
-プリインストールされたCSSファイルの種類は、まだまださみしい感じですが（徐々に増やしてはいこうと思いますが）、ネットにいろいろとサンプルは落ちていそうですので、拾ってきてインポートなどしてお使いください。
-
-
-##相対パスと絶対パス
-
-基本的にテキストエリアに書いた相対パス（例 image/hoge.png）は、現在書かれているMDファイルのある場所を基点にファイルを探しに行きます。
-
-そのため、画像やその他ファイルへのリンクを書きながら確認したいという場合は、同じフォルダにそれらのリソースデータファイルを持ってきておく必要があります。
-
-それが不便だ、という場合は、あからじめご自身のブログにイメージをアップロードしておいて、絶対パスを書かれた方が良いかもしれません。
-
-例として次の画像は、外部URLでの指定です。
+I found many text editor about Markdown on Macintosh, but it is not found on Windows, and corresponding of Japanese support. So, I developed this application - "MarkDown#Editor" myself.
 
 
-![外部URLのアイコン](http://hibara.org/software/markdownsharpeditor/img/main_icon_48x48.png)   
+
+#How to use
+
+Input text strings to left side window on Markdown, then the parsed results will be previewed in right browser window in real time.
+
+Of course, you can output to HTML files, and copy HTML source to Clipboard in one click easily.
+
+And there are a lot of output options, embeded data of CSS file, linking to external files and so on.
+
+There are some buit-in CSS files already in "MarkDown#Editor", but it is sure to be able to add original CSS files yourself.
+
+I think this application do not have many buit-in CSS files. I want to add CSS files gradually, but sample CSS files are everywhere on the Internet. It is a good idea to use them.
 
 
-ただ、当然ですが、表示にはネット接続された環境になっていないといけません。ネット未接続だと、上記の画像は正常に表示されないはずです。
+
+##Relative path and Absolute path
+
+Basically, you input relative paths ( ex. image/foo.png ) in left side of text editor window, then this application will find files from base directory of that .MD file you are editing now.
+
+Therefore if you want to see while writing a link to the other files or images, you need to put resource files on the folder.
+
+If you think it is not comfortable, you would upload images to your blog in web site, and you input absolute path in text editor directly.
+
+The following sample is image external linking URL.
+
+![External icon URL](http://hibara.org/software/markdownsharpeditor/img/main_icon_48x48.png)   
+
+As well, your PC connects with Internet if broser preview.
+
+Above image may be not displayed normally without connecting with Internet.
 
 
-#開発のキッカケ
 
-もともと僕は「<a href="http://hibara.org/software/attachecase/"  target="_blank" class="external">アタッシェケース</a>」という暗号化ソフトウェアの開発を行っていますが、ヘルプファイルを刷新するにあたって、Markdown で書こうと思い立ちました。ところが、いざツールを探してみると、日本語環境のWindows上で使えるものがほとんどありませんでした。
+#The begining of development
 
-Macには、その手のエディターを多く見つけられるのですが、意外にもWindowsで、日本語対応したものがなかったので、サクッとつくってみました（でもけっきょくは重い作業だった・・・(笑)）。
+I am developing <a href="http://hibara.org/software/attachecase/"  target="_blank" class="external">"AttacheCase"</a> that is AES encryption tool, then I must have rewritten help files in HTML format.
 
+However, there is not good Markdown editor almost on Windows and Japanese support.
 
-#開発環境
+I found like these applications in Macintosh, but it is incorrect to wirte Windows help files on Mac? :)
 
-開発には、VisualStudio C# 2010 Express を使用しています。
-
-Markdown記法のパーサーには、次の「著作権」の項目にある、C#にインプリメントされたクラスライブラリを使わせてもらいました。BSDライセンスということで、下記にすべて著作権表示されています（ソフトウェア内のバージョン情報にも記載してあります）。
-
-また、開発者で興味がある方は、下記のURLをそれぞれ訪れていただければ、ドキュメントやライブラリを入手されると良いでしょう。
+Therefore I must have developed this application.
 
 
-#著作権
 
-Markdown  -  A text-to-HTML conversion tool for web writers   
+#Developed environment
+
+I use VisualStudio C# 2010 Express.
+
+Markdown parser engine is C# class library implemented that is BSD License in the following item of "Copyright". 
+
+Of course, those copyrights are written in this application, too.
+
+If you are interested in Markdown and development, you could visit those web pages in next item.
+
+
+
+#Copyrights
+
+## Markdown  -  A text-to-HTML conversion tool for web writers   
 Copyright (c) 2004 John Gruber   
 [http://daringfireball.net/projects/markdown/](http://daringfireball.net/projects/markdown/)   
 
-Copyright (c) 2004 Michel Fortin - Translation to PHP   
-[http://www.michelf.com/projects/php-markdown/](http://www.michelf.com/projects/php-markdown/)   
+## MarkdownDeep
+[http://www.toptensoftware.com/markdowndeep/](http://www.toptensoftware.com/markdowndeep/)
+Copyright 2010-2011 Topten Software
 
-Copyright (c) 2004-2005 Milan Negovan - C# translation to .NET   
-[http://www.aspnetresources.com](http://www.aspnetresources.com)   
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this product except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
-#ライセンス
 
-GPLv3を適用します。ただし、前項にある使用しているライブラリなどを単体で使用する場合は、各作者のライセンスに従ってください。
+#License
 
-「MarkDown#Editor」に限っていえば、ライセンス条項に同意していただければ、商用・私用にかかわらずソースコードを含むすべてを基本的には無償でお使いいただけます。
-
-詳細は以下からご確認いただけます。   
+GPLv3
 https://www.gnu.org/licenses/gpl-3.0.html
 
-※参考（上記の和訳）   
-http://ossipedia.ipa.go.jp/legalinfo/gpl-3.0J.html
+However, for other libraries, please follow the license of each.
 
-本ソフトウェアの使用、改変、再頒布、販売などは、上記のライセンスに従ってください。この件に関して作者への問い合わせはなるべくお控えください（忙しいもので）。
+If you are according to this license, you can download and use for free at all, including the source codes for both commercial and personal use.
+
+Use of the this software, modify, redistribute, such as sale, please follow the above licenses. Please keep from contact as much as possible to me on this matter.
 
 
-#サポート
 
-作者多忙につき、なかなか返信することができませんが、その点だけご容赦ください。
+#Support
 
-些細な質問などは、どうかご勘弁を（たぶん返信することはないでしょう）。
+I am always busy...so, returns are very hard, especially FAQ and so on.
 
-ただ、「この機能がほしい」「これってバグでは？」といったフィードバックやご報告は大歓迎です。
+However demands of improvement, bug reports and feedbacks is welcome.
 
-その場合は、こちらからどうぞ。  
+I have been accepted at the following URL.
 https://github.com/hibara/MarkDownSharpEditor/issues
 
-ややレスポンスは鈍いかもしれませんが、メールでも受け付けています。  
-その場合は、こちらからどうぞ。
-
-ひばら　みつひろ   
-<m@hibara.org>
+Also accept e-mail on the other hand, but I do not response quickly...   
+m@hibara.org
 
 
-#今後の予定
 
-まだまだ機能は十分ではありませんが、ユーザーさんのご意見をうかがいながら、ちょっとずつ整えていこうと思います。将来的には、出力ファイルをサーバーにデプロイするところまで、とか。そこまでいくと、ちょっと難易度上がるかな‥‥。
+#Future
 
-その前にもう少し表示のパフォーマンスを上げることですかね。。。
+There are plenty of features for improvement. While listen to opinions of users, I improve quality of this applicaiton.
 
-現状では、特にバグのご報告や、プリインストールのCSSファイルのご提供など、絶賛お待ちしています。
-
-また、オープンソース化しておりますので、GitHub上でのフォークや、プルリクエストなど開発者側でのフォロー大募集。
+The first and foremost, I want to improve the performance of the previewing speed. And put html files on server int the future. I think it is difficult it comes to the development phase...
 
 
-#改版履歴
+
+#Version
+
+##ver.1.2.0.0　　2013/05/23
+
+* Added Markdown Extra mode.
+
+* Localized and create English version.
+
+* Fixed error occured when changing "Interval time of previewing" options.
+
+
 
 ##ver.1.1.5.0　　2013/03/07
 
-* 「新規作成」や無題で編集を開始したとき、編集ウィンドウでスクロールさせようとするとエラーが発生してした不具合に対処。
+* Fixed problems where the error occurred when an attempt is made scroll in the editing window, when you start editing in Untitled and "New".
 
-* 「新規作成」を行っていると、「無題[0001].md」といったテンポラリファイルをローカルパスに作成し続けてしまう不具合に対処。
+* Fixed that you are doing the "New", and it would continue to create the temporary file "Untitled [0001]. md" in local path.
 
-* 内部的な編集履歴（mdファイルと、cssファイルのセット）の数が、一定数（現状20に設定してます）を超えてしまうと、終了時にエラーが発生していた不具合に対処。
+* Fiexed when number of the editing history( have a set of md file and css file) of internally exceeds limit of 20, error has occurred in the application exits.
 
-* 文字列検索・置換で「すべてを置換する」を選択したとき、置換文字列を入力し続けてしまい、暴走してしまうことがあった不具合に対処。
+* Fixed when you select "Replace All" in the string search-and-replace, there is that it would continue to enter the replacement string and then runaways.
 
-* 半角スペースを含むMDファイルなど、関連付け起動がうまく機能していなかった不具合に対処。
+* Fixed problems such as the .MD file name that contains a space, starting to associated with did not work well.
 
-* 動作設定の「全般」で、「ブラウザープレビューまでの間隔」で、ある操作を行うとデバッグモードが作動し、テキストボックスの入力方式になってしまっていた不具合に対処。
+* Fixed the problem that debug mode is activated behavior set in the "General" and "Interval time of browser preview" option. It had become input form of the text box directly.
 
-* ブラウザプレビューが行われるタイミングでMarkDown#Editorを終了したとき、まれにエラーが発生していた不具合に対処（プレビュー処理に行くスレッドをきちんと止めてから終了するようにした）。
+* Fixed that error occure rarely when you are finished "MarkDown#Editor" at the timing the browser preview is working. ( Application was terminated after stopping the thread to go to preview in browser. )
 
-* エディター側のスクロール挙動を微調整。
+* Tweak the scroll behavior of the tex editor.
 
 
 ##ver.1.1.4.0　　2013/01/30
 
-* ブラウザーウィンドウを更新するときのクリック音を処理するところで強制終了していた不具合に対処（内部的に別のアプローチでクリック音を消去するようにした）。
+*  Fixed problem that it had been crashed at processing to stop the click sound when updating the browser window.
 
-* ウィンドウ全般の前景と背景色の設定項目を追加した（内部的に設定項目はあったのですが、UIの方を作るのを忘れていました・・・）
+* Added settings for foreground and background colors of the window in general. (There had been the settings internally, but I had forgotten to make the UI ...)
 
 
 ##ver.1.1.3.0　　2012/12/25
 
-* 検索・置換機能を新規に追加。
+* Added Search and Replace.
 
-* ウィンドウを「最小化」「最大化」していた場合に、正確にフォーム位置・サイズを保存していなかったので改良。
+* Improved when the application was "minimized", or "maximized" the window, it did not save the form position and size exactly.
 
-* クリップボードにHTMLソース出力のアイコンが、ファイル出力と区別がつかず、わかりにくかったのでデザインを微修正。
+* Redesign toolbar icon graphic of "Copy HTML source to Clipboard" to make a distinct of "Output HTML file" icon.
 
-* ウェブブラウザーコンポーネントの更新イベントが起きる度にカチカチ言っていたサウンドをMarkDown#Editor起動中はOFFにするようにした。
+* Stopped mouse click sound at the time of updating a web browser.
 
-* 登録されたビルトインCSSファイルが存在しない場合にも、ステータスバーのCSSファイルを選択するポップアップメニューが表示されていた不具合に対処。
+* Fixed the problem that pop-up menu of selecting a CSS file in status bar has been displayed when no the built-in CSS files registered.
 
 
 ##ver.1.1.2.0　　2012/12/12
 
-* 「見出し記号へのジャンプリスト表示」機能をメニューに新規追加。
+* Added the menu function "View jump list to the Headings symbol".
 
-* シンタックスハイライターで使っている正規表現では、Markdown記法の「見出し記号（h1～h6）」を正しく解釈できない場合があった不具合に対処。
+* Fixed problem that the regular expression of the syntax highlighter could not be interpreted correctly "Heading sign (h1 ~ h6)" on Markdown in some cases.
 
 
 ##ver.1.1.1.0　　2012/12/11
 
-* 新規作成でファイルを編集しはじめると、強制終了するという致命的な不具合に対処（すみません・・・前回修正の縁バグです）。
+* Fixed that fatal error occured when you begin to edit the file in the New.
 
-* マーカー表示周りの改良に伴い、エディター側で編集していた内容の一部が、右側のブラウザプレビューに表示されていなかった不具合に対処。
+* Fixed the problem that some of the contents were not display marker.
+
+
+* Fixed some of the contents was editing in text editor that were not displayed in the browser preview becasue of fixing around the marker preview in previous version.
 
 
 ##ver.1.1.0.0　　2012/12/07
 
-* エディタ部分のテキストフォント変更ができないという[プルリクエスト](https://github.com/hibara/MarkDownSharpEditor/pull/1)を受けたのでマージした。（[alg](https://github.com/alg0002)さん、プルリクエストありがとうございました！）
+* Commit to [pull request](https://github.com/hibara/MarkDownSharpEditor/pull/1) on GitHub, that could not changed text font in editor. Thanks! [alg](https://github.com/alg0002).
 
-* また、それに関連して、日本語表示できないフォント表示するとテキストが壊れて、元のフォントに戻せなくなるため（正確には復元できない）、フォント変更もUndoバッファに入れて、「元に戻す」コマンドで戻せるようにした。
+* In addition, font without Japanese support can not be displayed in Japanese, and The editing text was broken ( could not restored ). Added font format chages to undo buffer, and restored in "Undo" command.
 
-* ファイルを開くダイアログのデフォルトファイル名に「openFileDialog1」というコンポーネント名が入っていたので削除したのと、現在編集中のファイルがあれば、その場所を初期ディレクトリとして開くように改良。
+* Fixed "openFileDialog1" was the default file name in the dialog that opens the file, 
 
-* 新規作成の状態から、見出し文字を編集していくとブラウザー側にゴミ表示が増えていき、消すことができない問題に対処。
+* Fixed the file currently being edited, modified to open as the initial directory.
 
-* 編集途中でファイルを読み込み、「元に戻す」コマンド実行すると強制終了してしまう不具合に対処（※1）。
+* Fixed that Garbage display is gradually increased to the browser side from the state of New editing, when you edit the header symbol. 
 
-* 内容を編集時にブラウザプレビューが更新されても、表示位置（スクロールバー位置）を保つように改良（※2）。
-（※1, ※2 [mattnさん](https://github.com/mattn)、ご指摘＆修正サンプルソースをありがとうございました！）
+* Fixed when a file is loaded in during editing othe file, this application would crash with "Undo" command.(*1)
 
-* テキストエディターと、ブラウザプレビューのスクロール追従周りを大幅に手を入れ、改良した。また、編集中におけるプレビューやシンタックスハイライターの処理を微調整した（編集中の重い引っかかりなどが心なしか軽減されたかと思います・・・）。
+* Improved to keep the display position (scroll bar position) to updated browser preview when editing the contents.(*2)
+
+    （*1, *2 thanks [mattn](https://github.com/mattn)! to provide sample )
+
+* Improved text editor, a follow-up scroll around the browser preview. In addition, Tuned the process of syntax highlighter and preview in editing.
+(I think heavy editing were reduced a little... )
 
 
 ##ver.1.0.9.0　　2012/10/31
 
-* オープンソース化に伴うヘルプファイルの書き換えや、ソースコード（主にコメントアウトなど直接的な動作とは関係ないところ）の修正。
+* Rewrited the help files according as the open source, and modified source code ( where it has nothing to do directly, such as comment-out mainly).
 
 
 ##ver.1.0.8.0　　2012/10/16
 
-* 新しいCSSファイルを追加してもポップアップメニューや、デフォルトCSSとして設定することができなかった不具合に対処。
+* Fixed that the default CSS could not be added and viewed in the pop-up menu when you add a new CSS file.
 
-* Markdownの「リスト」表示において、「リスト記号の前にスペース３つまで許す」「記号の後にタブまたはスペースを**１以上**」という仕様がシンタックスハイライトに反映されていなかった不具合に対処。
+* Fixed the specification of Markdown in "List" of "to allow up to three spaces in front of the list symbol" and "**one or more **spaces or tabs after the sign" that has not been reflected in the syntax highlighting.
 
-* 数字ではじまる「リスト」のシンタックスハイライトに対応していなかった不具合に対処。
+* Fixed the problem that did not correspond to the syntax highlighting starts with a number of "list".
 
-* 編集途中に「リスト」が混じると、正しく編集箇所のマークが表示されなかったり、プレビューウィンドウのスクロールが追従していなかった不具合に対処。
+* Fixed the problem of the "list" is to mix during editing, marks of editing may not be displayed correctly, or the preview window did not follow to scroll.
 
 
 ##ver.1.0.7.0　　2012/10/02
 
-* 出力されるHTMLソースに、<body>タグが含まれていなかったという凡ミスに対処（すみません・・・）。
+* Fixed error that <body> tag did not include in the HTML source to output.
 
-* テキストエディター側のスクロールと、ブラウザプレビューウィンドウのスクロールを同期するように改良。
+* Improved to synchronize scrolling between text editor side and the browser preview window.
 
-* テキストエディター側のカーソルが移動する度にブラウザー描画していたのを省略し、少しだけチラつきを抑えるようにした。また、時間差でマーキングするようにして誤魔化した(笑)。
+* Improved to suppress the flicker slightly in browser whenever the cursor text editor side is moved. Omitted to paint at intervals, moreover marking preview at diffrent time.
 
-* 読み込んだブラウザーページのエンコーディング表示が正しく反映されていなかった不具合に対処。
+* Fixed display encoding of the browser page loaded has not been correctly reflected.
 
-* 動作設定を変更したとき、即座にメインウィンドウに反映していなかった不具合。
+* Fixed problem that has not been reflected in the main window immediately, when you change the setting.
 
-* ブラウザー側の編集箇所のカラー表示のON/OFF設定が正しく反映されていなかった不具合に対処。
+* Fixed setting of the color editing mark in the browser window is not reflected correctlly.
 
-* HTMLファイルに関連付けされたブラウザーを起動してプレビューする機能をツールバーとメニューに追加。
+* Added function of launching the browser which is associated with the HTML files, in the menu and toolbar.
 
-* 編集中においても、意図的に反映のラグをつくって無駄な描画回数を減らすように調整した（※次の項目と少し絡みます）。
+* Adjusted to reduce the number of unnecessary drawing in browser according to create a lag reflected intentionally in the editing.
 
-* ブラウザープレビューの間隔を秒単位で調整できるようにして、かつ、自動更新せずに手動で更新する設定も新たに追加した。
+* Adjusted interval time of preview, and added manual updating in browser without automatic updates.
 
-* CSS設定リストの一番上に登録されたファイルを「デフォルト」のCSSファイル設定とする機能の追加。
+* Added features that CSS file is setted "default" that have been registered at the top of the built-in CSS file list.
 
-* 「無題」ファイルの編集する度に、一時ファイルを生成し続けるという不具合に対処。むしろ逆に、「無題」で編集中は一時ファイルとして書き出さないようにした（そのため、無題のまま編集するとリンクなどが正しく動作しないことがあります。それは「仕様」としました。）
+* Fixed the problem of continuing to generate a temporary file, every time you edit in "Untitled" file. On the other hand, ( and therefore, there is the thing that links do not work correctly if you edit still untitled. It has been the specification. ) that do not exported as temporary files edited in the "Untitled".
 
 
 ##ver.1.0.6.0　　2012/09/23
 
-* ローカルに指定された画像（相対パス画像）が、最初にロードされたときには表示されるが、編集途中で表示されなくなる不具合に対処。
+* Fixed the problem that images were loaded and displayed first, when the image specified in the local (relative path image), but it will disappear during editing.
 
-* エディタ冒頭にある「見出し」などを変更すると、シンタックス・ハイライター表示がテキスト全体に適用されてしまう不具合に対処。
+* Fixed the problem entire text has been applied to syntax highlighter when changing the "heading" in the beginning of editor.
 
-* 新しくファイルを開いたときに、シンタックス・ハイライターのパース処理が走らなかった不具合に対処。
+* Fixed that the parser of syntax highlighter did not work, when you open a new file.
 
-* 書式のあるテキストをコピー＆ペーストすると、エラーが発生していたことがあった問題に対処。
+* Fixed the error has occurred, if you copy and paste text with format.
 
-* Undo, Redoともに正常に動作していなかった不具合に対処。
+* Fixed both function of Undo and Redo was not working correctly.
 
 
 ##ver.1.0.5.0　　2012/09/18
 
-* エディターのシンタックス・ハイライター処理を行ったとき、元のフォント設定が失われる不具合に対処。
+* Fixed the original font settings will be lost when syntax highlighter processing works.
 
-* 関連付けファイルからの起動が機能していなかった不具合を修正。
+* Fixed a bug that boot from a associated file did not work.
 
-* 「最近開いたファイル」からファイルパスを選んでもファイルを開けていなかった不具合に対処。
+* Fixed problems that did not open the file when you choose the file path from the "Ropen recently" menu.
 
-* テキストエディタ側で別ファイルを読み込み直すなどしたときに、きちんとシンタックスハイライターをクリアしていなかった不具合に対処。
+* Fixed the syntax highlighter property was not clear in browser, when reload another file in a text editor side.
 
 
 ##ver.1.0.4.0　　2012/09/11
 
-* エディター側のシンタックス・ハイライターを実装した。ただ、けっこう重いので、ある程度の負荷分散処理も入れてみました。不完全な部分があればご一報くださると助かります。
+* Implemented a syntax highlighter of editor side, but just, still heavy quite.
+However, I tried to put spreading load processing. Let me know if there is incomplete part.
 
-* Webブラウザのプレビュータイミングを調整して、体感的な表示速度と負荷のバランスをとった。
+* Adjusted the timing preview of browser, was taken to balance the load and display speed sensitively.
 
-* Webブラウザのプレビューウィンドウに「更新」「中止」ボタンの追加。
+* Added "Update" and "Stop" button in the browser preview window.
 
-* フォームのタイトルのファイル名をフルパス表示に変更。
+* Changed the full path displays on the title of main form.
 
-* フォームへのファイルのドラッグ＆ドロップが機能しなくなっていた不具合に対処。
+* Fixed the problem of drag-and-drop files did not work.
 
 
 ##ver.1.0.3.0　　2012/09/08
 
-* CSSファイルの登録ができなかったり、設定が保存されない、また削除するときに強制終了するなどのCSS設定パネル周りを修正（ぼろぼろで、ごめんなさい‥‥）
+* Fixed CSS setting panel around, such as crashed when you delete the CSS file, and were not registered, CSS settings were not saved.
 
-* ブラウザー表示に「戻る」「進む」ボタンを追加した。何度も更新が入ると、動作速度に影響があるので、頻繁には履歴を更新していません（保存したときにナビゲートしていますので、ページ履歴がそのとき作られ、戻る・進むが可能になります）。
+* Added on "Back" and "Forward" buttons to the browser display. This application often do not refresh editing history because Update enters many times could affect how the operating speed. ( Browser component navigate and create histories at same time, when you save the file. Then it is possible to go back and forward as often allows. )
 
-* 実験的にエディターウィンドウの方のシンタックス・ハイライター機能を追加。動作速度をみたいので、とりあえず一番わかりにくい「行末の半角スペース×2（＝強制改行）のところの背景色だけ変えられるようにした。
+* Added a syntax highlighter function of the editor window experimentally, because I want to see the operating speed. First, changed only background color of blank spaces * 2 ( = line breaks) of the "end of the line" that it is hard to see almost.
 
 
 ##ver.1.0.2.0　　2012/09/06
 
-* HTMLファイル出力で、二重にヘッダーやフッターが挿入されることがあった不具合に対処。
+* Fixed the header and footer is inserted into the double in "HTML file output" command.
 
-* 「無題」のファイルを編集すると、強制終了していた不具合に対処。
+* Fixed that crashed when editing an "Untitled".
 
-* 複数ファイルをまとめてドラッグ＆ドロップすると、現在設定で一括処理する機能を追加した。
+* Added to batch process in the current configuration, when you drag and drop together multiple files.
 
 
 ##ver.1.0.1.0　　2012/09/05
 
-* HTMLソースのクリップボード保存で強制終了していた不具合に対処。
+* Fixed the problem that had been crashed in "Copy HTML source to Clipboard".
 
-* カーソルが動いたり、少しでも編集するとプレビューページがカチカチと音を立てていたのを改善。内部的に言えば、毎回Navigate()を呼んでいたのを極力呼ばずに中身を再描画するようにした。      
+* Improved preview page is had tick cursor moves, if you edit. 
 
-* ファイルを保存したのに「更新」状態が解除されない不具合に対処（ファイルを閉じるときに変更された旨の通知が出てしまっていた）。
+* Improved to reduce speaking click sound frequently to refresh browser. That is 
+re-drawed the contents as much as possible without calling the "Navigate()"  function each time.
+
+* Fixed the problem of "Update" state is not released, however saved the file. ( Notice window that has changed was displayed when you close the file)
 
 
 ##ver.1.0.0.0　　2012/09/02
 
-* 公開
+* Released.
 
 
 

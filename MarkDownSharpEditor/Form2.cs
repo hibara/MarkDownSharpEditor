@@ -56,13 +56,6 @@ namespace MarkDownSharpEditor
         System.Diagnostics.Process.Start(linkLabel3.Text);
     }
 
-    private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-    {
-        linkLabel4.LinkVisited = true;
-        System.Diagnostics.Process.Start(linkLabel4.Text);
-    }
-
-
 
   }
 }

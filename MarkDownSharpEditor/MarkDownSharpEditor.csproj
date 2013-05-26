@@ -103,12 +103,20 @@
   <ItemGroup>
     <Compile Include="AppHistory.cs" />
     <Compile Include="AppSettings.cs" />
+    <Compile Include="MarkdonnDeep\Abbreviation.cs" />
+    <Compile Include="MarkdonnDeep\Block.cs" />
+    <Compile Include="MarkdonnDeep\BlockProcessor.cs" />
+    <Compile Include="MarkdonnDeep\FootnoteReference.cs" />
+    <Compile Include="MarkdonnDeep\HtmlTag.cs" />
+    <Compile Include="MarkdonnDeep\LinkDefinition.cs" />
+    <Compile Include="MarkdonnDeep\LinkInfo.cs" />
+    <Compile Include="MarkdonnDeep\MardownDeep.cs" />
+    <Compile Include="MarkdonnDeep\SpanFormatter.cs" />
+    <Compile Include="MarkdonnDeep\StringScanner.cs" />
+    <Compile Include="MarkdonnDeep\TableSpec.cs" />
+    <Compile Include="MarkdonnDeep\Token.cs" />
+    <Compile Include="MarkdonnDeep\Utils.cs" />
     <Compile Include="MarkdownSyntaxKeyword.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="RichTextEditEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -131,24 +139,26 @@
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
     <Compile Include="HtmlHeader.cs" />
-    <Compile Include="Markdown.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Win32.cs" />
+    <EmbeddedResource Include="Form1.ja-JP.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form3.ja-JP.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="MarkdonnDeep\MarkdownDeep.nuspec" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>

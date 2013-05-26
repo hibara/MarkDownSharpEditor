@@ -1,4 +1,6 @@
-﻿MarkDown#Editor
+﻿## readme
+
+MarkDown#Editor
 ===================================
 
 "MarkDown#Editor" is a free and open source lightweight text editor developed for Windows XP/Vista/7/8 and multi bytes character( for Japanese ), especially suitable for editing 'Markdown' markup language.
