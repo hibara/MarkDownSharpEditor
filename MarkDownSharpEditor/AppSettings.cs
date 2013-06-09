@@ -32,6 +32,7 @@ namespace MarkDownSharpEditor
 		private bool _fViewToolBar;
 		private bool _fViewStatusBar;
 		private int _TabPageSelectedIndex;
+		private int _MkColorTabPageSelectedIndex;
 		private bool _fOpenEditFileBefore;
 		[XmlArrayItem(typeof(AppHistory))]
 		private ArrayList _ArrayHistoryEditedFiles = new ArrayList();
@@ -169,6 +170,11 @@ namespace MarkDownSharpEditor
 		{
 				get { return _TabPageSelectedIndex; }
 				set { _TabPageSelectedIndex = value; }
+		}
+		public int MkColorTabPageSelectedIndex
+		{
+			get { return _MkColorTabPageSelectedIndex; }
+			set { _MkColorTabPageSelectedIndex = value; }
 		}
 		public bool fOpenEditFileBefore
 		{
@@ -541,6 +547,7 @@ namespace MarkDownSharpEditor
 			_fViewStatusBar = true;
             
 			_TabPageSelectedIndex = 0;
+			_MkColorTabPageSelectedIndex = 0;
 			_fOpenEditFileBefore = true;
 			_ArrayHistoryEditedFiles.Clear();
 			_fShowHtmlSaveDialog = true;
@@ -552,7 +559,7 @@ namespace MarkDownSharpEditor
 
 			_fSearchOptionIgnoreCase = true;	  //検索オプションで大文字/小文字を区別しない
 
-      _fMarkdownExtraMode = false;        //Markdown Extra Mode
+      _fMarkdownExtraMode = true;        //Markdown Extra Mode
 
 			//-----------------------------------
 			// Syntax Highlighter ( Markdown )
@@ -610,7 +617,7 @@ namespace MarkDownSharpEditor
 			_BackColor_Tables                   = -1;
 			_ForeColor_DefinitionLists          = -3355545;  //定義リスト ( Definition Lists )
 			_BackColor_DefinitionLists          = -1;
-			_ForeColor_Footnotes                = 0;         //脚注 ( Footnotes )
+			_ForeColor_Footnotes                = -1;        //脚注 ( Footnotes )
 			_BackColor_Footnotes                = -16777164;
 			_ForeColor_Abbreviations            = -3342540;  //省略表記 ( Abbreviations )
 			_BackColor_Abbreviations            = -1;

@@ -1,7 +1,8 @@
-﻿## readme
-
-MarkDown#Editor
+﻿# MarkDown#Editor
 ===================================
+
+## Overview
+-----------------------------------
 
 "MarkDown#Editor" is a free and open source lightweight text editor developed for Windows XP/Vista/7/8 and multi bytes character( for Japanese ), especially suitable for editing 'Markdown' markup language.
 
@@ -20,25 +21,40 @@ HIBARA.ORG - MarkDown#Editor
 http://hibara.org/software/markdownsharpeditor/
 
 
-
-Screenshots
+## Screenshots
 -----------------------------------
 
 ![ScreenShot-00](http://hibara.org/software/markdownsharpeditor/img/main_window_s.png)
 
 
-
-Source code
+## Source code
 -----------------------------------
 
 All the source code, graphics resources and project files needed to build by Visual C# 2010 Express.
 
 
-
-License
+## Copyrights
 -----------------------------------
 
-Copyright (C) 2012-2013 M.Hibara, All rights reserved.  
+### Markdown  -  A text-to-HTML conversion tool for web writers   
+Copyright (c) 2004 John Gruber   
+[http://daringfireball.net/projects/markdown/](http://daringfireball.net/projects/markdown/)   
+
+### MarkdownDeep    
+[http://www.toptensoftware.com/markdowndeep/](http://www.toptensoftware.com/markdowndeep/)    
+Copyright 2010-2011 Topten Software
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this product except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+## License
+-----------------------------------
+
+Copyright (C) 2012-2013 M.Hibara, All rights reserved.   
 [http://hibara.org](http://hibara.org)
 
 This program is free software; you can redistribute it and/or modify

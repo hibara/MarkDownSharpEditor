@@ -852,4 +852,31 @@
   <data name="$this.Text" xml:space="preserve">
     <value>オプション</value>
   </data>
+  <data name="DialogTitleError" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="DialogTitleInfo" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="DialogTitleQuestion" xml:space="preserve">
+    <value>問い合わせ</value>
+  </data>
+  <data name="lblDefaultCSS" xml:space="preserve">
+    <value>(デフォルト)</value>
+  </data>
+  <data name="MsgDefaultCSS" xml:space="preserve">
+    <value>(デフォルト)</value>
+  </data>
+  <data name="MsgMoveToTrash" xml:space="preserve">
+    <value>リストからだけではなくファイル自体もごみ箱へ移動しますか？</value>
+  </data>
+  <data name="MsgNotFoundAssociationTool" xml:space="preserve">
+    <value>関連付けツールが見つかりません。関連付け設定に失敗しました。</value>
+  </data>
+  <data name="MsgSameCSSFileExists" xml:space="preserve">
+    <value>既に同じCSSファイルが登録されています。</value>
+  </data>
+  <data name="MsgTheseCSSFilesFound" xml:space="preserve">
+    <value>以下のCSSファイルが見つかりました。すべて登録しますか？</value>
+  </data>
 </root>

@@ -31,7 +31,6 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.richTextBox1 = new RichTextBoxEx();
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabelTextEncoding = new System.Windows.Forms.ToolStripStatusLabel();
@@ -131,6 +130,8 @@
 			this.cmdSearchPrev = new System.Windows.Forms.Button();
 			this.labelSearch = new System.Windows.Forms.Label();
 			this.textBoxSearch = new System.Windows.Forms.TextBox();
+			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+			this.richTextBox1 = new RichTextBoxEx();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -146,6 +147,7 @@
 			// 
 			// splitContainer1
 			// 
+			this.splitContainer1.BackColor = System.Drawing.SystemColors.Control;
 			resources.ApplyResources(this.splitContainer1, "splitContainer1");
 			this.splitContainer1.Name = "splitContainer1";
 			// 
@@ -157,24 +159,6 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
 			// 
-			// richTextBox1
-			// 
-			this.richTextBox1.AcceptsTab = true;
-			this.richTextBox1.DetectUrls = false;
-			resources.ApplyResources(this.richTextBox1, "richTextBox1");
-			this.richTextBox1.HideSelection = false;
-			this.richTextBox1.HorizontalPosition = 0;
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.VerticalPosition = 0;
-			this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
-			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
-			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
-			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
-			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
-			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
-			this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
-			// 
 			// webBrowser1
 			// 
 			this.webBrowser1.AllowWebBrowserDrop = false;
@@ -185,6 +169,7 @@
 			// 
 			// statusStrip1
 			// 
+			this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelTextEncoding,
             this.toolStripStatusLabel2,
@@ -574,6 +559,7 @@
 			// toolStrip1
 			// 
 			this.toolStrip1.AllowItemReorder = true;
+			this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonNewFile,
             this.toolStripButtonOpenFile,
@@ -881,6 +867,29 @@
 			this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyDown);
 			this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
 			// 
+			// backgroundWorker1
+			// 
+			this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+			this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			// 
+			// richTextBox1
+			// 
+			this.richTextBox1.AcceptsTab = true;
+			this.richTextBox1.DetectUrls = false;
+			resources.ApplyResources(this.richTextBox1, "richTextBox1");
+			this.richTextBox1.HideSelection = false;
+			this.richTextBox1.HorizontalPosition = 0;
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.VerticalPosition = 0;
+			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
+			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
+			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
+			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
+			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
+			this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
+			// 
 			// Form1
 			// 
 			resources.ApplyResources(this, "$this");
@@ -1021,6 +1030,7 @@
 		private System.Windows.Forms.ToolStripMenuItem menuViewLanguage;
 		private System.Windows.Forms.ToolStripMenuItem menuVieｗJapanese;
 		private System.Windows.Forms.ToolStripMenuItem menuViewEnglish;
+		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 
     }
 }

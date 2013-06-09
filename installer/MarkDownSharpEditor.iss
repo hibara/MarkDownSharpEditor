@@ -1,5 +1,6 @@
 #define MyAppVer GetFileVersion("bin\MarkDownSharpEditor.exe")
 #define MyAppVerNum StringChange(MyAppVer, ".", "")
+#define Lang
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
@@ -62,16 +63,12 @@ AppComments=Markdown記法に対応した軽量なテキストエディター
 [CustomMessages]
 en.SetUpProgramDescription=Set up program for 'MarkDown#Editor'
 jp.SetUpProgramDescription=「MarkDown#Editor」をセットアップするプログラム 
-
 en.UnintallName=Uninstall
 jp.UnintallName=アンインストール
-
 en.MsgFailedToInstallDotNetFramework=Failed to install .NET Framework 4.0.%nPlease install the .NET Framework 4.0 such as from Windows update.%nAnd then please start this setup program again.
 jp.MsgFailedToInstallDotNetFramework=.NET Framework 4.0 のインストールに失敗したようです。%nWindowsアップデートなどから .NET Frameworkをインストールして、%nセットアッププログラムを再度起動してください。
-
 en.mdSampleFile=help.md
 jp.mdSampleFile=help-ja.md
-
 en.LaunchProgram=Start MarkDown#Editor after finishing installation.
 jp.LaunchProgram=インストール完了後に、MarkDown#Editor を起動します。
 
@@ -81,15 +78,13 @@ Name: "{userappdata}\MarkDownSharpEditor\css"; Flags: uninsalwaysuninstall
 [Files]
 Source: "bin\MarkDownSharpEditor.exe"; DestDir: "{app}"; Flags: ignoreversion touch
 Source: "bin\MrkSetup.exe"; DestDir: "{app}"; Flags: ignoreversion touch
-Source: "bin\MarkdownDeep.dll"; DestDir: "{app}"; Flags: ignoreversion touch
 Source: "bin\ja-JP\MarkDownSharpEditor.resources.dll"; DestDir: "{app}\\ja-JP"; Flags: ignoreversion touch
-Source: "bin\readme.txt"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: isreadme ignoreversion
+Source: "bin\readme.txt"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 ;サンプル.MDファイル
 Source: "bin\help-ja.md"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 Source: "bin\help.md"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 Source: "bin\sample.md"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 Source: "bin\main_icon_48x48.png"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
-
 ;ビルトインCSSファイル
 Source: "bin\hibara.org.css"; DestDir: "{userappdata}\MarkDownSharpEditor\css"; Flags: ignoreversion touch
 Source: "bin\github.css"; DestDir: "{userappdata}\MarkDownSharpEditor\css"; Flags: ignoreversion touch

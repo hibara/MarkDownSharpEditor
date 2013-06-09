@@ -1153,4 +1153,28 @@
   <data name="MsgThisWord" xml:space="preserve">
     <value>以下のワードを</value>
   </data>
+  <data name="DialogTitleQustion" xml:space="preserve">
+    <value>問い合わせ</value>
+  </data>
+  <data name="ButtonFindNext" xml:space="preserve">
+    <value>次を検索する(&amp;N)</value>
+  </data>
+  <data name="ButtonFindPrev" xml:space="preserve">
+    <value>前を検索する(&amp;P)</value>
+  </data>
+  <data name="ButtonReplaceNext" xml:space="preserve">
+    <value>置換して次へ(&amp;N)</value>
+  </data>
+  <data name="ButtonReplacePrev" xml:space="preserve">
+    <value>置換して前へ(&amp;P)</value>
+  </data>
+  <data name="DialogTitleError" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="FlagChanged" xml:space="preserve">
+    <value>(更新)</value>
+  </data>
+  <data name="NoFileName" xml:space="preserve">
+    <value>(無題)</value>
+  </data>
 </root>

@@ -148,7 +148,7 @@
     <value>richTextBox1</value>
   </data>
   <data name="&gt;&gt;richTextBox1.Type" xml:space="preserve">
-    <value>RichTextBoxEx, MarkDownSharpEditor, Version=1.1.5.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RichTextBoxEx, MarkDownSharpEditor, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;richTextBox1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -234,6 +234,27 @@
   <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>768, 17</value>
   </data>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 417</value>
+  </data>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>559, 23</value>
+  </data>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="toolStripStatusLabelTextEncoding.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 18</value>
   </data>
@@ -285,29 +306,38 @@
   <data name="toolStripStatusLabelHtmlEncoding.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 417</value>
-  </data>
-  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>559, 23</value>
-  </data>
-  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>646, 17</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>559, 26</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 22</value>
+  </data>
+  <data name="menuFile.Text" xml:space="preserve">
+    <value>&amp;File</value>
   </data>
   <data name="menuNewFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -513,11 +543,11 @@
   <data name="menuExit.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 22</value>
+  <data name="menuEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 22</value>
   </data>
-  <data name="menuFile.Text" xml:space="preserve">
-    <value>&amp;File</value>
+  <data name="menuEdit.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
   </data>
   <data name="menuUndo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -677,11 +707,11 @@
   <data name="menuReplace.Text" xml:space="preserve">
     <value>&amp;Replace</value>
   </data>
-  <data name="menuEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 22</value>
+  <data name="menuView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
   </data>
-  <data name="menuEdit.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
+  <data name="menuView.Text" xml:space="preserve">
+    <value>&amp;View</value>
   </data>
   <data name="menuViewRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -795,29 +825,29 @@
   <data name="toolStripMenuItem11.Size" type="System.Drawing.Size, System.Drawing">
     <value>325, 6</value>
   </data>
-  <data name="menuVieｗJapanese.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="menuVieｗJapanese.Text" xml:space="preserve">
-    <value>&amp;Japanese</value>
-  </data>
-  <data name="menuViewEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="menuViewEnglish.Text" xml:space="preserve">
-    <value>&amp;English</value>
-  </data>
   <data name="menuViewLanguage.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 22</value>
   </data>
   <data name="menuViewLanguage.Text" xml:space="preserve">
     <value>&amp;Language</value>
   </data>
-  <data name="menuView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
+  <data name="menuVieｗJapanese.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 22</value>
   </data>
-  <data name="menuView.Text" xml:space="preserve">
-    <value>&amp;View</value>
+  <data name="menuVieｗJapanese.Text" xml:space="preserve">
+    <value>&amp;Japanese</value>
+  </data>
+  <data name="menuViewEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 22</value>
+  </data>
+  <data name="menuViewEnglish.Text" xml:space="preserve">
+    <value>&amp;English</value>
+  </data>
+  <data name="menuTool.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 22</value>
+  </data>
+  <data name="menuTool.Text" xml:space="preserve">
+    <value>&amp;Tool</value>
   </data>
   <data name="menuOption.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -888,11 +918,11 @@
   <data name="menuFont.Text" xml:space="preserve">
     <value>&amp;Font Format</value>
   </data>
-  <data name="menuTool.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+  <data name="menuHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 22</value>
   </data>
-  <data name="menuTool.Text" xml:space="preserve">
-    <value>&amp;Tool</value>
+  <data name="menuHelp.Text" xml:space="preserve">
+    <value>&amp;Help</value>
   </data>
   <data name="menuContents.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -945,48 +975,39 @@
   <data name="menuAbout.Text" xml:space="preserve">
     <value>&amp;About MarkDown#Editor</value>
   </data>
-  <data name="menuHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
-  </data>
-  <data name="menuHelp.Text" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>559, 26</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>892, 17</value>
+  </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>559, 25</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="toolStripButtonNewFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEUSURBVDhPvZLNSoZQEIaFIGjbBbRq6+rbthH/RVPxBz0o
-        CCqaihfS3QTdRNuuJ5jew3cg7CDJV/TCLJzj+8yZmaP8idZ1vVuWheZ5pmmaaBxHGoaB+r6ntm2paZq3
-        NE1vxO+yOADmV/EpCQBW1/VLlmVXIrUVB6DyLgBmVlUVMcaeRWormO9x5V0AjFxUFAWhlSeR/hJ6VX8C
-        cDNaINd1P+I4fhRHZ3FA13W7AFS9hfnEI4qik+/77+LoLA7AtHcB3yUBMGUV8X8Az/NkAFZ1GGBZlgzA
-        ni8HYEsq4jDANM0toCzLhzzPDwM0TZMB/JEkSUJ4JBSGIQVBQJg2YWDkOA7Ztk2oTIZhkK7r/FFdC/tv
-        pCifKDx9elTmwGIAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEUSURBVDhPvZJNaoRAEIWFQCDbHCCrbF3N1o34i+io+IM2
+        CoKKjooHyW0CuUS2OU+g8pppCKaRSBLyoBZW+77qqmrlT7Su68OyLDTPM03TROM40jAM1Pc9tW1LTdO8
+        pml6J36XxQEwv4hPSQCwuq6fsyy7EamtOACVdwEws6qqiDH2JFJbwfyIK+8CYOSioigIrVxE+lPoVf0O
+        wM1ogTRNe4/j+CyOruKArut2Aah6D/OJRxRFJ9/338TRVRyAae8CvkoCYMoq4v8AnufJAKzqMMC2bRmA
+        Pf8cgC2piMMAy7K2gLIstTzPDwN0XZcB/JEkSUJ4JBSGIQVBQJg2YWDkui45jkOoTKZpkmEY/FHdCvtv
+        pCgfwt59U1Q2Jy0AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="toolStripButtonNewFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1042,14 +1063,14 @@
   <data name="toolButtonOutput.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVDhPvZOxasJQFIbzBM2YxdE38AkcBVfRQRcjATM5
-        dsha6gOEDg4SEJdoINAhhc7iEnCzUh9AtB1aBAmN8fT+h9yaSluklH5wSHJz/v/ce+69CjAMQ202mze6
-        rtM50Wg0XkT+NYuBGLwcj8d0Lrvdjk1S+T8YtFotDsmXBmEYpr8/s1wuqVwu02g0SkeIoig6GhwOh4vF
-        YjGdz+fU6XQ4sjiOQ7Va7cOo2+3SdrulIAgiNkiS5L7X6z0XCgVOgECCRIht26bVasXmyKlUKjQcDhOR
-        4irVanWqqupDvV7nKllEFRZALMFSYJDL5WLTNENM4jafzz96npemHEFFy7LSryP9fp8NNE27UyaTyRMM
-        sAQI5CxmsxlXx1OCd+SUSiUqFov7zWbzhh5crdfrfbvdZgECoHJ267AM+d91XRKN34sN0LmRvu8PhAlX
-        wBpldfQgCxqMGcZxDPNXFoPsQULnTw/OKT+eRBjIbfuOv78Lv7/OivIO65bQDTDzxkwAAAAASUVORK5C
-        YII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF5SURBVDhPvZOxasJQFIbzBM3o4ugbxJcQXCUOZjEi6OTY
+        IWupDyAdMkiguEQFoYOFzuIScAmpVFcRaYcWQYIxnuY/5DaptEVK6QeHJDfn/8+9594rgXq9Ller1Rtd
+        1+mc0DTtNcq/ZjGIBi8HgwGdy263Y5NY/g8GtVqNQ/ClgeM48e/PLBYLKhaL1O/34xEi3/cTg+PxeDGf
+        z6ee51Gr1eJIY1kWlcvlD6N2u03b7ZbG47HPBmEYPpim+aIoCidAIEAixJ1Oh9brNZsjp1QqUa/XC6MU
+        W1JVdSrL8mOlUuEqaaIqLIBYgKXAIJvNBs1m08Ek7nK53NNwOIxTElDRMIz4K6Hb7bJBJpO5lyaTyTMM
+        sAQIxCxmsxlXx1OAd+QUCgXK5/OH1Wq1Rw+ulsvlodFosAABUDm9dViG+G/bNrmue4g2QOdGjkaj281m
+        wxWwRlEdPUiDBmOGQRDA/I3FIH2Q0PnTg3PKjycRBmLbvuPv78Lvr7MkvQNOBM+kBrJJZgAAAABJRU5E
+        rkJggg==
 </value>
   </data>
   <data name="toolButtonOutput.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1336,27 +1357,6 @@
   <data name="toolStripButtonBrowserPreview.Text" xml:space="preserve">
     <value>Launch default browser to preview</value>
   </data>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>559, 25</value>
-  </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>1147, 17</value>
   </data>
@@ -1414,24 +1414,6 @@
   <data name="&gt;&gt;contextMenu2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="cmdReplaceAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdReplaceAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 27</value>
-  </data>
-  <data name="cmdReplaceAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 26</value>
-  </data>
-  <data name="cmdReplaceAll.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="cmdReplaceAll.Text" xml:space="preserve">
-    <value>&amp;Replace All</value>
-  </data>
-  <data name="cmdReplaceAll.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;cmdReplaceAll.Name" xml:space="preserve">
     <value>cmdReplaceAll</value>
   </data>
@@ -1443,24 +1425,6 @@
   </data>
   <data name="&gt;&gt;cmdReplaceAll.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="labelReplace.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelReplace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 37</value>
-  </data>
-  <data name="labelReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 12</value>
-  </data>
-  <data name="labelReplace.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="labelReplace.Text" xml:space="preserve">
-    <value>Replace:</value>
-  </data>
-  <data name="labelReplace.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;labelReplace.Name" xml:space="preserve">
     <value>labelReplace</value>
@@ -1474,21 +1438,6 @@
   <data name="&gt;&gt;labelReplace.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="textBoxReplace.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="textBoxReplace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 34</value>
-  </data>
-  <data name="textBoxReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 19</value>
-  </data>
-  <data name="textBoxReplace.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="textBoxReplace.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;textBoxReplace.Name" xml:space="preserve">
     <value>textBoxReplace</value>
   </data>
@@ -1500,44 +1449,6 @@
   </data>
   <data name="&gt;&gt;textBoxReplace.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="imgSearchExitUnabled.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADZmlUWHRYTUw6Y29tLmFkb2Jl
-        LnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
-        Pz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENv
-        cmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJE
-        RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
-        cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
-        bS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlw
-        ZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1w
-        TU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOkE2Nzg5MjgwQkRFM0UxMTFBMTFFQ0E3NzhFN0Y4
-        NDdGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkRDNEMxQTM3RUNCRTExRTE4QjEwODMwMkNDMDcz
-        MzNFIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkRDNEMxQTM2RUNCRTExRTE4QjEwODMwMkNDMDcz
-        MzNFIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1N
-        OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0Q2ODREODFCQkVDRTExMTk5NTg5
-        RUFFOUFGQzQ3OUQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTY3ODkyODBCREUzRTExMUExMUVD
-        QTc3OEU3Rjg0N0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/
-        eHBhY2tldCBlbmQ9InIiPz55AnofAAABMUlEQVQ4T6WTsWqEQBCGD9IGAnmAtIGDvMRVV+UBAgcBEVEs
-        bISAhUQO8gCBLW1sxdLONxAsxEbEN7ARC7vJzmVXdlYtQgZ+3Pmd+dwd1oNhGP/Slnm34e36avLE9WWa
-        JvDnWfFRF+Hbmr8AHrlYnudQVRVYlqVCLq7rQtd1kCQJ+kz4BBBkWQYyFMi7bJYRx/HNF30L4CUMQxjH
-        UZT9QjzPg77vhQMwDAP4vo8APC4BoD51yDzPYkWaP5QeAkCtIBh7zSiScN0Gpm4bo2kaOZNXrZ4AVgNT
-        o65rsG17BZGLo/5l3DZjDKZpEg6BPOiA76IoRBk58zWKIgJJ05TMQgKOSG7bdmtgC6QsSxA3crUD1Jvj
-        OHvTvgZBIJtP6ju1CHXPtVwSTc9cqx+KJH+XcfgBX8D/gVdFZJMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="imgSearchExitUnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 8</value>
-  </data>
-  <data name="imgSearchExitUnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="imgSearchExitUnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="imgSearchExitUnabled.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;imgSearchExitUnabled.Name" xml:space="preserve">
     <value>imgSearchExitUnabled</value>
@@ -1551,31 +1462,6 @@
   <data name="&gt;&gt;imgSearchExitUnabled.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="imgSearchExitEnabled.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGHSURBVDhPpZO9agJBFIWFtIFAHiBtQMhLpEqVBwgI
-        wvq3iqiFuLCVsiBiI0RUFFFRUVBbrQS1UBS0WFtL3+Nk7rA7zKymCCk+du6ZOWdn7uz6NE37F/fEhzva
-        r7pcvDCK4XAY7Pkh6UTA0XWPLgKeGbXJZIL1eo1IJCKHBBKJBI7HI1qtFuk1R1cCzF6vh+v1ylkul25I
-        kMy73U7MVatVrjs+EfBmGAZs28blcuEsFgskk0lsNhuhnU4nZDIZCqDjKgFEPpfL4XA44Hw+c8jgjrfb
-        LdLpNJkNyaMEEPlsNsv7sN/vBXSkVCp1YyaUghGIxWKYTqdYrVaC0WgE5xY+PeuVgCCZ+/0+5vP5DZ1O
-        x22sEuIO/NFoFO12G7PZjDMYDGCaJsbjsdAajYYb8uQN+C6VShgOhxwKoutjukWN63a7Yq5QKCi9cAP8
-        dMZKpYJ6vY54PC4vsqiBzWYT5XIZoVDo7g6IL9qeruvKGxws2pFjfpfn5EXEI0N8JB5eGTc/lFL8Hc33
-        A09d1lbMNlnUAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="imgSearchExitEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 8</value>
-  </data>
-  <data name="imgSearchExitEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="imgSearchExitEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="imgSearchExitEnabled.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;imgSearchExitEnabled.Name" xml:space="preserve">
     <value>imgSearchExitEnabled</value>
   </data>
@@ -1587,24 +1473,6 @@
   </data>
   <data name="&gt;&gt;imgSearchExitEnabled.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="chkOptionCase.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="chkOptionCase.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkOptionCase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 8</value>
-  </data>
-  <data name="chkOptionCase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 16</value>
-  </data>
-  <data name="chkOptionCase.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="chkOptionCase.Text" xml:space="preserve">
-    <value>&amp;Case Sensitive</value>
   </data>
   <data name="&gt;&gt;chkOptionCase.Name" xml:space="preserve">
     <value>chkOptionCase</value>
@@ -1618,28 +1486,6 @@
   <data name="&gt;&gt;chkOptionCase.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="imgSearchExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGHSURBVDhPpZO9agJBFIWFtIFAHiBtQMhLpEqVBwgI
-        wvq3iqiFuLCVsiBiI0RUFFFRUVBbrQS1UBS0WFtL3+Nk7rA7zKymCCk+du6ZOWdn7uz6NE37F/fEhzva
-        r7pcvDCK4XAY7Pkh6UTA0XWPLgKeGbXJZIL1eo1IJCKHBBKJBI7HI1qtFuk1R1cCzF6vh+v1ylkul25I
-        kMy73U7MVatVrjs+EfBmGAZs28blcuEsFgskk0lsNhuhnU4nZDIZCqDjKgFEPpfL4XA44Hw+c8jgjrfb
-        LdLpNJkNyaMEEPlsNsv7sN/vBXSkVCp1YyaUghGIxWKYTqdYrVaC0WgE5xY+PeuVgCCZ+/0+5vP5DZ1O
-        x22sEuIO/NFoFO12G7PZjDMYDGCaJsbjsdAajYYb8uQN+C6VShgOhxwKoutjukWN63a7Yq5QKCi9cAP8
-        dMZKpYJ6vY54PC4vsqiBzWYT5XIZoVDo7g6IL9qeruvKGxws2pFjfpfn5EXEI0N8JB5eGTc/lFL8Hc33
-        A09d1lbMNlnUAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="imgSearchExit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 8</value>
-  </data>
-  <data name="imgSearchExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="imgSearchExit.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
   <data name="&gt;&gt;imgSearchExit.Name" xml:space="preserve">
     <value>imgSearchExit</value>
   </data>
@@ -1651,35 +1497,6 @@
   </data>
   <data name="&gt;&gt;imgSearchExit.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="cmdSearchNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="cmdSearchNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEQSURBVDhP3VKxioNQEPQ/8g0H+SchcGAhhxaSQgNC
-        RAjGRrxOP8XevxALESwsBLHY24m+xJe8XFJnYGBnd2bBfWpEJFHX9S3z9wm3935JsGFjWRYVRaEkZvCs
-        M/cLvlzX5VINzODh8qMWcAO4XvqNBetX2WlZlkmXLstysT8Cs7U3z3PSDMOgqqoWy/uo65pM07x89zeK
-        pmmW0Wu0bSv+CUMc78e2beq6bnb8A3gcx0HYZnl7BW7sGdT3PXxKYLYccs9yfgVRgDw4eJ5HwzCwlIGe
-        7/sIH1heM9ICkA3HIAhoHEeWM1CHYYjwkaXkl4QgG09RFNE0TRfGcYzwSeV9aAhy4JwkCaVpivBZ5SEi
-        7Q/Y5BQgOFDZOwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="cmdSearchNext.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="cmdSearchNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>328, 27</value>
-  </data>
-  <data name="cmdSearchNext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 26</value>
-  </data>
-  <data name="cmdSearchNext.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="cmdSearchNext.Text" xml:space="preserve">
-    <value>Search &amp;Next</value>
   </data>
   <data name="&gt;&gt;cmdSearchNext.Name" xml:space="preserve">
     <value>cmdSearchNext</value>
@@ -1693,35 +1510,6 @@
   <data name="&gt;&gt;cmdSearchNext.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="cmdSearchPrev.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="cmdSearchPrev.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAERSURBVDhP3VO9aoRAGNyHufaeIW2qVKlSBRYRwUIO
-        i0ggkmex8lUkYGEhWIggFhaK+AKT+e7UrNwmWGdgYOf7Zj7YPwXASq31RxzHEHL9afMIrUUG3qIowjRN
-        mOcZsmbt3ea9K9Doh2GIYRgobxjHEVJj70K58+8EDToIAnRdR7lH3/eQHi0e5f0ANl5830fTNJR2tG0L
-        8dD7SvkzgIUnz/NQVZX4/kRd1xAvM8+USsIPruuiKIqb4wDKsoRkmH1UjuMgy7KldRx5nkOyKkmS675X
-        2g5whfRMb5qm1/175NdKeTi/YXlUm5e8bLcgZOF8YMCZyy3zDwec5OOYJ21y+VQnM7MbIKRBYJ60Sb33
-        Q30D3pAU18m+4akAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="cmdSearchPrev.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="cmdSearchPrev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>439, 27</value>
-  </data>
-  <data name="cmdSearchPrev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 26</value>
-  </data>
-  <data name="cmdSearchPrev.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="cmdSearchPrev.Text" xml:space="preserve">
-    <value>Search &amp;Prev</value>
-  </data>
   <data name="&gt;&gt;cmdSearchPrev.Name" xml:space="preserve">
     <value>cmdSearchPrev</value>
   </data>
@@ -1734,21 +1522,6 @@
   <data name="&gt;&gt;cmdSearchPrev.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="labelSearch.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 10</value>
-  </data>
-  <data name="labelSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 12</value>
-  </data>
-  <data name="labelSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="labelSearch.Text" xml:space="preserve">
-    <value>Search:</value>
-  </data>
   <data name="&gt;&gt;labelSearch.Name" xml:space="preserve">
     <value>labelSearch</value>
   </data>
@@ -1760,18 +1533,6 @@
   </data>
   <data name="&gt;&gt;labelSearch.ZOrder" xml:space="preserve">
     <value>9</value>
-  </data>
-  <data name="textBoxSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 7</value>
-  </data>
-  <data name="textBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 19</value>
-  </data>
-  <data name="textBoxSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxSearch.Name" xml:space="preserve">
     <value>textBoxSearch</value>
@@ -1812,8 +1573,280 @@
   <data name="&gt;&gt;panelSearch.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="cmdReplaceAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdReplaceAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdReplaceAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 27</value>
+  </data>
+  <data name="cmdReplaceAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 26</value>
+  </data>
+  <data name="cmdReplaceAll.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="cmdReplaceAll.Text" xml:space="preserve">
+    <value>&amp;Replace All</value>
+  </data>
+  <data name="cmdReplaceAll.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelReplace.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelReplace.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelReplace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 37</value>
+  </data>
+  <data name="labelReplace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 12</value>
+  </data>
+  <data name="labelReplace.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="labelReplace.Text" xml:space="preserve">
+    <value>Replace:</value>
+  </data>
+  <data name="labelReplace.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxReplace.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxReplace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 34</value>
+  </data>
+  <data name="textBoxReplace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 19</value>
+  </data>
+  <data name="textBoxReplace.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="textBoxReplace.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imgSearchExitUnabled.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADZmlUWHRYTUw6Y29tLmFkb2Jl
+        LnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
+        Pz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENv
+        cmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJE
+        RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
+        cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
+        bS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlw
+        ZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1w
+        TU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOkE2Nzg5MjgwQkRFM0UxMTFBMTFFQ0E3NzhFN0Y4
+        NDdGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkRDNEMxQTM3RUNCRTExRTE4QjEwODMwMkNDMDcz
+        MzNFIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkRDNEMxQTM2RUNCRTExRTE4QjEwODMwMkNDMDcz
+        MzNFIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1N
+        OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0Q2ODREODFCQkVDRTExMTk5NTg5
+        RUFFOUFGQzQ3OUQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTY3ODkyODBCREUzRTExMUExMUVD
+        QTc3OEU3Rjg0N0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/
+        eHBhY2tldCBlbmQ9InIiPz55AnofAAABMUlEQVQ4T6WTsWqEQBCGD9IGAnmAtIGDvMRVV+UBAgcBEVEs
+        bISAhUQO8gCBLW1sxdLONxAsxEbEN7ARC7vJzmVXdlYtQgZ+3Pmd+dwd1oNhGP/Slnm34e36avLE9WWa
+        JvDnWfFRF+Hbmr8AHrlYnudQVRVYlqVCLq7rQtd1kCQJ+kz4BBBkWQYyFMi7bJYRx/HNF30L4CUMQxjH
+        UZT9QjzPg77vhQMwDAP4vo8APC4BoD51yDzPYkWaP5QeAkCtIBh7zSiScN0Gpm4bo2kaOZNXrZ4AVgNT
+        o65rsG17BZGLo/5l3DZjDKZpEg6BPOiA76IoRBk58zWKIgJJ05TMQgKOSG7bdmtgC6QsSxA3crUD1Jvj
+        OHvTvgZBIJtP6ju1CHXPtVwSTc9cqx+KJH+XcfgBX8D/gVdFZJMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="imgSearchExitUnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgSearchExitUnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 8</value>
+  </data>
+  <data name="imgSearchExitUnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="imgSearchExitUnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="imgSearchExitUnabled.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imgSearchExitEnabled.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGHSURBVDhPpZO9agJBFIWFtIFAHiBtQMhLpEqVBwgI
+        wvq3iqiFuLCVsiBiI0RUFFFRUVBbrQS1UBS0WFtL3+Nk7rA7zKymCCk+du6ZOWdn7uz6NE37F/fEhzva
+        r7pcvDCK4XAY7Pkh6UTA0XWPLgKeGbXJZIL1eo1IJCKHBBKJBI7HI1qtFuk1R1cCzF6vh+v1ylkul25I
+        kMy73U7MVatVrjs+EfBmGAZs28blcuEsFgskk0lsNhuhnU4nZDIZCqDjKgFEPpfL4XA44Hw+c8jgjrfb
+        LdLpNJkNyaMEEPlsNsv7sN/vBXSkVCp1YyaUghGIxWKYTqdYrVaC0WgE5xY+PeuVgCCZ+/0+5vP5DZ1O
+        x22sEuIO/NFoFO12G7PZjDMYDGCaJsbjsdAajYYb8uQN+C6VShgOhxwKoutjukWN63a7Yq5QKCi9cAP8
+        dMZKpYJ6vY54PC4vsqiBzWYT5XIZoVDo7g6IL9qeruvKGxws2pFjfpfn5EXEI0N8JB5eGTc/lFL8Hc33
+        A09d1lbMNlnUAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="imgSearchExitEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgSearchExitEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 8</value>
+  </data>
+  <data name="imgSearchExitEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="imgSearchExitEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="imgSearchExitEnabled.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkOptionCase.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkOptionCase.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkOptionCase.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkOptionCase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 8</value>
+  </data>
+  <data name="chkOptionCase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 16</value>
+  </data>
+  <data name="chkOptionCase.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkOptionCase.Text" xml:space="preserve">
+    <value>&amp;Case Sensitive</value>
+  </data>
+  <data name="imgSearchExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGHSURBVDhPpZO9agJBFIWFtIFAHiBtQMhLpEqVBwgI
+        wvq3iqiFuLCVsiBiI0RUFFFRUVBbrQS1UBS0WFtL3+Nk7rA7zKymCCk+du6ZOWdn7uz6NE37F/fEhzva
+        r7pcvDCK4XAY7Pkh6UTA0XWPLgKeGbXJZIL1eo1IJCKHBBKJBI7HI1qtFuk1R1cCzF6vh+v1ylkul25I
+        kMy73U7MVatVrjs+EfBmGAZs28blcuEsFgskk0lsNhuhnU4nZDIZCqDjKgFEPpfL4XA44Hw+c8jgjrfb
+        LdLpNJkNyaMEEPlsNsv7sN/vBXSkVCp1YyaUghGIxWKYTqdYrVaC0WgE5xY+PeuVgCCZ+/0+5vP5DZ1O
+        x22sEuIO/NFoFO12G7PZjDMYDGCaJsbjsdAajYYb8uQN+C6VShgOhxwKoutjukWN63a7Yq5QKCi9cAP8
+        dMZKpYJ6vY54PC4vsqiBzWYT5XIZoVDo7g6IL9qeruvKGxws2pFjfpfn5EXEI0N8JB5eGTc/lFL8Hc33
+        A09d1lbMNlnUAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="imgSearchExit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgSearchExit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 8</value>
+  </data>
+  <data name="imgSearchExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="imgSearchExit.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cmdSearchNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdSearchNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEQSURBVDhP3VKxioNQEPQ/8g0H+SchcGAhhxaSQgNC
+        RAjGRrxOP8XevxALESwsBLHY24m+xJe8XFJnYGBnd2bBfWpEJFHX9S3z9wm3935JsGFjWRYVRaEkZvCs
+        M/cLvlzX5VINzODh8qMWcAO4XvqNBetX2WlZlkmXLstysT8Cs7U3z3PSDMOgqqoWy/uo65pM07x89zeK
+        pmmW0Wu0bSv+CUMc78e2beq6bnb8A3gcx0HYZnl7BW7sGdT3PXxKYLYccs9yfgVRgDw4eJ5HwzCwlIGe
+        7/sIH1heM9ICkA3HIAhoHEeWM1CHYYjwkaXkl4QgG09RFNE0TRfGcYzwSeV9aAhy4JwkCaVpivBZ5SEi
+        7Q/Y5BQgOFDZOwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="cmdSearchNext.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="cmdSearchNext.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdSearchNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>328, 27</value>
+  </data>
+  <data name="cmdSearchNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 26</value>
+  </data>
+  <data name="cmdSearchNext.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cmdSearchNext.Text" xml:space="preserve">
+    <value>Search &amp;Next</value>
+  </data>
+  <data name="cmdSearchPrev.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdSearchPrev.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAERSURBVDhP3VO9aoRAGNyHufaeIW2qVKlSBRYRwUIO
+        i0ggkmex8lUkYGEhWIggFhaK+AKT+e7UrNwmWGdgYOf7Zj7YPwXASq31RxzHEHL9afMIrUUG3qIowjRN
+        mOcZsmbt3ea9K9Doh2GIYRgobxjHEVJj70K58+8EDToIAnRdR7lH3/eQHi0e5f0ANl5830fTNJR2tG0L
+        8dD7SvkzgIUnz/NQVZX4/kRd1xAvM8+USsIPruuiKIqb4wDKsoRkmH1UjuMgy7KldRx5nkOyKkmS675X
+        2g5whfRMb5qm1/175NdKeTi/YXlUm5e8bLcgZOF8YMCZyy3zDwec5OOYJ21y+VQnM7MbIKRBYJ60Sb33
+        Q30D3pAU18m+4akAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdSearchPrev.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="cmdSearchPrev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdSearchPrev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>439, 27</value>
+  </data>
+  <data name="cmdSearchPrev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 26</value>
+  </data>
+  <data name="cmdSearchPrev.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cmdSearchPrev.Text" xml:space="preserve">
+    <value>Search &amp;Prev</value>
+  </data>
+  <data name="labelSearch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 10</value>
+  </data>
+  <data name="labelSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 12</value>
+  </data>
+  <data name="labelSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelSearch.Text" xml:space="preserve">
+    <value>Search:</value>
+  </data>
+  <data name="textBoxSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 7</value>
+  </data>
+  <data name="textBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 19</value>
+  </data>
+  <data name="textBoxSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>1294, 17</value>
+  </data>
   <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
+    <value>65</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
@@ -1844,6 +1877,9 @@
         AAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAB//+AAf//gAH//wAB//8AAf//AAD//wAA
         //8AAP///////w==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>320, 240</value>
@@ -2337,15 +2373,29 @@
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;backgroundWorker1.Name" xml:space="preserve">
+    <value>backgroundWorker1</value>
+  </data>
+  <data name="&gt;&gt;backgroundWorker1.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MsgRestartApplication" xml:space="preserve">
-    <value>To change the setting of language, it is necessary to restart the application. 
-Do you want to restart this application now?</value>
+  <data name="ButtonFindNext" xml:space="preserve">
+    <value>Find to &amp;Next</value>
+  </data>
+  <data name="ButtonFindPrev" xml:space="preserve">
+    <value>Find to &amp;Previous</value>
+  </data>
+  <data name="ButtonReplaceNext" xml:space="preserve">
+    <value>Replace to &amp;Next</value>
+  </data>
+  <data name="ButtonReplacePrev" xml:space="preserve">
+    <value>Replace to &amp;Previous</value>
   </data>
   <data name="DialogTitleError" xml:space="preserve">
     <value>Error</value>
@@ -2356,16 +2406,19 @@ Do you want to restart this application now?</value>
   <data name="DialogTitleNotice" xml:space="preserve">
     <value>Notice</value>
   </data>
-  <data name="DialogTitleQuestion" xml:space="preserve">
+  <data name="DialogTitleQustion" xml:space="preserve">
     <value>Question</value>
   </data>
+  <data name="FlagChanged" xml:space="preserve">
+    <value>(Changed)</value>
+  </data>
   <data name="MsgConvertAllFilesToHTML" xml:space="preserve">
-    <value>More than one were read.
-Do you wish to convert all files to HTML files on this options?
+    <value>More than one were read.\nDo you wish to convert all files to HTML files on this options?
 if you select 'No', all files will be opend without converting.</value>
   </data>
   <data name="MsgErrorDeleteTemporaryFile" xml:space="preserve">
-    <value>Error during deleting temporary file!\na temporary file may be left in the folder the file is edited.\nThis file is not a problem even if you delete it manually.\n</value>
+    <value>Error during deleting temporary file!\na temporary file may be left in the folder the file is edited.
+This file is not a problem even if you delete it manually.</value>
   </data>
   <data name="MsgFindCompleteToBeginning" xml:space="preserve">
     <value>Searching completed to the beginning of this file.
@@ -2376,12 +2429,10 @@ Do you wish to continue searching from the end of this file?</value>
 Do you wish to continue searching from the beginning of this file?</value>
   </data>
   <data name="MsgNoHelpFile" xml:space="preserve">
-    <value>Could not find Help file.
-Opening this file has failed.</value>
+    <value>Could not find Help file.\nOpening this file has failed.</value>
   </data>
   <data name="MsgNoSampleFile" xml:space="preserve">
-    <value>Could not find sample MD file.
-Opening this file has failed.</value>
+    <value>Could not find sample MD file.\nOpening this file has failed.</value>
   </data>
   <data name="MsgNotFound" xml:space="preserve">
     <value>The word was not found.</value>
@@ -2400,9 +2451,12 @@ Do you wish to continue searching from the beginning of this file?</value>
   <data name="MsgReplaced" xml:space="preserve">
     <value>of the word were replaced.</value>
   </data>
+  <data name="MsgRestartApplication" xml:space="preserve">
+    <value>To change the setting of language, it is necessary to restart the application.
+Do you want to restart this application now?</value>
+  </data>
   <data name="MsgSameFileOverwrite" xml:space="preserve">
-    <value>Same file exists.
-Continue to overwrite?</value>
+    <value>Same file exists.\nContinue to overwrite?</value>
   </data>
   <data name="MsgSaveFileToEnd" xml:space="preserve">
     <value>This file being edited. Do you wish to save before exiting?</value>
@@ -2411,6 +2465,12 @@ Continue to overwrite?</value>
     <value>This file being edited. Do you wish to save before starting new file?</value>
   </data>
   <data name="MsgThisWord" xml:space="preserve">
-    <value />
+    <value>of the word were replaced.</value>
+  </data>
+  <data name="NoFileName" xml:space="preserve">
+    <value>(No title)</value>
+  </data>
+  <data name="toolTipCssFileName" xml:space="preserve">
+    <value>No CSS file</value>
   </data>
 </root>

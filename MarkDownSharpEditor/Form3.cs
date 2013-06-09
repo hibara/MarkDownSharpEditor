@@ -65,11 +65,10 @@ namespace MarkDownSharpEditor
       //Selected tab number
 			//-----------------------------------
 			int TabIndex = obj.TabPageSelectedIndex;
-			if (TabIndex > tabControl1.TabCount - 1)
-			{
-				TabIndex = 0;
-			}
-			tabControl1.TabPages[TabIndex].Select();
+			tabControl1.SelectedIndex = TabIndex;
+
+			TabIndex = obj.MkColorTabPageSelectedIndex;
+			tabControl2.SelectedIndex = TabIndex;
 
 			//======================================================================
 			//一般設定
@@ -245,11 +244,13 @@ namespace MarkDownSharpEditor
 			{
 				labelMarkdownExtraNotice.Visible = false;
 				groupBoxMarkdownExtra.BackColor = Color.Transparent;
+				labelMarkdownExtraNotice.Visible = false;
 			}
 			else
 			{
 				labelMarkdownExtraNotice.Visible = true;
 				groupBoxMarkdownExtra.BackColor = Color.WhiteSmoke;
+				labelMarkdownExtraNotice.Visible = true;
 			}
 
 			//HTMLブロック内のMarkdown ( Markdown Inside HTML Blocks )
@@ -447,6 +448,7 @@ namespace MarkDownSharpEditor
 			//選択中のタブ番号
 			//Selected tab number
 			MarkDownSharpEditor.AppSettings.Instance.TabPageSelectedIndex = tabControl1.SelectedIndex;
+			MarkDownSharpEditor.AppSettings.Instance.MkColorTabPageSelectedIndex = tabControl2.SelectedIndex;
 		}
 
 		//-----------------------------------
@@ -559,6 +561,23 @@ namespace MarkDownSharpEditor
 			obj.BackColor_Images = labelImagesColor.BackColor.ToArgb();
       obj.ForeColor_Comments = labelCommentsColor.ForeColor.ToArgb();       //コメント ( Comment )
 			obj.BackColor_Comments = labelCommentsColor.BackColor.ToArgb();
+			//Extra
+			obj.ForeColor_MarkdownInsideHTMLBlocks = labelMarkdownInsideHTMLBlocksColor.ForeColor.ToArgb(); //HTMLブロック内のMarkdown ( Markdown Inside HTML Blocks )
+			obj.BackColor_MarkdownInsideHTMLBlocks = labelMarkdownInsideHTMLBlocksColor.BackColor.ToArgb();
+			obj.ForeColor_SpecialAttributes = labelSpecialAttributesColor.ForeColor.ToArgb();               //特殊な属性 ( Special Attributes )
+			obj.BackColor_SpecialAttributes = labelSpecialAttributesColor.BackColor.ToArgb();
+			obj.ForeColor_FencedCodeBlocks = labelFencedCodeBlocksColor.ForeColor.ToArgb();                 //コードブロック ( Code blocks )
+			obj.BackColor_FencedCodeBlocks = labelFencedCodeBlocksColor.BackColor.ToArgb();
+			obj.ForeColor_Tables = labelTablesColor.ForeColor.ToArgb();                                     //表組み ( Tables )
+			obj.BackColor_Tables = labelTablesColor.BackColor.ToArgb();
+			obj.ForeColor_DefinitionLists = labelDefinitionListsColor.ForeColor.ToArgb();                   //定義リスト ( Definition Lists )
+			obj.BackColor_DefinitionLists = labelDefinitionListsColor.BackColor.ToArgb();
+			obj.ForeColor_Footnotes = labelFootnotesColor.ForeColor.ToArgb();                               //脚注 ( Footnotes )
+			obj.BackColor_Footnotes = labelFootnotesColor.BackColor.ToArgb();
+			obj.ForeColor_Abbreviations = labelAbbreviationsColor.ForeColor.ToArgb();                       //注釈 ( Abbreviations )
+			obj.BackColor_Abbreviations = labelAbbreviationsColor.BackColor.ToArgb();
+			obj.ForeColor_BackslashEscapes = labelBackslashEscapesColor.ForeColor.ToArgb();                 //バックスラッシュエスケープ ( Backslash Escapes )
+			obj.BackColor_BackslashEscapes = labelBackslashEscapesColor.BackColor.ToArgb();
 
 			//-----------------------------------
 			// CSSファイル設定
@@ -607,7 +626,6 @@ namespace MarkDownSharpEditor
 				//現在のエンコーディングを変更する(&C)
         //Change HTML character encoding
 				obj.HtmlEncodingOption = 1;
-			
 			}
 			else
 			{
@@ -859,7 +877,7 @@ namespace MarkDownSharpEditor
 						//"通知"
 						//""既に同じCSSファイルが登録されています。"
 						//"Information"
-						//"Same CSS file exitst."
+						//"Same CSS file exitsts."
 						MessageBox.Show(
 						resource.GetString("MsgSameCSSFileExists")+"\n"+openFileDialog1.FileName,
 						resource.GetString("DialogTitleInfo"),
@@ -1169,11 +1187,7 @@ namespace MarkDownSharpEditor
 
 		#endregion
 
-		private void labelBackColor_ClicklabelBackColor_Click(object sender, EventArgs e)
-		{
-
-		}
-
+	
 
 
 

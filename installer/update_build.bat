@@ -20,7 +20,7 @@ mkdir bin
 
 @rem  必要ファイルをinstallerへコピー
 copy ..\MarkDownSharpEditor\bin\Release\MarkDownSharpEditor.exe bin\MarkDownSharpEditor.exe
-copy ..\MarkDownSharpEditor\bin\Release\MarkdownDeep.dll bin\MarkdownDeep.dll
+@rem copy ..\MarkDownSharpEditor\bin\Release\MarkdownDeep.dll bin\MarkdownDeep.dll
 copy ..\MrkSetup\bin\Release\MrkSetup.exe bin\MrkSetup.exe
 mkdir bin\ja-JP
 copy ..\MarkDownSharpEditor\bin\Release\ja-JP\MarkDownSharpEditor.resources.dll bin\ja-JP\MarkDownSharpEditor.resources.dll

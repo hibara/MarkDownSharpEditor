@@ -5,6 +5,7 @@
 ************************************************************
 -->
 
+<div id='title'>&nbsp;</div>    
 
 Introduction
 =====
@@ -181,14 +182,17 @@ The first and foremost, I want to improve the performance of the previewing spee
 
 #Version
 
-##ver.1.2.0.0　　2013/05/23
+##ver.1.2.0.0　　2013/06/09
 
 * Added Markdown Extra mode.
 
 * Localized and create English version.
 
-* Fixed error occured when changing "Interval time of previewing" options.
+* Syntax highlighting processing of editor side became so heavy, so improved that it is edited before and after to apply.
 
+* The browser preview was treated with BackgroundWorker ( that processing in other thread).
+
+* Fixed error occured when changing "Interval time of previewing" options.
 
 
 ##ver.1.1.5.0　　2013/03/07
@@ -212,7 +216,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 
 ##ver.1.1.4.0　　2013/01/30
 
-*  Fixed problem that it had been crashed at processing to stop the click sound when updating the browser window.
+* Fixed problem that it had been crashed at processing to stop the click sound when updating the browser window.
 
 * Added settings for foreground and background colors of the window in general. (There had been the settings internally, but I had forgotten to make the UI ...)
 
@@ -369,8 +373,6 @@ However, I tried to put spreading load processing. Let me know if there is incom
 ##ver.1.0.1.0　　2012/09/05
 
 * Fixed the problem that had been crashed in "Copy HTML source to Clipboard".
-
-* Improved preview page is had tick cursor moves, if you edit. 
 
 * Improved to reduce speaking click sound frequently to refresh browser. That is 
 re-drawed the contents as much as possible without calling the "Navigate()"  function each time.
