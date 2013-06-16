@@ -181,6 +181,19 @@ https://github.com/hibara/MarkDownSharpEditor/issues
 
 #改版履歴
 
+
+##ver.1.2.1.0　　2013/06/
+
+* 最新バージョンをチェックするメニューを追加。
+
+* 一部のダイアログ表示でメッセージが表示されていなかった問題に対処。
+
+
+
+
+
+
+
 ##ver.1.2.0.0　　2013/06/09
 
 * Markdown Extra モードに対応。

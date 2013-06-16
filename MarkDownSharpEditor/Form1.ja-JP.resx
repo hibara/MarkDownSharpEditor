@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="menuNewFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -575,11 +572,23 @@
   <data name="menuViewWidthEvenly.Text" xml:space="preserve">
     <value>ソースとビューを均等幅にする(&amp;Q)</value>
   </data>
+  <data name="toolStripMenuItem11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 6</value>
+  </data>
+  <data name="menuVieｗJapanese.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
   <data name="menuVieｗJapanese.Text" xml:space="preserve">
     <value>日本語</value>
   </data>
+  <data name="menuViewEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
   <data name="menuViewEnglish.Text" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="menuViewLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>343, 22</value>
   </data>
   <data name="menuViewLanguage.Text" xml:space="preserve">
     <value>言語</value>
@@ -704,6 +713,12 @@
   <data name="menuViewSample.Text" xml:space="preserve">
     <value>Markdownファイルのサンプル表示(&amp;S)</value>
   </data>
+  <data name="toolStripMenuItem12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 6</value>
+  </data>
+  <data name="mnuCheckForUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 22</value>
+  </data>
   <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 6</value>
   </data>
@@ -722,12 +737,12 @@
   <data name="toolStripButtonNewFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEVSURBVDhPvZJLaoVAEEWFQCDTLCCjTB29aSbiFz9R8YM2
-        CoKKRsWFZDeBbCLTrCdQuc1rCKaRyEvIhRpY7T3VVdXKn2hd17tlWWieZ5qmicZxpGEYqO97atuWmqZ5
-        S9P0RvwuiwNgfhWfkgBgdV2/ZFl2JVJbcQAq7wJgZlVVEWPsWaS2gvkeV94FwMhFRVEQWnkS6S+hV/Un
-        ADejBfI87yOO40dxdBYHdF23C0DVW5hPPKIoOvm+/y6OzuIATHsX8F0SAFNWEf8HcF1XBmBVhwGWZckA
-        7PlyALakIg4DTNPcAsqyfMjz/DBA0zQZwB9JkiSER0JhGFIQBIRpEwZGjuOQbduEymQYBum6zh/VtbD/
-        RoryCTfSfYCSCgC4AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAETSURBVDhPvZLNSoZQEIaFIGjbBbRq6+rbthF/EU3FH1QU
+        BBVNxQvpboJuom3XE0zv8B0IO0jSF70wC+f4PnNmzih/onVd75ZloXmeaZomGseRhmGgvu+pbVtqmuYt
+        SZIb8bssBsD8Kj4lAVDWdf2SpumVSG3FAFTeBcBcVlVFZVk+i9RWMN/jyrsAGFmU5zmhlSeR/hJ6VX8C
+        sBktkOM4H1EUPYqjsxjQdd0uAFVvYT5xhGF48jzvXRydxQBMexfwXRIAU1YR/wdwXVcG4KkOAyzLkgF4
+        598D8Eoq4jDANM0toCiKhyzLDgM0TZMBvCRxHBOWhIIgIN/3CdMmDIyXh2zbJlQmwzBI13Veqmthv0SK
+        8gkgcX13Vm+yygAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="toolStripButtonNewFile.ToolTipText" xml:space="preserve">
@@ -765,14 +780,14 @@
   <data name="toolButtonOutput.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF6SURBVDhPvZOxasJQFIbzBM3o4pg38BGcBFeJgy5GBZ0c
-        O7iW5gGkg0MQiktUEDqk0FlcAm5WkgcIkgwtgoTGeJr/kFtTaYuU0g8OSW7O/597z71XAu12W240Gnea
-        ptElUa/XX5L8WxaDZPB6Op3Spez3ezZJ5f9g0Gw2OQRfGti2nf7+jOu6VC6XaTKZpCNEYRieDI7H49Vm
-        s1mu12vq9XocWUajEVWr1Q8jXddpt9uRZVkhG8Rx/DQcDoNCocAJEAiQCPFgMCDP89gcOZVKhcbjcZyk
-        mJKqqktZlp9rtRpXyZJUYQHEAiwFBvl8Pup2uzYm8aAoijObzdKUE6jY7/fTrxOGYbBBLpd7lBaLhQ8D
-        LAECMYvVasXV8RTgHTmlUomKxeIhCII39ODG9/1Dp9NhAQKgcnbrsAzx3zRNchznkGyAxo2cz+f32+2W
-        K2CNojp6kAUNxgyjKKJWq/XKYpA9SOj8+cE558eTCAOxbd/x93fh99dZkt4BEhLQKAdvuzMAAAAASUVO
-        RK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVDhPvZOxasJQFIbzBM3o4ugb+AJZBVeJgy5GhDhl
+        7OBa6gNIhwwilCyJgtDBQufgEnAzUh9ApR1ahBAa42n+Q26TSluklH5wSHJz/v/ce+69Euh0OnKr1brR
+        NI3OiWaz+ZLkX7MYJIOX4/GYziUIAjZJ5f9g0G63OQRfGniel/7+zHq9pmq1So7jpCNEYRhmBsfj8WK1
+        Ws2XyyUZhsGRZzQaUb1e/zDq9/u03+9pNpuFbBDH8YNpms/lcpkTIBAgEeLBYECbzYbNkVOr1ciyrDhJ
+        sSVVVeeyLPuNRoOr5EmqsABiAZYCg2KxGHW7XQ+TuCuVSo+TySRNyUDFXq+XfmUMh0M2KBQK95Lruk8w
+        wBIgELNYLBZcHU8B3pFTqVRIUZTDbrd7Qw+uttvtQdd1FiAAKue3DssQ/23bJt/3D8kGaNzI6XR6m7hx
+        BaxRVEcP8qDBmGEURTB/ZTHIHyR0/vTgnPLjSYSB2Lbv+Pu78PvrLEnv2fDQATXLLucAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <data name="toolButtonOutput.ToolTipText" xml:space="preserve">
@@ -1096,85 +1111,5 @@
         AAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAB//+AAf//gAH//wAB//8AAf//AAD//wAA
         //8AAP///////w==
 </value>
-  </data>
-  <data name="MsgRestartApplication" xml:space="preserve">
-    <value>言語の変更を反映するには、アプリケーションの再起動が必要です。
-今すぐ再起動しますか？</value>
-  </data>
-  <data name="MsgConvertAllFilesToHTML" xml:space="preserve">
-    <value>複数のファイルが読み込まれました。
-現在の設定内容でHTMLファイルへの一括変換を行いますか？
-「いいえ」を選択するとそのまますべてのファイル開きます。</value>
-  </data>
-  <data name="MsgErrorDeleteTemporaryFile" xml:space="preserve">
-    <value>テンポラリファイルの削除に失敗しました。編集中の場所に残った可能性があります。
-このファイルは手動で削除していただいても問題ありません。</value>
-  </data>
-  <data name="MsgFindCompleteToBeginning" xml:space="preserve">
-    <value>ファイル先頭までの検索が完了しました。
-ファイル末尾から検索を続けますか？</value>
-  </data>
-  <data name="MsgFindCompleteToEnd" xml:space="preserve">
-    <value>ファイル末尾までの検索が完了しました。
-ファイル先頭に戻って検索を続けますか？</value>
-  </data>
-  <data name="MsgNoHelpFile" xml:space="preserve">
-    <value>ヘルプファイルがありません。開くことができませんでした。</value>
-  </data>
-  <data name="MsgNoSampleFile" xml:space="preserve">
-    <value>サンプルファイルがありません。開くことができませんでした。</value>
-  </data>
-  <data name="MsgNotFound" xml:space="preserve">
-    <value>ご指定の検索ワードは見つかりませんでした。</value>
-  </data>
-  <data name="MsgNotFoundToBeginning" xml:space="preserve">
-    <value>ファイル先頭まで検索しましたが、見つかりませんでした。
-ファイルの末尾から検索を続けますか？</value>
-  </data>
-  <data name="MsgNotFoundToEnd" xml:space="preserve">
-    <value>ファイル末尾まで検索しましたが、見つかりませんでした。
-ファイルの先頭から検索を続けますか？</value>
-  </data>
-  <data name="MsgOutputToClipboard" xml:space="preserve">
-    <value>クリップボードに保存されました。</value>
-  </data>
-  <data name="MsgReplaced" xml:space="preserve">
-    <value>件置換しました。</value>
-  </data>
-  <data name="MsgSameFileOverwrite" xml:space="preserve">
-    <value>すでに同名のファイルが存在しています。上書きして出力しますか？</value>
-  </data>
-  <data name="MsgSaveFileToEnd" xml:space="preserve">
-    <value>編集中のファイルがあります。保存してから終了しますか？</value>
-  </data>
-  <data name="MsgSaveFileToNewFile" xml:space="preserve">
-    <value>編集中のファイルがあります。保存してから新しいファイルを開きますか？</value>
-  </data>
-  <data name="MsgThisWord" xml:space="preserve">
-    <value>以下のワードを</value>
-  </data>
-  <data name="DialogTitleQustion" xml:space="preserve">
-    <value>問い合わせ</value>
-  </data>
-  <data name="ButtonFindNext" xml:space="preserve">
-    <value>次を検索する(&amp;N)</value>
-  </data>
-  <data name="ButtonFindPrev" xml:space="preserve">
-    <value>前を検索する(&amp;P)</value>
-  </data>
-  <data name="ButtonReplaceNext" xml:space="preserve">
-    <value>置換して次へ(&amp;N)</value>
-  </data>
-  <data name="ButtonReplacePrev" xml:space="preserve">
-    <value>置換して前へ(&amp;P)</value>
-  </data>
-  <data name="DialogTitleError" xml:space="preserve">
-    <value>エラー</value>
-  </data>
-  <data name="FlagChanged" xml:space="preserve">
-    <value>(更新)</value>
-  </data>
-  <data name="NoFileName" xml:space="preserve">
-    <value>(無題)</value>
   </data>
 </root>

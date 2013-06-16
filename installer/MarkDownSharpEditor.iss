@@ -1,6 +1,5 @@
 #define MyAppVer GetFileVersion("bin\MarkDownSharpEditor.exe")
 #define MyAppVerNum StringChange(MyAppVer, ".", "")
-#define Lang
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"

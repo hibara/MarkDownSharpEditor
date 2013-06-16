@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Documents;
-using System.Resources;
+using MarkDownSharpEditor.Properties;
 
 using mshtml;
 
@@ -36,8 +36,6 @@ namespace MarkDownSharpEditor
 		int undoCounter = 0;                                              // Undo buffer counter
 		List<string> UndoBuffer = new List<string>();
 		private bool fSearchStart = false;                                //検索を開始したか ( Start search flag )
-		private bool fSyntaxHightlighter = false;
-		private bool fScrollConstraint = false;                           //スクロール抑制フラグ ( Constraint window scroll flag )
 		private int richEditBoxInternalHeight;                            //richTextBox1の内部的な高さ ( internal height of richTextBox1 component )
 		private int WebBrowserInternalHeight;                             //webBrowser1の内部的な高さ（body）( internal height of webBrowser1 component )
 
@@ -53,14 +51,16 @@ namespace MarkDownSharpEditor
 		private bool fConstraintChange = true;	                          //更新状態の抑制 ( Constraint changing flag )
 		private ArrayList MarkdownSyntaxKeywordAarray = new ArrayList();  // Array of MarkdownSyntaxKeyword Class
 
-		private static ResourceManager resource;                          //リソース ( Access resource )
+		private ArrayList SyntaxArrayList = new ArrayList();
+
+		//private static ResourceManager resource;                          //リソース ( Access resource )
 
 		//-----------------------------------
 		// コンストラクタ ( Constructor )
 		//-----------------------------------
 		public Form1()
 		{
-			resource = new ResourceManager(this.GetType());
+			//resource = new ResourceManager(this.GetType());
 
 			InitializeComponent();
 
@@ -174,7 +174,7 @@ namespace MarkDownSharpEditor
 			//-----------------------------------
 			//指定されたCSSファイル名を表示
       //View selected CSS file name
-			toolStripStatusLabelCssFileName.Text = resource.GetString("toolTipCssFileName"); //"CSSファイル指定なし"; ( No CSS file )
+			toolStripStatusLabelCssFileName.Text = Resources.toolTipCssFileName; //"CSSファイル指定なし"; ( No CSS file )
 
 			if (obj.ArrayCssFileList.Count > 0)
 			{
@@ -239,27 +239,24 @@ namespace MarkDownSharpEditor
 			try
 			{
 				if (FileArray.Count > 1)
-				{
-					//"問い合わせ"
+				{	//"問い合わせ"
 					//"複数のファイルが読み込まれました。\n現在の設定内容でHTMLファイルへの一括変換を行いますか？
 					//「いいえ」を選択するとそのまますべてのファイル開きます。"
 					//"Question"
 					//"More than one were read.\nDo you wish to convert all files to HTML files on this options?\n
 					// if you select 'No', all files will be opend without converting."
-					DialogResult ret = MessageBox.Show(resource.GetString("MsgConvertAllFilesToHTML"),
-					resource.GetString("DialogTitleInfo"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+					DialogResult ret = MessageBox.Show(Resources.MsgConvertAllFilesToHTML,
+					Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
 					if (ret == DialogResult.Yes)
-					{
-						//一括でHTMLファイル出力
+					{ //一括でHTMLファイル出力
             //Output HTML files in batch process
 						BatchOutputToHtmlFiles((String[])FileArray.ToArray(typeof(string)));
 						return;
 
 					}
 					else if (ret == DialogResult.Cancel)
-					{
-						//キャンセル
+					{	//キャンセル
             //Cancel
 						return;
 					}
@@ -268,8 +265,7 @@ namespace MarkDownSharpEditor
             // "NO" button
 						bool fOpen = false;
 						foreach (string FilePath in FileArray)
-						{
-							//最初のファイルだけ、このウィンドウだけ開く
+						{	//最初のファイルだけ、このウィンドウだけ開く
               //First file open in this window 
 							if (fOpen == false)
 							{
@@ -278,8 +274,7 @@ namespace MarkDownSharpEditor
 								fOpen = true;
 							}
 							else
-							{
-								//他の複数ファイルは順次新しいウィンドウで開く
+							{	//他の複数ファイルは順次新しいウィンドウで開く
                 //Other files open in new windows
 								System.Diagnostics.Process.Start(
 									Application.ExecutablePath, string.Format("{0}", FilePath));
@@ -293,8 +288,7 @@ namespace MarkDownSharpEditor
 					OpenFile((string)FileArray[0]);
 				}
 				else
-				{
-					//前に編集していたファイルがあればそれを開く
+				{ //前に編集していたファイルがあればそれを開く
           //Open it if there is editing file before
 					if (MarkDownSharpEditor.AppSettings.Instance.fOpenEditFileBefore == true)
 					{
@@ -312,8 +306,7 @@ namespace MarkDownSharpEditor
 						}
 					}
 					if (MarkDownTextFilePath == "")
-					{
-						//無ければ「無題」ファイル
+					{	//無ければ「無題」ファイル
             // "No title" if no file exists
 						richTextBox1.Modified = false;
 						OpenFile("");
@@ -324,10 +317,13 @@ namespace MarkDownSharpEditor
 			{
 				fConstraintChange = false;
 				//SyntaxHighlighter
-				SyntaxHightlighterWidthRegex(0,0);
+				if (backgroundWorker2.IsBusy == false)
+				{
+					//backgroundWorker2.WorkerReportsProgress = true;
+					backgroundWorker2.RunWorkerAsync(richTextBox1.Text);
+				}
 				richTextBox1.Modified = false;
-				//フォームタイトル更新
-        //Refresh form caption
+				//フォームタイトル更新 / Refresh form caption
 				FormTextChange();
 			}
 		}
@@ -341,7 +337,7 @@ namespace MarkDownSharpEditor
 			string FileName;
 			if (fNoTitle == true)
 			{
-        FileName = resource.GetString("NoFileName"); //"(無題)" "(No title)"
+        FileName = Resources.NoFileName; //"(無題)" "(No title)"
 			}
 			else
 			{
@@ -350,7 +346,7 @@ namespace MarkDownSharpEditor
 			}
 
 			if ( richTextBox1.Modified == true ){
-        FileName = FileName + resource.GetString("FlagChanged"); //"(更新)"; "(Changed)"
+        FileName = FileName + Resources.FlagChanged; //"(更新)"; "(Changed)"
 			}
 			this.Text = FileName + " - " + Application.ProductName;
 		}
@@ -493,99 +489,23 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void richTextBox1_TextChanged(object sender, EventArgs e)
 		{
-
 			if (fConstraintChange == true)
 			{
 				return;
 			}
 
-			int i;
-			int blankLine = 0;
-			int richTextEditBoxSelStart = richTextBox1.SelectionStart;
-
-			richTextBox1.WordWrap = false;
-			int currentPosition = richTextBox1.SelectionStart;
-			//start of line
-			int currentLineNum = richTextBox1.GetLineFromCharIndex(currentPosition);
-			for( i = currentLineNum-1; i > -1; i-- )
+			if (backgroundWorker2.IsBusy == false)
 			{
-				if (richTextBox1.Lines[i] == "")
-				{
-					blankLine++;
-					if (blankLine > 1)
-					{
-						richTextEditBoxSelStart = richTextBox1.GetFirstCharIndexFromLine(i++);
-						break;
-					}
-				}
-				else
-				{
-					if (richTextBox1.Lines[i].IndexOf(" ") == 0 || richTextBox1.Lines[i].IndexOf("\t") == 0)
-					{
-						blankLine = 0;
-					}
-					else
-					{
-						if (blankLine > 0)
-						{
-							richTextEditBoxSelStart = richTextBox1.GetFirstCharIndexFromLine(i+=2);
-							break;
-						}
-					}
-				}
+				//バックグラウンドワーカーへパースを投げる / SyntaxHightlighter on BackgroundWorker
+				backgroundWorker2.RunWorkerAsync(richTextBox1.Text);
 			}
-			//end of line
-			int richTextEditBoxSelEnd = richTextBox1.Text.Length;
-			for (i = currentLineNum-1; i < richTextBox1.Lines.Count(); i++)
-			{
-				if (richTextBox1.Lines[i] == "")
-				{
-					richTextEditBoxSelEnd = richTextBox1.GetFirstCharIndexFromLine(i++);
-					break;
-				}
-			}
-
-			richTextBox1.WordWrap = true;
 
 			//-----------------------------------
-			//Formキャプション変更
-      //Change form caption
+			//Formキャプション変更 / Change form caption
 			FormTextChange();
 
 			//-----------------------------------
-			//カーソル位置の取得
-      //Get cursor position
-			fScrollConstraint = true;	   //スクロール抑制
-			richTextBox1.BeginUpdate();
-			int CurrentPos = richTextBox1.SelectionStart;
-			Point CurrentOffset = richTextBox1.AutoScrollOffset;
-			//スクロール位置
-      //Get scroll position
-			int scrollPosition = richTextBox1.VerticalPosition;
-
-			//richTextBox1の全高を取得する（WebBrowserとの同期で使う）
-      //Get height of richTextBox1 ( for webBrowser sync )
-			richTextBox1.SelectionStart = richTextBox1.Text.Length;
-			richTextBox1.ScrollToCaret();
-			richEditBoxInternalHeight = richTextBox1.VerticalPosition;
-
-			//-----------------------------------
-			//シンタックスハイライター
-			SyntaxHightlighterWidthRegex(richTextEditBoxSelStart, richTextEditBoxSelEnd);
-
-			//-----------------------------------
-			//カーソル位置を戻す
-      //Restore cursor position
-			richTextBox1.SelectionStart = CurrentPos;
-			richTextBox1.VerticalPosition = scrollPosition;
-			richTextBox1.AutoScrollOffset = CurrentOffset;
-			richTextBox1.EndUpdate();
-
-			fScrollConstraint = false;  //スクロール抑制解除 ( Unconstraint scroll )
-		
-			//-----------------------------------
-			//ブラウザプレビュー制御
-      //Preview webBrowser component
+			//ブラウザプレビュー制御 / Preview webBrowser component
 			if (MarkDownSharpEditor.AppSettings.Instance.fAutoBrowserPreview == true)
 			{
 				timer1.Enabled = true;
@@ -644,7 +564,7 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void richTextBox1_VScroll(object sender, EventArgs e)
 		{
-			if (fConstraintChange == false && fScrollConstraint == false)
+			if (fConstraintChange == false)
 			{
 				WebBrowserMoveCursor();
 			}
@@ -662,7 +582,8 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void richTextBox1_MouseClick(object sender, MouseEventArgs e)
 		{
-			timer1.Enabled = true;
+
+			//timer1.Enabled = true;
 
 		}
 
@@ -677,8 +598,8 @@ namespace MarkDownSharpEditor
         //"編集中のファイルがあります。保存してから終了しますか？"
         //"Question"
         //"This file being edited. Do you wish to save before exiting?"
-				DialogResult ret = MessageBox.Show(resource.GetString("MsgSaveFileToEnd"),
-        resource.GetString("DialogTitleQustion"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+				DialogResult ret = MessageBox.Show(Resources.MsgSaveFileToEnd,
+				Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 				if (ret == DialogResult.Yes)
 				{
@@ -863,7 +784,7 @@ namespace MarkDownSharpEditor
           //"More than one were read.\nDo you wish to convert all files to HTML files on this options?\n
           // if you select 'No', all files will be opend without converting."
 					DialogResult ret = MessageBox.Show("MsgConvertAllFilesToHTML",
-					resource.GetString("DialogTitleInfo"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+					Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
 					if (ret == DialogResult.Yes)
 					{
@@ -967,8 +888,8 @@ namespace MarkDownSharpEditor
         //"編集中のファイルがあります。保存してから終了しますか？"
         //"Question"
         //"This file being edited. Do you wish to save before exiting?"
-        DialogResult ret = MessageBox.Show(resource.GetString("MsgSaveFileToEnd"),
-        resource.GetString("DialogTitleInfo"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        DialogResult ret = MessageBox.Show(Resources.MsgSaveFileToEnd,
+        Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 				if (ret == DialogResult.Yes)
 				{
 					if (SaveToEditingFile() == false)
@@ -1082,7 +1003,7 @@ namespace MarkDownSharpEditor
 			}
 			else
 			{
-        toolStripStatusLabelCssFileName.Text = resource.GetString("toolTipCssFileName"); //"CSSファイル指定なし"; ( not selected CSS file)
+        toolStripStatusLabelCssFileName.Text = Resources.toolTipCssFileName; //"CSSファイル指定なし"; ( not selected CSS file)
 			}
 
 			fConstraintChange = true;
@@ -1127,8 +1048,6 @@ namespace MarkDownSharpEditor
 			UndoBuffer.Clear();
 			UndoBuffer.Add(richTextBox1.Text.ToString());
 
-			//シンタックスハイライター
-			SyntaxHightlighterWidthRegex(0,0);
 			//プレビュー更新
 			PreviewToBrowser();
 
@@ -1188,8 +1107,8 @@ namespace MarkDownSharpEditor
           //"Error"
           //"Error during deleting temporary file!\na temporary file may be left in the folder the file is edited.\n"
           // This file is not a problem even if you delete it manually.
-          MessageBox.Show(resource.GetString("MsgErrorDeleteTemporaryFile") + TempHtmlFilePath,
-						resource.GetString("DialogTitleError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+          MessageBox.Show(Resources.MsgErrorDeleteTemporaryFile + TempHtmlFilePath,
+						Resources.DialogTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -1200,26 +1119,8 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-
+			PreviewToBrowser();
 			timer1.Enabled = false;
-
-			//各種抑制中は更新せず抜ける
-      //Exit function in constraint options enabled
-			if (fConstraintChange == true || fScrollConstraint == true || fSyntaxHightlighter == true)
-			{
-				return;
-			}
-
-			if (MarkDownSharpEditor.AppSettings.Instance.AutoBrowserPreviewInterval < 0)
-			{
-				//手動更新
-        //Manual refresh
-				return;
-			}
-			else
-			{
-				PreviewToBrowser();
-			}
 		}
 
 		//----------------------------------------------------------------------
@@ -1231,7 +1132,6 @@ namespace MarkDownSharpEditor
       //Do not preview in constraint to change
 			if (fConstraintChange == true)
 			{
-				timer1.Enabled = false;
 				return;
 			}
 
@@ -1451,12 +1351,7 @@ namespace MarkDownSharpEditor
 					}
 					else
 					{
-						//クリック音対策 ( Constraint to click sound )
-						if (webBrowser1.Document != null)
-						{
-							webBrowser1.Document.OpenNew(true);
-						}
-						webBrowser1.Navigate("about:blank");
+						webBrowser1.Document.OpenNew(true);
 						webBrowser1.Document.Write((string)e.Result);
 						//ツールバーの「関連付けられたブラウザーを起動」を無効に
 						//"Associated web browser" in toolbar is invalid
@@ -1475,6 +1370,115 @@ namespace MarkDownSharpEditor
 					}
 				}
 			}
+		}
+
+		//----------------------------------------------------------------------
+		// BackgroundWorker ProgressChanged
+		//----------------------------------------------------------------------
+		private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+		{
+			var obj = MarkDownSharpEditor.AppSettings.Instance;
+			RichTextBoxEx richTextBoxBackground = new RichTextBoxEx();
+			richTextBoxBackground.Clear();
+			richTextBoxBackground.Text = (string)e.Argument;
+			richTextBoxBackground.ForeColor = Color.FromArgb(obj.ForeColor_MainText);
+			richTextBoxBackground.BackColor = Color.FromArgb(obj.BackColor_MainText);
+
+			SyntaxArrayList.Clear();
+
+			foreach (MarkdownSyntaxKeyword mk in MarkdownSyntaxKeywordAarray)
+			{
+				Regex r = new Regex(mk.RegText, RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+				MatchCollection col = r.Matches(richTextBoxBackground.Text, 0);
+
+				if (col.Count > 0)
+				{
+					foreach (Match m in col)
+					{
+						//richTextBoxBackground.Select(m.Groups[0].Index, m.Groups[0].Length);
+						//richTextBoxBackground.SelectionColor = mk.ForeColor;        // 前景色 ( Foreground color )
+						//richTextBoxBackground.SelectionBackColor = mk.BackColor;	  // 背景色 ( Background color )
+						SyntaxColorScheme sytx = new SyntaxColorScheme();
+						sytx.SelectionStartIndex = m.Groups[0].Index;
+						sytx.SelectionLength = m.Groups[0].Length;
+						sytx.ForeColor = mk.ForeColor;
+						sytx.BackColor = mk.BackColor;
+						SyntaxArrayList.Add(sytx);
+					}
+				}
+			}
+			e.Result = richTextBoxBackground.Rtf;
+			
+		}
+		//----------------------------------------------------------------------
+		// BackgroundWorker Editor Syntax hightlighter progress changed
+		//----------------------------------------------------------------------
+		private void backgroundWorker2_ProgressChanged(object sender, ProgressChangedEventArgs e)
+		{
+
+		}
+		//----------------------------------------------------------------------
+		// BackgroundWorker Syntax hightlighter completed to work
+		//----------------------------------------------------------------------
+		private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			int i;
+			var obj = MarkDownSharpEditor.AppSettings.Instance;
+
+			if (e.Error != null || e.Cancelled == true)
+			{
+				return;
+			}
+
+			Font fc = richTextBox1.Font;          //現在のフォント設定 ( Font option )
+			bool fModify = richTextBox1.Modified;	//現在の編集状況 ( Modified flag )
+
+			fConstraintChange = true;
+
+			//現在のカーソル位置 / Current cursor position
+			int selectStart = this.richTextBox1.SelectionStart;
+			int selectEnd = richTextBox1.SelectionLength;
+			Point CurrentOffset = richTextBox1.AutoScrollOffset;
+
+			//現在のスクロール位置 / Current scroll position
+			int CurrentScrollPos = richTextBox1.VerticalPosition;
+			//描画停止 / Stop to paint
+			richTextBox1.BeginUpdate();
+
+			//RichTextBoxの書式をクリアする / Clear richTextBox1 format options
+			richTextBox1.ForeColor = Color.FromArgb(obj.ForeColor_MainText);
+			richTextBox1.BackColor = Color.FromArgb(obj.BackColor_MainText);
+
+			//HACK: 裏で計算していたシンタックスハイライターを反映。
+			for (i = 0; i < SyntaxArrayList.Count; i++)
+			{
+				SyntaxColorScheme s = (SyntaxColorScheme)SyntaxArrayList[i];
+				richTextBox1.Select(s.SelectionStartIndex, s.SelectionLength);
+				richTextBox1.SelectionColor = s.ForeColor;
+				richTextBox1.SelectionBackColor = s.BackColor;
+			}
+
+			//カーソル位置を戻す / Restore cursor position
+			richTextBox1.Select(selectStart, selectEnd);
+			richTextBox1.AutoScrollOffset = CurrentOffset;
+
+			//描画再開 / Resume to paint
+			richTextBox1.EndUpdate();
+			richTextBox1.Modified = fModify;
+
+			fConstraintChange = false;
+
+			if (MarkDownSharpEditor.AppSettings.Instance.AutoBrowserPreviewInterval < 0)
+			{
+				//手動更新 / Manual refresh
+				timer1.Enabled = false;
+				return;
+			}
+			else
+			{
+				timer1.Enabled = true;
+			}
+
 		}
 
 		//----------------------------------------------------------------------
@@ -1917,116 +1921,6 @@ namespace MarkDownSharpEditor
 		
 		}
 
-		//----------------------------------------------------------------------
-		// TODO: SyntaxHightlighterWidthRegex
-		//----------------------------------------------------------------------
-		private void SyntaxHightlighterWidthRegex(int SearchStartIndex = 0, int SearchEndIndex = 0)
-		{
-
-			if (SearchEndIndex == 0)
-			{
-				SearchEndIndex = richTextBox1.Text.Length - 1;
-			}
-
-			fSyntaxHightlighter = true;
-
-			var obj = MarkDownSharpEditor.AppSettings.Instance;
-
-			Font fc = richTextBox1.Font;          //現在のフォント設定 ( Font option )
-			bool fModify = richTextBox1.Modified;	//現在の編集状況 ( Modified flag )
-			
-			fConstraintChange = true;
-
-			//現在のカーソル位置
-      //Current cursor position
-			int selectStart = this.richTextBox1.SelectionStart;
-			int selectEnd = richTextBox1.SelectionLength;
-			Point CurrentOffset = richTextBox1.AutoScrollOffset;
-
-			//現在のスクロール位置
-      //Current scroll position
-			int CurrentScrollPos = richTextBox1.VerticalPosition;
-			//描画停止
-      //Stop to paint
-			richTextBox1.BeginUpdate();
-
-			//RichTextBoxの書式をクリアする
-      //Clear richTextBox1 format options
-			richTextBox1.Select(SearchStartIndex, SearchEndIndex - SearchStartIndex + 1);
-			richTextBox1.SelectionColor = Color.FromArgb(obj.ForeColor_MainText);
-			richTextBox1.SelectionBackColor = Color.FromArgb(obj.BackColor_MainText);
-			//richTextBox1.Clear();
-			//richTextBox1.Text = TemporaryText;
-			//richTextBox1.Font = fc;
-			//richTextBox1.ForeColor = Color.FromArgb(obj.ForeColor_MainText);
-			//richTextBox1.BackColor = Color.FromArgb(obj.BackColor_MainText);
-
-			foreach ( MarkdownSyntaxKeyword mk in MarkdownSyntaxKeywordAarray )
-			{
-				Regex r = new Regex(mk.RegText, RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-				MatchCollection col = r.Matches(richTextBox1.Text.Substring(SearchStartIndex, SearchEndIndex - SearchStartIndex + 1), 0);
-
-				if ( col.Count > 0 )
-				{
-					foreach (Match m in col)
-					{
-						richTextBox1.Select(m.Groups[0].Index + SearchStartIndex, m.Groups[0].Length);
-						richTextBox1.SelectionColor = mk.ForeColor;        // 前景色 ( Foreground color )
-						richTextBox1.SelectionBackColor = mk.BackColor;	   // 背景色 ( Background color )
-					}
-				}
-			}
-
-			//カーソル位置を戻す
-      //Restore cursor position
-			richTextBox1.Select(selectStart, selectEnd);
-			richTextBox1.AutoScrollOffset = CurrentOffset;			
-			
-			//描画再開
-      //Resume to paint
-			richTextBox1.EndUpdate();
-			richTextBox1.Modified = fModify;
-
-			fConstraintChange = false;
-			fSyntaxHightlighter = false;
-
-		}
-		//----------------------------------------------------------------------
-		// シンタックス・ハイライター（IndexOf版）
-		//----------------------------------------------------------------------
-		/*
-		private void SyntaxHightlighterWidthIndexOf(string word, Color forecolor,  Color backcolor, int startIndex)
-		{
-			if (richTextBox1.Text.Contains(word))
-			{
-				int index = -1;
-				//現在のカーソル位置
-				int selectStart = this.richTextBox1.SelectionStart;
-				int selectEnd = richTextBox1.SelectionLength;
-				//現在のスクロール位置
-				Win32.POINT pt = GetScrollPos();
-				//描画停止
-				richTextBox1.BeginUpdate();
-
-				while ((index = this.richTextBox1.Text.IndexOf(word, (index + 1))) != -1)
-				{
-					richTextBox1.Select((index + startIndex), word.Length);
-					richTextBox1.SelectionColor = forecolor;        // 前景色
-					richTextBox1.SelectionBackColor = backcolor;	// 背景色
-					richTextBox1.Select(selectStart, 0);
-					richTextBox1.SelectionColor = Color.Black;
-				}
-
-				//カーソル位置を戻す
-				richTextBox1.Select(selectStart, selectEnd);
-				//スクロール位置を戻す
-				SetScrollPos(pt);
-				//描画再開
-				richTextBox1.EndUpdate();
-			}
-		}
-		*/
-
 
 		//======================================================================
 		#region ブラウザーのツールバーメニュー ( Toolbar on browser )
@@ -2115,8 +2009,8 @@ namespace MarkDownSharpEditor
         //"編集中のファイルがあります。保存してから新しいファイルを開きますか？"
         //"Question"
         //"This file being edited. Do you wish to save before starting new file?"
-				DialogResult ret = MessageBox.Show(resource.GetString("MsgSaveFileToNewFile"),
-				resource.GetString("DialogTitleInfo"),  MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+				DialogResult ret = MessageBox.Show(Resources.MsgSaveFileToNewFile,
+				Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 				if (ret == DialogResult.Yes)
 				{
@@ -2355,8 +2249,8 @@ namespace MarkDownSharpEditor
           //"Question"
           //"Same file exists.\nContinue to overwrite?"
 					DialogResult ret = MessageBox.Show(
-						resource.GetString("MsgSameFileOverwrite") + "\n" + OutputFilePath,
-						resource.GetString("DialogTitleInfo"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question,
+						Resources.MsgSameFileOverwrite + "\n" + OutputFilePath,
+						Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question,
 						MessageBoxDefaultButton.Button1);	// Yesがデフォルト
 
 					if (ret == DialogResult.Yes)
@@ -2409,8 +2303,8 @@ namespace MarkDownSharpEditor
         //"クリップボードに保存されました。"
         //"Information"
         //"This file has been output to the clipboard."
-				MessageBox.Show(resource.GetString("MsgOutputToClipboard"),
-					resource.GetString("DialogTitleNotice"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(Resources.MsgOutputToClipboard,
+					Resources.DialogTitleNotice, MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 
@@ -2568,8 +2462,8 @@ namespace MarkDownSharpEditor
 			labelReplace.Visible = false;
 			textBoxReplace.Visible = false;
 			cmdReplaceAll.Visible = false;
-      cmdSearchNext.Text = resource.GetString("ButtonFindNext"); //"次を検索する(&N)";
-      cmdSearchPrev.Text = resource.GetString("ButtonFindPrev"); // "前を検索する(&P)";
+      cmdSearchNext.Text = Resources.ButtonFindNext; //"次を検索する(&N)";
+      cmdSearchPrev.Text = Resources.ButtonFindPrev; // "前を検索する(&P)";
 		}
 		//-----------------------------------
 		//「置換」メニュー
@@ -2584,8 +2478,8 @@ namespace MarkDownSharpEditor
 			labelReplace.Visible = true;
 			textBoxReplace.Visible = true;
 			cmdReplaceAll.Visible = true;
-			cmdSearchNext.Text = resource.GetString("ButtonReplaceNext");  //"置換して次へ(&N)";
-      cmdSearchPrev.Text = resource.GetString("ButtonReplacePrev");  //"置換して前へ(&P)";
+			cmdSearchNext.Text = Resources.ButtonReplaceNext;  //"置換して次へ(&N)";
+      cmdSearchPrev.Text = Resources.ButtonReplacePrev;  //"置換して前へ(&P)";
 		}
 
 		//-----------------------------------
@@ -2626,8 +2520,8 @@ namespace MarkDownSharpEditor
 			//"Question"
 			//"To change the setting of language, it is necessary to restart the application. 
 			// Do you want to restart this application now?"
-			DialogResult result = MessageBox.Show(resource.GetString("MsgRestartApplication"),
-				resource.GetString("DialogTitleQuestion"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+			DialogResult result = MessageBox.Show(Resources.MsgRestartApplication,
+				Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 			if (result == DialogResult.Yes)
 			{
@@ -2655,8 +2549,8 @@ namespace MarkDownSharpEditor
 			//"Question"
 			//"To change the setting of language, it is necessary to restart the application. 
 			// Do you want to restart this application now?"
-			DialogResult result = MessageBox.Show(resource.GetString("MsgRestartApplication"),
-				resource.GetString("DialogTitleQuestion"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+			DialogResult result = MessageBox.Show(Resources.MsgRestartApplication,
+				Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 			if (result == DialogResult.Yes)
 			{
@@ -2745,8 +2639,6 @@ namespace MarkDownSharpEditor
 					fontDialog1.Font.Name + "," + fontDialog1.Font.Size.ToString() + "pt";
 				this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
 			}
-			//シンタックスハイライターを全体に反映
-			SyntaxHightlighterWidthRegex(0,0);
 			//richTextBoxの書式を変えても「変更」となるので元のステータスへ戻す
 			richTextBox1.Modified = fModify;
 		}
@@ -2762,7 +2654,7 @@ namespace MarkDownSharpEditor
 			frm3.Dispose();
 
 			RefreshSyntaxHightlighterKeyword();	 //キーワードリストの更新
-			SyntaxHightlighterWidthRegex(0,0);     //色分け
+			richTextBox1.AppendText("");         //Call TextChanged Event
 
 			//プレビュー間隔を更新
 			if (MarkDownSharpEditor.AppSettings.Instance.AutoBrowserPreviewInterval > 0)
@@ -2802,13 +2694,85 @@ namespace MarkDownSharpEditor
 			else
 			{ //"エラー"
         //"ヘルプファイルがありません。開くことができませんでした。"
-        //"Could not find Help file.\nOpening this file has failed."
-        MessageBox.Show(resource.GetString("MsgNoHelpFile"),
-          resource.GetString("DialogTitleError"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //"Could not find Help file. Opening this file has failed."
+        MessageBox.Show(Resources.MsgNoHelpFile,
+          Resources.DialogTitleError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
+		}
+
+		//-----------------------------------
+		// アップデートの確認
+		// "Check for Update"
+		//-----------------------------------
+		private void mnuCheckForUpdate_Click(object sender, EventArgs e)
+		{
+			string MsgText = "";
+			Version newVersion = null;
+			string url = "";
+			string dt = "";
+			System.Xml.XmlTextReader reader;
+
+			string xmlURL = "http://hibara.org/software/markdownsharpeditor/app_version.xml";
+			using ( reader = new System.Xml.XmlTextReader(xmlURL))
+			{
+				reader.MoveToContent();
+				string elementName = "";
+				if ((reader.NodeType == System.Xml.XmlNodeType.Element) && (reader.Name == "markdownsharpeditor"))
+				{
+					while (reader.Read())
+					{
+						if (reader.NodeType == System.Xml.XmlNodeType.Element)
+						{
+							elementName = reader.Name;
+						}
+						else
+						{
+							if ((reader.NodeType == System.Xml.XmlNodeType.Text) && (reader.HasValue))
+							{
+								switch (elementName)
+								{
+									case "version":
+										newVersion = new Version(reader.Value);
+										break;
+									case "url":
+										url = reader.Value;
+										break;
+									case "date":
+										dt = reader.Value;
+										break;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if (newVersion == null)
+			{
+				//Failed to get the latest version information.
+				MsgText = Resources.ErrorGetNewVersion;
+				MessageBox.Show(MsgText, Resources.DialogTitleError, MessageBoxButtons.OK, MessageBoxIcon.Question);
+				return;
+			}
+
+			// get current version
+			Version curVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+			if (curVersion.CompareTo(newVersion) < 0)
+			{	//"New version was found! Do you open the download site?";
+				MsgText = "Update info: ver." + newVersion + " (" + dt + " ) \n" + Resources.NewVersionFound; 
+				if (DialogResult.Yes == MessageBox.Show(this, MsgText, Resources.DialogTitleQuestion, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+				{
+					System.Diagnostics.Process.Start(url);
+				}
+			}
+			else
+			{	// You already have the latest version of this application.
+				MsgText = Resources.AlreadyLatestVersion + "\nver." + newVersion + " ( " + dt + " ) ";
+				MessageBox.Show(MsgText, Resources.DialogTitleInfo, MessageBoxButtons.OK, MessageBoxIcon.Question);
 			}
 
 		}
-
+		
 		//-----------------------------------
 		// サンプル表示
     // "View Markdown sample file"
@@ -2831,8 +2795,8 @@ namespace MarkDownSharpEditor
         //"サンプルファイルがありません。開くことができませんでした。"
         //"Error"
         //"Could not find sample MD file.\nOpening this file has failed."
-				MessageBox.Show(resource.GetString("MsgNoSampleFile"),
-					resource.GetString("DialogTitleError"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				MessageBox.Show(Resources.MsgNoSampleFile,
+					Resources.DialogTitleError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			}
 		}
 
@@ -3106,7 +3070,7 @@ namespace MarkDownSharpEditor
 						// ファイルの先頭から検索を続けますか？"
             //"The word could not find the word to the end of this file.
 						// Do you wish to continue searching from the beginning of this file?"
-						MsgText = resource.GetString("MsgNotFoundToEnd");
+						MsgText = Resources.MsgNotFoundToEnd;
 						fSearchStart = true;
 					}
 					else
@@ -3115,9 +3079,9 @@ namespace MarkDownSharpEditor
 						// ファイル先頭に戻って検索を続けますか？"
             //"Searching completed to the end of this file.
 						// Do you wish to continue searching from the beginning of this file?"
-						MsgText = resource.GetString("MsgFindCompleteToEnd");
+						MsgText = Resources.MsgFindCompleteToEnd;
 					}
-					result = MessageBox.Show(MsgText, resource.GetString("DialogTitleNotice"), 
+					result = MessageBox.Show(MsgText, Resources.DialogTitleNotice, 
 						MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 					
 					if (result == DialogResult.Yes)
@@ -3191,7 +3155,7 @@ namespace MarkDownSharpEditor
 						// ファイルの末尾から検索を続けますか？"
             //"The word could not find to the beginning of this file.
 						// Do you wish to continue searching from the end of this file?"
-						MsgText = resource.GetString("MsgNotFoundToBeginning");
+						MsgText = Resources.MsgNotFoundToBegining;
 						fSearchStart = true;
 					}
 					else
@@ -3200,10 +3164,10 @@ namespace MarkDownSharpEditor
 						// ファイル末尾から検索を続けますか？"
             //"Searching completed to the beginning of this file.
 						// Do you wish to continue searching from the end of this file?"
-            MsgText = resource.GetString("MsgFindCompleteToBeginning");
+            MsgText = Resources.MsgFindCompleteToBegining;
 					}
 					
-					result = MessageBox.Show(MsgText, resource.GetString("DialogTitleNotice"),
+					result = MessageBox.Show(MsgText, Resources.DialogTitleNotice,
 						MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
 					if (result == DialogResult.Yes)
@@ -3264,17 +3228,17 @@ namespace MarkDownSharpEditor
 			{
         //"以下のワードを" ～ "件置換しました。\n"
         //"" ～ " of the word were replaced.\n"
-				MsgText = resource.GetString("MsgThisWord") + "\"" + ReplaceCount.ToString() + "\"" + resource.GetString("MsgReplaced") + "\n" +
+				MsgText = Resources.MsgThisWord + "\"" + ReplaceCount.ToString() + "\"" + Resources.MsgReplaced + "\n" +
 					        textBoxSearch.Text + " -> " + textBoxReplace.Text;
 			}
 			else
 			{
         //"ご指定の検索ワードは見つかりませんでした。"
         //"The word was not found."
-				MsgText = resource.GetString("MsgNotFound");
+				MsgText = Resources.MsgNotFound;
 			}
 
-			MessageBox.Show(MsgText, resource.GetString("DialogTitleNotice"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show(MsgText, Resources.DialogTitleNotice, MessageBoxButtons.OK, MessageBoxIcon.Information);
 			fSearchStart = true;
 
 		}
@@ -3493,8 +3457,6 @@ namespace MarkDownSharpEditor
 		}
 
 		#endregion	
-
-
 
 		//======================================================================
 		#region WebBrowserコンポーネントのカチカチ音制御

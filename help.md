@@ -182,6 +182,15 @@ The first and foremost, I want to improve the performance of the previewing spee
 
 #Version
 
+##ver.1.2.1.0　　2013/06/
+
+* Added to check for latest version release.
+
+* Fixed some dialog do not show a message right.
+
+
+
+
 ##ver.1.2.0.0　　2013/06/09
 
 * Added Markdown Extra mode.

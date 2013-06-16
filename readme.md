@@ -12,11 +12,12 @@ This editor offers a lot of following features:
 * Syntax highlighter in text editor window.  
 * Easy switching CSS files to be applied to the edited file.  
 * Output HTML files or copy to clipboard with a single click.  
+* Markdown Extra mode is supported.   
 ...etc  
 
-This application software source code is written and developed by Microsoft Visual C# 2010 Express.
+This application software source code is written and developed by Microsoft Visual C# 2010 or 2012 Express.
 
-Support site:  
+Download & Support site:  
 HIBARA.ORG - MarkDown#Editor  
 http://hibara.org/software/markdownsharpeditor/
 
