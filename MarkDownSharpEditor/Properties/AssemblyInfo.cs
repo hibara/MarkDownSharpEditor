@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MarkDown#Editor")]
-[assembly: AssemblyCopyright("Copyright ©  2012-2013 M.Hibara, All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2012-2013 M.Hibara, All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

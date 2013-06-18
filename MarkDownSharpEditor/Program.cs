@@ -24,20 +24,13 @@ namespace MarkDownSharpEditor
 					//設定を読み込む ( Read options )
 					MarkDownSharpEditor.AppSettings.Instance.ReadFromXMLFile();
 					// Check culture
-					/*
-					if (Thread.CurrentThread.CurrentCulture.Name.StartsWith("ja") == false)
+					if (Thread.CurrentThread.CurrentCulture.Name.StartsWith("ja") == true || MarkDownSharpEditor.AppSettings.Instance.Lang == "ja")
 					{
-						Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US", false);
-					}
-					*/
-					if ( MarkDownSharpEditor.AppSettings.Instance.Lang == "ja" ){
 						Thread.CurrentThread.CurrentUICulture = new CultureInfo("ja-JP", false);
 					}
-					else
-					{
+					else{
 						Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US", false);
 					}
-
 					Application.EnableVisualStyles();
           Application.SetCompatibleTextRenderingDefault(false);
           Application.Run(new Form1());

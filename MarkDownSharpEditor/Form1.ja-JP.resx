@@ -719,6 +719,9 @@
   <data name="mnuCheckForUpdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 22</value>
   </data>
+  <data name="mnuCheckForUpdate.Text" xml:space="preserve">
+    <value>最新バージョンのチェック(&amp;C)</value>
+  </data>
   <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 6</value>
   </data>
@@ -740,9 +743,9 @@
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAETSURBVDhPvZLNSoZQEIaFIGjbBbRq6+rbthF/EU3FH1QU
         BBVNxQvpboJuom3XE0zv8B0IO0jSF70wC+f4PnNmzih/onVd75ZloXmeaZomGseRhmGgvu+pbVtqmuYt
         SZIb8bssBsD8Kj4lAVDWdf2SpumVSG3FAFTeBcBcVlVFZVk+i9RWMN/jyrsAGFmU5zmhlSeR/hJ6VX8C
-        sBktkOM4H1EUPYqjsxjQdd0uAFVvYT5xhGF48jzvXRydxQBMexfwXRIAU1YR/wdwXVcG4KkOAyzLkgF4
-        598D8Eoq4jDANM0toCiKhyzLDgM0TZMBvCRxHBOWhIIgIN/3CdMmDIyXh2zbJlQmwzBI13Veqmthv0SK
-        8gkgcX13Vm+yygAAAABJRU5ErkJggg==
+        sBktkG3bH1EUPYqjsxjQdd0uAFVvYT5xhGF48jzvXRydxQBMexfwXRIAU1YR/wdwXVcG4KkOAyzLkgF4
+        598D8Eoq4jDANM0toCiKhyzLDgM0TZMBvCRxHBOWhIIgIN/3CdMmDIwcx+EFIlQmwzBI13Veqmthv0SK
+        8gkYpn10e3JR5wAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="toolStripButtonNewFile.ToolTipText" xml:space="preserve">
@@ -780,13 +783,13 @@
   <data name="toolButtonOutput.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVDhPvZOxasJQFIbzBM3o4ugb+AJZBVeJgy5GhDhl
-        7OBa6gNIhwwilCyJgtDBQufgEnAzUh9ApR1ahBAa42n+Q26TSluklH5wSHJz/v/ce+69Euh0OnKr1brR
-        NI3OiWaz+ZLkX7MYJIOX4/GYziUIAjZJ5f9g0G63OQRfGniel/7+zHq9pmq1So7jpCNEYRhmBsfj8WK1
-        Ws2XyyUZhsGRZzQaUb1e/zDq9/u03+9pNpuFbBDH8YNpms/lcpkTIBAgEeLBYECbzYbNkVOr1ciyrDhJ
-        sSVVVeeyLPuNRoOr5EmqsABiAZYCg2KxGHW7XQ+TuCuVSo+TySRNyUDFXq+XfmUMh0M2KBQK95Lruk8w
-        wBIgELNYLBZcHU8B3pFTqVRIUZTDbrd7Qw+uttvtQdd1FiAAKue3DssQ/23bJt/3D8kGaNzI6XR6m7hx
-        BaxRVEcP8qDBmGEURTB/ZTHIHyR0/vTgnPLjSYSB2Lbv+Pu78PvrLEnv2fDQATXLLucAAAAASUVORK5C
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVDhPvZOxasJQFIbzBM2YxdE38AGcBVfRQRcjATM5
+        dsha6gOEDg4SEJdoINAhhc7iEnCzUh9ApR1aBAmN8fT+h9yaSluklH5wSHJz/v/ce+69CjAMQ202mze6
+        rtM50Wg0XkT+NYuBGLwcj8d0Lrvdjk1S+T8YtFotDsmXBmEYpr8/s1wuqVwu02g0SkeIoig6GhwOh4vF
+        YjGdz+fU6XQ4sjiOQ7Va7cOo2+3SdrulIAgiNkiS5L7X6z0XCgVOgECCRIht26bVasXmyKlUKjQcDhOR
+        4irVanWqqupDvV7nKllEFRZALMFSYJDL5WLTNENM4jafzz96npemHEFFy7LSryP9fp8NNE27UyaTyRMM
+        sAQI5CxmsxlXx1OCd+SUSiUqFov79Xr9hh5ciSnu2+02CxAAlbNbh2XI/67rkmj6XmyAzo30fX+w2Wy4
+        AtYoq6MHWdBgzDCOY5i/shhkDxI6f3pwTvnxJMJAbtt3/P1d+P11VpR3yErP9buGQ0UAAAAASUVORK5C
         YII=
 </value>
   </data>

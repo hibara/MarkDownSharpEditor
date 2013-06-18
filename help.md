@@ -182,13 +182,19 @@ The first and foremost, I want to improve the performance of the previewing spee
 
 #Version
 
-##ver.1.2.1.0　　2013/06/
+##ver.1.2.1.0　　2013/06/18
 
 * Added to check for latest version release.
 
-* Fixed some dialog do not show a message right.
+* Fixed some dialog did not show a message right ( by localization ).
 
+* Fixed starting to edit new file cause a crash.
 
+* Fixed the problem that had been when it reaches the end of the text while editing, it crashes as well.
+
+* Fixed that the problems IME(FEP) would be determined a conversion during editing unintentionally sometimes ( when you are running in a Japanese environment ).
+
+* Fixed the problem that had gone to first start as an English version, when you run the installer in a Japanese environment.
 
 
 ##ver.1.2.0.0　　2013/06/09
