@@ -31,7 +31,7 @@ namespace setTimeZero
 				//追加する日数
 				if (args[i].IndexOf("/d") == 0)
 				{
-					argDays = args[i].Substring(2, args[i].Length-2);
+					argDays = args[i].Substring(2, args[i].Length - 2);
 
 					if (int.TryParse(argDays, out addDays) == true)
 					{
@@ -65,7 +65,7 @@ namespace setTimeZero
 				}
 
 			}
-		
+
 			//日付を調整する（ = 0: 本日の日付）
 			dt.AddDays(addDays);
 			// カルチャ情報を設定する
@@ -73,13 +73,14 @@ namespace setTimeZero
 					new System.Globalization.CultureInfo("ja-JP", true)
 			);
 			// 文字列から DateTime の値に変換する
-			dt = DateTime.Parse(string.Format("{0}/{1}/{2} 00:00:00", dt.Year, dt.Month, dt.Day), cFormat); 
-			
+			dt = DateTime.Parse(string.Format("{0}/{1}/{2} 00:00:00", dt.Year, dt.Month, dt.Day), cFormat);
+
 			//-----------------------------------
 			//ファイル処理
 			//-----------------------------------
 
-			foreach ( string FilePath in fileList ){
+			foreach (string FilePath in fileList)
+			{
 
 				if (fWildcard == true)
 				{
@@ -106,10 +107,11 @@ namespace setTimeZero
 						}
 
 					}
-			
+
 				}
-				else{
-		
+				else
+				{
+
 					try
 					{
 						//作成日時の設定（現在の時間にする）

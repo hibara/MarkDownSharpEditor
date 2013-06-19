@@ -22,10 +22,10 @@ namespace MarkdownDeep
 	[Flags]
 	public enum HtmlTagFlags
 	{
-		Block			= 0x0001,			// Block tag
-		Inline			= 0x0002,			// Inline tag
-		NoClosing		= 0x0004,			// No closing tag (eg: <hr> and <!-- -->)
-		ContentAsSpan	= 0x0008,			// When markdown=1 treat content as span, not block
+		Block = 0x0001,			// Block tag
+		Inline = 0x0002,			// Inline tag
+		NoClosing = 0x0004,			// No closing tag (eg: <hr> and <!-- -->)
+		ContentAsSpan = 0x0008,			// When markdown=1 treat content as span, not block
 	};
 
 	public class HtmlTag
@@ -82,7 +82,7 @@ namespace MarkdownDeep
 			}
 		}
 
-		static string[] m_allowed_tags = new string [] {
+		static string[] m_allowed_tags = new string[] {
 			"b","blockquote","code","dd","dt","dl","del","em","h1","h2","h3","h4","h5","h6","i","kbd","li","ol","ul",
 			"p", "pre", "s", "sub", "sup", "strong", "strike", "img", "a"
 		};
@@ -131,7 +131,7 @@ namespace MarkdownDeep
 		// Check if this tag is safe
 		public bool IsSafe()
 		{
-			string name_lower=m_name.ToLowerInvariant();
+			string name_lower = m_name.ToLowerInvariant();
 
 			// Check if tag is in whitelist
 			if (!Utils.IsInList(name_lower, m_allowed_tags))
@@ -206,7 +206,7 @@ namespace MarkdownDeep
 			StringScanner sp = new StringScanner(str, pos);
 			var ret = Parse(sp);
 
-			if (ret!=null)
+			if (ret != null)
 			{
 				pos = sp.position;
 				return ret;
@@ -222,7 +222,7 @@ namespace MarkdownDeep
 
 			// Parse it
 			var ret = ParseHelper(p);
-			if (ret!=null)
+			if (ret != null)
 				return ret;
 
 			// Rewind if failed
@@ -258,7 +258,7 @@ namespace MarkdownDeep
 			bool bClosing = p.SkipChar('/');
 
 			// Get the tag name
-			string tagName=null;
+			string tagName = null;
 			if (!p.SkipIdentifier(ref tagName))
 				return null;
 
@@ -286,7 +286,7 @@ namespace MarkdownDeep
 				// Check for closed tag eg: <hr />
 				if (p.SkipString("/>"))
 				{
-					tag.m_closed=true;
+					tag.m_closed = true;
 					return tag;
 				}
 

@@ -31,14 +31,14 @@ namespace MrkSetup
 			{
 				//関連付け設定
 				//Association argument
-				if ( arg == "-a" )
+				if (arg == "-a")
 				{
 					AssociateMdFiles();
 					break;
 				}
 				//関連付け設定解除
 				//Un-associatin argument
-				else if ( arg == "-u" )
+				else if (arg == "-u")
 				{
 					UnAssociateMdFiles();
 					break;
@@ -55,7 +55,7 @@ namespace MrkSetup
 
 			if (File.Exists(MarkDownSharpEditorPath) == false)
 			{
-				return(false);
+				return (false);
 			}
 
 			//関連付ける拡張子 ( Extension )

@@ -25,10 +25,10 @@ namespace MarkdownDeep
 	{
 		Blank,			// blank line (parse only)
 		h1,				// headings (render and parse)
-		h2, 
-		h3, 
-		h4, 
-		h5, 
+		h2,
+		h3,
+		h4,
+		h5,
 		h6,
 		post_h1,		// setext heading lines (parse only)
 		post_h2,
@@ -42,7 +42,7 @@ namespace MarkdownDeep
 		html,			// html content (render and parse)
 		unsafe_html,	// unsafe html that should be encoded
 		span,			// an undecorated span of text (used for simple list items 
-						//			where content is not wrapped in paragraph tags
+		//			where content is not wrapped in paragraph tags
 		codeblock,		// a code block (render only)
 		li,				// a list item (render only)
 		ol,				// ordered list (render only)
@@ -86,7 +86,7 @@ namespace MarkdownDeep
 				}
 
 
-				if (buf==null)
+				if (buf == null)
 					return null;
 				else
 					return contentStart == -1 ? buf : buf.Substring(contentStart, contentLen);
@@ -120,11 +120,11 @@ namespace MarkdownDeep
 		internal string ResolveHeaderID(Markdown m)
 		{
 			// Already resolved?
-			if (this.data!=null)
+			if (this.data != null)
 				return (string)this.data;
 
 			// Approach 1 - PHP Markdown Extra style header id
-			int end=contentEnd;
+			int end = contentEnd;
 			string id = Utils.StripHtmlID(buf, contentStart, ref end);
 			if (id != null)
 			{
@@ -212,24 +212,24 @@ namespace MarkdownDeep
 					break;
 
 				case BlockType.dt:
-				{
-					if (children == null)
 					{
-						foreach (var l in Content.Split('\n'))
+						if (children == null)
 						{
-							b.Append("<dt>");
-							m.SpanFormatter.Format(b, l.Trim());
+							foreach (var l in Content.Split('\n'))
+							{
+								b.Append("<dt>");
+								m.SpanFormatter.Format(b, l.Trim());
+								b.Append("</dt>\n");
+							}
+						}
+						else
+						{
+							b.Append("<dt>\n");
+							RenderChildren(m, b);
 							b.Append("</dt>\n");
 						}
+						break;
 					}
-					else
-					{
-						b.Append("<dt>\n");
-						RenderChildren(m, b);
-						b.Append("</dt>\n");
-					}
-					break;
-				}
 
 				case BlockType.dl:
 					b.Append("<dl>\n");
@@ -296,7 +296,7 @@ namespace MarkdownDeep
 					var tag = (HtmlTag)data;
 
 					// Prepare special tags
-					var name=tag.name.ToLowerInvariant();
+					var name = tag.name.ToLowerInvariant();
 					if (name == "a")
 					{
 						m.OnPrepareLink(tag);
@@ -466,7 +466,7 @@ namespace MarkdownDeep
 		public override string ToString()
 		{
 			string c = Content;
-			return blockType.ToString() + " - " + (c==null ? "<null>" : c);
+			return blockType.ToString() + " - " + (c == null ? "<null>" : c);
 		}
 
 		public Block CopyFrom(Block other)

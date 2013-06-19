@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime;
 using System.Runtime.InteropServices;
 
@@ -21,8 +21,8 @@ namespace MarkDownSharpEditor
 		public const int WM_KEYUP = 0x101;
 		public const int WM_CHAR = 0x102;
 
-		public const int EM_GETSCROLLPOS  =       (WM_USER + 221);
-		public const int EM_SETSCROLLPOS  =       (WM_USER + 222);
+		public const int EM_GETSCROLLPOS = (WM_USER + 221);
+		public const int EM_SETSCROLLPOS = (WM_USER + 222);
 
 		public const int VK_CONTROL = 0x11;
 		public const int VK_UP = 0x26;
@@ -33,16 +33,20 @@ namespace MarkDownSharpEditor
 		public const short KS_KEYDOWN = 0x80;
 
 		[StructLayout(LayoutKind.Sequential)]
-		public struct POINT 
+		public struct POINT
 		{
 			public int x;
 			public int y;
 		}
 
-		[DllImport("user32")] public static extern int SendMessage(HWND hwnd, int wMsg, int wParam, IntPtr lParam);
-		[DllImport("user32")] public static extern int PostMessage(HWND hwnd, int wMsg, int wParam, int lParam);
-		[DllImport("user32")] public static extern short GetKeyState(int nVirtKey);
-		[DllImport("user32")] public static extern int LockWindowUpdate(HWND hwnd);
+		[DllImport("user32")]
+		public static extern int SendMessage(HWND hwnd, int wMsg, int wParam, IntPtr lParam);
+		[DllImport("user32")]
+		public static extern int PostMessage(HWND hwnd, int wMsg, int wParam, int lParam);
+		[DllImport("user32")]
+		public static extern short GetKeyState(int nVirtKey);
+		[DllImport("user32")]
+		public static extern int LockWindowUpdate(HWND hwnd);
 
 	}
 }

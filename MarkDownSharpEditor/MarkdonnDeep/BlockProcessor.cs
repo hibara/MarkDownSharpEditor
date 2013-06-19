@@ -76,8 +76,8 @@ namespace MarkdownDeep
 			{
 				int savepos = position;
 
-				var row=spec.ParseRow(this);
-				if (row!=null)
+				var row = spec.ParseRow(this);
+				if (row != null)
 				{
 					spec.Rows.Add(row);
 					continue;
@@ -314,7 +314,7 @@ namespace MarkdownDeep
 							case BlockType.p:
 							case BlockType.quote:
 								var prevline = lines.Last();
-								if (prevline.blockType == BlockType.Blank || m_parentType==BlockType.ol_li || m_parentType==BlockType.ul_li || m_parentType==BlockType.dd)
+								if (prevline.blockType == BlockType.Blank || m_parentType == BlockType.ol_li || m_parentType == BlockType.ul_li || m_parentType == BlockType.dd)
 								{
 									// List starting after blank line after paragraph or quote
 									CollapseLines(blocks, lines);
@@ -330,7 +330,7 @@ namespace MarkdownDeep
 
 							case BlockType.ol_li:
 							case BlockType.ul_li:
-								if (b.blockType!=BlockType.ol_li && b.blockType!=BlockType.ul_li)
+								if (b.blockType != BlockType.ol_li && b.blockType != BlockType.ul_li)
 								{
 									CollapseLines(blocks, lines);
 								}
@@ -421,7 +421,7 @@ namespace MarkdownDeep
 		internal void CollapseLines(List<Block> blocks, List<Block> lines)
 		{
 			// Remove trailing blank lines
-			while (lines.Count>0 && lines.Last().blockType == BlockType.Blank)
+			while (lines.Count > 0 && lines.Last().blockType == BlockType.Blank)
 			{
 				FreeBlock(lines.Pop());
 			}
@@ -437,27 +437,27 @@ namespace MarkdownDeep
 			switch (lines[0].blockType)
 			{
 				case BlockType.p:
-				{
-					// Collapse all lines into a single paragraph
-					var para = CreateBlock();
-					para.blockType = BlockType.p;
-					para.buf = lines[0].buf;
-					para.contentStart = lines[0].contentStart;
-					para.contentEnd = lines.Last().contentEnd;
-					blocks.Add(para);
-					FreeBlocks(lines);
-					break;
-				}
+					{
+						// Collapse all lines into a single paragraph
+						var para = CreateBlock();
+						para.blockType = BlockType.p;
+						para.buf = lines[0].buf;
+						para.contentStart = lines[0].contentStart;
+						para.contentEnd = lines.Last().contentEnd;
+						blocks.Add(para);
+						FreeBlocks(lines);
+						break;
+					}
 
 				case BlockType.quote:
-				{
-					// Create a new quote block
-					var quote = new Block(BlockType.quote);
-					quote.children = new BlockProcessor(m_markdown, m_bMarkdownInHtml, BlockType.quote).Process(RenderLines(lines));
-					FreeBlocks(lines);
-					blocks.Add(quote);
-					break;
-				}
+					{
+						// Create a new quote block
+						var quote = new Block(BlockType.quote);
+						quote.children = new BlockProcessor(m_markdown, m_bMarkdownInHtml, BlockType.quote).Process(RenderLines(lines));
+						FreeBlocks(lines);
+						blocks.Add(quote);
+						break;
+					}
 
 				case BlockType.ol_li:
 				case BlockType.ul_li:
@@ -467,7 +467,7 @@ namespace MarkdownDeep
 				case BlockType.dd:
 					if (blocks.Count > 0)
 					{
-						var prev=blocks[blocks.Count-1];
+						var prev = blocks[blocks.Count - 1];
 						switch (prev.blockType)
 						{
 							case BlockType.p:
@@ -496,26 +496,26 @@ namespace MarkdownDeep
 					break;
 
 				case BlockType.indent:
-				{
-					var codeblock = new Block(BlockType.codeblock);
-					/*
-					if (m_markdown.FormatCodeBlockAttributes != null)
 					{
-						// Does the line first line look like a syntax specifier
-						var firstline = lines[0].Content;
-						if (firstline.StartsWith("{{") && firstline.EndsWith("}}"))
+						var codeblock = new Block(BlockType.codeblock);
+						/*
+						if (m_markdown.FormatCodeBlockAttributes != null)
 						{
-							codeblock.data = firstline.Substring(2, firstline.Length - 4);
-							lines.RemoveAt(0);
+							// Does the line first line look like a syntax specifier
+							var firstline = lines[0].Content;
+							if (firstline.StartsWith("{{") && firstline.EndsWith("}}"))
+							{
+								codeblock.data = firstline.Substring(2, firstline.Length - 4);
+								lines.RemoveAt(0);
+							}
 						}
+						 */
+						codeblock.children = new List<Block>();
+						codeblock.children.AddRange(lines);
+						blocks.Add(codeblock);
+						lines.Clear();
+						break;
 					}
-					 */
-					codeblock.children = new List<Block>();
-					codeblock.children.AddRange(lines);
-					blocks.Add(codeblock);
-					lines.Clear();
-					break;
-				}
 			}
 		}
 
@@ -523,16 +523,16 @@ namespace MarkdownDeep
 		Block EvaluateLine()
 		{
 			// Create a block
-			Block b=CreateBlock();
+			Block b = CreateBlock();
 
 			// Store line start
-			b.lineStart=position;
-			b.buf=input;
+			b.lineStart = position;
+			b.buf = input;
 
 			// Scan the line
 			b.contentStart = position;
 			b.contentLen = -1;
-			b.blockType=EvaluateLine(b);
+			b.blockType = EvaluateLine(b);
 
 			// If end of line not returned, do it automatically
 			if (b.contentLen < 0)
@@ -543,7 +543,7 @@ namespace MarkdownDeep
 			}
 
 			// Setup line length
-			b.lineLen=position-b.lineStart;
+			b.lineLen = position - b.lineStart;
 
 			// Next line
 			SkipEol();
@@ -559,10 +559,10 @@ namespace MarkdownDeep
 				return BlockType.Blank;
 
 			// Save start of line position
-			int line_start= position;
+			int line_start = position;
 
 			// ## Heading ##		
-			char ch=current;
+			char ch = current;
 			if (ch == '#')
 			{
 				// Work out heading level
@@ -590,9 +590,9 @@ namespace MarkdownDeep
 				// In extra mode, check for a trailing HTML ID
 				if (m_markdown.ExtraMode && !m_markdown.SafeMode)
 				{
-					int end=position;
+					int end = position;
 					string strID = Utils.StripHtmlID(input, b.contentStart, ref end);
-					if (strID!=null)
+					if (strID != null)
 					{
 						b.data = strID;
 						position = end;
@@ -600,13 +600,13 @@ namespace MarkdownDeep
 				}
 
 				// Rewind over trailing hashes
-				while (position>b.contentStart && CharAtOffset(-1) == '#')
+				while (position > b.contentStart && CharAtOffset(-1) == '#')
 				{
 					SkipForward(-1);
 				}
 
 				// Rewind over trailing spaces
-				while (position>b.contentStart && char.IsWhiteSpace(CharAtOffset(-1)))
+				while (position > b.contentStart && char.IsWhiteSpace(CharAtOffset(-1)))
 				{
 					SkipForward(-1);
 				}
@@ -619,11 +619,11 @@ namespace MarkdownDeep
 			}
 
 			// Check for entire line as - or = for setext h1 and h2
-			if (ch=='-' || ch=='=')
+			if (ch == '-' || ch == '=')
 			{
 				// Skip all matching characters
 				char chType = ch;
-				while (current==chType)
+				while (current == chType)
 				{
 					SkipForward(1);
 				}
@@ -644,7 +644,7 @@ namespace MarkdownDeep
 			if (m_markdown.ExtraMode)
 			{
 				TableSpec spec = TableSpec.Parse(this);
-				if (spec!=null)
+				if (spec != null)
 				{
 					b.data = spec;
 					return BlockType.table_spec;
@@ -701,7 +701,7 @@ namespace MarkdownDeep
 			}
 
 			// Tab in the first 4 characters?
-			if (tabPos >= 0 && tabPos - line_start<4)
+			if (tabPos >= 0 && tabPos - line_start < 4)
 			{
 				b.contentStart = tabPos + 1;
 				return BlockType.indent;
@@ -768,7 +768,7 @@ namespace MarkdownDeep
 				{
 					if (m_markdown.UserBreaks)
 						return BlockType.user_break;
-					else 
+					else
 						return BlockType.hr;
 				}
 
@@ -843,7 +843,7 @@ namespace MarkdownDeep
 					return BlockType.ol_li;
 				}
 
-				position=b.contentStart;
+				position = b.contentStart;
 			}
 
 			// Reference link definition?
@@ -870,7 +870,7 @@ namespace MarkdownDeep
 
 				// Parse a link definition
 				LinkDefinition l = LinkDefinition.ParseLinkDefinition(this, m_markdown.ExtraMode);
-				if (l!=null)
+				if (l != null)
 				{
 					m_markdown.AddLinkDefinition(l);
 					return BlockType.Blank;
@@ -907,7 +907,7 @@ namespace MarkdownDeep
 
 			// Parse mode
 			if (strMarkdownMode == "1")
-				return (tag.Flags & HtmlTagFlags.ContentAsSpan)!=0 ? MarkdownInHtmlMode.Span : MarkdownInHtmlMode.Block;
+				return (tag.Flags & HtmlTagFlags.ContentAsSpan) != 0 ? MarkdownInHtmlMode.Span : MarkdownInHtmlMode.Block;
 
 			if (strMarkdownMode == "block")
 				return MarkdownInHtmlMode.Block;
@@ -975,47 +975,47 @@ namespace MarkdownDeep
 							switch (mode)
 							{
 								case MarkdownInHtmlMode.Span:
-								{
-									Block span = this.CreateBlock();
-									span.buf = input;
-									span.blockType = BlockType.span;
-									span.contentStart = inner_pos;
-									span.contentLen = tagpos - inner_pos;
-
-									b.children = new List<Block>();
-									b.children.Add(span);
-									break;
-								}
-
-								case MarkdownInHtmlMode.Block:
-								case MarkdownInHtmlMode.Deep:
-								{
-									// Scan the internal content
-									var bp = new BlockProcessor(m_markdown, mode == MarkdownInHtmlMode.Deep);
-									b.children = bp.ScanLines(input, inner_pos, tagpos - inner_pos);
-									break;
-								}
-
-								case MarkdownInHtmlMode.Off:
-								{
-									if (bHasUnsafeContent)
-									{
-										b.blockType = BlockType.unsafe_html;
-										b.contentEnd = position;
-									}
-									else
 									{
 										Block span = this.CreateBlock();
 										span.buf = input;
-										span.blockType = BlockType.html;
+										span.blockType = BlockType.span;
 										span.contentStart = inner_pos;
 										span.contentLen = tagpos - inner_pos;
 
 										b.children = new List<Block>();
 										b.children.Add(span);
+										break;
 									}
-									break;
-								}
+
+								case MarkdownInHtmlMode.Block:
+								case MarkdownInHtmlMode.Deep:
+									{
+										// Scan the internal content
+										var bp = new BlockProcessor(m_markdown, mode == MarkdownInHtmlMode.Deep);
+										b.children = bp.ScanLines(input, inner_pos, tagpos - inner_pos);
+										break;
+									}
+
+								case MarkdownInHtmlMode.Off:
+									{
+										if (bHasUnsafeContent)
+										{
+											b.blockType = BlockType.unsafe_html;
+											b.contentEnd = position;
+										}
+										else
+										{
+											Block span = this.CreateBlock();
+											span.buf = input;
+											span.blockType = BlockType.html;
+											span.contentStart = inner_pos;
+											span.contentLen = tagpos - inner_pos;
+
+											b.children = new List<Block>();
+											b.children.Add(span);
+										}
+										break;
+									}
 							}
 
 
@@ -1133,7 +1133,7 @@ namespace MarkdownDeep
 						Block markdownBlock = this.CreateBlock();
 						if (this.ProcessMarkdownEnabledHtml(markdownBlock, tag, MarkdownMode))
 						{
-							if (childBlocks==null)
+							if (childBlocks == null)
 							{
 								childBlocks = new List<Block>();
 							}
@@ -1164,7 +1164,7 @@ namespace MarkdownDeep
 						}
 					}
 				}
-				
+
 				// Same tag?
 				if (tag.name == openingTag.name)
 				{
@@ -1262,7 +1262,7 @@ namespace MarkdownDeep
 			{
 				// Join plain paragraphs
 				if ((lines[i].blockType == BlockType.p) &&
-					(lines[i - 1].blockType == BlockType.p || lines[i - 1].blockType == BlockType.ul_li || lines[i - 1].blockType==BlockType.ol_li))
+					(lines[i - 1].blockType == BlockType.p || lines[i - 1].blockType == BlockType.ul_li || lines[i - 1].blockType == BlockType.ol_li))
 				{
 					lines[i - 1].contentEnd = lines[i].contentEnd;
 					FreeBlock(lines[i]);
@@ -1294,7 +1294,7 @@ namespace MarkdownDeep
 			// Process all lines in the range		
 			for (int i = 0; i < lines.Count; i++)
 			{
-				System.Diagnostics.Debug.Assert(lines[i].blockType == BlockType.ul_li || lines[i].blockType==BlockType.ol_li);
+				System.Diagnostics.Debug.Assert(lines[i].blockType == BlockType.ul_li || lines[i].blockType == BlockType.ol_li);
 
 				// Find start of item, including leading blanks
 				int start_of_li = i;
@@ -1382,10 +1382,10 @@ namespace MarkdownDeep
 			}
 
 			// Single line definition
-			bool bPreceededByBlank=(bool)lines[0].data;
-			if (lines.Count==1 && !bPreceededByBlank)
+			bool bPreceededByBlank = (bool)lines[0].data;
+			if (lines.Count == 1 && !bPreceededByBlank)
 			{
-				var ret=lines[0];
+				var ret = lines[0];
 				lines.Clear();
 				return ret;
 			}
@@ -1420,11 +1420,11 @@ namespace MarkdownDeep
 				{
 					case BlockType.dt:
 					case BlockType.dd:
-						if (currentList==null)
+						if (currentList == null)
 						{
-							currentList=CreateBlock();
-							currentList.blockType=BlockType.dl;
-							currentList.children=new List<Block>();
+							currentList = CreateBlock();
+							currentList.blockType = BlockType.dl;
+							currentList.children = new List<Block>();
 							blocks.Insert(i, currentList);
 							i++;
 						}

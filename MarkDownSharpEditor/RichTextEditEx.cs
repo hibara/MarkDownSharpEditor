@@ -10,13 +10,13 @@ class RichTextBoxEx : RichTextBox
 	{
 		SendMessage(this.Handle, WM_SETREDRAW, (IntPtr)0, IntPtr.Zero);
 	}
-	
+
 	public void EndUpdate()
 	{
 		SendMessage(this.Handle, WM_SETREDRAW, (IntPtr)1, IntPtr.Zero);
 		this.Invalidate();
 	}
-	
+
 	// Scroll
 	[DllImport("user32.dll")]
 	private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
@@ -63,7 +63,8 @@ class RichTextBoxEx : RichTextBox
 	public int HorizontalPosition
 	{
 		get { return GetScrollPos((IntPtr)this.Handle, SB_HORZ); }
-		set { 
+		set
+		{
 			SetScrollPos((IntPtr)this.Handle, SB_HORZ, value, true);
 			SendMessage(this.Handle, WM_HSCROLL, (value << 16) | SB_THUMBPOSITION, IntPtr.Zero);
 		}
@@ -72,9 +73,10 @@ class RichTextBoxEx : RichTextBox
 	public int VerticalPosition
 	{
 		get { return GetScrollPos((IntPtr)this.Handle, SB_VERT); }
-		set { 
+		set
+		{
 			SetScrollPos((IntPtr)this.Handle, SB_VERT, value, true);
-			SendMessage(this.Handle,	WM_VSCROLL, (value << 16) | SB_THUMBPOSITION,	IntPtr.Zero);
+			SendMessage(this.Handle, WM_VSCROLL, (value << 16) | SB_THUMBPOSITION, IntPtr.Zero);
 		}
 	}
 
@@ -157,8 +159,5 @@ class RichTextBoxEx : RichTextBox
 		}
 	}
 	//======================================================================
-
-
-
 
 }

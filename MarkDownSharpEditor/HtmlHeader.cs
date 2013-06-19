@@ -5,8 +5,8 @@ using System.Text;
 
 namespace MarkDownSharpEditor
 {
-    public class HtmlHeader
-    {
+	public class HtmlHeader
+	{
 		//-----------------------------------
 		//メンバ変数
 		//-----------------------------------
@@ -47,40 +47,40 @@ namespace MarkDownSharpEditor
 		}
 
 		//-----------------------------------
-        //ヘッダ文字列を返す
-        //-----------------------------------
-        public string GetHtmlHeader(string name)
-        {
-            if ( name　== "Strict DTD")
-            {
-                return (_Strict);
-            }
-            else if ( name == "Transitional DTD")
-            {
-                return (_Transitional);
-            }
-            else if ( name == "Frameset DTD")
-            {
-                return (_Frameset);
-            }
-            else if ( name == "HTML5")
-            {
-                return (_HTML5);
-            }
-            else
-            {
+		//ヘッダ文字列を返す
+		//-----------------------------------
+		public string GetHtmlHeader(string name)
+		{
+			if (name == "Strict DTD")
+			{
+				return (_Strict);
+			}
+			else if (name == "Transitional DTD")
+			{
+				return (_Transitional);
+			}
+			else if (name == "Frameset DTD")
+			{
+				return (_Frameset);
+			}
+			else if (name == "HTML5")
+			{
+				return (_HTML5);
+			}
+			else
+			{
 				//指定が誤っているかない場合はデフォルトで"Strict DTD"
 				return (_Strict);
-            }
-        }
-        //-----------------------------------
-        //ヘッダリストのタイトルを配列で返す
-        //-----------------------------------
-        public string[] GetHeaderTypeList()
-        {
-            return (new string[] { "Strict DTD", "Transitional DTD", "Frameset DTD", "HTML5" });
-        }
-        //-----------------------------------
-    
-    }
+			}
+		}
+		//-----------------------------------
+		//ヘッダリストのタイトルを配列で返す
+		//-----------------------------------
+		public string[] GetHeaderTypeList()
+		{
+			return (new string[] { "Strict DTD", "Transitional DTD", "Frameset DTD", "HTML5" });
+		}
+		//-----------------------------------
+
+	}
 }

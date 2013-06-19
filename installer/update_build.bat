@@ -1,24 +1,17 @@
 @echo. ======================================================================
-@echo. このバッチファイルでは、必要なファイルを各所からコピーしてきて、
-@echo. 最終的な製品として 「MarkDown#Editor」をパックし、インストーラーを
-@echo. 作成するところまで行います。この処理には、あらかじめインストールして
-@echo. おくべきツールがいくつかあります。
+@echo. Batch process file that create installer to package.
 @echo. 
-@echo. 以下のツールが所定の場所にインストールされていることを確認してから
-@echo. 実行してください。
-@echo. 
-@echo. ■Inno Setup（インストーラー作成ソフト）
+@echo. * Required "Inno Setup 5"
 @echo. 
 @echo. ======================================================================
 
 @echo 
 @echo -----------------------------------
-@echo 必要ファイルのコピー
+@echo copy files
 @echo -----------------------------------
 
 mkdir bin
 
-@rem  必要ファイルをinstallerへコピー
 copy ..\MarkDownSharpEditor\bin\Release\MarkDownSharpEditor.exe bin\MarkDownSharpEditor.exe
 @rem copy ..\MarkDownSharpEditor\bin\Release\MarkdownDeep.dll bin\MarkdownDeep.dll
 copy ..\MrkSetup\bin\Release\MrkSetup.exe bin\MrkSetup.exe
@@ -32,7 +25,7 @@ copy ..\images\main_icon\main_icon_48x48.png bin\
 
 @echo 
 @echo -----------------------------------
-@echo 時刻だけゼロクリア
+@echo Timestamp zero clear
 @echo -----------------------------------
 
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\github.css
@@ -47,9 +40,17 @@ copy ..\images\main_icon\main_icon_48x48.png bin\
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\ja-JP\MarkDownSharpEditor.resources.dll
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\MrkSetup.exe
 
+@echo 
+@echo -----------------------------------
+@echo create app_version.xml
+@echo -----------------------------------
+
+..\tools\AppXML\AppXML\bin\Release\AppXML.exe "app_version.xml" bin\MarkDownSharpEditor.exe
+
+
 @echo. 
 @echo. -----------------------------------
-@echo. インストーラパッケージの生成
+@echo. create installer package
 @echo. -----------------------------------
 
 if "%PROCESSOR_ARCHITECTURE%" == "AMD64" (
@@ -62,7 +63,7 @@ echo %ERRORLEVEL%
 
 @echo. 
 @echo. -----------------------------------
-@echo. ハッシュ値をテキストファイル保存
+@echo. make hash file
 @echo. -----------------------------------
 
 ..\tools\gethash\gethash.exe *.exe
@@ -70,9 +71,8 @@ echo %ERRORLEVEL%
 
 @echo. 
 @echo. -----------------------------------
-@echo. 時刻だけゼロクリア
+@echo. Timestamp ( only time ) zero clear
 @echo. -----------------------------------
-
 
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe /w *.exe
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe /w *.md5
@@ -81,7 +81,7 @@ echo %ERRORLEVEL%
 
 @echo. 
 @echo. -----------------------------------
-@echo. 一時binディレクトリの削除
+@echo. Delete temporary directrory
 @echo. -----------------------------------
 
 @rem rd /s /q "bin"
@@ -90,7 +90,7 @@ echo %ERRORLEVEL%
 
 @echo 
 @echo **********************************************************************
-@echo 処理が完了しました。
+@echo Batch process finished.
 @echo **********************************************************************
 @echo 
 

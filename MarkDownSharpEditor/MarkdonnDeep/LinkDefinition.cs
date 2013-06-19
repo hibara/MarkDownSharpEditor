@@ -23,7 +23,7 @@ namespace MarkdownDeep
 	{
 		public LinkDefinition(string id)
 		{
-			this.id= id;
+			this.id = id;
 		}
 
 		public LinkDefinition(string id, string url)
@@ -85,7 +85,7 @@ namespace MarkdownDeep
 				tag.attributes["href"] = sb.ToString();
 
 				// encode title
-				if (!String.IsNullOrEmpty(title ))
+				if (!String.IsNullOrEmpty(title))
 				{
 					sb.Length = 0;
 					Utils.SmartHtmlEncodeAmpsAndAngles(sb, title);
@@ -146,9 +146,9 @@ namespace MarkdownDeep
 		// Parse a link definition
 		internal static LinkDefinition ParseLinkDefinition(StringScanner p, bool ExtraMode)
 		{
-			int savepos=p.position;
+			int savepos = p.position;
 			var l = ParseLinkDefinitionInternal(p, ExtraMode);
-			if (l==null)
+			if (l == null)
 				p.position = savepos;
 			return l;
 
@@ -174,7 +174,7 @@ namespace MarkdownDeep
 				return null;
 
 			// Parse the url and title
-			var link=ParseLinkTarget(p, id, ExtraMode);
+			var link = ParseLinkTarget(p, id, ExtraMode);
 
 			// and trailing whitespace
 			p.SkipLinespace();
@@ -232,7 +232,7 @@ namespace MarkdownDeep
 				int paren_depth = 1;
 				while (!p.eol)
 				{
-					char ch=p.current;
+					char ch = p.current;
 					if (char.IsWhiteSpace(ch))
 						break;
 					if (id == null)
@@ -242,7 +242,7 @@ namespace MarkdownDeep
 						else if (ch == ')')
 						{
 							paren_depth--;
-							if (paren_depth==0)
+							if (paren_depth == 0)
 								break;
 						}
 					}
@@ -271,7 +271,7 @@ namespace MarkdownDeep
 			char delim;
 			switch (p.current)
 			{
-				case '\'':  
+				case '\'':
 				case '\"':
 					delim = p.current;
 					break;

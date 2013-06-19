@@ -35,10 +35,10 @@ namespace MarkdownDeep
 		public bool LeadingBar;
 		public bool TrailingBar;
 
-		public List<ColumnAlignment> Columns=new List<ColumnAlignment>();
+		public List<ColumnAlignment> Columns = new List<ColumnAlignment>();
 
 		public List<string> Headers;
-		public List<List<string>> Rows=new List<List<string>>();
+		public List<List<string>> Rows = new List<List<string>>();
 
 		public List<string> ParseRow(StringScanner p)
 		{
@@ -47,7 +47,7 @@ namespace MarkdownDeep
 			if (p.eol)
 				return null;		// Blank line ends the table
 
-			bool bAnyBars=LeadingBar;
+			bool bAnyBars = LeadingBar;
 			if (LeadingBar && !p.SkipChar('|'))
 			{
 				return null;
@@ -67,7 +67,7 @@ namespace MarkdownDeep
 
 				row.Add(p.Extract().Trim());
 
-				bAnyBars|=p.SkipChar('|');
+				bAnyBars |= p.SkipChar('|');
 			}
 
 			// Require at least one bar to continue the table
@@ -86,7 +86,7 @@ namespace MarkdownDeep
 
 		internal void RenderRow(Markdown m, StringBuilder b, List<string> row, string type)
 		{
-			for (int i=0; i<row.Count; i++)
+			for (int i = 0; i < row.Count; i++)
 			{
 				b.Append("\t<");
 				b.Append(type);
@@ -114,7 +114,7 @@ namespace MarkdownDeep
 				b.Append(">\n");
 			}
 		}
-	
+
 		public void Render(Markdown m, StringBuilder b)
 		{
 			b.Append("<table>\n");
@@ -152,8 +152,8 @@ namespace MarkdownDeep
 			// Leading bar, looks like a table spec
 			if (p.SkipChar('|'))
 			{
-				spec=new TableSpec();
-				spec.LeadingBar=true;
+				spec = new TableSpec();
+				spec.LeadingBar = true;
 			}
 
 
@@ -198,8 +198,8 @@ namespace MarkdownDeep
 					return null;
 
 				// Create the table spec
-				if (spec==null)
-					spec=new TableSpec();
+				if (spec == null)
+					spec = new TableSpec();
 
 				// Add the column
 				spec.Columns.Add(col);

@@ -53,13 +53,13 @@ namespace MarkdownDeep
 		// Reset
 		public void Reset(string str)
 		{
-			Reset(str, 0, str!=null ? str.Length : 0);
+			Reset(str, 0, str != null ? str.Length : 0);
 		}
 
 		// Reset
 		public void Reset(string str, int pos)
 		{
-			Reset(str, pos, str!=null ? str.Length - pos : 0);
+			Reset(str, pos, str != null ? str.Length - pos : 0);
 		}
 
 		// Reset
@@ -139,8 +139,8 @@ namespace MarkdownDeep
 		{
 			while (pos < end)
 			{
-				char ch=str[pos];
-				if (ch=='\r' || ch=='\n')
+				char ch = str[pos];
+				if (ch == '\r' || ch == '\n')
 					break;
 				pos++;
 			}
@@ -184,7 +184,7 @@ namespace MarkdownDeep
 		public char CharAtOffset(int offset)
 		{
 			int index = pos + offset;
-			
+
 			if (index < start)
 				return '\0';
 			if (index >= end)
@@ -207,7 +207,7 @@ namespace MarkdownDeep
 				return true;
 			}
 
-			return false;	
+			return false;
 		}
 
 		// Skip a matching string
@@ -320,7 +320,7 @@ namespace MarkdownDeep
 		// Extract a substring
 		public string Substring(int start)
 		{
-			return str.Substring(start, end-start);
+			return str.Substring(start, end - start);
 		}
 
 		// Extract a substring
@@ -340,7 +340,7 @@ namespace MarkdownDeep
 
 			// Find it
 			int index = str.IndexOf(ch, pos);
-			if (index < 0 || index>=end)
+			if (index < 0 || index >= end)
 				return false;
 
 			// Store new position
@@ -356,7 +356,7 @@ namespace MarkdownDeep
 
 			// Find it
 			int index = str.IndexOfAny(chars, pos);
-			if (index < 0 || index>=end)
+			if (index < 0 || index >= end)
 				return false;
 
 			// Store new position
@@ -371,7 +371,7 @@ namespace MarkdownDeep
 				return false;
 
 			int index = str.IndexOf(find, pos);
-			if (index < 0 || index > end-find.Length)
+			if (index < 0 || index > end - find.Length)
 				return false;
 
 			pos = index;
@@ -497,7 +497,7 @@ namespace MarkdownDeep
 		// Check if a character marks end of line
 		public static bool IsLineEnd(char ch)
 		{
-			return ch == '\r' || ch == '\n' || ch=='\0';
+			return ch == '\r' || ch == '\n' || ch == '\0';
 		}
 
 		bool IsUrlChar(char ch)

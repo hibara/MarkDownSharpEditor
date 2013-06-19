@@ -46,7 +46,7 @@ namespace MarkDownSharpEditor
 		#endregion
 
 		//-----------------------------------
-		#region 
+		#region
 		//-----------------------------------
 		public SyntaxColorScheme()
 		{
