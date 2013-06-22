@@ -719,10 +719,11 @@ namespace MarkDownSharpEditor
 			//webBrowser1.Navigate("about:blank");
 			//クリック音対策
 			//Constraint click sounds
-			webBrowser1.Document.OpenNew(true);
-			webBrowser1.Document.Write("");
-			//WebBrowserClickSoundON();
-
+			if (webBrowser1.Document != null)
+			{
+				webBrowser1.Document.OpenNew(true);
+				webBrowser1.Document.Write("");
+			}
 		}
 
 		//-----------------------------------
@@ -1343,7 +1344,11 @@ namespace MarkDownSharpEditor
 					//Memorize scroll positions
 					HtmlDocument doc = webBrowser1.Document;
 					Point scrollpos = new Point(0, 0);
-					if (doc != null)
+					if (doc == null)
+					{
+						webBrowser1.Navigate("about:blank");
+					}
+					else
 					{
 						IHTMLDocument3 doc3 = (IHTMLDocument3)webBrowser1.Document.DomDocument;
 						IHTMLElement2 elm = (IHTMLElement2)doc3.documentElement;
