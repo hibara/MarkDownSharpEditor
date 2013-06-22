@@ -50,8 +50,6 @@ namespace MarkDownSharpEditor
 		private bool _fConstraintChange = true;	                           //更新状態の抑制 ( Constraint changing flag )
 		private ArrayList _MarkdownSyntaxKeywordAarray = new ArrayList();  // Array of MarkdownSyntaxKeyword Class
 
-		private ArrayList _SyntaxArrayList = new ArrayList();
-
 		//-----------------------------------
 		// コンストラクタ ( Constructor )
 		//-----------------------------------
@@ -1382,42 +1380,37 @@ namespace MarkDownSharpEditor
 		}
 
 		//----------------------------------------------------------------------
-		// BackgroundWorker ProgressChanged
+		// BackgroundWorker Syntax hightlighter work
 		//----------------------------------------------------------------------
 		private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
 		{
-			var obj = MarkDownSharpEditor.AppSettings.Instance;
-			RichTextBoxEx richTextBoxBackground = new RichTextBoxEx();
-			richTextBoxBackground.Clear();
-			richTextBoxBackground.Text = (string)e.Argument;
-			richTextBoxBackground.ForeColor = Color.FromArgb(obj.ForeColor_MainText);
-			richTextBoxBackground.BackColor = Color.FromArgb(obj.BackColor_MainText);
+			var text = e.Argument as string;
+			if (string.IsNullOrEmpty(text))
+			{
+				e.Result = null;
+				return;
+			}
 
-			_SyntaxArrayList.Clear();
-
+			var result = new List<SyntaxColorScheme>();
 			foreach (MarkdownSyntaxKeyword mk in _MarkdownSyntaxKeywordAarray)
 			{
 				Regex r = new Regex(mk.RegText, RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-				MatchCollection col = r.Matches(richTextBoxBackground.Text, 0);
-
+				MatchCollection col = r.Matches(text, 0);
+				
 				if (col.Count > 0)
 				{
 					foreach (Match m in col)
 					{
-						//richTextBoxBackground.Select(m.Groups[0].Index, m.Groups[0].Length);
-						//richTextBoxBackground.SelectionColor = mk.ForeColor;        // 前景色 ( Foreground color )
-						//richTextBoxBackground.SelectionBackColor = mk.BackColor;	  // 背景色 ( Background color )
 						SyntaxColorScheme sytx = new SyntaxColorScheme();
 						sytx.SelectionStartIndex = m.Groups[0].Index;
 						sytx.SelectionLength = m.Groups[0].Length;
 						sytx.ForeColor = mk.ForeColor;
 						sytx.BackColor = mk.BackColor;
-						_SyntaxArrayList.Add(sytx);
+						result.Add(sytx);
 					}
 				}
 			}
-			e.Result = richTextBoxBackground.Rtf;
-
+			e.Result = result;
 		}
 		//----------------------------------------------------------------------
 		// BackgroundWorker Editor Syntax hightlighter progress changed
@@ -1431,13 +1424,18 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			int i;
-			var obj = MarkDownSharpEditor.AppSettings.Instance;
-
 			if (e.Error != null || e.Cancelled == true)
 			{
 				return;
 			}
+
+			var syntaxColorSchemeList = e.Result as List<SyntaxColorScheme>;
+			if (syntaxColorSchemeList == null)
+			{
+				return;
+			}
+
+			var obj = MarkDownSharpEditor.AppSettings.Instance;
 
 			Font fc = richTextBox1.Font;          //現在のフォント設定 ( Font option )
 			bool fModify = richTextBox1.Modified;	//現在の編集状況 ( Modified flag )
@@ -1459,9 +1457,8 @@ namespace MarkDownSharpEditor
 			richTextBox1.BackColor = Color.FromArgb(obj.BackColor_MainText);
 
 			//裏でパースしていたシンタックスハイライターを反映。
-			for (i = 0; i < _SyntaxArrayList.Count; i++)
+			foreach (var s in syntaxColorSchemeList)
 			{
-				SyntaxColorScheme s = (SyntaxColorScheme)_SyntaxArrayList[i];
 				richTextBox1.Select(s.SelectionStartIndex, s.SelectionLength);
 				richTextBox1.SelectionColor = s.ForeColor;
 				richTextBox1.SelectionBackColor = s.BackColor;
