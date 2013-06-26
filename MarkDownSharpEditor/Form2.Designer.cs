@@ -69,7 +69,7 @@
 			// labelAppName
 			// 
 			this.labelAppName.AutoSize = true;
-			this.labelAppName.Location = new System.Drawing.Point(74, 11);
+			this.labelAppName.Location = new System.Drawing.Point(79, 11);
 			this.labelAppName.Name = "labelAppName";
 			this.labelAppName.Size = new System.Drawing.Size(78, 12);
 			this.labelAppName.TabIndex = 2;
@@ -78,7 +78,7 @@
 			// labelVersion
 			// 
 			this.labelVersion.AutoSize = true;
-			this.labelVersion.Location = new System.Drawing.Point(74, 30);
+			this.labelVersion.Location = new System.Drawing.Point(79, 29);
 			this.labelVersion.Name = "labelVersion";
 			this.labelVersion.Size = new System.Drawing.Size(68, 12);
 			this.labelVersion.TabIndex = 3;
@@ -87,7 +87,7 @@
 			// labelCopyright
 			// 
 			this.labelCopyright.AutoSize = true;
-			this.labelCopyright.Location = new System.Drawing.Point(74, 47);
+			this.labelCopyright.Location = new System.Drawing.Point(79, 47);
 			this.labelCopyright.Name = "labelCopyright";
 			this.labelCopyright.Size = new System.Drawing.Size(78, 12);
 			this.labelCopyright.TabIndex = 4;
@@ -96,7 +96,7 @@
 			// linkLabel1
 			// 
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(74, 64);
+			this.linkLabel1.Location = new System.Drawing.Point(79, 68);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.Size = new System.Drawing.Size(94, 12);
 			this.linkLabel1.TabIndex = 5;

@@ -117,18 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdOpenAppData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAC6ElEQVRIS51V0UvaURQOgsFg
+        EOxlg8FgT70O9tp/0OueBnuSFkY4CUWqB0OihbCYCNIiQpGQUCIklJQeEpEIfQiRIsKFERJRRIQUIWfn
+        O91bv+ataR98ee4993e+c88999ZFREKbzfaO+ekRvtLrOqX84QA/XS4X+Xw+I4eGhui5Igj+3u120/X1
+        NY/NmJ6ehkAfm8YgTxEC/YFAgO3HoQS+tcle/qQzgXQ6TZFIpC2Oj48jmTsRo8DNzQ1tbGw8i6lUigYG
+        BiDSzaHMArVajex2uyw2BXmK2WyWPB4PBD5wKLPA5uYmzc7OqlHnQGIc9webZoFEIiF1fwq7u7tS81wu
+        p2bugXiIy6ZZIBgM0vb2thrdo1qtyi+C+/1+KUk4HL4TwTeXl5fkcDgg8JqnzAKo4enpqRoRHR8f0+Li
+        Ik1OTsrv+vo6RaNR8aGcc3NzMo84w8PDCP6HXeYuurq6kkVWLC0t0draGjWbTcl4YWGBjo6OxIeMl5eX
+        pVzw7+/v0+DgIEResLtV4ODggKamptToFggOkXaA8+OYYTbNOygUCpKNFXhGcJv39vbUDNHZ2RltbW3R
+        ycmJmiE6Pz/X2b/hoVkgHo9LL2vgAPHg4b3SqFQqck/QyrhU+XxeeUjOg2MWmTYeikAfskNpQHTHzs6O
+        LMbhjo6OyjxsDawplUpio7OcTqfYAHaB9fqBlG1AjQFVsKq3fXh4SF6vV2wr0E04TODi4qKlKQBUhWP1
+        i4CVPOmen5+XHs9kMtLTOBPrIeOcxsbGaGZmRhJYWVlRHqJkMiklVe3a0yIAsuMr87dimJlj1srlMrtv
+        gcuG2269kI1GQ18y/Bfs4Sk5g3b4cWJiQnr+f4jFYhD4zqYkawpm4i/dWcViUTLXYrhcaFf0P+x6vS4d
+        xt+8ZHfbAr3MEJ4H9db70Y4ASsTjVWYwFArRyMjIwx1oox3yh3ZmN/PLvwLK/5n5FrbmgwCdkAOFmDp7
+        eZpbSV1/AWF2qZ5n/yJxAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="cmdOpenAppData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 9</value>
+  </data>
+  <data name="cmdOpenAppData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdOpenAppData.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>164, 17</value>
+  </metadata>
+  <data name="cmdOpenAppData.ToolTip" xml:space="preserve">
+    <value>Open the "AppData" folder.</value>
+  </data>
+  <data name="&gt;&gt;cmdOpenAppData.Name" xml:space="preserve">
+    <value>cmdOpenAppData</value>
+  </data>
+  <data name="&gt;&gt;cmdOpenAppData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdOpenAppData.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cmdOpenAppData.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>357, 13</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 24</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -145,7 +191,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cmdApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -175,7 +221,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cmdOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -202,7 +248,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;cmdOK.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -2262,9 +2308,6 @@
   <data name="labelLineBreakColor.Text" xml:space="preserve">
     <value>Line Breaks</value>
   </data>
-  <data name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>164, 17</value>
-  </data>
   <data name="labelLineBreakColor.ToolTip" xml:space="preserve">
     <value>Two spaces at end of line</value>
   </data>
@@ -3892,42 +3935,42 @@
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
+  </metadata>
   <data name="openFileDialog1.Filter" xml:space="preserve">
     <value>CSS file(*css)|*css|All files(**)|**;</value>
   </data>
   <data name="openFileDialog1.Title" xml:space="preserve">
     <value>Open CSS file</value>
   </data>
-  <data name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>264, 17</value>
-  </data>
+  </metadata>
   <data name="saveFileDialog1.Filter" xml:space="preserve">
     <value>CSS file(*css)|*css|All files(**)|**;</value>
   </data>
   <data name="saveFileDialog1.Title" xml:space="preserve">
     <value>Export buit-in CSS file</value>
   </data>
-  <data name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>409, 17</value>
-  </data>
+  </metadata>
   <data name="folderBrowserDialog1.Description" xml:space="preserve">
     <value>Select folder of buit-in CSS files</value>
   </data>
-  <data name="fontDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="fontDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>590, 17</value>
-  </data>
-  <data name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>711, 17</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>58</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>
@@ -4017,32 +4060,5 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DialogTitleError" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="DialogTitleInfo" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="DialogTitleQuestion" xml:space="preserve">
-    <value>Question</value>
-  </data>
-  <data name="lblDefaultCSS" xml:space="preserve">
-    <value>(Default)</value>
-  </data>
-  <data name="MsgDefaultCSS" xml:space="preserve">
-    <value>(Default)</value>
-  </data>
-  <data name="MsgMoveToTrash" xml:space="preserve">
-    <value>Do you remove this file in list, and move to trash?</value>
-  </data>
-  <data name="MsgNotFoundAssociationTool" xml:space="preserve">
-    <value>Association tool is not found, therefore failed to associate .md files with this application.</value>
-  </data>
-  <data name="MsgSameCSSFileExists" xml:space="preserve">
-    <value>Same CSS file exitsts.</value>
-  </data>
-  <data name="MsgTheseCSSFilesFound" xml:space="preserve">
-    <value>These CSS files is found. Do you add these files to list?</value>
   </data>
 </root>

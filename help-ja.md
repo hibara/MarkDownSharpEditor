@@ -14,6 +14,8 @@
 
 左側にテキストエディター、右側にプレビューするブラウザーを備えた２ペイン式のエディターで、テキストファイルに近い感覚で編集することができ、それを簡単にHTMLファイルを変換することもできます。
 
+また、<a href="http://michelf.ca/projects/php-markdown/extra/" target="_blank" class="external">Markdown Extra</a>にも対応し、tableタグやdlタグなどの編集や、HTMLファイルへの変換が容易になりました。
+
 すでにCSSファイルがある場合や、シンプルな、装飾の少ない小さなWebページの制作に向いています。たとえば、[GitHub](https://github.com)をはじめとしたWebサービスで採用されるMDファイルの作成や、ブログ記事の執筆などでの使用を想定して設計されています。
 
 オープンソースによるフリーソフトウェアとして開発・配布され、商用・個人にかかわらずソースコードを含むすべてをご自由にダウンロードしてお使いいただけます。
@@ -27,7 +29,21 @@ HIBARA.ORG
 [https://github.com/hibara/MarkDownSharpEditor](https://github.com/hibara/MarkDownSharpEditor)  
 ※フォーク、プルリクエスト大歓迎です。
 
+## ヘルプ目次
+* [動作環境](#environment)
+* [Markdown記法って？](#about)
+* [ざっくりとした使い方](#use)
+* [開発のキッカケ](#beginning)
+* [開発環境](#development)
+* [著作権](#copyright)
+* [ライセンス](#license)
+* [サポート](#support)
+* [今後の予定](#upcoming)
+* [改版履歴](#history)
 
+
+
+<a name="environment"></a>
 #動作環境
 
 Windows XP/Vista/7/8、32bit/64bitマシンいずれでも動きます。   
@@ -52,6 +68,7 @@ MarkDown#Editorでは、ファイルの関連付けのみレジストリを使�
 
 
 
+<a name="about"></a>
 #Markdown記法って？
 
 Markdown記法について知るには、まず<a href="http://ja.wikipedia.org/wiki/Markdown" target="_blank"  class="external">Wikipedia</a>でしょうか。
@@ -69,6 +86,8 @@ MacではMarkdown記法に対応したエディターがいろいろと見つか
 という経緯から、「MarkDown#Editor」を開発してみました。
 
 
+
+<a name="use"></a>
 #ざっくりとした使い方
 
 Markdown記法を踏まえた上で、左側のウィンドウエリアにMarkdown記法でテキストを入力します。
@@ -100,7 +119,7 @@ Markdown記法を踏まえた上で、左側のウィンドウエリアにMarkdo
 
 ただ、当然ですが、表示にはネット接続された環境になっていないといけません。ネット未接続だと、上記の画像は正常に表示されないはずです。
 
-
+<a name="beginning"></a>
 #開発のキッカケ
 
 もともと僕は「<a href="http://hibara.org/software/attachecase/"  target="_blank" class="external">アタッシェケース</a>」という暗号化ソフトウェアの開発を行っていますが、ヘルプファイルを刷新するにあたって、Markdown で書こうと思い立ちました。ところが、いざツールを探してみると、日本語環境のWindows上で使えるものがほとんどありませんでした。
@@ -108,6 +127,8 @@ Markdown記法を踏まえた上で、左側のウィンドウエリアにMarkdo
 Macには、その手のエディターを多く見つけられるのですが、意外にもWindowsで、日本語対応したものがなかったので、サクッとつくってみました（でもけっきょくは重い作業だった・・・(笑)）。
 
 
+
+<a name="development"></a>
 #開発環境
 
 開発には、VisualStudio C# 2010 Express を使用しています。
@@ -117,6 +138,8 @@ Markdown記法のパーサーには、次の「著作権」の項目にある、
 また、開発者で興味がある方は、下記のURLをそれぞれ訪れていただければ、ドキュメントやライブラリを入手されると良いでしょう。
 
 
+
+<a name="copyright"></a>
 #著作権
 
 ## Markdown  -  A text-to-HTML conversion tool for web writers   
@@ -135,6 +158,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 
 
+<a name="license"></a>
 #ライセンス
 
 GPLv3を適用します。ただし、前項にある使用しているライブラリなどを単体で使用する場合は、各作者のライセンスに従ってください。
@@ -150,6 +174,8 @@ http://ossipedia.ipa.go.jp/legalinfo/gpl-3.0J.html
 本ソフトウェアの使用、改変、再頒布、販売などは、上記のライセンスに従ってください。この件に関して作者への問い合わせはなるべくお控えください（忙しいもので）。
 
 
+
+<a name="support"></a>
 #サポート
 
 作者多忙につき、なかなか返信することができませんが、その点だけご容赦ください。
@@ -168,6 +194,8 @@ https://github.com/hibara/MarkDownSharpEditor/issues
 <m@hibara.org>
 
 
+
+<a name="upcoming"></a>
 #今後の予定
 
 まだまだ機能は十分ではありませんが、ユーザーさんのご意見をうかがいながら、ちょっとずつ整えていこうと思います。将来的には、出力ファイルをサーバーにデプロイするところまで、とか。そこまでいくと、ちょっと難易度上がるかな‥‥。
@@ -179,7 +207,26 @@ https://github.com/hibara/MarkDownSharpEditor/issues
 また、オープンソース化しておりますので、GitHub上でのフォークや、プルリクエストなど開発者側でのフォロー大募集。
 
 
+<a name="history"></a>
 #改版履歴
+
+##ver.1.2.2.0　　2013/06/26
+
+* 動作設定パネルで、CSSファイルをドラッグ＆ドロップで登録できるようした。また、ファイル選択ダイアログからも、複数ファイルを選択可能にして、まとめて登録できるようにした。
+
+* 終了時にブラウザー描画が行われていたとき、強制終了してしまう問題に対処。
+
+* 「ファイルを開く」を選択すると、新規ファイルの動作になっていた不具合。
+
+* 表組みの背景色が正常に保存できていなかった問題に対処。
+
+* インストール後の初期起動で、日本語ヘルプファイルを開くときに、意図しないCSSが適用されていた問題に対処。
+
+* シンタックスハイライター処理でバックスラッシュエスケープの正規表現に誤りがあるなど、その他パフォーマンスを改善。(※1)
+
+* ブラウザープレビューでヘルプファイルが開けないなど、表示処理にいろいろ問題を抱えていたのを修正。(※2)
+
+	※1, 2: いずれも、[Yasami](https://github.com/Yasami)さん、プルリクエストありがとうございました！
 
 
 ##ver.1.2.1.0　　2013/06/18
@@ -195,7 +242,6 @@ https://github.com/hibara/MarkDownSharpEditor/issues
 * 編集中にIMEが確定してしまう問題に対処（日本語環境上で動作させているときのみ確定しないように改良）。
 
 * 日本語環境でインストーラを実行したときも、英語版として初回起動してしまっていた不具合に対処。
-
 
 
 ##ver.1.2.0.0　　2013/06/09

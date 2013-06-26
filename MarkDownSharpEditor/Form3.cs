@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Resources;
+using MarkDownSharpEditor.Properties;
 
 namespace MarkDownSharpEditor
 {
@@ -27,17 +27,12 @@ namespace MarkDownSharpEditor
 		public string SelectedCssFilePath;
 		public ComboBox.ObjectCollection CombCol;
 
-		//リソース ( Access resource )
-		private static ResourceManager resource;
-
 		//-----------------------------------
 		// コンストラクタ
 		// Constructor
 		//-----------------------------------
 		public Form3()
 		{
-			resource = new ResourceManager(this.GetType());
-
 			InitializeComponent();
 
 			//関連付け設定に関するボタンにUAC盾アイコンの表示
@@ -270,7 +265,7 @@ namespace MarkDownSharpEditor
 			labelFencedCodeBlocksBackColor.Tag = labelFencedCodeBlocksColor;
 			//表組み ( Tables )
 			labelTablesColor.ForeColor = labelTablesForeColor.BackColor = Color.FromArgb(obj.ForeColor_Tables);
-			labelTablesColor.BackColor = labelTablesBackColor.BackColor = Color.FromArgb(obj.BackColor_Comments);
+			labelTablesColor.BackColor = labelTablesBackColor.BackColor = Color.FromArgb(obj.BackColor_Tables);
 			labelTablesForeColor.Tag = labelTablesColor;
 			labelTablesBackColor.Tag = labelTablesColor;
 			//定義リスト ( Definition Lists )
@@ -430,7 +425,7 @@ namespace MarkDownSharpEditor
 
 				if (i == 0)
 				{
-					item.Text = item.Text + resource.GetString("MsgDefaultCSS");	// "(デフォルト)" "(Default)";
+					item.Text = item.Text + Resources.MsgDefaultCSS;	// "(デフォルト)" "(Default)";
 					item.Font = new Font(this.Font, FontStyle.Bold);
 				}
 				item.Tag = FilePath;
@@ -662,6 +657,16 @@ namespace MarkDownSharpEditor
 			this.Close();
 		}
 
+		//-----------------------------------
+		//「AppData」フォルダーを開くボタン
+		// Open the "AppData" folder Button
+		//-----------------------------------
+		private void cmdAppDataFolder_Click(object sender, EventArgs e)
+		{
+			string _AppDataFolderPath = MarkDownSharpEditor.AppSettings.GetAppDataLocalPath();
+			System.Diagnostics.Process.Start("EXPLORER.EXE", String.Format(@"/n, {0}", _AppDataFolderPath));
+		}
+
 		//======================================================================
 		#region tabControlのアクセスキー処理 ( Process access key of TabPage )
 		//===================================
@@ -739,8 +744,8 @@ namespace MarkDownSharpEditor
 				//"Error"
 				//"Association tool is not found, therefore failed to associate .md files with this application."
 				MessageBox.Show(
-					resource.GetString("MsgNotFoundAssociationTool") + "\n" + MrkSetupAppPath,
-					resource.GetString("DialogTitleError"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					Resources.MsgNotFoundAssociationTool + "\n" + MrkSetupAppPath,
+					Resources.DialogTitleError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return (false);
 			}
 
@@ -862,6 +867,62 @@ namespace MarkDownSharpEditor
 		//======================================================================
 
 		//-----------------------------------
+		// CSS file list Drag Enter Event
+		//-----------------------------------
+		private void listViewCssFiles_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop) == true)
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		//-----------------------------------
+		// CSS file list Drag and Drop Event
+		//-----------------------------------
+		private void listViewCssFiles_DragDrop(object sender, DragEventArgs e)
+		{
+			string[] CssFileArray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+			if (CssFileArray.Length > 0)
+			{
+				foreach (string FilePath in CssFileArray)
+				{
+					if (Path.GetExtension(FilePath).ToLower() == ".css")
+					{
+						foreach (ListViewItem item in listViewCssFiles.Items)
+						{
+							if (Path.Combine(item.SubItems[1].Text, item.Text) == FilePath)
+							{
+								//"通知"
+								//"既に同じCSSファイルが登録されています。"
+								//"Information"
+								//"Same CSS file exitsts already."
+								MessageBox.Show(Resources.MsgSameCSSFileExists + "\n" + FilePath,
+									Resources.DialogTitleInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+								//選択状態にする
+								//The item is selected 
+								listViewCssFiles.Items[item.Index].Selected = true;
+								return;
+							}
+						}
+						//重複していないので登録する
+						//Regist it because the file is not list 
+						ListViewItem AddItem = new ListViewItem(Path.GetFileName(FilePath));
+						AddItem.SubItems.Add(Path.GetDirectoryName(FilePath));
+						AddItem.Tag = FilePath;
+						listViewCssFiles.Items.Add(AddItem);
+						listViewCssFiles.Select();
+						cmdApply.Enabled = true;
+					}
+				}
+			}
+		}
+
+		//-----------------------------------
 		// CSSファイルの追加
 		// Add CSS file
 		//-----------------------------------
@@ -870,34 +931,33 @@ namespace MarkDownSharpEditor
 			openFileDialog1.FileName = "";
 			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
-				foreach (ListViewItem item in listViewCssFiles.Items)
+				foreach (string FilePath in openFileDialog1.FileNames)
 				{
-					if (Path.Combine(item.SubItems[1].Text, item.Text) == openFileDialog1.FileName)
+					foreach (ListViewItem item in listViewCssFiles.Items)
 					{
-						//"通知"
-						//""既に同じCSSファイルが登録されています。"
-						//"Information"
-						//"Same CSS file exitsts."
-						MessageBox.Show(
-						resource.GetString("MsgSameCSSFileExists") + "\n" + openFileDialog1.FileName,
-						resource.GetString("DialogTitleInfo"),
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Information);
-						//選択状態にする
-						//The item is selected 
-						listViewCssFiles.Items[item.Index].Selected = true;
-						return;
+						if (Path.Combine(item.SubItems[1].Text, item.Text) == FilePath)
+						{
+							//"通知"
+							//"既に同じCSSファイルが登録されています。"
+							//"Information"
+							//"Same CSS file exitsts already."
+							MessageBox.Show(Resources.MsgSameCSSFileExists + "\n" + FilePath,
+								Resources.DialogTitleInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+							//選択状態にする
+							//The item is selected 
+							listViewCssFiles.Items[item.Index].Selected = true;
+							return;
+						}
 					}
-
+					//重複していないので登録する
+					//Regist it because the file is not list 
+					ListViewItem AddItem = new ListViewItem(Path.GetFileName(FilePath));
+					AddItem.SubItems.Add(Path.GetDirectoryName(FilePath));
+					AddItem.Tag = FilePath;
+					listViewCssFiles.Items.Add(AddItem);
+					listViewCssFiles.Select();
+					cmdApply.Enabled = true;
 				}
-				//重複していないので登録する
-				//Regist it because the file is not list 
-				ListViewItem AddItem = new ListViewItem(Path.GetFileName(openFileDialog1.FileName));
-				AddItem.SubItems.Add(Path.GetDirectoryName(openFileDialog1.FileName));
-				AddItem.Tag = openFileDialog1.FileName;
-				listViewCssFiles.Items.Add(AddItem);
-				listViewCssFiles.Select();
-				cmdApply.Enabled = true;
 			}
 
 		}
@@ -920,8 +980,8 @@ namespace MarkDownSharpEditor
 				//"Question"
 				//"These CSS files is found. Do you add these files to list?"
 				DialogResult ret = MessageBox.Show(
-					resource.GetString("MsgTheseCSSFilesFound") + "\n" + MsgText,
-					resource.GetString("DialogTitleQuestion"), MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+					Resources.MsgTheseCSSFilesFound + "\n" + MsgText,
+					Resources.DialogTitleQuestion, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
 				if (ret == DialogResult.Cancel)
 				{
@@ -958,8 +1018,8 @@ namespace MarkDownSharpEditor
 			//"Question"
 			//"Do you remove this file in list, and move to trash?"
 			DialogResult ret = MessageBox.Show(
-				resource.GetString("MsgMoveToTrash") + "\n" + FilePath,
-				resource.GetString("DialogTitleQuestion"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+				Resources.MsgMoveToTrash + "\n" + FilePath,
+				Resources.DialogTitleQuestion, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 			if (ret == DialogResult.Cancel)
 			{
 				return;
@@ -1105,7 +1165,7 @@ namespace MarkDownSharpEditor
 			}
 			if (listViewCssFiles.Items.Count > 0)
 			{
-				listViewCssFiles.Items[0].Text = resource.GetString("lblDefaultCSS") + listViewCssFiles.Items[0].Text;
+				listViewCssFiles.Items[0].Text = Resources.MsgDefaultCSS + listViewCssFiles.Items[0].Text;
 				listViewCssFiles.Items[0].Font = new Font(listViewCssFiles.Items[0].Font, FontStyle.Bold);
 			}
 		}

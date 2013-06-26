@@ -149,10 +149,5 @@ namespace MarkDownSharpEditor
 		{
 			return BackColor.ToArgb();
 		}
-
-
-
-
-
 	}
 }

@@ -540,7 +540,15 @@ namespace MarkDownSharpEditor
 			_FontFormat = "MS UI Gothic, 9pt";
 			_richEditForeColor = 0;
 
-			_Lang = "";                         //Culture lang ( default = "" )
+			// Check culture
+			if (Thread.CurrentThread.CurrentCulture.Name.StartsWith("ja") == true)
+			{
+				_Lang = "ja";                      // Japanese
+			}
+			else
+			{
+				_Lang = "";                        // Culture lang ( default = "" )
+			}
 
 			_fSplitBarWidthEvenly = true;
 			_fViewToolBar = true;
@@ -782,9 +790,32 @@ namespace MarkDownSharpEditor
 
 			Instance.ArrayHistoryEditedFiles.Clear();
 			AppHistory histroy = new AppHistory();
-			histroy.md = Path.Combine(AppDataPath, "help.md");
-			histroy.css = Path.Combine(CssDirPath, "hibara.org.css");
-			Instance.ArrayHistoryEditedFiles.Add(histroy);
+
+			// Check culture
+			if (Thread.CurrentThread.CurrentCulture.Name.StartsWith("ja") == true)
+			{	//Japanese first
+				histroy = new AppHistory();
+				histroy.md = Path.Combine(AppDataPath, "help-ja.md");
+				histroy.css = Path.Combine(CssDirPath, "hibara.org.css");
+				Instance.ArrayHistoryEditedFiles.Add(histroy);
+
+				histroy = new AppHistory();
+				histroy.md = Path.Combine(AppDataPath, "help.md");
+				histroy.css = Path.Combine(CssDirPath, "hibara.org.css");
+				Instance.ArrayHistoryEditedFiles.Add(histroy);
+			}
+			else
+			{	//Default English
+				histroy = new AppHistory();
+				histroy.md = Path.Combine(AppDataPath, "help.md");
+				histroy.css = Path.Combine(CssDirPath, "hibara.org.css");
+				Instance.ArrayHistoryEditedFiles.Add(histroy);
+
+				histroy = new AppHistory();
+				histroy.md = Path.Combine(AppDataPath, "help-ja.md");
+				histroy.css = Path.Combine(CssDirPath, "hibara.org.css");
+				Instance.ArrayHistoryEditedFiles.Add(histroy);
+			}
 
 			histroy = new AppHistory();
 			histroy.md = Path.Combine(AppDataPath, "sample.md");

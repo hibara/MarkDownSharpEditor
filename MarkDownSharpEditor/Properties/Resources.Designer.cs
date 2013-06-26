@@ -170,6 +170,15 @@ namespace MarkDownSharpEditor.Properties {
         }
         
         /// <summary>
+        ///   (Default) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgDefaultCSS {
+            get {
+                return ResourceManager.GetString("MsgDefaultCSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Error during deleting temporary file!\na temporary file may be left in the folder the file is edited.
         ///This file is not a problem even if you delete it manually. に類似しているローカライズされた文字列を検索します。
         /// </summary>
@@ -210,6 +219,15 @@ namespace MarkDownSharpEditor.Properties {
         }
         
         /// <summary>
+        ///   Do you remove this file in list, and move to trash? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgMoveToTrash {
+            get {
+                return ResourceManager.GetString("MsgMoveToTrash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Could not find Help file. Opening this file has failed. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string MsgNoHelpFile {
@@ -233,6 +251,15 @@ namespace MarkDownSharpEditor.Properties {
         internal static string MsgNotFound {
             get {
                 return ResourceManager.GetString("MsgNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Association tool is not found, therefore failed to associate .md files with this application. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgNotFoundAssociationTool {
+            get {
+                return ResourceManager.GetString("MsgNotFoundAssociationTool", resourceCulture);
             }
         }
         
@@ -295,6 +322,15 @@ namespace MarkDownSharpEditor.Properties {
         }
         
         /// <summary>
+        ///   Same CSS file exitsts already. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgSameCSSFileExists {
+            get {
+                return ResourceManager.GetString("MsgSameCSSFileExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Same file exists.\nContinue to overwrite? に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string MsgSameFileOverwrite {
@@ -318,6 +354,15 @@ namespace MarkDownSharpEditor.Properties {
         internal static string MsgSaveFileToNewFile {
             get {
                 return ResourceManager.GetString("MsgSaveFileToNewFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   These CSS files is found. Do you add these files to list? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgTheseCSSFilesFound {
+            get {
+                return ResourceManager.GetString("MsgTheseCSSFilesFound", resourceCulture);
             }
         }
         

@@ -108,10 +108,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resource.ja-JP.Designer.cs">
+    <Compile Include="Properties\Resources.ja-JP.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.ja-JP.resx</DependentUpon>
+      <DependentUpon>Resources.ja-JP.resx</DependentUpon>
     </Compile>
     <Compile Include="SyntaxColorScheme.cs" />
     <Compile Include="MarkdonnDeep\Abbreviation.cs" />
@@ -173,9 +173,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resource.ja-JP.resx">
+    <EmbeddedResource Include="Properties\Resources.ja-JP.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.ja-JP.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.ja-JP.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="MarkdonnDeep\MarkdownDeep.nuspec" />

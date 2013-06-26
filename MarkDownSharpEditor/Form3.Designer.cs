@@ -31,6 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.cmdOpenAppData = new System.Windows.Forms.Button();
 			this.cmdCancel = new System.Windows.Forms.Button();
 			this.cmdApply = new System.Windows.Forms.Button();
 			this.cmdOK = new System.Windows.Forms.Button();
@@ -190,11 +191,20 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.cmdOpenAppData);
 			this.panel1.Controls.Add(this.cmdCancel);
 			this.panel1.Controls.Add(this.cmdApply);
 			this.panel1.Controls.Add(this.cmdOK);
 			resources.ApplyResources(this.panel1, "panel1");
 			this.panel1.Name = "panel1";
+			// 
+			// cmdOpenAppData
+			// 
+			resources.ApplyResources(this.cmdOpenAppData, "cmdOpenAppData");
+			this.cmdOpenAppData.Name = "cmdOpenAppData";
+			this.toolTip1.SetToolTip(this.cmdOpenAppData, resources.GetString("cmdOpenAppData.ToolTip"));
+			this.cmdOpenAppData.UseVisualStyleBackColor = true;
+			this.cmdOpenAppData.Click += new System.EventHandler(this.cmdAppDataFolder_Click);
 			// 
 			// cmdCancel
 			// 
@@ -1210,6 +1220,8 @@
 			this.listViewCssFiles.UseCompatibleStateImageBehavior = false;
 			this.listViewCssFiles.View = System.Windows.Forms.View.Details;
 			this.listViewCssFiles.SelectedIndexChanged += new System.EventHandler(this.listViewCssFiles_SelectedIndexChanged);
+			this.listViewCssFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.listViewCssFiles_DragDrop);
+			this.listViewCssFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.listViewCssFiles_DragEnter);
 			// 
 			// columnHeader1
 			// 
@@ -1342,6 +1354,7 @@
 			this.openFileDialog1.DefaultExt = "css";
 			this.openFileDialog1.FileName = "openFileDialog1";
 			resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
+			this.openFileDialog1.Multiselect = true;
 			// 
 			// saveFileDialog1
 			// 
@@ -1545,5 +1558,6 @@
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label labelMarkdownExtraNotice;
+		private System.Windows.Forms.Button cmdOpenAppData;
     }
 }

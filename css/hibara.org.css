@@ -97,4 +97,61 @@ div#title{
 	no-repeat left transparent;
 }
 
+table{
+	font-size: 11px;
+	color: #333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table th{
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table tr{
+	background-color:#d4e3e5;
+}
+table td{
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+
+dl.wrapper1{
+	margin: 0;
+	padding: 0.5em;
+	width: 460px;
+	background-color: #ffffff;
+	font-size: 1em;
+}
+dt{
+	margin: 0;
+	padding: 0.5em;
+	font-weight: bold;
+	background-color: #e0e0e0;
+}
+dd{
+	margin: 0;
+	padding: 0;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+dd .div1{
+	padding-left: 0.5em;
+	border-left: 1px solid #333;
+	font-size: 0.9em;
+	clear:both;
+}
+dd .div2{
+	color: #900;
+	font-size: 0.76em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	clear:both;
+}
+
 

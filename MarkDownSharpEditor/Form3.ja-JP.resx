@@ -117,30 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdOpenAppData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAC6ElEQVRIS51V0UvaURQOgsFg
+        EOxlg8FgT70O9tp/0OueBnuSFkY4CUWqB0OihbCYCNIiQpGQUCIklJQeEpEIfQiRIsKFERJRRIQUIWfn
+        O91bv+ataR98ee4993e+c88999ZFREKbzfaO+ekRvtLrOqX84QA/XS4X+Xw+I4eGhui5Igj+3u120/X1
+        NY/NmJ6ehkAfm8YgTxEC/YFAgO3HoQS+tcle/qQzgXQ6TZFIpC2Oj48jmTsRo8DNzQ1tbGw8i6lUigYG
+        BiDSzaHMArVajex2uyw2BXmK2WyWPB4PBD5wKLPA5uYmzc7OqlHnQGIc9webZoFEIiF1fwq7u7tS81wu
+        p2bugXiIy6ZZIBgM0vb2thrdo1qtyi+C+/1+KUk4HL4TwTeXl5fkcDgg8JqnzAKo4enpqRoRHR8f0+Li
+        Ik1OTsrv+vo6RaNR8aGcc3NzMo84w8PDCP6HXeYuurq6kkVWLC0t0draGjWbTcl4YWGBjo6OxIeMl5eX
+        pVzw7+/v0+DgIEResLtV4ODggKamptToFggOkXaA8+OYYTbNOygUCpKNFXhGcJv39vbUDNHZ2RltbW3R
+        ycmJmiE6Pz/X2b/hoVkgHo9LL2vgAPHg4b3SqFQqck/QyrhU+XxeeUjOg2MWmTYeikAfskNpQHTHzs6O
+        LMbhjo6OyjxsDawplUpio7OcTqfYAHaB9fqBlG1AjQFVsKq3fXh4SF6vV2wr0E04TODi4qKlKQBUhWP1
+        i4CVPOmen5+XHs9kMtLTOBPrIeOcxsbGaGZmRhJYWVlRHqJkMiklVe3a0yIAsuMr87dimJlj1srlMrtv
+        gcuG2269kI1GQ18y/Bfs4Sk5g3b4cWJiQnr+f4jFYhD4zqYkawpm4i/dWcViUTLXYrhcaFf0P+x6vS4d
+        xt+8ZHfbAr3MEJ4H9db70Y4ASsTjVWYwFArRyMjIwx1oox3yh3ZmN/PLvwLK/5n5FrbmgwCdkAOFmDp7
+        eZpbSV1/AWF2qZ5n/yJxAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="cmdOpenAppData.ToolTip" xml:space="preserve">
+    <value>「AppData」フォルダーを開く</value>
+  </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>キャンセル(&amp;C)</value>
   </data>
   <data name="cmdApply.Text" xml:space="preserve">
     <value>適用(&amp;A)</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 12</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>452, 427</value>
-  </data>
-  <data name="tabPageMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>444, 401</value>
-  </data>
-  <data name="tabPageMain.Text" xml:space="preserve">
-    <value>全般</value>
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Markdown モード:</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>関連付け設定：</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>251, 12</value>
@@ -154,8 +161,8 @@
   <data name="cmdAssociateFiles.Text" xml:space="preserve">
     <value>.mdファイルをMarkDown#Editorに関連付け設定する(&amp;D)</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>HTMLファイル出力設定：</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>関連付け設定：</value>
   </data>
   <data name="imgStrike.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -193,26 +200,20 @@
   <data name="checkBoxShowHtmlSaveDialog.Text" xml:space="preserve">
     <value>HTMLファイル出力のとき保存ダイアログを表示する(&amp;T)</value>
   </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>HTMLファイル出力設定：</value>
+  </data>
   <data name="checkBoxOpenEditFileBefore.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 16</value>
   </data>
   <data name="checkBoxOpenEditFileBefore.Text" xml:space="preserve">
     <value>前に編集していたファイルを起動時に自動的に開く(&amp;O)</value>
   </data>
-  <data name="tabPageEdit.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>444, 401</value>
   </data>
-  <data name="tabPageEdit.Text" xml:space="preserve">
-    <value>エディター</value>
-  </data>
-  <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 374</value>
-  </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 348</value>
-  </data>
-  <data name="groupBoxMarkdown.Text" xml:space="preserve">
-    <value>カラー設定：</value>
+  <data name="tabPageMain.Text" xml:space="preserve">
+    <value>全般</value>
   </data>
   <data name="labelMainBackColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 38</value>
@@ -490,11 +491,11 @@
   <data name="labelLineBreakColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 348</value>
-  </data>
-  <data name="groupBoxMarkdownExtra.Text" xml:space="preserve">
+  <data name="groupBoxMarkdown.Text" xml:space="preserve">
     <value>カラー設定：</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 348</value>
   </data>
   <data name="labelMarkdownExtraNotice.Text" xml:space="preserve">
     <value>※「全般」の「Markdown モード」を「Markdown Extra」に
@@ -614,11 +615,20 @@
   <data name="label12.Text" xml:space="preserve">
     <value>文字</value>
   </data>
-  <data name="tabPageCSS.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxMarkdownExtra.Text" xml:space="preserve">
+    <value>カラー設定：</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 348</value>
+  </data>
+  <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>413, 374</value>
+  </data>
+  <data name="tabPageEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>444, 401</value>
   </data>
-  <data name="tabPageCSS.Text" xml:space="preserve">
-    <value>CSSファイルの指定</value>
+  <data name="tabPageEdit.Text" xml:space="preserve">
+    <value>エディター</value>
   </data>
   <data name="cmdDownItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -776,17 +786,11 @@
   <data name="cmdAddCssFile.ToolTip" xml:space="preserve">
     <value>CSSファイルパスを追加します。</value>
   </data>
-  <data name="tabPageHTML.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageCSS.Size" type="System.Drawing.Size, System.Drawing">
     <value>444, 401</value>
   </data>
-  <data name="tabPageHTML.Text" xml:space="preserve">
-    <value>HTMLファイル出力時の設定</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>HTMLヘッダー：</value>
-  </data>
-  <data name="groupBoxCssOption.Text" xml:space="preserve">
-    <value>CSSファイルの指定：</value>
+  <data name="tabPageCSS.Text" xml:space="preserve">
+    <value>CSSファイルの指定</value>
   </data>
   <data name="radioButtonInsertLinkTag.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 16</value>
@@ -800,14 +804,17 @@
   <data name="radioButtonImportCssFile.Text" xml:space="preserve">
     <value>CSSファイルの内容をHTMLファイルに埋め込む(&amp;I)</value>
   </data>
+  <data name="groupBoxCssOption.Text" xml:space="preserve">
+    <value>CSSファイルの指定：</value>
+  </data>
   <data name="chkInsertHtmlHeader.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 16</value>
   </data>
   <data name="chkInsertHtmlHeader.Text" xml:space="preserve">
     <value>出力するHTMLファイルにヘッダー（DOCTYPE等）を挿入する(&amp;D)</value>
   </data>
-  <data name="groupBoxEncoding.Text" xml:space="preserve">
-    <value>エンコーディング：</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>HTMLヘッダー：</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>※「出力するHTMLファイルにヘッダー(DOCTYPE等）を挿入する」
@@ -824,6 +831,21 @@
   </data>
   <data name="radioButtonDefaultEncoding.Text" xml:space="preserve">
     <value>編集中のエンコーディングを使用する(&amp;E)</value>
+  </data>
+  <data name="groupBoxEncoding.Text" xml:space="preserve">
+    <value>エンコーディング：</value>
+  </data>
+  <data name="tabPageHTML.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 401</value>
+  </data>
+  <data name="tabPageHTML.Text" xml:space="preserve">
+    <value>HTMLファイル出力時の設定</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 12</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 427</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -851,32 +873,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>オプション</value>
-  </data>
-  <data name="DialogTitleError" xml:space="preserve">
-    <value>エラー</value>
-  </data>
-  <data name="DialogTitleInfo" xml:space="preserve">
-    <value>通知</value>
-  </data>
-  <data name="DialogTitleQuestion" xml:space="preserve">
-    <value>問い合わせ</value>
-  </data>
-  <data name="lblDefaultCSS" xml:space="preserve">
-    <value>(デフォルト)</value>
-  </data>
-  <data name="MsgDefaultCSS" xml:space="preserve">
-    <value>(デフォルト)</value>
-  </data>
-  <data name="MsgMoveToTrash" xml:space="preserve">
-    <value>リストからだけではなくファイル自体もごみ箱へ移動しますか？</value>
-  </data>
-  <data name="MsgNotFoundAssociationTool" xml:space="preserve">
-    <value>関連付けツールが見つかりません。関連付け設定に失敗しました。</value>
-  </data>
-  <data name="MsgSameCSSFileExists" xml:space="preserve">
-    <value>既に同じCSSファイルが登録されています。</value>
-  </data>
-  <data name="MsgTheseCSSFilesFound" xml:space="preserve">
-    <value>以下のCSSファイルが見つかりました。すべて登録しますか？</value>
   </data>
 </root>

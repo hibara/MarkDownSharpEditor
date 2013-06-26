@@ -158,6 +158,9 @@
 現在の設定内容でHTMLファイルへの一括変換を行いますか？
 「いいえ」を選択するとそのまますべてのファイル開きます。</value>
   </data>
+  <data name="MsgDefaultCSS" xml:space="preserve">
+    <value>(デフォルト)</value>
+  </data>
   <data name="MsgErrorDeleteTemporaryFile" xml:space="preserve">
     <value>テンポラリファイルの削除に失敗しました。編集中の場所に残った可能性があります。
 このファイルは手動で削除していただいても問題ありません。</value>
@@ -170,6 +173,9 @@
     <value>ファイル末尾までの検索が完了しました。
 ファイル先頭に戻って検索を続けますか？</value>
   </data>
+  <data name="MsgMoveToTrash" xml:space="preserve">
+    <value>リストからだけではなくファイル自体もごみ箱へ移動しますか？</value>
+  </data>
   <data name="MsgNoHelpFile" xml:space="preserve">
     <value>ヘルプファイルがありません。開くことができませんでした。</value>
   </data>
@@ -178,6 +184,9 @@
   </data>
   <data name="MsgNotFound" xml:space="preserve">
     <value>ご指定の検索ワードは見つかりませんでした。</value>
+  </data>
+  <data name="MsgNotFoundAssociationTool" xml:space="preserve">
+    <value>関連付けツールが見つかりません。関連付け設定に失敗しました。</value>
   </data>
   <data name="MsgNotFoundToBegining" xml:space="preserve">
     <value>ファイル先頭まで検索しましたが、見つかりませんでした。
@@ -197,6 +206,9 @@
     <value>言語の変更を反映するには、アプリケーションの再起動が必要です。
 今すぐ再起動しますか？</value>
   </data>
+  <data name="MsgSameCSSFileExists" xml:space="preserve">
+    <value>既に同じCSSファイルが登録されています。</value>
+  </data>
   <data name="MsgSameFileOverwrite" xml:space="preserve">
     <value>すでに同名のファイルが存在しています。上書きして出力しますか？</value>
   </data>
@@ -205,6 +217,9 @@
   </data>
   <data name="MsgSaveFileToNewFile" xml:space="preserve">
     <value>編集中のファイルがあります。保存してから新しいファイルを開きますか？</value>
+  </data>
+  <data name="MsgTheseCSSFilesFound" xml:space="preserve">
+    <value>以下のCSSファイルが見つかりました。すべて登録しますか？</value>
   </data>
   <data name="MsgThisWord" xml:space="preserve">
     <value>以下のワードを</value>

@@ -16,6 +16,8 @@ This application is 2 pane editor that have text editor in left side window, and
 
 "MarkDown#Editor" is suitable for a simple, or small web page production. Example, you write articles of blog, and you create .MD file that sites such as [GitHub](https://github.com), [reddit](http://www.reddit.com/), [Stack Overflow](http://stackoverflow.com/) and [SourceForge](http://sourceforge.net/) use.
 
+And so, <a href="http://michelf.ca/projects/php-markdown/extra/" target="_blank" class="external">Markdown Extra</a> is supported. You can edit and convert &gt;table&lt; tag and &gt;dl&lt; tag to HTML files easily.
+
 This application is open source software. You can download and use for free at all, including the source code for both commercial and personal.
 
 Check the information for latest version, source codes and so on in my site.
@@ -28,7 +30,21 @@ Latest source code is hosted on GitHub.
 [https://github.com/hibara/MarkDownSharpEditor](https://github.com/hibara/MarkDownSharpEditor)  
 * Welcom to folk this, and pull request.
 
+## The Contents of this help.
+* [Environment to do](#environment)
+* [About Markdown](#about)
+* [How to use](#use)
+* [The begining of development](#beginning)
+* [Developed environment](#development)
+* [Copyrights](#copyright)
+* [License](#license)
+* [Support](#support)
+* [Upcoming](#upcoming)
+* [Version history](#history)
 
+
+
+<a name="environment"></a>
 #Environment to do
 
 Windows XP/Vista/7/8 32bit or 64bit PC
@@ -57,6 +73,7 @@ But if you remove manually, There are those files in following directory:
 
 
 
+<a name="about"></a>
 #About Markdown
 
 First, To know about Markdown, it would be <a href="http://ja.wikipedia.org/wiki/Markdown" target="_blank"  class="external">Wikipedia</a>. :)
@@ -71,6 +88,7 @@ I found many text editor about Markdown on Macintosh, but it is not found on Win
 
 
 
+<a name="use"></a>
 #How to use
 
 Input text strings to left side window on Markdown, then the parsed results will be previewed in right browser window in real time.
@@ -103,6 +121,7 @@ Above image may be not displayed normally without connecting with Internet.
 
 
 
+<a name="begining"></a>
 #The begining of development
 
 I am developing <a href="http://hibara.org/software/attachecase/"  target="_blank" class="external">"AttacheCase"</a> that is AES encryption tool, then I must have rewritten help files in HTML format.
@@ -115,6 +134,7 @@ Therefore I must have developed this application.
 
 
 
+<a name="development"></a>
 #Developed environment
 
 I use VisualStudio C# 2010 Express.
@@ -127,6 +147,7 @@ If you are interested in Markdown and development, you could visit those web pag
 
 
 
+<a name="copyright"></a>
 #Copyrights
 
 ## Markdown  -  A text-to-HTML conversion tool for web writers   
@@ -145,6 +166,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 
 
+<a name="license"></a>
 #License
 
 GPLv3
@@ -158,6 +180,7 @@ Use of the this software, modify, redistribute, such as sale, please follow the 
 
 
 
+<a name="support"></a>
 #Support
 
 I am always busy...so, returns are very hard, especially FAQ and so on.
@@ -172,7 +195,8 @@ m@hibara.org
 
 
 
-#Future
+<a name="upcoming"></a>
+#Upcoming
 
 There are plenty of features for improvement. While listen to opinions of users, I improve quality of this applicaiton.
 
@@ -180,7 +204,27 @@ The first and foremost, I want to improve the performance of the previewing spee
 
 
 
-#Version
+<a name="history"></a>
+#Version history
+
+##ver.1.2.2.0　　2013/06/26
+
+* Inproved to be able to register by drag and drop the CSS file in setting panel. In addition, to be able multi-select files in open file dialog.
+
+* Fixed problem that the process was killed when this application exits before the browser drawing will be done.
+
+* Fixed problem that the editor window is blank when you select "Open File" menu, that was "New File" command...
+
+* Fixed that problem that the background color of the "Table" has not been able to save successfully.
+
+* Fixed that in the initial start-up after installation, CSS file which do not intend to has been applied when you open a Japanese help file.
+
+* Improved syntax highlighter processing performance, and fixed an error in the regular expression "Backslash Escape" and so on. (*1)
+
+* Fixed do not open the help file in the browser preview, and a had a problem in various ways to the display processing. (*2)
+
+	*1&2: Thanks to [Yasami](https://github.com/Yasami) for the pull requests! 
+
 
 ##ver.1.2.1.0　　2013/06/18
 

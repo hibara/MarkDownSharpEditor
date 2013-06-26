@@ -154,6 +154,9 @@
     <value>More than one were read.\nDo you wish to convert all files to HTML files on this options?
 if you select 'No', all files will be opend without converting.</value>
   </data>
+  <data name="MsgDefaultCSS" xml:space="preserve">
+    <value>(Default)</value>
+  </data>
   <data name="MsgErrorDeleteTemporaryFile" xml:space="preserve">
     <value>Error during deleting temporary file!\na temporary file may be left in the folder the file is edited.
 This file is not a problem even if you delete it manually.</value>
@@ -170,6 +173,9 @@ Do you wish to continue searching from the end of this file?</value>
     <value>Searching completed to the end of this file.
 Do you wish to continue searching from the beginning of this file?</value>
   </data>
+  <data name="MsgMoveToTrash" xml:space="preserve">
+    <value>Do you remove this file in list, and move to trash?</value>
+  </data>
   <data name="MsgNoHelpFile" xml:space="preserve">
     <value>Could not find Help file. Opening this file has failed.</value>
   </data>
@@ -178,6 +184,9 @@ Do you wish to continue searching from the beginning of this file?</value>
   </data>
   <data name="MsgNotFound" xml:space="preserve">
     <value>The word was not found.</value>
+  </data>
+  <data name="MsgNotFoundAssociationTool" xml:space="preserve">
+    <value>Association tool is not found, therefore failed to associate .md files with this application.</value>
   </data>
   <data name="MsgNotFoundToBegining" xml:space="preserve">
     <value>The word could not find to the beginning of this file.
@@ -201,6 +210,9 @@ Do you wish to continue searching from the beginning of this file?</value>
     <value>To change the setting of language, it is necessary to restart the application.
 Do you want to restart this application now?</value>
   </data>
+  <data name="MsgSameCSSFileExists" xml:space="preserve">
+    <value>Same CSS file exitsts already.</value>
+  </data>
   <data name="MsgSameFileOverwrite" xml:space="preserve">
     <value>Same file exists.\nContinue to overwrite?</value>
   </data>
@@ -209,6 +221,9 @@ Do you want to restart this application now?</value>
   </data>
   <data name="MsgSaveFileToNewFile" xml:space="preserve">
     <value>This file being edited. Do you wish to save before starting new file?</value>
+  </data>
+  <data name="MsgTheseCSSFilesFound" xml:space="preserve">
+    <value>These CSS files is found. Do you add these files to list?</value>
   </data>
   <data name="MsgThisWord" xml:space="preserve">
     <value />
