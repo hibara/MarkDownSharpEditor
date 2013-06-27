@@ -207,7 +207,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 <a name="history"></a>
 #Version history
 
-##ver.1.2.2.0　　2013/06/26
+##ver.1.2.2.0　　2013/06/27
 
 * Inproved to be able to register by drag and drop the CSS file in setting panel. In addition, to be able multi-select files in open file dialog.
 

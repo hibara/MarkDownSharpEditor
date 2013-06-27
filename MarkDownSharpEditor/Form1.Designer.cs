@@ -31,6 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.richTextBox1 = new RichTextBoxEx();
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabelTextEncoding = new System.Windows.Forms.ToolStripStatusLabel();
@@ -134,7 +135,7 @@
 			this.textBoxSearch = new System.Windows.Forms.TextBox();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-			this.richTextBox1 = new RichTextBoxEx();
+			this.timer2 = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -161,6 +162,22 @@
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
+			// 
+			// richTextBox1
+			// 
+			this.richTextBox1.AcceptsTab = true;
+			this.richTextBox1.DetectUrls = false;
+			resources.ApplyResources(this.richTextBox1, "richTextBox1");
+			this.richTextBox1.HideSelection = false;
+			this.richTextBox1.HorizontalPosition = 0;
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.Text = global::MarkDownSharpEditor.Properties.Resources.MsgThisWord;
+			this.richTextBox1.VerticalPosition = 0;
+			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
+			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
+			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
+			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
 			// 
 			// webBrowser1
 			// 
@@ -895,23 +912,10 @@
 			this.backgroundWorker2.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker2_ProgressChanged);
 			this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
 			// 
-			// richTextBox1
+			// timer2
 			// 
-			this.richTextBox1.AcceptsTab = true;
-			this.richTextBox1.DetectUrls = false;
-			resources.ApplyResources(this.richTextBox1, "richTextBox1");
-			this.richTextBox1.HideSelection = false;
-			this.richTextBox1.HorizontalPosition = 0;
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Text = global::MarkDownSharpEditor.Properties.Resources.MsgThisWord;
-			this.richTextBox1.VerticalPosition = 0;
-			this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
-			this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseClick);
-			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-			this.richTextBox1.Enter += new System.EventHandler(this.richTextBox1_Enter);
-			this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
-			this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
-			this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
+			this.timer2.Interval = 1000;
+			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
 			// 
 			// Form1
 			// 
@@ -1057,6 +1061,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
 		private System.Windows.Forms.ToolStripMenuItem mnuCheckForUpdate;
 		private System.ComponentModel.BackgroundWorker backgroundWorker2;
+		private System.Windows.Forms.Timer timer2;
 
     }
 }

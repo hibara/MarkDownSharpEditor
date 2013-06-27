@@ -135,7 +135,7 @@
     <value>Vertical</value>
   </data>
   <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 208</value>
+    <value>228, 208</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="richTextBox1.TabIndex" type="System.Int32, mscorlib">
@@ -175,7 +175,7 @@
     <value>20, 20</value>
   </data>
   <data name="webBrowser1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 208</value>
+    <value>262, 208</value>
   </data>
   <data name="webBrowser1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -208,7 +208,7 @@
     <value>496, 208</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>229</value>
+    <value>228</value>
   </data>
   <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -229,29 +229,8 @@
     <value>3</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>942, 17</value>
+    <value>732, 17</value>
   </metadata>
-  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 259</value>
-  </data>
-  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>496, 23</value>
-  </data>
-  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="toolStripStatusLabelTextEncoding.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 18</value>
   </data>
@@ -277,7 +256,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
+    <value>29, 18</value>
   </data>
   <data name="toolStripStatusLabelCssFileName.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 18</value>
@@ -303,39 +282,30 @@
   <data name="toolStripStatusLabelHtmlEncoding.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>646, 17</value>
-  </metadata>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 259</value>
   </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>496, 26</value>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 23</value>
   </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
+    <value>statusStrip1</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 22</value>
-  </data>
-  <data name="menuFile.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>365, 58</value>
+  </metadata>
   <data name="menuNewFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -540,11 +510,11 @@
   <data name="menuExit.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="menuEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 22</value>
+  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 22</value>
   </data>
-  <data name="menuEdit.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
+  <data name="menuFile.Text" xml:space="preserve">
+    <value>&amp;File</value>
   </data>
   <data name="menuUndo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -704,11 +674,11 @@
   <data name="menuReplace.Text" xml:space="preserve">
     <value>&amp;Replace</value>
   </data>
-  <data name="menuView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
+  <data name="menuEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 22</value>
   </data>
-  <data name="menuView.Text" xml:space="preserve">
-    <value>&amp;View</value>
+  <data name="menuEdit.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
   </data>
   <data name="menuViewRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -822,12 +792,6 @@
   <data name="toolStripMenuItem11.Size" type="System.Drawing.Size, System.Drawing">
     <value>325, 6</value>
   </data>
-  <data name="menuViewLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 22</value>
-  </data>
-  <data name="menuViewLanguage.Text" xml:space="preserve">
-    <value>&amp;Language</value>
-  </data>
   <data name="menuVieｗJapanese.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 22</value>
   </data>
@@ -840,11 +804,17 @@
   <data name="menuViewEnglish.Text" xml:space="preserve">
     <value>&amp;English</value>
   </data>
-  <data name="menuTool.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+  <data name="menuViewLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 22</value>
   </data>
-  <data name="menuTool.Text" xml:space="preserve">
-    <value>&amp;Tool</value>
+  <data name="menuViewLanguage.Text" xml:space="preserve">
+    <value>&amp;Language</value>
+  </data>
+  <data name="menuView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
+  </data>
+  <data name="menuView.Text" xml:space="preserve">
+    <value>&amp;View</value>
   </data>
   <data name="menuOption.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -915,11 +885,11 @@
   <data name="menuFont.Text" xml:space="preserve">
     <value>&amp;Font Format</value>
   </data>
-  <data name="menuHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
+  <data name="menuTool.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 22</value>
   </data>
-  <data name="menuHelp.Text" xml:space="preserve">
-    <value>&amp;Help</value>
+  <data name="menuTool.Text" xml:space="preserve">
+    <value>&amp;Tool</value>
   </data>
   <data name="menuContents.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -981,39 +951,48 @@
   <data name="menuAbout.Text" xml:space="preserve">
     <value>&amp;About MarkDown#Editor</value>
   </data>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 58</value>
-  </metadata>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+  <data name="menuHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 22</value>
   </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>496, 25</value>
+  <data name="menuHelp.Text" xml:space="preserve">
+    <value>&amp;Help</value>
   </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
-    <value>toolStrip1</value>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 26</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>487, 58</value>
+  </metadata>
   <data name="toolStripButtonNewFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEUSURBVDhPvZLNSoZAFIaFIGjbBbRqO6tv20b8RTQVf9BB
-        QVDRVLyQ7iboJtp2PcHpHb6BsEGSvuiFs/CM73PmnDPan2hd17tlWWieZ5qmicZxpGEYqO97atuWmqZ5
-        S9P0Rv6uSgBgfpWfigDgdV2/ZFl2JVNbCQAq7wJg5lVVEef8Waa2gvkeV94FwChERVEQWnmS6S+hV/YT
-        QJjRAjHGPuI4fpRHZwlA13W7AFS9hfkkIoqik+/77/LoLAHAtHcB36UAMGWG+D+A53kqAKs6DLBtWwVg
-        z78HYEsMcRhgWdYWUJblQ57nhwG6rqsA8UiSJCE8EgrDkIIgIEybMDByXZccxyFUJtM0yTAM8aiupf0S
-        adonTfl9JphOKDIAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEVSURBVDhPvZLNSoZQEIaFIGjbBbRqJ66+bRvxF9FU/EEP
+        CoKKpuKFdDdBN9G26wmm9/AdCDtI8hW9MAvn+D5zZuYof6J1Xe+WZaF5nmmaJhrHkYZhoL7vqW1baprm
+        LU3TG/G7LA6A+VV8SgKA1XX9kmXZlUhtxQGovAuAmVVVRYyxZ5HaCuZ7XHkXACMXFUVBaOVJpL+EXrWf
+        ANyMFkhV1Y84jh/F0Vkc0HXdLgBVb2E+8Yii6OT7/rs4OosDMO1dwHdJAExZQ/wfwPM8GYBVHQbYti0D
+        sOfLAdiShjgMsCxrCyjL8iHP88MAXddlAH8kSZIQHgmFYUhBEBCmTRgYua5LjuMQKpNpmmQYBn9U18L+
+        GynKJz5jfSAe/ZV4AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonNewFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1363,8 +1342,29 @@
   <data name="toolStripButtonBrowserPreview.Text" xml:space="preserve">
     <value>Launch default browser to preview</value>
   </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 25</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>272, 58</value>
+    <value>17, 99</value>
   </metadata>
   <data name="openFileDialog1.Filter" xml:space="preserve">
     <value>Markdown(*md)|*md|Text file(*txt)|*txt|All files(**)|**</value>
@@ -1373,7 +1373,7 @@
     <value>Open Markdown file or text file</value>
   </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>127, 58</value>
+    <value>597, 58</value>
   </metadata>
   <data name="saveFileDialog1.Filter" xml:space="preserve">
     <value>Markdown(*md)|*md|Text file(*txt)|*txt|All files(**)|**</value>
@@ -1388,7 +1388,7 @@
     <value>17, 17</value>
   </metadata>
   <data name="contextMenu1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 26</value>
+    <value>61, 4</value>
   </data>
   <data name="&gt;&gt;contextMenu1.Name" xml:space="preserve">
     <value>contextMenu1</value>
@@ -1406,7 +1406,7 @@
     <value>Output to HTML file</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>555, 17</value>
+    <value>548, 16</value>
   </metadata>
   <metadata name="contextMenu2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>419, 17</value>
@@ -1419,165 +1419,6 @@
   </data>
   <data name="&gt;&gt;contextMenu2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdReplaceAll.Name" xml:space="preserve">
-    <value>cmdReplaceAll</value>
-  </data>
-  <data name="&gt;&gt;cmdReplaceAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdReplaceAll.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;cmdReplaceAll.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelReplace.Name" xml:space="preserve">
-    <value>labelReplace</value>
-  </data>
-  <data name="&gt;&gt;labelReplace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelReplace.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;labelReplace.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxReplace.Name" xml:space="preserve">
-    <value>textBoxReplace</value>
-  </data>
-  <data name="&gt;&gt;textBoxReplace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxReplace.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;textBoxReplace.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitUnabled.Name" xml:space="preserve">
-    <value>imgSearchExitUnabled</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitUnabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitUnabled.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitUnabled.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitEnabled.Name" xml:space="preserve">
-    <value>imgSearchExitEnabled</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitEnabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitEnabled.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExitEnabled.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;chkOptionCase.Name" xml:space="preserve">
-    <value>chkOptionCase</value>
-  </data>
-  <data name="&gt;&gt;chkOptionCase.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkOptionCase.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;chkOptionCase.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExit.Name" xml:space="preserve">
-    <value>imgSearchExit</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExit.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;imgSearchExit.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchNext.Name" xml:space="preserve">
-    <value>cmdSearchNext</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchNext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchNext.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchNext.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchPrev.Name" xml:space="preserve">
-    <value>cmdSearchPrev</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchPrev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchPrev.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;cmdSearchPrev.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;labelSearch.Name" xml:space="preserve">
-    <value>labelSearch</value>
-  </data>
-  <data name="&gt;&gt;labelSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelSearch.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;labelSearch.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;textBoxSearch.Name" xml:space="preserve">
-    <value>textBoxSearch</value>
-  </data>
-  <data name="&gt;&gt;textBoxSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxSearch.Parent" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;textBoxSearch.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="panelSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panelSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 201</value>
-  </data>
-  <data name="panelSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>496, 58</value>
-  </data>
-  <data name="panelSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="panelSearch.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panelSearch.Name" xml:space="preserve">
-    <value>panelSearch</value>
-  </data>
-  <data name="&gt;&gt;panelSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelSearch.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelSearch.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="cmdReplaceAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1983,17 +1824,47 @@
   <data name="&gt;&gt;textBoxSearch.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="panelSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 201</value>
+  </data>
+  <data name="panelSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 58</value>
+  </data>
+  <data name="panelSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="panelSearch.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;panelSearch.Name" xml:space="preserve">
+    <value>panelSearch</value>
+  </data>
+  <data name="&gt;&gt;panelSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSearch.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelSearch.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>419, 58</value>
+    <value>17, 58</value>
   </metadata>
   <metadata name="backgroundWorker2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>768, 17</value>
+    <value>191, 58</value>
+  </metadata>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>641, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>102</value>
+    <value>188</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
@@ -2540,6 +2411,12 @@
   </data>
   <data name="&gt;&gt;backgroundWorker2.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;timer2.Name" xml:space="preserve">
+    <value>timer2</value>
+  </data>
+  <data name="&gt;&gt;timer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

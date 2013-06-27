@@ -534,7 +534,7 @@ namespace MarkDownSharpEditor
 				UndoBuffer.RemoveRange(undoCounter, UndoBuffer.Count - undoCounter);
 			}
 
-			UndoBuffer.Add(richTextBox1.Text.ToString());
+			UndoBuffer.Add(richTextBox1.Rtf);
 			undoCounter = UndoBuffer.Count;
 
 			//EnterやEscapeキーでビープ音が鳴らないようにする
@@ -544,26 +544,10 @@ namespace MarkDownSharpEditor
 				e.Handled = true;
 			}
 
-		}
+			timer2.Enabled = true;
 
-		//----------------------------------------------------------------------
-		// RichTextBox Key Down
-		//----------------------------------------------------------------------
-		private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
-		{
-			//連続入力のときは反映回数を抑制する
-			//Constraint to preview in continuous inputing
-			timer1.Enabled = false;
 		}
-
-		//----------------------------------------------------------------------
-		// RichTextBox Key Up
-		//----------------------------------------------------------------------
-		private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
-		{
-			timer1.Enabled = true;
-		}
-
+		
 		//----------------------------------------------------------------------
 		// RichTextBox VScroll event
 		//----------------------------------------------------------------------
@@ -580,16 +564,6 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void richTextBox1_Enter(object sender, EventArgs e)
 		{
-			if (_fConstraintChange == true)
-			{
-				return;
-			}
-			if (backgroundWorker2.IsBusy == false)
-			{
-				//バックグラウンドワーカーへパースを投げる / SyntaxHightlighter on BackgroundWorker
-				backgroundWorker2.RunWorkerAsync(richTextBox1.Text);
-			}
-			//-----------------------------------
 			//ブラウザプレビュー制御 / Preview webBrowser component
 			if (MarkDownSharpEditor.AppSettings.Instance.fAutoBrowserPreview == true)
 			{
@@ -1066,10 +1040,10 @@ namespace MarkDownSharpEditor
 
 			//Undoバッファに追加
 			//Add all text to undo buffer
-			undoCounter = 0;
 			UndoBuffer.Clear();
-			UndoBuffer.Add(richTextBox1.Text.ToString());
-
+			UndoBuffer.Add(richTextBox1.Rtf);
+			undoCounter = UndoBuffer.Count;
+			
 			//プレビュー更新
 			PreviewToBrowser();
 
@@ -1145,6 +1119,11 @@ namespace MarkDownSharpEditor
 			timer1.Enabled = false;
 		}
 
+		private void timer2_Tick(object sender, EventArgs e)
+		{
+			timer2.Enabled = false;
+		}
+
 		//----------------------------------------------------------------------
 		// HACK: PreviewToBrowser [ ブラウザプレビュー ]
 		//----------------------------------------------------------------------
@@ -1156,31 +1135,32 @@ namespace MarkDownSharpEditor
 			{
 				return;
 			}
+			if (backgroundWorker1.IsBusy == true)
+			{
+				return;
+			}
 
 			string ResultText = "";
-			if (backgroundWorker1.IsBusy == false)
+			backgroundWorker1.WorkerReportsProgress = true;
+			//編集箇所にマーカーを挿入する
+			//Insert marker in editing
+			if (richTextBox1.SelectionStart > 0)
 			{
-				backgroundWorker1.WorkerReportsProgress = true;
-				//編集箇所にマーカーを挿入する
-				//Insert marker in editing
-				if (richTextBox1.SelectionStart > 0)
+				int NextLineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart) + 1;
+				int ParagraphStart = richTextBox1.GetFirstCharIndexOfCurrentLine();
+				if (ParagraphStart == 0)
 				{
-					int NextLineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart) + 1;
-					int ParagraphStart = richTextBox1.GetFirstCharIndexOfCurrentLine();
-					if (ParagraphStart == 0)
-					{
-						ParagraphStart = 1;
-					}
-					ResultText =
-						richTextBox1.Text.Substring(0, ParagraphStart - 1) + "<!-- edit -->" +
-						richTextBox1.Text.Substring(ParagraphStart);
+					ParagraphStart = 1;
 				}
-				else
-				{
-					ResultText = richTextBox1.Text;
-				}
-				backgroundWorker1.RunWorkerAsync(ResultText);
+				ResultText =
+					richTextBox1.Text.Substring(0, ParagraphStart - 1) + "<!-- edit -->" +
+					richTextBox1.Text.Substring(ParagraphStart);
 			}
+			else
+			{
+				ResultText = richTextBox1.Text;
+			}
+			backgroundWorker1.RunWorkerAsync(ResultText);
 
 		}
 
@@ -1409,6 +1389,11 @@ namespace MarkDownSharpEditor
 				e.Result = null;
 				return;
 			}
+			if (timer2.Enabled == true)
+			{
+				e.Result = null;
+				return;
+			}
 
 			var result = new List<SyntaxColorScheme>();
 			foreach (MarkdownSyntaxKeyword mk in _MarkdownSyntaxKeywordAarray)
@@ -1485,6 +1470,7 @@ namespace MarkDownSharpEditor
 			//カーソル位置を戻す / Restore cursor position
 			richTextBox1.Select(selectStart, selectEnd);
 			richTextBox1.AutoScrollOffset = CurrentOffset;
+			richTextBox1.VerticalPosition = CurrentScrollPos;
 
 			//描画再開 / Resume to paint
 			richTextBox1.EndUpdate();
@@ -2305,7 +2291,7 @@ namespace MarkDownSharpEditor
 				richTextBox1.BeginUpdate();
 
 				undoCounter--;
-				richTextBox1.Text = UndoBuffer[undoCounter];
+				richTextBox1.Rtf = UndoBuffer[undoCounter];
 
 				//カーソル位置を戻す
 				//Restore cursor position
@@ -2333,7 +2319,7 @@ namespace MarkDownSharpEditor
 			if (undoCounter < UndoBuffer.Count && undoCounter > 0)
 			{
 				undoCounter++;
-				richTextBox1.Text = UndoBuffer[undoCounter];
+				richTextBox1.Rtf = UndoBuffer[undoCounter];
 				FormTextChange();
 			}
 		}
@@ -2566,8 +2552,8 @@ namespace MarkDownSharpEditor
 			//ダイアログを表示する
 			if (fontDialog1.ShowDialog() == DialogResult.OK)
 			{
-				undoCounter++;
-				UndoBuffer.Add(richTextBox1.Text.ToString());
+				UndoBuffer.Add(richTextBox1.Rtf);
+				undoCounter = UndoBuffer.Count;
 				this.richTextBox1.TextChanged -= new System.EventHandler(this.richTextBox1_TextChanged);
 				richTextBox1.Font = fontDialog1.Font;
 				richTextBox1.ForeColor = fontDialog1.Color;
