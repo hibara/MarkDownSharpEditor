@@ -1147,14 +1147,14 @@ namespace MarkDownSharpEditor
 			//Insert marker in editing
 			if (richTextBox1.SelectionStart > 0)
 			{
-				int NextLineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart) + 1;
+				//int NextLineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart) + 1;
 				int ParagraphStart = richTextBox1.GetFirstCharIndexOfCurrentLine();
-				if (ParagraphStart == 0)
-				{
-					ParagraphStart = 1;
-				}
+				//if (ParagraphStart == 0)
+				//{
+				//	ParagraphStart = 1;
+				//}
 				ResultText =
-					richTextBox1.Text.Substring(0, ParagraphStart - 1) + "<!-- edit -->" +
+					richTextBox1.Text.Substring(0, ParagraphStart) + "<!-- edit -->" +
 					richTextBox1.Text.Substring(ParagraphStart);
 			}
 			else
@@ -2378,7 +2378,7 @@ namespace MarkDownSharpEditor
 		{
 			_fSearchStart = false;
 			panelSearch.Visible = true;
-			panelSearch.Height = 34;
+			panelSearch.Height = 58;
 			textBoxSearch.Focus();
 			labelReplace.Visible = false;
 			textBoxReplace.Visible = false;
