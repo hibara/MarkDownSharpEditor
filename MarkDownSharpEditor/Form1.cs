@@ -1348,18 +1348,21 @@ namespace MarkDownSharpEditor
 						scrollpos = new Point(elm.scrollLeft, elm.scrollTop);
 					}
 					//-----------------------------------
+                    System.Threading.Tasks.Task waitTask;
 					if (_fNoTitle == false)
 					{
 						//ナビゲート
 						//Browser navigate
-						webBrowser1.Navigate(@"file://" + (string)e.Result);
+						//webBrowser1.Navigate(@"file://" + (string)e.Result);
+                        waitTask = WebBrowserNavigate(@"file://" + (string)e.Result);
 						richTextBox1.Focus();
 						toolStripButtonBrowserPreview.Enabled = true;
 					}
 					else
 					{
 						webBrowser1.Document.OpenNew(true);
-						webBrowser1.Document.Write((string)e.Result);
+						//webBrowser1.Document.Write((string)e.Result);
+                        waitTask = WebBrowserDocumentWrite((string)e.Result);
 						//ツールバーの「関連付けられたブラウザーを起動」を無効に
 						//"Associated web browser" in toolbar is invalid
 						toolStripButtonBrowserPreview.Enabled = false;
@@ -1369,15 +1372,115 @@ namespace MarkDownSharpEditor
 					//Restore scroll bar position
 					if (doc != null)
 					{
+#if false
 						while (webBrowser1.ReadyState != WebBrowserReadyState.Complete)
 						{
 							Application.DoEvents();
 						}
 						doc.Window.ScrollTo(scrollpos);
+#endif
+                        waitTask.ContinueWith((arg1) =>
+                        {
+                            this.BeginInvoke(new Action(() =>
+                            {
+                                doc.Window.ScrollTo(scrollpos);
+
+                                this.webBrowser1.Document.Body.AttachEventHandler("onscroll", OnScrollEventHandler);
+                            }));
+                        });
 					}
 				}
 			}
 		}
+        /// <summary>
+        /// webBrowser コンポーネントにHTMLを出力して 
+        /// DocumentComplate になるのを非同期で待ち合わせる
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        System.Threading.Tasks.Task WebBrowserDocumentWrite(string html)
+        {
+            if (browserWaitTimer == null)
+            {
+                browserWaitTimer = new Timer();
+                browserWaitTimer.Tick += browserWaitTimer_Tick;
+                browserWaitTimer.Enabled = true;
+            }
+            var obj = waitObject;
+            if (obj != null)
+            {
+                obj.SetCanceled();
+            }
+            waitObject = new System.Threading.Tasks.TaskCompletionSource<string>();
+
+            timerCount = 0;
+
+            this.webBrowser1.DocumentText = html;
+
+            browserWaitTimer.Enabled = true;
+
+            return waitObject.Task;
+        }
+
+        /// <summary>
+        /// webBrowser コンポーネントにHTMLを出力して 
+        /// DocumentComplate になるのを非同期で待ち合わせる
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        System.Threading.Tasks.Task WebBrowserNavigate(string url)
+        {
+            if (browserWaitTimer == null)
+            {
+                browserWaitTimer = new Timer();
+                browserWaitTimer.Tick += browserWaitTimer_Tick;
+                browserWaitTimer.Enabled = true;
+            }
+            var obj = waitObject;
+            if (obj != null)
+            {
+                obj.SetCanceled();
+            }
+            waitObject = new System.Threading.Tasks.TaskCompletionSource<string>();
+
+            timerCount = 0;
+
+            this.webBrowser1.Navigate(url);
+
+            browserWaitTimer.Enabled = true;
+
+            return waitObject.Task;
+        }
+
+        void browserWaitTimer_Tick(object sender, EventArgs e)
+        {
+            if (waitObject == null)
+            {
+                browserWaitTimer.Enabled = false;
+                return;
+			}
+
+            timerCount++;
+
+            if (this.webBrowser1.ReadyState == WebBrowserReadyState.Complete)
+            {
+                waitObject.SetResult("OK");
+                waitObject = null;
+                browserWaitTimer.Enabled = false;
+			}
+            else if (timerCount > 20)
+            {
+                // 反応ないので終わりにする
+                waitObject.SetResult("OK");
+                waitObject = null;
+                browserWaitTimer.Enabled = false;
+			}
+		}
+
+        System.Threading.Tasks.TaskCompletionSource<string> waitObject = null;
+        int timerCount = 0;
+        Timer browserWaitTimer;
+
 
 		//----------------------------------------------------------------------
 		// BackgroundWorker Syntax hightlighter work
