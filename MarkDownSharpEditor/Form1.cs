@@ -933,6 +933,7 @@ namespace MarkDownSharpEditor
 				if (openFileDialog1.ShowDialog() == DialogResult.OK)
 				{
 					FilePath = openFileDialog1.FileName;
+                    _fNoTitle = false;
 				}
 				else
 				{
