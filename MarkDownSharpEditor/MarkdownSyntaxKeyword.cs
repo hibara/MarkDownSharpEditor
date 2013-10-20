@@ -97,8 +97,8 @@ namespace MarkDownSharpEditor
 				//Emphasis : Rather than remove the syntaxHighlighter of Emphasis within the double quotes
 				keywords.Add(new MarkdownSyntaxKeyword("\".*?\"", Color.FromArgb(obj.ForeColor_MainText), Color.FromArgb(obj.BackColor_MainText)));
 				//バックスラッシュエスケープ ( Backslash Escapes )
-				keywords.Add(new MarkdownSyntaxKeyword(@"(\\:)|(\\|)", Color.FromArgb(obj.ForeColor_BackslashEscapes), Color.FromArgb(obj.BackColor_BackslashEscapes)));
-			}
+                keywords.Add(new MarkdownSyntaxKeyword(@"\\:|\\\|", Color.FromArgb(obj.ForeColor_BackslashEscapes), Color.FromArgb(obj.BackColor_BackslashEscapes)));
+            }
 			return keywords;
 		}
 
