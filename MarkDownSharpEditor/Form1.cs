@@ -48,7 +48,14 @@ namespace MarkDownSharpEditor
 		private Encoding _EditingFileEncoding = Encoding.UTF8;             //編集中MDファイルの文字エンコーディング ( Character encoding of MD file editing )
 
 		private bool _fConstraintChange = true;	                           //更新状態の抑制 ( Constraint changing flag )
+<<<<<<< HEAD
 		private ICollection<MarkdownSyntaxKeyword> _MarkdownSyntaxKeywordAarray;
+=======
+		private List<MarkdownSyntaxKeyword> _MarkdownSyntaxKeywordAarray = new List<MarkdownSyntaxKeyword>();  // Array of MarkdownSyntaxKeyword Class
+ 
+		private ArrayList _SyntaxArrayList = new ArrayList();
+
+>>>>>>> origin/develop
 		//-----------------------------------
 		// コンストラクタ ( Constructor )
 		//-----------------------------------
@@ -155,9 +162,14 @@ namespace MarkDownSharpEditor
 				richTextBox1.Font.Name + "," + richTextBox1.Font.Size.ToString() + "pt";
 
 			//エディターのシンタックスハイライター設定の反映
+<<<<<<< HEAD
 			//Syntax highlighter of editor window is enabled 
 			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();
 
+=======
+      //Syntax highlighter of editor window is enabled 
+			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();
+>>>>>>> origin/develop
 			//-----------------------------------
 			//選択中のエンコーディングを表示
 			//View selected character encoding name
@@ -1837,9 +1849,12 @@ namespace MarkDownSharpEditor
 			return new string(destChars);
 		}
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> origin/develop
 		//======================================================================
 		#region ブラウザーのツールバーメニュー ( Toolbar on browser )
 		//======================================================================
@@ -2576,7 +2591,11 @@ namespace MarkDownSharpEditor
 			frm3.ShowDialog();
 			frm3.Dispose();
 
+<<<<<<< HEAD
 			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();	 //キーワードリストの更新
+=======
+			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList(); //キーワードリストの更新
+>>>>>>> origin/develop
 			if (backgroundWorker2.IsBusy == false)
 			{
 				//SyntaxHightlighter on BackgroundWorker
