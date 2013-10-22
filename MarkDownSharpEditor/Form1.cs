@@ -48,14 +48,9 @@ namespace MarkDownSharpEditor
 		private Encoding _EditingFileEncoding = Encoding.UTF8;             //編集中MDファイルの文字エンコーディング ( Character encoding of MD file editing )
 
 		private bool _fConstraintChange = true;	                           //更新状態の抑制 ( Constraint changing flag )
-<<<<<<< HEAD
-		private ICollection<MarkdownSyntaxKeyword> _MarkdownSyntaxKeywordAarray;
-=======
 		private List<MarkdownSyntaxKeyword> _MarkdownSyntaxKeywordAarray = new List<MarkdownSyntaxKeyword>();  // Array of MarkdownSyntaxKeyword Class
- 
 		private ArrayList _SyntaxArrayList = new ArrayList();
 
->>>>>>> origin/develop
 		//-----------------------------------
 		// コンストラクタ ( Constructor )
 		//-----------------------------------
@@ -162,14 +157,9 @@ namespace MarkDownSharpEditor
 				richTextBox1.Font.Name + "," + richTextBox1.Font.Size.ToString() + "pt";
 
 			//エディターのシンタックスハイライター設定の反映
-<<<<<<< HEAD
 			//Syntax highlighter of editor window is enabled 
 			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();
 
-=======
-      //Syntax highlighter of editor window is enabled 
-			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();
->>>>>>> origin/develop
 			//-----------------------------------
 			//選択中のエンコーディングを表示
 			//View selected character encoding name
@@ -945,7 +935,7 @@ namespace MarkDownSharpEditor
 				if (openFileDialog1.ShowDialog() == DialogResult.OK)
 				{
 					FilePath = openFileDialog1.FileName;
-                    _fNoTitle = false;
+					_fNoTitle = false;
 				}
 				else
 				{
@@ -991,7 +981,7 @@ namespace MarkDownSharpEditor
 
 			//-----------------------------------
 			//ペアとなるCSSファイルがあるか探索してあれば適用する
-			//Apply that the pair CSS file to this file exists  
+			//Apply that the pair CSS file to this file exists
 			foreach (AppHistory data in MarkDownSharpEditor.AppSettings.Instance.ArrayHistoryEditedFiles)
 			{
 				if (data.md == _MarkDownTextFilePath)
@@ -1360,13 +1350,13 @@ namespace MarkDownSharpEditor
 						scrollpos = new Point(elm.scrollLeft, elm.scrollTop);
 					}
 					//-----------------------------------
-                    System.Threading.Tasks.Task waitTask;
+					System.Threading.Tasks.Task waitTask;
 					if (_fNoTitle == false)
 					{
 						//ナビゲート
 						//Browser navigate
 						//webBrowser1.Navigate(@"file://" + (string)e.Result);
-                        waitTask = WebBrowserNavigate(@"file://" + (string)e.Result);
+						waitTask = WebBrowserNavigate(@"file://" + (string)e.Result);
 						richTextBox1.Focus();
 						toolStripButtonBrowserPreview.Enabled = true;
 					}
@@ -1374,7 +1364,7 @@ namespace MarkDownSharpEditor
 					{
 						webBrowser1.Document.OpenNew(true);
 						//webBrowser1.Document.Write((string)e.Result);
-                        waitTask = WebBrowserDocumentWrite((string)e.Result);
+						waitTask = WebBrowserDocumentWrite((string)e.Result);
 						//ツールバーの「関連付けられたブラウザーを起動」を無効に
 						//"Associated web browser" in toolbar is invalid
 						toolStripButtonBrowserPreview.Enabled = false;
@@ -1391,107 +1381,108 @@ namespace MarkDownSharpEditor
 						}
 						doc.Window.ScrollTo(scrollpos);
 #endif
-                        waitTask.ContinueWith((arg1) =>
-                        {
-                            this.BeginInvoke(new Action(() =>
-                            {
-                                doc.Window.ScrollTo(scrollpos);
+						waitTask.ContinueWith((arg1) =>
+						{
+							this.BeginInvoke(new Action(() =>
+							{
+								doc.Window.ScrollTo(scrollpos);
 
-                                this.webBrowser1.Document.Body.AttachEventHandler("onscroll", OnScrollEventHandler);
-                            }));
-                        });
+								this.webBrowser1.Document.Body.AttachEventHandler("onscroll", OnScrollEventHandler);
+
+							}));
+						});
 					}
 				}
 			}
 		}
-        /// <summary>
-        /// webBrowser コンポーネントにHTMLを出力して 
-        /// DocumentComplate になるのを非同期で待ち合わせる
-        /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
-        System.Threading.Tasks.Task WebBrowserDocumentWrite(string html)
-        {
-            if (browserWaitTimer == null)
-            {
-                browserWaitTimer = new Timer();
-                browserWaitTimer.Tick += browserWaitTimer_Tick;
-                browserWaitTimer.Enabled = true;
-            }
-            var obj = waitObject;
-            if (obj != null)
-            {
-                obj.SetCanceled();
-            }
-            waitObject = new System.Threading.Tasks.TaskCompletionSource<string>();
+		/// <summary>
+		/// webBrowser コンポーネントにHTMLを出力して 
+		/// DocumentComplate になるのを非同期で待ち合わせる
+		/// </summary>
+		/// <param name="html"></param>
+		/// <returns></returns>
+		System.Threading.Tasks.Task WebBrowserDocumentWrite(string html)
+		{
+			if (browserWaitTimer == null)
+			{
+				browserWaitTimer = new Timer();
+				browserWaitTimer.Tick += browserWaitTimer_Tick;
+				browserWaitTimer.Enabled = true;
+			}
+			var obj = waitObject;
+			if (obj != null)
+			{
+				obj.SetCanceled();
+			}
+			waitObject = new System.Threading.Tasks.TaskCompletionSource<string>();
 
-            timerCount = 0;
+			timerCount = 0;
 
-            this.webBrowser1.DocumentText = html;
+			this.webBrowser1.DocumentText = html;
 
-            browserWaitTimer.Enabled = true;
+			browserWaitTimer.Enabled = true;
 
-            return waitObject.Task;
-        }
+			return waitObject.Task;
+		}
 
-        /// <summary>
-        /// webBrowser コンポーネントにHTMLを出力して 
-        /// DocumentComplate になるのを非同期で待ち合わせる
-        /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
-        System.Threading.Tasks.Task WebBrowserNavigate(string url)
-        {
-            if (browserWaitTimer == null)
-            {
-                browserWaitTimer = new Timer();
-                browserWaitTimer.Tick += browserWaitTimer_Tick;
-                browserWaitTimer.Enabled = true;
-            }
-            var obj = waitObject;
-            if (obj != null)
-            {
-                obj.SetCanceled();
-            }
-            waitObject = new System.Threading.Tasks.TaskCompletionSource<string>();
+		/// <summary>
+		/// webBrowser コンポーネントにHTMLを出力して 
+		/// DocumentComplate になるのを非同期で待ち合わせる
+		/// </summary>
+		/// <param name="html"></param>
+		/// <returns></returns>
+		System.Threading.Tasks.Task WebBrowserNavigate(string url)
+		{
+			if (browserWaitTimer == null)
+			{
+				browserWaitTimer = new Timer();
+				browserWaitTimer.Tick += browserWaitTimer_Tick;
+				browserWaitTimer.Enabled = true;
+			}
+			var obj = waitObject;
+			if (obj != null)
+			{
+				obj.SetCanceled();
+			}
+			waitObject = new System.Threading.Tasks.TaskCompletionSource<string>();
 
-            timerCount = 0;
+			timerCount = 0;
 
-            this.webBrowser1.Navigate(url);
+			this.webBrowser1.Navigate(url);
 
-            browserWaitTimer.Enabled = true;
+			browserWaitTimer.Enabled = true;
 
-            return waitObject.Task;
-        }
+			return waitObject.Task;
+		}
 
-        void browserWaitTimer_Tick(object sender, EventArgs e)
-        {
-            if (waitObject == null)
-            {
-                browserWaitTimer.Enabled = false;
-                return;
+		void browserWaitTimer_Tick(object sender, EventArgs e)
+		{
+			if (waitObject == null)
+			{
+				browserWaitTimer.Enabled = false;
+				return;
 			}
 
-            timerCount++;
+			timerCount++;
 
-            if (this.webBrowser1.ReadyState == WebBrowserReadyState.Complete)
-            {
-                waitObject.SetResult("OK");
-                waitObject = null;
-                browserWaitTimer.Enabled = false;
+			if (this.webBrowser1.ReadyState == WebBrowserReadyState.Complete)
+			{
+				waitObject.SetResult("OK");
+				waitObject = null;
+				browserWaitTimer.Enabled = false;
 			}
-            else if (timerCount > 20)
-            {
-                // 反応ないので終わりにする
-                waitObject.SetResult("OK");
-                waitObject = null;
-                browserWaitTimer.Enabled = false;
+			else if (timerCount > 20)
+			{
+				// 反応ないので終わりにする
+				waitObject.SetResult("OK");
+				waitObject = null;
+				browserWaitTimer.Enabled = false;
 			}
 		}
 
-        System.Threading.Tasks.TaskCompletionSource<string> waitObject = null;
-        int timerCount = 0;
-        Timer browserWaitTimer;
+		System.Threading.Tasks.TaskCompletionSource<string> waitObject = null;
+		int timerCount = 0;
+		Timer browserWaitTimer;
 
 
 		//----------------------------------------------------------------------
@@ -1953,12 +1944,6 @@ namespace MarkDownSharpEditor
 			return new string(destChars);
 		}
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin/develop
 		//======================================================================
 		#region ブラウザーのツールバーメニュー ( Toolbar on browser )
 		//======================================================================
@@ -2695,11 +2680,7 @@ namespace MarkDownSharpEditor
 			frm3.ShowDialog();
 			frm3.Dispose();
 
-<<<<<<< HEAD
 			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();	 //キーワードリストの更新
-=======
-			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList(); //キーワードリストの更新
->>>>>>> origin/develop
 			if (backgroundWorker2.IsBusy == false)
 			{
 				//SyntaxHightlighter on BackgroundWorker
