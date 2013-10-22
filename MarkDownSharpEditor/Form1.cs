@@ -49,10 +49,6 @@ namespace MarkDownSharpEditor
 
 		private bool _fConstraintChange = true;	                           //更新状態の抑制 ( Constraint changing flag )
 		private List<MarkdownSyntaxKeyword> _MarkdownSyntaxKeywordAarray = new List<MarkdownSyntaxKeyword>();  // Array of MarkdownSyntaxKeyword Class
-<<<<<<< HEAD
- 
-=======
->>>>>>> origin/develop
 		private ArrayList _SyntaxArrayList = new ArrayList();
 
 		//-----------------------------------
@@ -163,10 +159,7 @@ namespace MarkDownSharpEditor
 			//エディターのシンタックスハイライター設定の反映
 			//Syntax highlighter of editor window is enabled 
 			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/develop
 			//-----------------------------------
 			//選択中のエンコーディングを表示
 			//View selected character encoding name
@@ -988,11 +981,7 @@ namespace MarkDownSharpEditor
 
 			//-----------------------------------
 			//ペアとなるCSSファイルがあるか探索してあれば適用する
-<<<<<<< HEAD
-			//Apply that the pair CSS file to this file exists  
-=======
 			//Apply that the pair CSS file to this file exists
->>>>>>> origin/develop
 			foreach (AppHistory data in MarkDownSharpEditor.AppSettings.Instance.ArrayHistoryEditedFiles)
 			{
 				if (data.md == _MarkDownTextFilePath)
@@ -1385,25 +1374,14 @@ namespace MarkDownSharpEditor
 					//Restore scroll bar position
 					if (doc != null)
 					{
-#if false
-						while (webBrowser1.ReadyState != WebBrowserReadyState.Complete)
-						{
-							Application.DoEvents();
-						}
-						doc.Window.ScrollTo(scrollpos);
-#endif
 						waitTask.ContinueWith((arg1) =>
 						{
 							this.BeginInvoke(new Action(() =>
 							{
 								doc.Window.ScrollTo(scrollpos);
-<<<<<<< HEAD
-								this.webBrowser1.Document.Body.AttachEventHandler("onscroll", OnScrollEventHandler);
-=======
 
 								this.webBrowser1.Document.Body.AttachEventHandler("onscroll", OnScrollEventHandler);
 
->>>>>>> origin/develop
 							}));
 						});
 					}
@@ -1499,10 +1477,6 @@ namespace MarkDownSharpEditor
 		int timerCount = 0;
 		Timer browserWaitTimer;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/develop
 		//----------------------------------------------------------------------
 		// BackgroundWorker Syntax hightlighter work
 		//----------------------------------------------------------------------
@@ -2698,11 +2672,7 @@ namespace MarkDownSharpEditor
 			frm3.ShowDialog();
 			frm3.Dispose();
 
-<<<<<<< HEAD
-			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList(); //キーワードリストの更新
-=======
 			_MarkdownSyntaxKeywordAarray = MarkdownSyntaxKeyword.CreateKeywordList();	 //キーワードリストの更新
->>>>>>> origin/develop
 			if (backgroundWorker2.IsBusy == false)
 			{
 				//SyntaxHightlighter on BackgroundWorker
