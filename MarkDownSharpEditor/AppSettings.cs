@@ -100,7 +100,7 @@ namespace MarkDownSharpEditor
 		private int _CodePageNumber;
 		private int _HtmlDocTypeSelectedIndex;
 		private bool _fViewAllEncoding;
-		private string AppDataPath;
+		private string _AppDataPath;
 
 		//Form3の設定
 		private int _ListViewColumnHeader1Width;
@@ -498,6 +498,11 @@ namespace MarkDownSharpEditor
 			get { return _fViewAllEncoding; }
 			set { _fViewAllEncoding = value; }
 		}
+		public string AppDataPath
+		{
+			get { return _AppDataPath; }
+			set { _AppDataPath = value; }
+		}
 		public int ListViewColumnHeader1Width
 		{
 			get { return _ListViewColumnHeader1Width; }
@@ -508,7 +513,6 @@ namespace MarkDownSharpEditor
 			get { return _ListViewColumnHeader2Width; }
 			set { _ListViewColumnHeader2Width = value; }
 		}
-
 
 		#endregion
 		//-----------------------------------

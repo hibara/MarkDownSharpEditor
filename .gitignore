@@ -6,6 +6,9 @@ _*
 [Bb]in/
 [Oo]bj/
 
+# Installation bin
+installer/bin/
+
 # mstest test results
 TestResults
 

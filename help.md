@@ -207,9 +207,22 @@ The first and foremost, I want to improve the performance of the previewing spee
 <a name="history"></a>
 #Version history
 
-##ver.1.2.2.0　　2013/06/27
+##ver.1.2.3.0    2013/10/22
 
-* Inproved to be able to register by drag and drop the CSS file in setting panel. In addition, to be able multi-select files in open file dialog.
+* Fixed problem that editting window is lost in focus whenever browser preview is updated(*1).
+
+* Fixed problem that .md file was deleted when the file is closed without a change(*2).
+
+* Merged a pull request(about processing the syntax highlighter) again, what was received and do not merged at last version.
+
+* Improved to launch default language settings that is selected during installation (English or Japanese).
+
+	*1&2: Thanks to [kkato233](https://github.com/kkato233) and kato for fixing and the pull requests! 
+
+
+##ver.1.2.2.0    2013/06/27
+
+* Improved to be able to register by drag and drop the CSS file in setting panel. In addition, to be able multi-select files in open file dialog.
 
 * Fixed problem that the process was killed when this application exits before the browser drawing will be done.
 
@@ -226,7 +239,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 	*1&2: Thanks to [Yasami](https://github.com/Yasami) for the pull requests! 
 
 
-##ver.1.2.1.0　　2013/06/18
+##ver.1.2.1.0    2013/06/18
 
 * Added to check for latest version release.
 
@@ -241,7 +254,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed the problem that had gone to first start as an English version, when you run the installer in a Japanese environment.
 
 
-##ver.1.2.0.0　　2013/06/09
+##ver.1.2.0.0    2013/06/09
 
 * Added Markdown Extra mode.
 
@@ -254,7 +267,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed error occured when changing "Interval time of previewing" options.
 
 
-##ver.1.1.5.0　　2013/03/07
+##ver.1.1.5.0    2013/03/07
 
 * Fixed problems where the error occurred when an attempt is made scroll in the editing window, when you start editing in Untitled and "New".
 
@@ -273,14 +286,14 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Tweak the scroll behavior of the tex editor.
 
 
-##ver.1.1.4.0　　2013/01/30
+##ver.1.1.4.0    2013/01/30
 
 * Fixed problem that it had been crashed at processing to stop the click sound when updating the browser window.
 
 * Added settings for foreground and background colors of the window in general. (There had been the settings internally, but I had forgotten to make the UI ...)
 
 
-##ver.1.1.3.0　　2012/12/25
+##ver.1.1.3.0    2012/12/25
 
 * Added Search and Replace.
 
@@ -293,14 +306,14 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed the problem that pop-up menu of selecting a CSS file in status bar has been displayed when no the built-in CSS files registered.
 
 
-##ver.1.1.2.0　　2012/12/12
+##ver.1.1.2.0    2012/12/12
 
 * Added the menu function "View jump list to the Headings symbol".
 
 * Fixed problem that the regular expression of the syntax highlighter could not be interpreted correctly "Heading sign (h1 ~ h6)" on Markdown in some cases.
 
 
-##ver.1.1.1.0　　2012/12/11
+##ver.1.1.1.0    2012/12/11
 
 * Fixed that fatal error occured when you begin to edit the file in the New.
 
@@ -310,7 +323,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed some of the contents was editing in text editor that were not displayed in the browser preview becasue of fixing around the marker preview in previous version.
 
 
-##ver.1.1.0.0　　2012/12/07
+##ver.1.1.0.0    2012/12/07
 
 * Commit to [pull request](https://github.com/hibara/MarkDownSharpEditor/pull/1) on GitHub, that could not changed text font in editor. Thanks! [alg](https://github.com/alg0002).
 
@@ -332,12 +345,12 @@ The first and foremost, I want to improve the performance of the previewing spee
 (I think heavy editing were reduced a little... )
 
 
-##ver.1.0.9.0　　2012/10/31
+##ver.1.0.9.0    2012/10/31
 
 * Rewrited the help files according as the open source, and modified source code ( where it has nothing to do directly, such as comment-out mainly).
 
 
-##ver.1.0.8.0　　2012/10/16
+##ver.1.0.8.0    2012/10/16
 
 * Fixed that the default CSS could not be added and viewed in the pop-up menu when you add a new CSS file.
 
@@ -348,7 +361,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed the problem of the "list" is to mix during editing, marks of editing may not be displayed correctly, or the preview window did not follow to scroll.
 
 
-##ver.1.0.7.0　　2012/10/02
+##ver.1.0.7.0    2012/10/02
 
 * Fixed error that <body> tag did not include in the HTML source to output.
 
@@ -373,7 +386,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed the problem of continuing to generate a temporary file, every time you edit in "Untitled" file. On the other hand, ( and therefore, there is the thing that links do not work correctly if you edit still untitled. It has been the specification. ) that do not exported as temporary files edited in the "Untitled".
 
 
-##ver.1.0.6.0　　2012/09/23
+##ver.1.0.6.0    2012/09/23
 
 * Fixed the problem that images were loaded and displayed first, when the image specified in the local (relative path image), but it will disappear during editing.
 
@@ -386,7 +399,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed both function of Undo and Redo was not working correctly.
 
 
-##ver.1.0.5.0　　2012/09/18
+##ver.1.0.5.0    2012/09/18
 
 * Fixed the original font settings will be lost when syntax highlighter processing works.
 
@@ -397,7 +410,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 * Fixed the syntax highlighter property was not clear in browser, when reload another file in a text editor side.
 
 
-##ver.1.0.4.0　　2012/09/11
+##ver.1.0.4.0    2012/09/11
 
 * Implemented a syntax highlighter of editor side, but just, still heavy quite.
 However, I tried to put spreading load processing. Let me know if there is incomplete part.
@@ -411,7 +424,7 @@ However, I tried to put spreading load processing. Let me know if there is incom
 * Fixed the problem of drag-and-drop files did not work.
 
 
-##ver.1.0.3.0　　2012/09/08
+##ver.1.0.3.0    2012/09/08
 
 * Fixed CSS setting panel around, such as crashed when you delete the CSS file, and were not registered, CSS settings were not saved.
 
@@ -420,7 +433,7 @@ However, I tried to put spreading load processing. Let me know if there is incom
 * Added a syntax highlighter function of the editor window experimentally, because I want to see the operating speed. First, changed only background color of blank spaces * 2 ( = line breaks) of the "end of the line" that it is hard to see almost.
 
 
-##ver.1.0.2.0　　2012/09/06
+##ver.1.0.2.0    2012/09/06
 
 * Fixed the header and footer is inserted into the double in "HTML file output" command.
 
@@ -429,7 +442,7 @@ However, I tried to put spreading load processing. Let me know if there is incom
 * Added to batch process in the current configuration, when you drag and drop together multiple files.
 
 
-##ver.1.0.1.0　　2012/09/05
+##ver.1.0.1.0    2012/09/05
 
 * Fixed the problem that had been crashed in "Copy HTML source to Clipboard".
 
@@ -439,7 +452,7 @@ re-drawed the contents as much as possible without calling the "Navigate()"  fun
 * Fixed the problem of "Update" state is not released, however saved the file. ( Notice window that has changed was displayed when you close the file)
 
 
-##ver.1.0.0.0　　2012/09/02
+##ver.1.0.0.0    2012/09/02
 
 * Released.
 

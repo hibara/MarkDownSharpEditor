@@ -39,6 +39,7 @@ copy ..\images\main_icon\main_icon_48x48.png bin\
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\MarkDownSharpEditor.exe
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\ja-JP\MarkDownSharpEditor.resources.dll
 ..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe bin\MrkSetup.exe
+..\tools\setTimeZero\setTimeZero\bin\Release\setTimeZero.exe lang-ja.dat
 
 @echo 
 @echo -----------------------------------

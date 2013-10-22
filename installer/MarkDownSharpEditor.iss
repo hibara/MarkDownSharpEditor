@@ -80,11 +80,15 @@ Source: "bin\MrkSetup.exe"; DestDir: "{app}"; Flags: ignoreversion touch
 Source: "bin\ja-JP\MarkDownSharpEditor.resources.dll"; DestDir: "{app}\\ja-JP"; Flags: ignoreversion touch
 Source: "bin\readme.txt"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 ;サンプル.MDファイル
+;sample .md files.
 Source: "bin\help-ja.md"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 Source: "bin\help.md"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 Source: "bin\sample.md"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
 Source: "bin\main_icon_48x48.png"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch
+;Language
+Source: "lang-ja.dat"; DestDir: "{userappdata}\MarkDownSharpEditor"; Flags: ignoreversion touch; Languages: jp
 ;ビルトインCSSファイル
+;built in CSS files.
 Source: "bin\hibara.org.css"; DestDir: "{userappdata}\MarkDownSharpEditor\css"; Flags: ignoreversion touch
 Source: "bin\github.css"; DestDir: "{userappdata}\MarkDownSharpEditor\css"; Flags: ignoreversion touch
 Source: "bin\markdown.css"; DestDir: "{userappdata}\MarkDownSharpEditor\css"; Flags: ignoreversion touch
