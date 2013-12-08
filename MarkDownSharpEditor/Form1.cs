@@ -1097,6 +1097,8 @@ namespace MarkDownSharpEditor
 				try
 				{
 					File.Delete(TempHtmlFilePath);
+					_TemporaryHtmlFilePath = "";
+                    
 				}
 				catch
 				{
