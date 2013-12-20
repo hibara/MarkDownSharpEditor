@@ -56,6 +56,8 @@ namespace MarkDownSharpEditor
 		//-----------------------------------
 		public Form1()
 		{
+
+
 			InitializeComponent();
 
 			//IME Handler On/Off
@@ -78,6 +80,7 @@ namespace MarkDownSharpEditor
 
 			//WebBrowserClickSoundOFF();
 			CoInternetSetFeatureEnabled(FEATURE_DISABLE_NAVIGATION_SOUNDS, SET_FEATURE_ON_PROCESS, true);
+
 
 		}
 
@@ -128,12 +131,12 @@ namespace MarkDownSharpEditor
 			//言語 ( Language )
 			if (obj.Lang == "ja")
 			{
-				menuVieｗJapanese.Checked = true;
+				menuViewJapanese.Checked = true;
 				menuViewEnglish.Checked = false;
 			}
 			else
 			{
-				menuVieｗJapanese.Checked = false;
+				menuViewJapanese.Checked = false;
 				menuViewEnglish.Checked = true;
 			}
 
@@ -212,6 +215,8 @@ namespace MarkDownSharpEditor
 			//検索フォーム・オプション
 			//Search form options
 			chkOptionCase.Checked = obj.fSearchOptionIgnoreCase ? false : true;
+
+
 
 		}
 
@@ -331,6 +336,8 @@ namespace MarkDownSharpEditor
 				FormTextChange();
 			}
 		}
+
+
 
 		//----------------------------------------------------------------------
 		// フォームタイトルの表示（更新）
@@ -1097,8 +1104,7 @@ namespace MarkDownSharpEditor
 				try
 				{
 					File.Delete(TempHtmlFilePath);
-					_TemporaryHtmlFilePath = "";
-                    
+                    _TemporaryHtmlFilePath = "";
 				}
 				catch
 				{
@@ -1183,6 +1189,10 @@ namespace MarkDownSharpEditor
 		//----------------------------------------------------------------------
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
 		{
+			var obj = MarkDownSharpEditor.AppSettings.Instance;
+			// プレビューブラウザのレンダリングモード指定
+			AppSettings.SetBrowserRenderingMode(obj.FeatureBrowserEmulation, obj.FeatureDocumentCompatibuleMode);
+
 			string ResultText = (string)e.Argument;
 			string MkResultText = "";
 
@@ -1252,7 +1262,9 @@ namespace MarkDownSharpEditor
 			FileName);             //タイトル（＝ファイル名） ( title = file name )
 
 			//Footer
-			string footer = "</body>\n</html>";
+			string footer = //"</body>\n</html>";
+                // 書き換え中
+                "</body><script type=\"text/javascript\"> var body = document.getElementsByTagName(\"body\")[0]; body.innerHTML =  document.documentMode + \"<br/>\" + window.navigator.userAgent + body.innerHTML; </script>\n</html>";
 
 			//-----------------------------------
 			//Markdown parse ( default )
@@ -1295,6 +1307,7 @@ namespace MarkDownSharpEditor
 			//Encode and convert it to 'byte' value ( richEditBox default encoding is utf-8 = 65001 )
 			byte[] bytesData = Encoding.GetEncoding(CodePageNum).GetBytes(MkResultText);
 
+
 			//-----------------------------------
 			// Write to temporay file
 			if (_fNoTitle == false)
@@ -1309,7 +1322,7 @@ namespace MarkDownSharpEditor
 				//Open temporary file to allow references from other processes
 				using (FileStream fs = new FileStream(
 					_TemporaryHtmlFilePath,
-					FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read | FileShare.Delete))
+					FileMode.Create, FileAccess.ReadWrite, FileShare.Read | FileShare.Delete))
 				{
 					fs.Write(bytesData, 0, bytesData.Length);
 					e.Result = _TemporaryHtmlFilePath;
@@ -1376,13 +1389,6 @@ namespace MarkDownSharpEditor
 					//Restore scroll bar position
 					if (doc != null)
 					{
-#if false
-						while (webBrowser1.ReadyState != WebBrowserReadyState.Complete)
-						{
-							Application.DoEvents();
-						}
-						doc.Window.ScrollTo(scrollpos);
-#endif
 						waitTask.ContinueWith((arg1) =>
 						{
 							this.BeginInvoke(new Action(() =>
@@ -1485,7 +1491,6 @@ namespace MarkDownSharpEditor
 		System.Threading.Tasks.TaskCompletionSource<string> waitObject = null;
 		int timerCount = 0;
 		Timer browserWaitTimer;
-
 
 		//----------------------------------------------------------------------
 		// BackgroundWorker Syntax hightlighter work
@@ -2185,6 +2190,7 @@ namespace MarkDownSharpEditor
 			{
 				if (saveFileDialog1.ShowDialog() == DialogResult.OK)
 				{
+
 					using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false, _EditingFileEncoding))
 					{
 						sw.Write(richTextBox1.Text);
@@ -2558,7 +2564,7 @@ namespace MarkDownSharpEditor
 			else if (result == DialogResult.No)
 			{
 				MarkDownSharpEditor.AppSettings.Instance.Lang = "ja";
-				menuVieｗJapanese.Checked = true;
+				menuViewJapanese.Checked = true;
 				menuViewEnglish.Checked = false;
 			}
 			else
@@ -2589,7 +2595,7 @@ namespace MarkDownSharpEditor
 			{
 				MarkDownSharpEditor.AppSettings.Instance.Lang = "en";
 				MarkDownSharpEditor.AppSettings.Instance.SaveToXMLFile();
-				menuVieｗJapanese.Checked = false;
+				menuViewJapanese.Checked = false;
 				menuViewEnglish.Checked = true;
 			}
 			else

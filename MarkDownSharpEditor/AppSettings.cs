@@ -106,6 +106,10 @@ namespace MarkDownSharpEditor
 		private int _ListViewColumnHeader1Width;
 		private int _ListViewColumnHeader2Width;
 
+		private int _FeatureBrowserEmulation;         //UserAgentのレジストリ設定
+		private int _FeatureDocumentCompatibuleMode;  //IEレンダリングモードのレジストリ設定
+
+
 		#endregion
 
 		//-----------------------------------
@@ -514,6 +518,22 @@ namespace MarkDownSharpEditor
 			set { _ListViewColumnHeader2Width = value; }
 		}
 
+        //UserAgentのレジストリ設定
+		public int FeatureBrowserEmulation
+		{
+			get { return _FeatureBrowserEmulation; }
+			set { _FeatureBrowserEmulation = value; }
+		}
+
+		//IEレンダリングモードのレジストリ設定
+		public int FeatureDocumentCompatibuleMode
+		{
+			get { return _FeatureDocumentCompatibuleMode; }
+			set { _FeatureDocumentCompatibuleMode = value;  }
+		} 
+
+
+
 		#endregion
 		//-----------------------------------
 
@@ -653,6 +673,9 @@ namespace MarkDownSharpEditor
 			//-----------------------------------
 			_ListViewColumnHeader1Width = 128;
 			_ListViewColumnHeader2Width = 512;
+
+			_FeatureBrowserEmulation = 7000;
+			_FeatureDocumentCompatibuleMode = 70000;
 
 		}
 
@@ -906,6 +929,31 @@ namespace MarkDownSharpEditor
 			//実行ファイルのあるディレクトリ
 			//Application ExecutablePath
 			//return (Path.GetDirectoryName(Application.ExecutablePath));
+		}
+
+
+		// BrowserControlのUserAgentとレンダリングモードを指定する
+		public static void SetBrowserRenderingMode(int featureBrowserEmulation, int featureDocumentCompatibleMode)
+		{
+			// ユーザーエージェントのレジストリキー
+			string FEATURE_BROWSER_EMULATION = @"Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
+			// レンダリングモードのレジストリキー
+			string FEATURE_DOCUMENT_COMPATIBLE_MODE = @"Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_DOCUMENT_COMPATIBLE_MODE";
+
+#if DEBUG
+			string exename = "MarkDownSharpEditor.vshost.exe";
+#else
+			string exename = "MarkDownSharpEditor.exe";
+#endif
+			using (var regkey1 = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(FEATURE_BROWSER_EMULATION))
+			using (var regkey2 = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(FEATURE_DOCUMENT_COMPATIBLE_MODE))
+			{
+				regkey1.SetValue(exename, featureBrowserEmulation, Microsoft.Win32.RegistryValueKind.DWord);
+				regkey2.SetValue(exename, featureDocumentCompatibleMode, Microsoft.Win32.RegistryValueKind.DWord);
+				regkey1.Close();
+				regkey2.Close();
+			}
+
 		}
 
 	}

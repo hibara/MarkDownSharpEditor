@@ -27,6 +27,17 @@ namespace MarkDownSharpEditor
 		public string SelectedCssFilePath;
 		public ComboBox.ObjectCollection CombCol;
 
+		public List<Tuple<int, string>> IEVersionList = new List<Tuple<int, string>>()
+        {
+            Tuple.Create(5000, "Internet Explorer 5 mode (also known as \"quirks mode\")"),
+            Tuple.Create(7000, "Internet Explorer 7 Standards mode"),
+            Tuple.Create(8000, "Internet Explorer 8 Standards mode"),
+            Tuple.Create(9000, "Internet Explorer 9 Standards mode"),
+            Tuple.Create(10000, "Internet Explorer 10 Standards mode"),
+			Tuple.Create(11000, "Internet Explorer 11 Standards mode")
+
+        };
+
 		//-----------------------------------
 		// コンストラクタ
 		// Constructor
@@ -392,6 +403,23 @@ namespace MarkDownSharpEditor
 				radioButtonChangeEncoding.Checked = true;
 			}
 			cmdApply.Enabled = false;
+
+			//-----------------------------------
+			//Preview Browser
+			//-----------------------------------
+			comboBoxRenderingMode.Items.Clear();
+			int renderingModeSelectedIndex = 0;
+			for (i = 0; i < IEVersionList.Count; i++)
+			{
+				comboBoxRenderingMode.Items.Add(IEVersionList[i].Item2);
+
+				if (obj.FeatureBrowserEmulation == IEVersionList[i].Item1)
+				{
+					renderingModeSelectedIndex = i;
+				}
+			}
+
+			comboBoxRenderingMode.SelectedIndex = renderingModeSelectedIndex;
 		}
 
 		//-----------------------------------
@@ -631,6 +659,14 @@ namespace MarkDownSharpEditor
 			//選択されたエンコーディングのコードページを保存
 			//Save the code page of selected encoding 
 			obj.CodePageNumber = Convert.ToInt32(comboBoxSelectEncoding.SelectedValue);
+
+			// プレビューのIEのRenderingMode
+			obj.FeatureBrowserEmulation = IEVersionList[comboBoxRenderingMode.SelectedIndex].Item1;
+			obj.FeatureDocumentCompatibuleMode = obj.FeatureBrowserEmulation * 10;
+
+
+			AppSettings.SetBrowserRenderingMode(obj.FeatureBrowserEmulation, obj.FeatureDocumentCompatibuleMode);
+
 			//ファイルに設定を保存
 			//Save settings to file
 			obj.SaveToXMLFile();
@@ -1247,9 +1283,22 @@ namespace MarkDownSharpEditor
 
 		#endregion
 
+		private void groupBox4_Enter(object sender, EventArgs e)
+		{
 
+		}
 
+		private void comboBoxRenderingMode_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			
+			cmdApply.Enabled = true;
+		}
 
+		private void comboBoxUserAgent_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			
+			cmdApply.Enabled = true;
+		}
 
 	}
 }

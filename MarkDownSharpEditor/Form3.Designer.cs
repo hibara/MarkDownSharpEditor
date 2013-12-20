@@ -164,12 +164,16 @@
 			this.comboBoxSelectEncoding = new System.Windows.Forms.ComboBox();
 			this.radioButtonChangeEncoding = new System.Windows.Forms.RadioButton();
 			this.radioButtonDefaultEncoding = new System.Windows.Forms.RadioButton();
+			this.tabPageBrowser = new System.Windows.Forms.TabPage();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.comboBoxRenderingMode = new System.Windows.Forms.ComboBox();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.fontDialog1 = new System.Windows.Forms.FontDialog();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.label8 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPageMain.SuspendLayout();
@@ -187,6 +191,8 @@
 			this.groupBox3.SuspendLayout();
 			this.groupBoxCssOption.SuspendLayout();
 			this.groupBoxEncoding.SuspendLayout();
+			this.tabPageBrowser.SuspendLayout();
+			this.groupBox4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -235,6 +241,7 @@
 			this.tabControl1.Controls.Add(this.tabPageEdit);
 			this.tabControl1.Controls.Add(this.tabPageCSS);
 			this.tabControl1.Controls.Add(this.tabPageHTML);
+			this.tabControl1.Controls.Add(this.tabPageBrowser);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			// 
@@ -1349,6 +1356,29 @@
 			this.radioButtonDefaultEncoding.UseVisualStyleBackColor = true;
 			this.radioButtonDefaultEncoding.CheckedChanged += new System.EventHandler(this.radioButtonDefaultEncoding_CheckedChanged);
 			// 
+			// tabPageBrowser
+			// 
+			this.tabPageBrowser.Controls.Add(this.groupBox4);
+			resources.ApplyResources(this.tabPageBrowser, "tabPageBrowser");
+			this.tabPageBrowser.Name = "tabPageBrowser";
+			this.tabPageBrowser.UseVisualStyleBackColor = true;
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.Controls.Add(this.label8);
+			this.groupBox4.Controls.Add(this.comboBoxRenderingMode);
+			resources.ApplyResources(this.groupBox4, "groupBox4");
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+			// 
+			// comboBoxRenderingMode
+			// 
+			this.comboBoxRenderingMode.FormattingEnabled = true;
+			resources.ApplyResources(this.comboBoxRenderingMode, "comboBoxRenderingMode");
+			this.comboBoxRenderingMode.Name = "comboBoxRenderingMode";
+			this.comboBoxRenderingMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxRenderingMode_SelectedIndexChanged);
+			// 
 			// openFileDialog1
 			// 
 			this.openFileDialog1.DefaultExt = "css";
@@ -1373,6 +1403,11 @@
 			// 
 			this.colorDialog1.AnyColor = true;
 			this.colorDialog1.FullOpen = true;
+			// 
+			// label8
+			// 
+			resources.ApplyResources(this.label8, "label8");
+			this.label8.Name = "label8";
 			// 
 			// Form3
 			// 
@@ -1413,6 +1448,9 @@
 			this.groupBoxCssOption.PerformLayout();
 			this.groupBoxEncoding.ResumeLayout(false);
 			this.groupBoxEncoding.PerformLayout();
+			this.tabPageBrowser.ResumeLayout(false);
+			this.groupBox4.ResumeLayout(false);
+			this.groupBox4.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -1559,5 +1597,9 @@
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label labelMarkdownExtraNotice;
 		private System.Windows.Forms.Button cmdOpenAppData;
+		private System.Windows.Forms.TabPage tabPageBrowser;
+		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.ComboBox comboBoxRenderingMode;
+		private System.Windows.Forms.Label label8;
     }
 }
