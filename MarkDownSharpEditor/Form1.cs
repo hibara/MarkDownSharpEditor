@@ -1262,10 +1262,8 @@ namespace MarkDownSharpEditor
 			FileName);             //タイトル（＝ファイル名） ( title = file name )
 
 			//Footer
-			string footer = //"</body>\n</html>";
-                // 書き換え中
-                "</body><script type=\"text/javascript\"> var body = document.getElementsByTagName(\"body\")[0]; body.innerHTML =  document.documentMode + \"<br/>\" + window.navigator.userAgent + body.innerHTML; </script>\n</html>";
-
+			string footer = "</body>\n</html>";
+ 
 			//-----------------------------------
 			//Markdown parse ( default )
 			//Markdown mkdwn = new Markdown();
