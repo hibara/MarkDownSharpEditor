@@ -166,6 +166,7 @@
 			this.radioButtonDefaultEncoding = new System.Windows.Forms.RadioButton();
 			this.tabPageBrowser = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.comboBoxRenderingMode = new System.Windows.Forms.ComboBox();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -173,7 +174,6 @@
 			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.fontDialog1 = new System.Windows.Forms.FontDialog();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-			this.label8 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPageMain.SuspendLayout();
@@ -1372,6 +1372,11 @@
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
 			// 
+			// label8
+			// 
+			resources.ApplyResources(this.label8, "label8");
+			this.label8.Name = "label8";
+			// 
 			// comboBoxRenderingMode
 			// 
 			this.comboBoxRenderingMode.FormattingEnabled = true;
@@ -1403,11 +1408,6 @@
 			// 
 			this.colorDialog1.AnyColor = true;
 			this.colorDialog1.FullOpen = true;
-			// 
-			// label8
-			// 
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
 			// 
 			// Form3
 			// 
