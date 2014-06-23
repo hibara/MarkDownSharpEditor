@@ -92,6 +92,8 @@ namespace MarkdownDeep
 					tag.attributes["title"] = sb.ToString();
 				}
 
+				tag.attributes["target"] = "_blank";
+
 				// Do user processing
 				m.OnPrepareLink(tag);
 

@@ -69,7 +69,7 @@ Therefore, this application will save congfig file, help file and sample data in
 If you want to uninstall these files, you could use attached uninstaller.
 But if you remove manually, There are those files in following directory:
 
-```C:\Users\[UserName]\AppData\Roaming\MarkDownSharpEditor```
+	C:\Users\[UserName]\AppData\Roaming\MarkDownSharpEditor
 
 
 
