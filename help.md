@@ -122,7 +122,7 @@ Above image may be not displayed normally without connecting with Internet.
 
 
 <a name="beginning"></a>
-#The beginning of development
+# The beginning of development
 
 I am developing <a href="http://hibara.org/software/attachecase/"  target="_blank" class="external">"AttacheCase"</a> that is AES encryption tool, then I must have rewritten help files in HTML format.
 
