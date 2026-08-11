@@ -34,7 +34,7 @@ Latest source code is hosted on GitHub.
 * [Environment to do](#environment)
 * [About Markdown](#about)
 * [How to use](#use)
-* [The begining of development](#beginning)
+* [The beginning of development](#beginning)
 * [Developed environment](#development)
 * [Copyrights](#copyright)
 * [License](#license)
@@ -121,8 +121,8 @@ Above image may be not displayed normally without connecting with Internet.
 
 
 
-<a name="begining"></a>
-#The begining of development
+<a name="beginning"></a>
+# The beginning of development
 
 I am developing <a href="http://hibara.org/software/attachecase/"  target="_blank" class="external">"AttacheCase"</a> that is AES encryption tool, then I must have rewritten help files in HTML format.
 
@@ -264,7 +264,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 
 * The browser preview was treated with BackgroundWorker ( that processing in other thread).
 
-* Fixed error occured when changing "Interval time of previewing" options.
+* Fixed error occurred when changing "Interval time of previewing" options.
 
 
 ##ver.1.1.5.0    2013/03/07
@@ -315,7 +315,7 @@ The first and foremost, I want to improve the performance of the previewing spee
 
 ##ver.1.1.1.0    2012/12/11
 
-* Fixed that fatal error occured when you begin to edit the file in the New.
+* Fixed that fatal error occurred when you begin to edit the file in the New.
 
 * Fixed the problem that some of the contents were not display marker.
 
