@@ -79,6 +79,8 @@ namespace MarkDownSharpEditor
 			//WebBrowserClickSoundOFF();
 			CoInternetSetFeatureEnabled(FEATURE_DISABLE_NAVIGATION_SOUNDS, SET_FEATURE_ON_PROCESS, true);
 
+			//ちらつき防止（ビューアモード）→Shown()で戻す
+			this.splitContainer1.Visible = false;
 		}
 
 		//----------------------------------------------------------------------
@@ -226,13 +228,28 @@ namespace MarkDownSharpEditor
 
 			ArrayList FileArray = new ArrayList();
 
-			//TODO: 「新しいウィンドウで開く」="/new"などの引数も含まれるので、
-			//       その辺りの処理も将来的に入れる。
-
 			//コマンドラインでファイルが投げ込まれてきている
 			//Launch with arguments
 			string[] cmds = System.Environment.GetCommandLineArgs();
-			for (int i = 1; i < cmds.Count(); i++)
+			int i;
+			for (i = 1; i < cmds.Count(); i++)
+			{
+				if (cmds[i][0] != '/' && cmds[i][0] != '-') break;
+
+				switch (cmds[i].Substring(1))
+				{
+					case "r":
+					case "readonly":
+						//読み取り専用＝ビューアモード
+						changeToViewerMode();
+						break;
+
+					//TODO: 「新しいウィンドウで開く」="/new"などの引数も含まれるので、
+					//	   その辺りの処理も将来的に入れる。
+				}
+			}
+			this.splitContainer1.Visible = true;
+			for (; i < cmds.Count(); i++)
 			{
 				if (File.Exists(cmds[i]) == true)
 				{
@@ -330,6 +347,19 @@ namespace MarkDownSharpEditor
 				//フォームタイトル更新 / Refresh form caption
 				FormTextChange();
 			}
+		}
+
+		//----------------------------------------------------------------------
+		// ビューアモードへ変更
+		//----------------------------------------------------------------------
+		private void changeToViewerMode() {
+			this.richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
+			this.splitContainer1.SplitterWidth = 1;
+			this.splitContainer1.SplitterDistance = this.splitContainer1.Panel1MinSize = 0;
+			this.splitContainer1.IsSplitterFixed = true;
+
+			this.menuSaveFile.Enabled = this.menuSaveAsFile.Enabled = false;
+			this.menuEdit.Enabled = this.menuViewToolBar.Enabled = this.menuViewWidthEvenly.Enabled = false;
 		}
 
 		//----------------------------------------------------------------------
