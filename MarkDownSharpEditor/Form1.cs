@@ -236,7 +236,7 @@ namespace MarkDownSharpEditor
 			{
 				if (File.Exists(cmds[i]) == true)
 				{
-					FileArray.Add(cmds[i]);
+					FileArray.Add(Path.GetFullPath(cmds[i]));
 				}
 			}
 
